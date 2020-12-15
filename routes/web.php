@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('department', 'DepartmentController');
+
+Route::resource('project', 'ProjectController');
