@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <strong>Copyright &copy;2020 <a href="https://www.trimatric.com/">Trimatric Architects & Engineers</a>.</strong>
+    <strong>Copyright &copy;2020 <a href="https://www.trimatric.com/">Trimatric</a>.</strong>
     All rights reserved.
 </footer>
 
@@ -40,6 +40,21 @@
 <!-- overlayScrollbars -->
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 <!-- CodeMirror -->
+<!-- InputMask -->
+<script src="{{ asset('backend/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+<!-- date-range-picker -->
+<script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<!-- bootstrap color picker -->
+<script src="{{ asset('backend/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<!-- Bootstrap Switch -->
+<script src="{{ asset('backend/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+<!-- BS-Stepper -->
+<script src="{{ asset('backend/plugins/bs-stepper/js/bs-stepper.min.js') }}"></script>
+<!-- dropzonejs -->
+<script src="{{ asset('backend/plugins/dropzone/min/dropzone.min.js') }}"></script>
 
 <script src="{{ asset('backend/plugins/codemirror/codemirror.js') }}"></script>
 <script src="{{ asset('backend/plugins/codemirror/mode/css/css.js') }}"></script>
