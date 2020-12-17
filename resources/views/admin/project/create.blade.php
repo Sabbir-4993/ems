@@ -30,7 +30,7 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        <form action="{{route('department.store')}}" method="post">
+        <form action="{{route('project.store')}}" method="post">
             @csrf
             <div class="card card-secondary">
                 <div class="card-header">
@@ -51,9 +51,19 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label for="exampleInputCompanyName">Company / Client Name</label>
-                                <input class="form-control @error('company_name') is-invalid @enderror" name="company_name" type="text" placeholder="Enter Company/Client Name">
-                                @error('company_name')
+                                <label for="exampleInputWorkOrder">Ref./Work Order</label>
+                                <input class="form-control @error('project_ref') is-invalid @enderror" name="project_ref" type="text" placeholder="Enter Reference Number">
+                                @error('project_ref')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label for="exampleInputCompanyEmail">Company Email</label>
+                                <input class="form-control @error('company_email') is-invalid @enderror" name="company_email" type="text" placeholder="Enter Company Email">
+                                @error('company_email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -64,9 +74,9 @@
                         <!-- /.col -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputWorkOrder">Ref./Work Order</label>
-                                <input class="form-control @error('project_ref') is-invalid @enderror" name="project_ref" type="text" placeholder="Enter Reference Number">
-                                @error('project_ref')
+                                <label for="exampleInputCompanyName">Company / Client Name</label>
+                                <input class="form-control @error('company_name') is-invalid @enderror" name="company_name" type="text" placeholder="Enter Company/Client Name">
+                                @error('company_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -83,6 +93,16 @@
                                 @enderror
                             </div>
                             <!-- /.form-group -->
+                            <div class="form-group">
+                                <label for="exampleInputAddress">Contact Number</label>
+                                <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="text" placeholder="Enter Number">
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <!-- /.form-group -->
                         </div>
                         <!-- /.col -->
                     </div>
@@ -91,28 +111,31 @@
                     <div class="row">
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
-                                <label>Start Date:</label>
-                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                <label>Project Start:</label>
+                                <div class="input-group">
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" placeholder="MM/DD/YY" class="form-control datetimepicker-input" data-target="#reservationdate" name="project_start"/>
+                                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- /.input group -->
                             </div>
                             <!-- /.form-group -->
                         </div>
                         <!-- /.col -->
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
-                                <label>End Date:</label>
-                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                <label>Project End:</label>
+                                <div class="input-group date" id="reservationdate1" data-target-input="nearest">
+                                    <input type="text" placeholder="MM/DD/YY" class="form-control datetimepicker-input" data-target="#reservationdate1" name="project_end"/>
+                                    <div class="input-group-append" data-target="#reservationdate1" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
+                                <!-- /.input group -->
                             </div>
-                            <!-- /.form-group -->
                         </div>
                         <!-- /.col -->
                     </div>
@@ -121,17 +144,11 @@
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label>Project Status</label>
-                                <select class="form-control select2" style="width: 100%;">
-                                    <option selected="selected">Running</option>
-                                    <option>Completed</option>
+                                <select class="form-control" style="width: 100%;" name="status">
+                                    <option selected="selected">Select Status</option>
+                                    <option value="1">Running</option>
+                                    <option value="0">Completed</option>
                                 </select>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-12 col-sm-6">
-                            <div class="form-group">
-
                             </div>
                             <!-- /.form-group -->
                         </div>

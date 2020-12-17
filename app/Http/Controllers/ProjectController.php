@@ -14,7 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = project::get();
+        return view('admin.project.index', compact('projects'));
     }
 
     /**
@@ -35,7 +36,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'project_name' => 'required',
+            'company_name' => 'required',
+            'company_email' => 'required',
+            'project_ref' => 'required',
+            'project_start' => 'required',
+            'project_end' => 'required',
+            'phone' => 'required',
+            'status' => 'required',
+        ]);
+
+        $data = $request->all();
+        project::create($data);
+        return redirect()->back()->with('message', 'Project Created Successfully');
     }
 
     /**

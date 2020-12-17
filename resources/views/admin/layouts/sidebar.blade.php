@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('project.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>View Project</p>
                             </a>
