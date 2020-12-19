@@ -22,7 +22,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content container">
+    <section class="content">
         @if(Session::has('message'))
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -43,23 +43,44 @@
                                 <tr>
                                     <th>SN</th>
                                     <th>Project Name</th>
+                                    <th>Company Name</th>
+                                    <th>Word Order/Ref.</th>
+                                    <th>Company Email</th>
+                                    <th>Contact Number</th>
+                                    <th>Project Start</th>
+                                    <th>Project End</th>
+                                    <th>Status</th>
                                     <th>Details</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($projects as $key => $project)
+                                @if(count($projects)>0)
+                                    @foreach($projects as $key=>$row)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$project->name}}</td>
-                                            <td>{{$project->description}}</td>
+                                            <td>{{$row->project_name}}</td>
+                                            <th>{{$row->company_name}}</th>
+                                            <th>{{$row->project_ref}}</th>
+                                            <th>{{$row->company_email}}</th>
+                                            <th>{{$row->phone}}</th>
+                                            <th>{{$row->address}}</th>
+                                            <th>{{$row->project_start}}</th>
+                                            <th>{{$row->project_end}}</th>
                                             <td>
-                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('project.edit',[$project->id])}}"><i class="fas fa-edit"></i></a>
-                                                <button type="button" class="btn btn-block bg-gradient-danger btn-xs" data-toggle="modal" data-target="#modal-sm{{$project->id}}">Delete</button>
+                                                @if($row->status=='0')
+                                                    <span class="badge badge-success">Complete</span>
+                                                @else
+                                                    <span class="badge badge-primary">Running</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('project.edit',[$row->id])}}"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-block bg-gradient-danger btn-xs" data-toggle="modal" data-target="#modal-sm{{$row->id}}">Delete</button>
                                                 <!-- /.modal -->
-                                                <div class="modal fade" id="modal-sm{{$project->id}}">
+                                                <div class="modal fade" id="modal-sm{{$row->id}}">
                                                     <div class="modal-dialog modal-sm">
-                                                        <form action="{{route('project.destroy',[$project->id])}}" method="post">
+                                                        <form action="{{route('project.destroy',[$row->id])}}" method="post">
                                                             @csrf
                                                             {{method_field('DELETE')}}
                                                             <div class="modal-content">
@@ -86,11 +107,21 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                @else
+                                    <td>No Department to Display</td>
+                                @endif
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>SN</th>
                                     <th>Project Name</th>
+                                    <th>Company Name</th>
+                                    <th>Word Order/Ref.</th>
+                                    <th>Company Email</th>
+                                    <th>Contact Number</th>
+                                    <th>Project Start</th>
+                                    <th>Project End</th>
+                                    <th>Status</th>
                                     <th>Details</th>
                                     <th>Action</th>
                                 </tr>
@@ -110,5 +141,45 @@
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+@section('css')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+@endsection
+@section('script')
+
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 @endsection
 

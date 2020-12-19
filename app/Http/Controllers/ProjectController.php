@@ -14,7 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = project::get();
+        $projects = project::orderBy('id', 'DESC')->get();
         return view('admin.project.index', compact('projects'));
     }
 
@@ -69,9 +69,10 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+        $project = project::find($id);
+        return view('admin.project.edit', compact('project'));
     }
 
     /**
@@ -81,9 +82,12 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {
-        //
+        $project = project::find($id);
+        $data = $request->all();
+        $project->update($data);
+        return redirect()->route('project.index')->with('message', 'Project Updated Successfully');
     }
 
     /**
@@ -92,8 +96,10 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        //
+        $project = project::find($id);
+        $project->delete();
+        return redirect()->route('project.index')->with('message', 'Project Deleted Successfully');
     }
 }

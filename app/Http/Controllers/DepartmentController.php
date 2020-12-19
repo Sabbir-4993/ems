@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Department;
+use mysql_xdevapi\Table;
+use DB;
 
 class DepartmentController extends Controller
 {
@@ -14,7 +16,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::orderBy('id', 'asc')->get();
+        $departments = Department::orderBy('id', 'DESC')->get();;
         return view('admin.department.index',compact('departments'));
     }
 
