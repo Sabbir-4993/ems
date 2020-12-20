@@ -39,12 +39,16 @@ class ProjectController extends Controller
         $this->validate($request,[
             'project_name' => 'required',
             'company_name' => 'required',
-            'company_email' => 'required',
             'project_ref' => 'required',
-            'project_start' => 'required',
-            'project_end' => 'required',
+            'address' => 'required',
+            'company_email' => 'required',
             'phone' => 'required',
             'status' => 'required',
+            'est_budget' => 'required',
+            'total_amount' => 'required',
+            'pro_duration' => 'required',
+            'project_start' => 'required',
+            'project_end' => 'required',
         ]);
 
         $data = $request->all();
