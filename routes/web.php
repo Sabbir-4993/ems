@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::resource('department', 'DepartmentController');
 
 Route::resource('project', 'ProjectController');
+Route::resource('contractors', 'ContractorController');

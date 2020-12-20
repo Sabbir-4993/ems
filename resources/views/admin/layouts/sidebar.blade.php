@@ -124,6 +124,30 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Contractor
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('contractors.create')}}" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add Contractor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('contractors.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View Contractor</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -136,3 +160,4 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
