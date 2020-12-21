@@ -135,6 +135,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{route('assignProject.index')}}" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Assign Project </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('contractors.create')}}" class="nav-link">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Add Contractor</p>
@@ -144,6 +150,18 @@
                             <a href="{{route('contractors.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>View Contractor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('category.create')}}" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add Contractor Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('category.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View Category </p>
                             </a>
                         </li>
                     </ul>

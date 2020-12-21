@@ -16,8 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+/// all Resource Controller
 Route::resource('department', 'DepartmentController');
-
 Route::resource('project', 'ProjectController');
 Route::resource('contractors', 'ContractorController');
+Route::resource('category', 'CategoryController');
+
+//Route::get('payBill/{id}','ContractorController@payBill')->name('contractors.payBill');
+//Route::post('billPaid','ContractorController@BillPaid')->name('contractors.billPaid');
+Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
+    Route::get('assign-project', 'AssignProjectController@index')->name('index');
+    Route::post('store-assign-project', 'AssignProjectController@storeProject')->name('store');
+});
+

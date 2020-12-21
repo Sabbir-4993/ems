@@ -39,27 +39,22 @@ class ContractorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'contractor_name' => 'required|max:100',
-            'contractor_number' => 'required|max:100',
-            'contractor_type' => 'required|max:100',
-            'project_name' => 'required|max:100',
-            'assign_date' => 'required|max:100',
-            'end_date' => 'required|max:100',
-            'total_payable' => 'required|max:100',
-            'assign_by' => 'required|max:100',
+            'name' => 'required|max:100',
+            'phone' => 'required|max:100',
+            'address' => 'required|max:100',
+            'referBy' => 'required|max:100',
+            'details' => 'required|max:100',
         ]);
 
         $contractor = new Contractor();
-        $contractor->contractor_name = $request->contractor_name;
-        $contractor->contractor_phone = $request->contractor_number;
-        $contractor->contractor_type = $request->contractor_type;
-        $contractor->project_id = $request->project_name;
-        $contractor->assign_date = $request->assign_date;
-        $contractor->end_date = $request->end_date;
-        $contractor->total_payable = $request->total_payable;
-        $contractor->assign_by = $request->assign_by;
+        $contractor->contractor_name = $request->name;
+        $contractor->contractor_phone = $request->phone;
+        $contractor->contractor_address = $request->address;
+        $contractor->assign_by = $request->referBy;
+        $contractor->contractor_details = $request->details;
         $contractor->save();
-        return redirect()->back()->with('message','Contractor Created Successfully');
+        return redirect()->route('contractors.index')->with('message', 'Contractor Created Successfully');
+
     }
 
     /**
@@ -94,26 +89,13 @@ class ContractorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'contractor_name' => 'required|max:100',
-            'contractor_number' => 'required|max:100',
-            'contractor_type' => 'required|max:100',
-            'project_name' => 'required|max:100',
-            'assign_date' => 'required|max:100',
-            'end_date' => 'required|max:100',
-            'total_payable' => 'required|max:100',
-            'assign_by' => 'required|max:100',
-        ]);
 
         $contractor = array();
-        $contractor['contractor_name'] = $request->contractor_name;
-        $contractor['contractor_phone'] = $request->contractor_number;
-        $contractor['contractor_type'] = $request->contractor_type;
-        $contractor['project_id'] = $request->project_name;
-        $contractor['assign_date'] = $request->assign_date;
-        $contractor['end_date'] = $request->end_date;
-        $contractor['total_payable'] = $request->total_payable;
-        $contractor['assign_by'] = $request->assign_by;
+        $contractor['contractor_name'] = $request->name;
+        $contractor['contractor_phone'] = $request->phone;
+        $contractor['contractor_address'] = $request->address;
+        $contractor['assign_by'] = $request->referBy;
+        $contractor['contractor_details'] = $request->details;
         DB::table('contractors')->where('id',$id)->update($contractor);
 
         return redirect()->route('contractors.index')->with('message', 'Contractor Update Successfully');
@@ -131,4 +113,20 @@ class ContractorController extends Controller
         $department->delete();
         return redirect()->route('contractors.index')->with('message', 'Contractor Deleted Successfully');
     }
+//    public function payBill($id)
+//    {
+//        $contractors = Contractor::where('id',$id)->first();
+//        return view('admin.contractor.payBill', compact('contractors'));
+//    }
+//    public function BillPaid(Request  $request)
+//    {
+//        $contractor = array();
+//        $contractor['paid'] = $request->pay;
+//        $contractor['pay_date'] = $request->billing_date;
+//        DB::table('contractors')->where('id',$request->id)->update($contractor);
+//        DB::table('contractors')->where('id',$request->id)
+//            ->update(['due'=>DB::raw('total_payable -'.$request->pay )]);
+//        return redirect()->route('contractors.index')->with('message', 'Contractor Bill Paid Successfully');
+//
+//    }
 }
