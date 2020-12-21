@@ -22,12 +22,12 @@
     </div>
     <!-- /.content-header -->
 
-        <!-- Main content -->
-        <section class="content">
-            <form action="{{route('project.view',[$project->id])}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            {{method_field('PATCH')}}
-            <!-- Default box -->
+    <!-- Main content -->
+    <section class="content">
+        <form action="{{route('project.show',[$projects->id])}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        {{method_field('PATCH')}}
+        <!-- Default box -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Projects Detail</h3>
@@ -49,7 +49,7 @@
                                     <div class="info-box bg-light">
                                         <div class="info-box-content">
                                             <span class="info-box-text text-center text-muted">Estimated budget</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{$row->est_budget}} BDT</span>
+                                            <span class="info-box-number text-center text-muted mb-0">{{$projects->est_budget}} BDT</span>
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                     <div class="info-box bg-light">
                                         <div class="info-box-content">
                                             <span class="info-box-text text-center text-muted">Total amount spent</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{$row->total_amount}} BDT</span>
+                                            <span class="info-box-number text-center text-muted mb-0">{{$projects->total_amount}} BDT</span>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                     <div class="info-box bg-light">
                                         <div class="info-box-content">
                                             <span class="info-box-text text-center text-muted">Estimated project duration</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{$row->pro_duration}} Months</span>
+                                            <span class="info-box-number text-center text-muted mb-0">{{$projects->pro_duration}} Months</span>
                                         </div>
                                     </div>
                                 </div>
@@ -75,10 +75,12 @@
                                     <h4>Recent Activity</h4>
                                     <div class="post">
                                         <div class="user-block">
-                                            <img class="img-circle img-bordered-sm" src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" alt="user image">
+                                            <img class="img-circle img-bordered-sm"
+                                                 src="{{ asset('backend/dist/img/user1-128x128.jpg') }}"
+                                                 alt="user image">
                                             <span class="username">
-                                              <a href="#">Jonathan Burke Jr.</a>
-                                            </span>
+                                          <a href="#">Jonathan Burke Jr.</a>
+                                        </span>
                                             <span class="description">Shared publicly - 7:45 PM today</span>
                                         </div>
                                         <!-- /.user-block -->
@@ -89,16 +91,19 @@
                                         </p>
 
                                         <p>
-                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
+                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo
+                                                File 1 v2</a>
                                         </p>
                                     </div>
 
                                     <div class="post clearfix">
                                         <div class="user-block">
-                                            <img class="img-circle img-bordered-sm" src="{{ asset('backend/dist/img/user7-128x128.jpg') }}" alt="User Image">
+                                            <img class="img-circle img-bordered-sm"
+                                                 src="{{ asset('backend/dist/img/user7-128x128.jpg') }}"
+                                                 alt="User Image">
                                             <span class="username">
-                                              <a href="#">Sarah Ross</a>
-                                            </span>
+                                          <a href="#">Sarah Ross</a>
+                                        </span>
                                             <span class="description">Sent you a message - 3 days ago</span>
                                         </div>
                                         <!-- /.user-block -->
@@ -108,16 +113,19 @@
                                             its demise, but others ignore.
                                         </p>
                                         <p>
-                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
+                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo
+                                                File 2</a>
                                         </p>
                                     </div>
 
                                     <div class="post">
                                         <div class="user-block">
-                                            <img class="img-circle img-bordered-sm" src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" alt="user image">
+                                            <img class="img-circle img-bordered-sm"
+                                                 src="{{ asset('backend/dist/img/user1-128x128.jpg') }}"
+                                                 alt="user image">
                                             <span class="username">
-                                              <a href="#">Jonathan Burke Jr.</a>
-                                            </span>
+                                          <a href="#">Jonathan Burke Jr.</a>
+                                        </span>
                                             <span class="description">Shared publicly - 5 days ago</span>
                                         </div>
                                         <!-- /.user-block -->
@@ -128,41 +136,67 @@
                                         </p>
 
                                         <p>
-                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
+                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo
+                                                File 1 v1</a>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                            <h3 class="text-success"><i class="fas fa-project-diagram"></i> {{$row->project_name}}</h3>
-                            <p class="text-muted">{{$row->description}}</p>
+                            <h3 class="text-success"><i class="fas fa-project-diagram"></i> {{$projects->project_name}}
+                            </h3>
+                            <p class="text-muted">{{$projects->description}}</p>
                             <br>
                             <div class="text-muted">
+                                <p class="text-sm">Project Status
+                                    @if($projects->status=='0')
+                                        <b class="d-block">
+                                            <span class="badge badge-primary">Running</span>
+                                        </b>
+                                    @elseif($projects->status=='1')
+                                        <b class="d-block">
+                                            <span class="badge badge-warning">Hold</span>
+                                        </b>
+                                    @elseif($projects->status=='2')
+                                        <b class="d-block">
+                                            <span class="badge badge-danger">Canceled</span>
+                                        </b>
+                                    @elseif($projects->status=='3')
+                                        <b class="d-block">
+                                            <span class="badge badge-success">Complete</span>
+                                        </b>
+                                    @endif
+                                </p>
                                 <p class="text-sm">Client Company
-                                    <b class="d-block">{{$row->company_name}}</b>
+                                    <b class="d-block">{{$projects->company_name}}</b>
                                 </p>
                                 <p class="text-sm">Project Leader
-                                    <b class="d-block">{{$row->project_leader}}</b>
+                                    <b class="d-block">{{$projects->project_leader}}</b>
                                 </p>
                             </div>
 
                             <h5 class="mt-5 text-muted">Project files</h5>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
+                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
+                                        Functional-requirements.docx</a>
                                 </li>
                                 <li>
-                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
+                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i>
+                                        UAT.pdf</a>
                                 </li>
                                 <li>
-                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
+                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i>
+                                        Email-from-flatbal.mln</a>
                                 </li>
                                 <li>
-                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
+                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i>
+                                        Logo.png</a>
                                 </li>
                                 <li>
-                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
+                                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
+                                        Contract-10_12_2014.docx</a>
                                 </li>
                             </ul>
                             <div class="text-center mt-5 mb-3">
@@ -175,9 +209,9 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            </form>
-        </section>
-        <!-- /.content -->
+        </form>
+    </section>
+    <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 @endsection

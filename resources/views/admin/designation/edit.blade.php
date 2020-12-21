@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/department')}}">Department</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/designation')}}">Designation</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,16 +30,16 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        <form action="{{route('department.update', [$department->id])}}" method="post">
-                @csrf
-                {{method_field('PATCH')}}
+        <form action="{{route('designation.update', [$designation->id])}}" method="post">
+            @csrf
+            {{method_field('PATCH')}}
             <div class="card card-secondary">
                 <div class="card-header">
-                    <h3 class="card-title">Add Department</h3>
+                    <h3 class="card-title">Add Designation</h3>
                 </div>
                 <div class="card-body">
-                    <label for="exampleInputDepartmentName">Department Name</label>
-                    <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" value="{{$department->name}}">
+                    <label for="exampleInputdesignationName">Designation Name</label>
+                    <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" value="{{$designation->name}}">
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -47,8 +47,8 @@
                     @enderror
                 </div>
                 <div class="card-body">
-                    <label for="exampleDepartmentDetails">Department Details</label>
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="5">{{$department->description}}</textarea>
+                    <label for="exampledesignationDetails">Designation Details</label>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="5">{{$designation->description}}</textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

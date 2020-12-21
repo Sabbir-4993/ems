@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/department/create')}}">Create</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/designation/create')}}">Create</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -34,28 +34,28 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Department List</h3>
+                            <h3 class="card-title">Designation List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>SN</th>
-                                    <th>Department Name</th>
-                                    <th>Details</th>
-                                    <th>Action</th>
+                                    <th style="  ">SN</th>
+                                    <th style="  ">Designation Name</th>
+                                    <th style="  ">Details</th>
+                                    <th style="  ">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($departments as $key => $row)
+                                @foreach($designations as $key => $row)
                                     <tr>
                                         <td style="width: 5%">{{$key+1}}</td>
                                         <td style="width: 25%">{{$row->name}}</td>
                                         <td style="width: 50%">{{$row->description}}</td>
                                         <td style="width: 20%">
                                             <a class="btn btn-block bg-gradient-secondary btn-xs"
-                                               href="{{route('department.edit',[$row->id])}}"><i
+                                               href="{{route('designation.edit',[$row->id])}}"><i
                                                     class="fas fa-edit"></i> Edit</a>
                                             <button type="button" class="btn btn-block bg-gradient-danger btn-xs"
                                                     data-toggle="modal" data-target="#modal-sm{{$row->id}}"><i
@@ -64,7 +64,7 @@
                                             <!-- /.modal -->
                                             <div class="modal fade" id="modal-sm{{$row->id}}">
                                                 <div class="modal-dialog modal-sm">
-                                                    <form action="{{route('department.destroy',[$row->id])}}"
+                                                    <form action="{{route('designation.destroy',[$row->id])}}"
                                                           method="post">
                                                         @csrf
                                                         {{method_field('DELETE')}}
@@ -100,7 +100,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>SN</th>
-                                    <th>Department Name</th>
+                                    <th>Designation Name</th>
                                     <th>Details</th>
                                     <th>Action</th>
                                 </tr>

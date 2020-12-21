@@ -19,5 +19,10 @@ Route::get('/', function () {
 
 Route::resource('department', 'DepartmentController');
 
+Route::resource('designation', 'DesignationController');
+
 Route::resource('project', 'ProjectController');
+
+Route::resource('employee', 'EmployeeController');
+
 Route::resource('contractors', 'ContractorController');
