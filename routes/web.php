@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Auth::routes();
+
+//Auth::routes(['register' => false]);
+
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('department', 'DepartmentController');
 
@@ -23,6 +27,6 @@ Route::resource('designation', 'DesignationController');
 
 Route::resource('project', 'ProjectController');
 
-Route::resource('employee', 'EmployeeController');
-
 Route::resource('contractors', 'ContractorController');
+
+Auth::routes();
