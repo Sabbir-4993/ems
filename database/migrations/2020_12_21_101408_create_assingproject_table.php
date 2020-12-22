@@ -22,6 +22,8 @@ class CreateAssingprojectTable extends Migration
             $table->string('end_date');
             $table->string('work_order');
             $table->string('total_payable');
+            $table->string('total_pay');
+            $table->string('total_due');
             $table->timestamps();
         });
     }

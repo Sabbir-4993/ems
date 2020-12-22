@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeesTable extends Migration
+class CreateBillingHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('billing_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string()
+            $table->string('project_id');
+            $table->string('project_work_no');
+            $table->string('billing_no');
+            $table->string('billing_amount');
+            $table->string('billing_date');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('billing_histories');
     }
 }

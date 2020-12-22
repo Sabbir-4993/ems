@@ -20,7 +20,7 @@ class AssignProjectController extends Controller
             'category_name' => 'required',
             'assign_date' => 'required',
             'end_date' => 'required',
-            'work_order' => 'required',
+            'work_order' => 'required|unique:assingproject',
             'total_payable' => 'required',
         ]);
         $data = array();
@@ -32,6 +32,32 @@ class AssignProjectController extends Controller
         $data['work_order'] = $request->work_order;
         $data['total_payable'] = $request->total_payable;
         DB::table('assingproject')->insert($data);
-        return redirect()->back();
+        return redirect()->route('assignProject.view')->with('message', 'Project Assign Successfully');
+    }
+    public function viewProject(){
+        $assignProjectDetails =DB::table('assingproject')->get();
+        return view('admin.contractor.assignProjectList')->with(compact('assignProjectDetails'));
+    }
+    public function viewProjectDetails($id){
+        $projects = DB::table('assingproject')->where('id',$id)->get();
+
+        return view('admin.contractor.assignProjectDetails',compact('projects'));
+    }
+    public function projectBillPay(Request $request){
+
+        $request->validate([
+            'billing_no' => 'required|unique:billing_histories',
+            'pay_amount' => 'required',
+        ]);
+
+        $data = array();
+        $data['project_id'] = $request->project_id;
+        $data['project_work_no'] = $request->work_id;
+        $data['billing_no'] = $request->billing_no;
+        $data['billing_amount'] = $request->pay_amount;
+        $data['billing_date'] = date('d/m/y');
+        dd($data);
+
+
     }
 }

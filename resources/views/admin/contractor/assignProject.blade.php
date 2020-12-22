@@ -105,8 +105,13 @@
                                 <input class="form-control" type="date"  id="end_date" name="end_date">
                             </div>
                             <div class="form-group">
-                                <label for="work_no" class="col-form-label">Work Order No</label>
-                                <input class="form-control" type="text" id="work_order" name="work_order">
+                                    <label for="exampleDepartmentDetails">Work Order No</label>
+                                    <input class="form-control @error('work_order') is-invalid @enderror" name="work_order" type="text" placeholder="">
+                                    @error('work_order')
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="total_payable" class="col-form-label">Total Payable</label>
