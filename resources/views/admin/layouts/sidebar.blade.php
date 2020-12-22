@@ -42,7 +42,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('department.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-plus nav-icon"></i>
                                 <p>Add Department</p>
                             </a>
                         </li>
@@ -50,6 +50,29 @@
                             <a href="{{route('department.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>View Department</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('designation.create')}}" class="nav-link">
+                        <i class="nav-icon far fa-plus-square"></i>
+                        <p>
+                            Designation
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('designation.create')}}" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add Designation</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('designation.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View Designation</p>
                             </a>
                         </li>
                     </ul>
@@ -65,7 +88,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('project.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-plus nav-icon"></i>
                                 <p>Add Project</p>
                             </a>
                         </li>
@@ -78,7 +101,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('employee.create')}}" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
                         <p>
                             Employee
@@ -87,13 +110,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="{{route('employee.create')}}" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
                                 <p>Add Employee</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('employee.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>View Employee</p>
                             </a>
@@ -105,21 +128,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Product
+                            Material
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Product</p>
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Add Material</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>View Product</p>
+                                <p>View Material</p>
                             </a>
                         </li>
                     </ul>

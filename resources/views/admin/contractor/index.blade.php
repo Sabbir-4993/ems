@@ -52,7 +52,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(count($contractors)>0)
                                 @foreach($contractors as $key => $row)
                                     <tr>
                                         <td>{{$key+1}}</td>
@@ -95,9 +94,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            @else
-                                <td>No Department to Display</td>
-                            @endif
                             </tbody>
                             <tfoot>
                             <tr>

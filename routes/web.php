@@ -18,7 +18,13 @@ Route::get('/', function () {
 });
 /// all Resource Controller
 Route::resource('department', 'DepartmentController');
+
+Route::resource('designation', 'DesignationController');
+
 Route::resource('project', 'ProjectController');
+
+Route::resource('employee', 'EmployeeController');
+
 Route::resource('contractors', 'ContractorController');
 Route::resource('category', 'CategoryController');
 

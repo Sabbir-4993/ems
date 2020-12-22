@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/project')}}">Project</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/employee')}}">Employee</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,13 +30,13 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        <form action="{{route('project.store')}}" method="post">
+        <form action="{{route('employee.store')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-md-6">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">General</h3>
+                            <h3 class="card-title">General Information</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                         title="Collapse">
@@ -154,7 +154,7 @@
                 <div class="col-md-6">
                     <div class="card card-secondary">
                         <div class="card-header">
-                            <h3 class="card-title">Budget</h3>
+                            <h3 class="card-title">Department</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -225,6 +225,4 @@
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
 @endsection
-
