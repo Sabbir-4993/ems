@@ -74,6 +74,11 @@
                                 <div class="col-12">
                                     <h4>Billing History</h4>
                                     <div class="post">
+                                        @php
+                                        $billhistory = \Illuminate\Support\Facades\DB::table('billing_histories')
+                                                        ->where('project_id',$project->project_id)
+                                                        ->get();
+                                        @endphp
                                         <div class="user-block">
                                             <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
@@ -81,18 +86,22 @@
                                                     <th>SN</th>
                                                     <th>Work No</th>
                                                     <th>BILLING No</th>
+                                                    <th>Billing Amount</th>
+                                                    <th>Billing Method</th>
                                                     <th>Billing Date</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                {{--                                            @foreach($projects as $key=>$row)--}}
+                                                @foreach($billhistory as $key=>$row)
                                                 <tr>
-                                                    <td>fgfgfg</td>
-                                                    <td>fgfg</td>
-                                                    <td>fgfgfg</td>
-                                                    <td>fgfgfg</td>
+                                                    <td>{{$key+1}}</td>
+                                                    <td>{{$row->project_work_no}}</td>
+                                                    <td>{{$row->billing_no}}</td>
+                                                    <td>{{$row->billing_amount}}</td>
+                                                    <td>{{$row->billing_method}}</td>
+                                                    <td>{{$row->billing_date}}</td>
                                                 </tr>
-                                                {{--                                            @endforeach--}}
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -103,6 +112,7 @@
                         <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                             @php
                                 $projectDetails = \App\Project::where('id',$project->project_id)->first();
+                                $contractorDetails = \App\Contractor::where('id',$project->contractor_id)->first();
                             @endphp
                             <h3 class="text-success"><i class="fas fa-project-diagram"></i>
                                 {{$projectDetails->project_name}}
@@ -135,6 +145,15 @@
                                     <b class="d-block">{{$projectDetails->project_leader}}</b>
                                 </p>
                             </div>
+
+                            <h4 class="text-success">
+                                <i class="fas fa-user"></i>
+                                {{$contractorDetails->contractor_name}}
+                            </h4>
+                            <h4 class="text-info">
+                                <i class="fas fa-phone"></i>
+                                {{$contractorDetails->contractor_phone}}
+                            </h4>
 
                             <div class="text-center mt-5 mb-3">
                                 <a href="#" class="btn btn-sm btn-warning">Project Report</a>

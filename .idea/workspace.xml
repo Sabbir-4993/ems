@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/CPU/Helper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectList.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Employee.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_21_065530_create_employees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_22_105457_create_billing_histories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_21_101408_create_assingproject_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_21_101408_create_assingproject_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_22_105457_create_billing_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_22_105457_create_billing_histories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectList.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/payBill.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +197,9 @@
       <workItem from="1608435302757" duration="882000" />
       <workItem from="1608438661835" duration="22299000" />
       <workItem from="1608528850887" duration="14423000" />
-      <workItem from="1608613539383" duration="18569000" />
+      <workItem from="1608613539383" duration="18618000" />
+      <workItem from="1608696050702" duration="9000" />
+      <workItem from="1608699210105" duration="11489000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -219,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608547601804</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="payment and bill contractor">
+      <created>1608638460513</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608638460513</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +244,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="contractor model done" />
     <MESSAGE value="assign project and category create done" />
-    <option name="LAST_COMMIT_MESSAGE" value="assign project and category create done" />
+    <MESSAGE value="payment and bill contractor" />
+    <option name="LAST_COMMIT_MESSAGE" value="payment and bill contractor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

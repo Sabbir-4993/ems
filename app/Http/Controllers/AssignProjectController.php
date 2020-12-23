@@ -6,6 +6,8 @@ use App\Category;
 use App\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Null_;
 
 class AssignProjectController extends Controller
 {
@@ -45,19 +47,48 @@ class AssignProjectController extends Controller
     }
     public function projectBillPay(Request $request){
 
-        $request->validate([
+
+        $validator = Validator::make($request->all(), [
             'billing_no' => 'required|unique:billing_histories',
             'pay_amount' => 'required',
         ]);
 
-        $data = array();
-        $data['project_id'] = $request->project_id;
-        $data['project_work_no'] = $request->work_id;
-        $data['billing_no'] = $request->billing_no;
-        $data['billing_amount'] = $request->pay_amount;
-        $data['billing_date'] = date('d/m/y');
-        dd($data);
+        if($validator->fails()) {
+            return redirect()->back()->with('message', ' Bill Number Matched ! Check Bill NO');
+        }else{
+            $data = array();
+            $data['project_id'] = $request->project_id;
+            $data['project_work_no'] = $request->work_id;
+            $data['billing_no'] = $request->billing_no;
+            $data['billing_amount'] = $request->pay_amount;
+            $data['billing_method'] = $request->billing_method;
+            $data['billing_date'] = date('d/m/y');
+            $billdata = DB::table('assingproject')->where('work_order',$request->work_id)->get();
+            foreach ($billdata as $bill){
+                if ($bill->total_pay == null){
+                    DB::table('billing_histories')->insert($data);
+                    DB::table('assingproject')->where('work_order',$request->work_id)
+                        ->update([
+                            'total_due'=>DB::raw('total_payable -'.$request->pay_amount),
+                            'total_pay'=>$request->pay_amount
+                        ]);
+                    return redirect()->back()->with('message', 'Contractor Bill Paid Successfully');
+
+                }elseif ($bill->total_payable == $bill->total_pay){
+                    return redirect()->back()->with('message', ' No Bill Due !...All Bill Paid ');
+
+                }else{
+                    DB::table('billing_histories')->insert($data);
+                    DB::table('assingproject')->where('work_order',$request->work_id)
+                        ->update([
+                            'total_pay'=>DB::raw('total_pay +'.$request->pay_amount),
+                            'total_due'=>DB::raw('total_payable -'.'total_pay'),
+                        ]);
+                    return redirect()->back()->with('message', 'Contractor Bill Paid Successfully');
+                }
+            }
 
 
+        }
     }
 }

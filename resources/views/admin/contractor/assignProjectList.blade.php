@@ -26,7 +26,7 @@
     <!-- Main content -->
     <section class="content">
         @if(Session::has('message'))
-            <div class="alert alert-success alert-dismissible">
+            <div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
@@ -48,6 +48,7 @@
                                     <th>Project Name</th>
                                     <th>Contractor Category</th>
                                     <th>Work Order</th>
+                                    <th>Total Payable</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -75,18 +76,27 @@
                                                 {{ $category ->cat_name }}
                                             @endforeach
                                         </td>
-                                        <td>{{ $row ->work_order }}</td>
+                                        <td>{{$row ->work_order  }}</td>
+                                        <td>{{ $row ->total_payable }}</td>
                                         <td class="project-actions text-center">
                                             <a class="btn btn-primary btn-sm"
                                                href="{{route('assignProject.details',[$row->id])}}">
                                                 <i class="fas fa-folder"></i>
                                                 View
                                             </a>
-                                            <a class="btn btn-info btn-sm" href="#" data-toggle="modal"
+                                            @if($row ->total_due == 0 && $row ->total_payable == $row ->total_pay)
+                                            <a class="btn btn-info btn-sm disabled"  href="#" data-toggle="modal"
                                                data-target="#modal-sm{{$row->id}}">
                                                 <i class="fas fa-money-bill"></i>
                                                 Pay Bill
                                             </a>
+                                            @else
+                                                <a class="btn btn-info btn-sm" href="#" data-toggle="modal"
+                                                   data-target="#modal-sm{{$row->id}}">
+                                                    <i class="fas fa-money-bill"></i>
+                                                    Pay Bill
+                                                </a>
+                                            @endif
                                         </td>
                                         <div class="modal fade" id="modal-sm{{$row->id}}">
                                             <div class="modal-dialog modal-sm">
@@ -103,12 +113,26 @@
                                                         <input type="hidden" name="work_id" value="{{ $row ->work_order }}">
                                                         <input type="hidden" name="project_id" value="{{ $row ->project_id }}">
                                                         <div class="modal-body">
-                                                            <lable>Bill NO</lable>
-                                                            <input class="form-control" name="billing_no" type="text">
+                                                            <label for="exampleInputDepartmentName"> Bill NO </label>
+                                                            <input class="form-control @error('billing_no') is-invalid @enderror" name="billing_no" type="text" placeholder="Enter Bill NO">
+                                                            @error('billing_no')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                             </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="modal-body">
                                                             <lable>Pay Amount </lable>
                                                             <input class="form-control" name="pay_amount" type="text">
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <label for="billing_method">Pay By</label>
+                                                            <select id="billing_method" class="form-control custom-select" name="billing_method" required="">
+                                                                <option selected disabled>Select one</option>
+                                                                <option value="Check">ON Check</option>
+                                                                <option value="Bkash">BY Bkash</option>
+                                                                <option value="Cash">BY Cash</option>
+                                                            </select>
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <button type="button" class="btn btn-default"
@@ -133,6 +157,7 @@
                                     <th>Project Name</th>
                                     <th>Contractor Category</th>
                                     <th>Work Order</th>
+                                    <th>Total Payable</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
