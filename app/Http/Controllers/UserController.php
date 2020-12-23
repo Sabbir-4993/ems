@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.employee.create');
     }
 
     /**
@@ -35,8 +35,47 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $this->validate($request,[
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email'=>'required|string|email|max:255|unique:users',
+            'password'=>'required|string',
+            'mobile_number' => 'required',
+            'address' => 'required',
+            'blood_group' => 'required',
+            'join_date' => 'required',
+            'salary' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+            'department_id' => 'required',
+            'designation' => 'required',
+            'emp_type' => 'required',
+            'emp_status' => 'required',
+        ]);
+        $data = $request->all();
 
+//        if ($request->hasFile('image')) {
+//            $image = $request->file('image');
+//            $name = time().'.'.$image->getClientOriginalExtension();
+//            $destinationPath = public_path('/backend/upload/profile');
+//            $image->move($destinationPath, $name);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = date('Y-m-d').'-'.time().'-'.$request->first_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/profile');
+            $image->move($destinationPath, $name);
+
+        }else{
+            $image = 'avater.png';
+        }
+
+        $data['name'] = $request->first_name.' '.$request->last_name;
+        $data['image'] = $image;
+        $data['password'] = bcrypt($request->password);
+
+        User::create($data);
+        return redirect()->back()->with('message', 'Employee Created Successfully');
+    }
     /**
      * Display the specified resource.
      *

@@ -42,12 +42,13 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th width="5%">Sl</th>
-                                <th width="10%">Name</th>
-                                <th width="10%">Phone</th>
-                                <th width="10%">Assign Project</th>
-                                <th width="10%">Total Payable</th>
-                                <th width="15%">Action</th>
+                                <th >Sl</th>
+                                <th >Name</th>
+                                <th >Phone</th>
+                                <th >Address </th>
+                                <th >Refer BY </th>
+                                <th>Details </th>
+                                <th >Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -56,10 +57,12 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{$row->contractor_name}}</td>
                                         <td>{{$row->contractor_phone}}</td>
-                                        <td>{{$row->project_id}}</td>
-                                        <td>{{$row->total_payable}}</td>
+                                        <td>{{$row->contractor_address}}</td>
+                                        <td>{{$row->assign_by}}</td>
+                                        <td>{{$row->contractor_details}}</td>
                                         <td>
                                             <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('contractors.edit',[$row->id])}}"><i class="fas fa-edit"></i></a>
+{{--                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('contractors.payBill',[$row->id])}}"><i class="fas fa-money-bill"> Pay Bill</i></a>--}}
                                             <button type="button" class="btn btn-block bg-gradient-danger btn-xs" data-toggle="modal" data-target="#modal-sm{{$row->id}}">Delete</button>
                                             <!-- /.modal -->
                                             <div class="modal fade" id="modal-sm{{$row->id}}">
@@ -94,12 +97,13 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th width="5%">Sl</th>
-                                <th width="10%">Name</th>
-                                <th width="10%">Phone</th>
-                                <th width="10%">Assign Project</th>
-                                <th width="10%">Total Payable</th>
-                                <th width="15%">Action</th>
+                                <th >Sl</th>
+                                <th >Name</th>
+                                <th >Phone</th>
+                                <th >Address </th>
+                                <th >Refer BY </th>
+                                <th>Details </th>
+                                <th >Action</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -118,4 +122,44 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+@endsection
+
+@section('script')
+
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+@endsection
+
 

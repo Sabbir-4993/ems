@@ -9,6 +9,6 @@ class Contractor extends Model
     protected $table = 'contractors';
 
     protected $fillable = [
-        'contractor_name', 'contractor_type','project_id', 'assign_date', 'end_date','total_payable', 'assign_by',
+        'contractor_name', 'contractor_phone','contractor_details', 'contractor_address','assign_by',
     ];
 }
