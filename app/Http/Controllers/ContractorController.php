@@ -113,20 +113,5 @@ class ContractorController extends Controller
         $department->delete();
         return redirect()->route('contractors.index')->with('message', 'Contractor Deleted Successfully');
     }
-//    public function payBill($id)
-//    {
-//        $contractors = Contractor::where('id',$id)->first();
-//        return view('admin.contractor.payBill', compact('contractors'));
-//    }
-//    public function BillPaid(Request  $request)
-//    {
-//        $contractor = array();
-//        $contractor['paid'] = $request->pay;
-//        $contractor['pay_date'] = $request->billing_date;
-//        DB::table('contractors')->where('id',$request->id)->update($contractor);
-//        DB::table('contractors')->where('id',$request->id)
-//            ->update(['due'=>DB::raw('total_payable -'.$request->pay )]);
-//        return redirect()->route('contractors.index')->with('message', 'Contractor Bill Paid Successfully');
-//
-//    }
+
 }

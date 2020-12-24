@@ -63,8 +63,8 @@ class AssignProjectController extends Controller
             $data['billing_amount'] = $request->pay_amount;
             $data['billing_method'] = $request->billing_method;
             $data['billing_date'] = date('d/m/y');
-            $billdata = DB::table('assingproject')->where('work_order',$request->work_id)->get();
-            foreach ($billdata as $bill){
+            $billData = DB::table('assingproject')->where('work_order',$request->work_id)->get();
+            foreach ($billData as $bill){
                 if ($bill->total_pay == null){
                     DB::table('billing_histories')->insert($data);
                     DB::table('assingproject')->where('work_order',$request->work_id)
