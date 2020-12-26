@@ -54,7 +54,7 @@ class AssignProjectController extends Controller
         ]);
 
         if($validator->fails()) {
-            return redirect()->back()->with('message', ' Bill Number Matched ! Check Bill NO');
+            return redirect()->back()->with('message1', ' Bill Number Matched ! Check Bill No.');
         }else{
             $data = array();
             $data['project_id'] = $request->project_id;
