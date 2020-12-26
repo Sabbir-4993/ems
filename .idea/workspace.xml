@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContractorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContractorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +196,8 @@
       <workItem from="1608696050702" duration="9000" />
       <workItem from="1608699210105" duration="13221000" />
       <workItem from="1608780738756" duration="461000" />
-      <workItem from="1608788997913" duration="5745000" />
+      <workItem from="1608788997913" duration="8114000" />
+      <workItem from="1608953037214" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -228,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608716664550</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="bill paid check">
+      <created>1608806771990</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608806771990</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +258,8 @@
     <MESSAGE value="assign project and category create done" />
     <MESSAGE value="payment and bill contractor" />
     <MESSAGE value="pay bill done" />
-    <option name="LAST_COMMIT_MESSAGE" value="pay bill done" />
+    <MESSAGE value="bill paid check" />
+    <option name="LAST_COMMIT_MESSAGE" value="bill paid check" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

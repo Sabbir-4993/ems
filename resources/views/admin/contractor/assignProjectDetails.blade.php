@@ -76,7 +76,7 @@
                                     <div class="post">
                                         @php
                                         $billhistory = \Illuminate\Support\Facades\DB::table('billing_histories')
-                                                        ->where('project_id',$project->project_id)
+                                                        ->where('project_work_no',$project->work_order)
                                                         ->get();
                                         @endphp
                                         <div class="user-block">
