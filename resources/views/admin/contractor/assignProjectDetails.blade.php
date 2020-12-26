@@ -84,7 +84,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th>SN</th>
-                                                    <th>Work No</th>
+                                                    <th>Work Order</th>
                                                     <th>BILLING No</th>
                                                     <th>Billing Amount</th>
                                                     <th>Billing Method</th>
@@ -145,18 +145,22 @@
                                     <b class="d-block">{{$projectDetails->project_leader}}</b>
                                 </p>
                             </div>
-
-                            <h4 class="text-success">
-                                <i class="fas fa-user"></i>
-                                {{$contractorDetails->contractor_name}}
-                            </h4>
-                            <h4 class="text-info">
-                                <i class="fas fa-phone"></i>
-                                {{$contractorDetails->contractor_phone}}
-                            </h4>
-
+                            <div class="text-muted">
+                            <p class="text-sm">Contractor Name
+                                <b class="d-block text-gray" style="font-size: 16px;">
+                                    <i class="fas fa-user"></i>
+                                    {{$contractorDetails->contractor_name}}
+                                </b>
+                            </p>
+                            <p class="text-sm">Contractor Number
+                                <a href="tel: {{$contractorDetails->contractor_phone}}" style="font-size: 16px;" class="d-block text-info">
+                                    <i class="fas fa-phone"></i>
+                                    {{$contractorDetails->contractor_phone}}
+                                </a>
+                            </p>
+                            </div>
                             <div class="text-center mt-5 mb-3">
-                                <a href="#" class="btn btn-sm btn-warning">Project Report</a>
+                                <a href="#" class="btn btn-sm btn-primary">Pay Bill</a>
                             </div>
                         </div>
                     </div>

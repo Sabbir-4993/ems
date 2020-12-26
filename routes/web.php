@@ -35,11 +35,17 @@ Route::resource('category', 'CategoryController');
 
 //Route::get('payBill/{id}','ContractorController@payBill')->name('contractors.payBill');
 //Route::post('billPaid','ContractorController@BillPaid')->name('contractors.billPaid');
+
 Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
+
     Route::get('assign-project', 'AssignProjectController@index')->name('index');
+
     Route::post('store-assign-project', 'AssignProjectController@storeProject')->name('store');
+
     Route::get('view-assign-project', 'AssignProjectController@viewProject')->name('view');
+
     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');
+
     Route::post('assign-project-bill', 'AssignProjectController@projectBillPay')->name('payBill');
 });
 

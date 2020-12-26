@@ -57,6 +57,7 @@
                     @enderror
                 </div>
                 <div class="card-footer">
+                    <a href="{{url('category')}}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary float-right">
                         Update
                     </button>

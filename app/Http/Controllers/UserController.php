@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $employee = User::orderBy('id', 'DESC')->get();
+        return view('admin.employee.index', compact('employee'));
     }
 
     /**
@@ -56,7 +57,7 @@ class UserController extends Controller
 //        if ($request->hasFile('image')) {
 //            $image = $request->file('image');
 //            $name = time().'.'.$image->getClientOriginalExtension();
-//            $destinationPath = public_path('/backend/upload/profile');
+//            $destinationPath = public_path('/uploads/profile');
 //            $image->move($destinationPath, $name);
 
         if ($request->hasFile('image')) {
@@ -64,13 +65,14 @@ class UserController extends Controller
             $name = date('Y-m-d').'-'.time().'-'.$request->first_name.'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/uploads/profile');
             $image->move($destinationPath, $name);
+            $image_url = $name;
 
         }else{
             $image = 'avater.png';
         }
 
         $data['name'] = $request->first_name.' '.$request->last_name;
-        $data['image'] = $image;
+        $data['image'] = $image_url;
         $data['password'] = bcrypt($request->password);
 
         User::create($data);
@@ -84,7 +86,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = User::find($id);
+        return view('admin.employee.view', compact('employee'));
     }
 
     /**

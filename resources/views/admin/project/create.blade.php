@@ -57,51 +57,6 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label for="exampleInputCompanyName">Client Company</label>
-                                <input class="form-control @error('company_name') is-invalid @enderror"
-                                       name="company_name" type="text" placeholder="Enter Company/Client Name">
-                                @error('company_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="inputDescription">Project Description</label>
-                                <textarea id="inputDescription" type="text"
-                                          class="form-control @error('description') is-invalid @enderror"
-                                          name="description" rows="4" placeholder="Project Description"></textarea>
-                                @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputWorkOrder">Ref./Work Order</label>
-                                <input class="form-control @error('project_ref') is-invalid @enderror"
-                                       name="project_ref" type="text" placeholder="Enter Reference Number">
-                                @error('project_ref')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputCompanyEmail">Company Email</label>
-                                <input class="form-control @error('company_email') is-invalid @enderror"
-                                       name="company_email" type="text" placeholder="Enter Company Email">
-                                @error('company_email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
                                 <label for="exampleInputAddress">Project Address</label>
                                 <input class="form-control @error('address') is-invalid @enderror" name="address"
                                        type="text" placeholder="Enter Address">
@@ -113,7 +68,52 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label for="exampleInputAddress">Contact Number</label>
+                                <label for="exampleInputCompanyName">Client/Company</label>
+                                <input class="form-control @error('company_name') is-invalid @enderror"
+                                       name="company_name" type="text" placeholder="Enter Company/Client Name">
+                                @error('company_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label for="inputDescription">Description of Works</label>
+                                <textarea id="inputDescription" type="text"
+                                          class="form-control @error('description') is-invalid @enderror"
+                                          name="description" rows="4" placeholder="Project Description"></textarea>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label for="exampleInputWorkOrder">Work Order Ref./PI Ref.</label>
+                                <input class="form-control @error('project_ref') is-invalid @enderror"
+                                       name="project_ref" type="text" placeholder="Enter Reference Number">
+                                @error('project_ref')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <!-- /.form-group -->
+
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputCompanyEmail">Contact Person</label>--}}
+{{--                                <input class="form-control @error('company_email') is-invalid @enderror"--}}
+{{--                                       name="company_email" type="text" placeholder="Enter Contact Name">--}}
+{{--                                @error('company_email')--}}
+{{--                                <span class="invalid-feedback" role="alert">--}}
+{{--                                    <strong>{{ $message }}</strong>--}}
+{{--                                </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+                            <div class="form-group">
+                                <label for="exampleInputAddress">Contact No.</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" name="phone"
                                        type="text" placeholder="Enter Number">
                                 @error('phone')
@@ -123,6 +123,19 @@
                                 @enderror
                             </div>
                             <!-- /.form-group -->
+                            <div class="form-group">
+                                <label for="exampleInputCompanyEmail">Email (if any)</label>
+                                <input class="form-control @error('company_email') is-invalid @enderror"
+                                       name="company_email" type="text" placeholder="Enter Email">
+                                @error('company_email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <!-- /.form-group -->
+
+
                             <div class="form-group">
                                 <label for="inputProjectLeader">Project Lead</label>
                                 <input type="text" id="inputProjectLeader" name="project_leader"
