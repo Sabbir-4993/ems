@@ -13,19 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-/// all Resource Controller
+
+
+Auth::routes();
+
+//Auth::routes(['register' => false]);
+
+Route::get('/', 'HomeController@index')->name('home');
+
 Route::resource('department', 'DepartmentController');
 
 Route::resource('designation', 'DesignationController');
 
 Route::resource('project', 'ProjectController');
 
-Route::resource('employee', 'EmployeeController');
+Route::resource('employee', 'UserController');
 
 Route::resource('contractors', 'ContractorController');
+
 Route::resource('category', 'CategoryController');
 
 //Route::get('payBill/{id}','ContractorController@payBill')->name('contractors.payBill');

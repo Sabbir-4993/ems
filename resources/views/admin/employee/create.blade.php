@@ -23,206 +23,218 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section id="" class="content">
+    <section class="content">
         @if(Session::has('message'))
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        <form action="{{route('employee.store')}}" method="post">
-            @csrf
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">General Information</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                        title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+        <div class="container-fluid">
+            <form action="{{route('employee.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Employee Information</h3>
                             </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form >
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputName">First Name</label>
+                                        <input type="text" name="first_name" class="form-control" id="exampleInputName" required=""
+                                               placeholder="Enter First Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName">Last Name</label>
+                                        <input type="text" name="last_name" class="form-control" id="exampleInputName" required=""
+                                               placeholder="Enter Last Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputNumber">Phone Number</label>
+                                        <input type="text" name="mobile_number" class="form-control" id="exampleInputNumber" required=""
+                                               placeholder="Enter Phone Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputAddress">Address</label>
+                                        <input type="text" name="address" class="form-control" id="exampleInputAddress" required=""
+                                               placeholder="Enter Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputBlood">Blood Group</label>
+                                        <select id="inputStatus" class="form-control custom-select" name="blood_group"
+                                                required="" >
+                                            <option selected disabled>Select Blood Group</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputAddress">Join Date</label>
+                                        <input class="form-control" type="date"  id="join_date" name="join_date" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputSalary">Salary</label>
+                                        <input type="text" name="salary" class="form-control" id="exampleInputSalary" required=""
+                                               placeholder="Enter Basic Salary">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Image Upload</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </form>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputProjectName">Project Name</label>
-                                <input class="form-control @error('project_name') is-invalid @enderror"
-                                       name="project_name" type="text" placeholder="Enter Project Name">
-                                @error('project_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputCompanyName">Client Company</label>
-                                <input class="form-control @error('company_name') is-invalid @enderror"
-                                       name="company_name" type="text" placeholder="Enter Company/Client Name">
-                                @error('company_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="inputDescription">Project Description</label>
-                                <textarea id="inputDescription" type="text"
-                                          class="form-control @error('description') is-invalid @enderror"
-                                          name="description" rows="4" placeholder="Project Description"></textarea>
-                                @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputWorkOrder">Ref./Work Order</label>
-                                <input class="form-control @error('project_ref') is-invalid @enderror"
-                                       name="project_ref" type="text" placeholder="Enter Reference Number">
-                                @error('project_ref')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputCompanyEmail">Company Email</label>
-                                <input class="form-control @error('company_email') is-invalid @enderror"
-                                       name="company_email" type="text" placeholder="Enter Company Email">
-                                @error('company_email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputAddress">Project Address</label>
-                                <input class="form-control @error('address') is-invalid @enderror" name="address"
-                                       type="text" placeholder="Enter Address">
-                                @error('address')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputAddress">Contact Number</label>
-                                <input class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                       type="text" placeholder="Enter Number">
-                                @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="inputProjectLeader">Project Lead</label>
-                                <input type="text" id="inputProjectLeader" name="project_leader"
-                                       class="form-control @error('project_leader') is-invalid @enderror"
-                                       placeholder="Project Leader Name">
-                                @error('project_leader')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="inputStatus">Status</label>
-                                <select id="inputStatus" class="form-control custom-select" name="status"
-                                        required="">
-                                    <option selected disabled>Select one</option>
-                                    <option value="0">On Running</option>
-                                    <option value="1">On Hold</option>
-                                    <option value="2">Canceled</option>
-                                    <option value="3">Complete</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-md-6">
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Department</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-6">
+                        <!-- Form Element sizes -->
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Official Information</h3>
                             </div>
+
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail">Email Address</label>
+                                    <input type="text" name="email" class="form-control" id="exampleInputEmail" required=""
+                                           placeholder="Enter Email Address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control" id="exampleInputPassword1" required=""
+                                           placeholder="Password">
+                                    <i class="far fa-eye" id="togglePassword" style="margin-top: -26px;margin-right: 10px; cursor: pointer;float: right;" onclick="passShow()"></i>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputEstimatedBudget">Estimated budget</label>
-                                <input type="number" id="inputEstimatedBudget" name="est_budget"
-                                       class="form-control @error('est_budget') is-invalid @enderror"
-                                       placeholder="Enter Estimated budget">
-                                @error('est_budget')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                        <!-- /.card -->
+                        <!-- Form Element sizes -->
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Department Information</h3>
                             </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="inputSpentBudget">Total amount spent</label>
-                                <input type="number" id="inputSpentBudget" name="total_amount"
-                                       class="form-control @error('total_amount') is-invalid @enderror"
-                                       placeholder="Enter Total amount spent">
-                                @error('total_amount')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="">Department</label>
+                                    <select id="inputStatus" class="form-control custom-select" name="department_id"
+                                            required="">
+                                        <option value="" selected disabled>Select Department</option>
+
+                                        @foreach(\App\Department::all() as $department)
+                                            <option value="{{$department->id}}">{{$department->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Designation</label>
+                                    <select class="form-control" name="designation" id="" required="">
+                                        <option value="" selected disabled>Select Designation</option>
+
+                                        @foreach(\App\Designation::all() as $designation)
+                                            <option value="{{$designation->id}}">{{$designation->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Employee Type</label>
+                                    <select class="form-control" name="emp_type" id="" required="">
+                                        <option value="" selected disabled>Select Type</option>
+                                        <option value="1">Full Time</option>
+                                        <option value="0">Part Time</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Employee Status</label>
+                                    <select class="form-control" name="emp_status" id="" required="">
+                                        <option value="" selected disabled>Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+
                             </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="inputEstimatedDuration">Estimated project duration</label>
-                                <input type="number" id="inputEstimatedDuration" name="pro_duration"
-                                       class="form-control @error('pro_duration') is-invalid @enderror"
-                                       placeholder="Enter Estimated project duration">
-                                @error('pro_duration')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="end_date" class="col-form-label">Project Start</label>
-                                <input class="form-control" type="date"  id="end_date" name="project_start">
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="end_date" class="col-form-label">Project End</label>
-                                <input class="form-control" type="date" id="end_date" name="project_end">
-                            </div>
-                            <!-- /.form-group -->
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
+                    <!--/.col (right) -->
+                    <div class="col-md-12">
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-info float-right">Submit</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row card-footer">
-                <div class="col-12">
-                    <a href="#" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Submit" class="btn btn-success float-right">
-                </div>
-            </div>
-        </form>
+            </form>
+        </div><!-- /.container-fluid -->
+
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        var password = document.getElementById("password")
+        var confirm_password = document.getElementById("confirmPassword");
+
+        function validatePassword(){
+            if(password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+
+    <script>
+        function passShow() {
+            var pass = document.getElementById("password");
+            if (pass.type === "password") {
+                pass.type = "text";
+            } else {
+                pass.type = "password";
+            }
+        }
+        function confirmPassShow() {
+            var pass = document.getElementById("confirmPassword");
+            if (pass.type === "password") {
+                pass.type = "text";
+            } else {
+                pass.type = "password";
+            }
+        }
+    </script>
+    <!-- bs-custom-file-input -->
+    <script src="{{asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
 @endsection
