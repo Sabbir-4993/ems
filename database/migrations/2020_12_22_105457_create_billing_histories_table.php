@@ -20,6 +20,7 @@ class CreateBillingHistoriesTable extends Migration
             $table->string('billing_no');
             $table->string('billing_amount');
             $table->string('billing_method');
+            $table->string('billing_details');
             $table->string('billing_date');
             $table->timestamps();
         });

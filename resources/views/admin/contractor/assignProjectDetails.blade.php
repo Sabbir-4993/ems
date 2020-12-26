@@ -24,6 +24,24 @@
 
     <!-- Main content -->
     <section class="content">
+        @if(Session::has('message'))
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
+            </div>
+        @endif
+        @if(Session::has('message1'))
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-times"></i> {{Session::get('message1')}}</h5>
+            </div>
+        @endif
+        @if(Session::has('message2'))
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-times"></i> {{Session::get('message2')}}</h5>
+            </div>
+        @endif
         <form action="#" method="POST" enctype="multipart/form-data">
         @csrf
         <!-- Default box -->
@@ -88,6 +106,7 @@
                                                     <th>BILLING No</th>
                                                     <th>Billing Amount</th>
                                                     <th>Billing Method</th>
+                                                    <th>Billing Details</th>
                                                     <th>Billing Date</th>
                                                 </tr>
                                                 </thead>
@@ -99,6 +118,7 @@
                                                     <td>{{$row->billing_no}}</td>
                                                     <td>{{$row->billing_amount}}</td>
                                                     <td>{{$row->billing_method}}</td>
+                                                    <td>{{$row->billing_details}}</td>
                                                     <td>{{$row->billing_date}}</td>
                                                 </tr>
                                                 @endforeach
@@ -144,6 +164,9 @@
                                 <p class="text-sm">Project Leader
                                     <b class="d-block">{{$projectDetails->project_leader}}</b>
                                 </p>
+                                <p class="text-sm">Project Work ID
+                                    <b class="d-block">{{$project->work_order}}</b>
+                                </p>
                             </div>
                             <div class="text-muted">
                             <p class="text-sm">Contractor Name
@@ -160,7 +183,19 @@
                             </p>
                             </div>
                             <div class="text-center mt-5 mb-3">
-                                <a href="#" class="btn btn-sm btn-primary">Pay Bill</a>
+                                @if($project ->total_due == 0 && $project ->total_payable == $project ->total_pay)
+                                    <a class="btn btn-danger btn-lg disabled"  href="#" data-toggle="modal"
+                                       data-target="#modal-sm{{$project->id}}">
+                                        <i class="fas fa-money-bill"></i>
+                                        Bill Paid
+                                    </a>
+                                @else
+                                    <a class="btn btn-primary btn-lg" href="#" data-toggle="modal"
+                                       data-target="#modal-sm{{$project->id}}">
+                                        <i class="fas fa-money-bill"></i>
+                                        Pay Bill
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -170,6 +205,63 @@
             </div>
             <!-- /.card -->
         </form>
+        <div class="modal fade" id="modal-sm{{$project->id}}">
+            <div class="modal-dialog modal-sm">
+                <form action="{{route('assignProject.payBill')}}" method="post">
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Bill Payment!!</h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <input type="hidden" name="work_id" value="{{ $project ->work_order }}">
+                        <input type="hidden" name="project_id" value="{{ $project ->project_id }}">
+                        <div class="modal-body">
+                            <label for="exampleInput">Bill No</label>
+                            <input class="form-control @error('billing_no') is-invalid @enderror" name="billing_no" type="text" placeholder="Enter Bill NO" required="">
+                            @error('billing_no')
+                            <span class="invalid-feedback" role="alert">
+                                                   <strong>{{ $message }}</strong>
+                                                </span>
+                            @enderror
+
+                            <br>
+
+                            <label for="exampleInput">Pay Amount </label>
+                            <input class="form-control" name="pay_amount" type="text" required="">
+
+                            <br>
+
+                            <label for="exampleInput">Pay By</label>
+                            <select id="billing_method" class="form-control custom-select" name="billing_method" required="">
+                                <option selected disabled>Select one</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Bkash">Bkash</option>
+                                <option value="Nagad">Nagad</option>
+                                <option value="Rocket">Rocket</option>
+                                <option value="Check">Check</option>
+                            </select>
+
+                            <br>
+
+                            <label for="exampleInput">Details</label>
+                            <input class="form-control" name="billing_details" placeholder="Enter mobile banking/check number" type="text" required="">
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Pay Bill</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
     </section>
     <!-- /.content -->
     </div>

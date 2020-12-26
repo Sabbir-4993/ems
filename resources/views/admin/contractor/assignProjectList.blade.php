@@ -25,18 +25,6 @@
 
     <!-- Main content -->
     <section class="content">
-        @if(Session::has('message'))
-            <div class="alert alert-info alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
-            </div>
-        @endif
-        @if(Session::has('message1'))
-            <div class="alert alert-warning alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-times"></i> {{Session::get('message1')}}</h5>
-            </div>
-        @endif
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -91,75 +79,12 @@
                                                 View
                                             </a>
                                             @if($row ->total_due == 0 && $row ->total_payable == $row ->total_pay)
-                                            <a class="btn btn-danger btn-sm disabled"  href="#" data-toggle="modal"
-                                               data-target="#modal-sm{{$row->id}}">
+                                            <a class="btn btn-danger btn-sm disabled">
                                                 <i class="fas fa-money-bill"></i>
                                                 Bill Paid
                                             </a>
-                                            @else
-                                                <a class="btn btn-info btn-sm" href="#" data-toggle="modal"
-                                                   data-target="#modal-sm{{$row->id}}">
-                                                    <i class="fas fa-money-bill"></i>
-                                                    Pay Bill
-                                                </a>
                                             @endif
                                         </td>
-                                        <div class="modal fade" id="modal-sm{{$row->id}}">
-                                            <div class="modal-dialog modal-sm">
-                                                <form action="{{route('assignProject.payBill')}}" method="post">
-                                                    @csrf
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Bill Payment!!</h4>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <input type="hidden" name="work_id" value="{{ $row ->work_order }}">
-                                                        <input type="hidden" name="project_id" value="{{ $row ->project_id }}">
-                                                        <div class="modal-body">
-                                                            <label for="exampleInput">Bill No</label>
-                                                            <input class="form-control @error('billing_no') is-invalid @enderror" name="billing_no" type="text" placeholder="Enter Bill NO" required="">
-                                                                @error('billing_no')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                 </span>
-                                                                @enderror
-
-                                                            <br>
-
-                                                            <label for="exampleInput">Pay Amount </label>
-                                                            <input class="form-control" name="pay_amount" type="text" required="">
-
-                                                            <br>
-
-                                                            <label for="exampleInput">Pay By</label>
-                                                            <select id="billing_method" class="form-control custom-select" name="billing_method" required="">
-                                                                <option selected disabled>Select one</option>
-                                                                <option value="Cash">Cash</option>
-                                                                <option value="Bkash">Bkash</option>
-                                                                <option value="Nagad">Nagad</option>
-                                                                <option value="Rocket">Rocket</option>
-                                                                <option value="Check">Check</option>
-                                                            </select>
-
-                                                            <br>
-
-                                                            <label for="exampleInput">Details</label>
-                                                            <input class="form-control" name="details" placeholder="Enter mobile banking/check number" type="text" required="">
-
-                                                        </div>
-                                                        <div class="modal-footer justify-content-between">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-danger">Pay Bill</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <!-- /.modal-content -->
-                                            </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
 
                                     </tr>
                                 @endforeach

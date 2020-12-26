@@ -91,20 +91,22 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
+
+                    <span class="float-right text-muted text-sm">{{ Auth::user()->name }}</span>
                     <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-32 mr-3 img-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-                    <a href="#" class="dropdown-item text-center">
+                    <a href="#" class="dropdown-item text-left">
                         <i class="fas fa-user-alt"></i>
                         Profile
                     </a>
                     <p class="dropdown-divider"></p>
-                    <a href="#" class="dropdown-item text-center">
+                    <a href="#" class="dropdown-item text-left">
                         <i class="fas fa-sliders-h"></i>
                         Settings
                     </a>
                     <p class="dropdown-divider"></p>
-                    <a href="{{ route('logout') }}" class="dropdown-item text-center"
+                    <a href="{{ route('logout') }}" class="dropdown-item text-left  "
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i> Logout
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
