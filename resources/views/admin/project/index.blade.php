@@ -44,7 +44,7 @@
                                     <th>SN</th>
                                     <th>Project Name</th>
                                     <th>Company Name</th>
-                                    <th>Description</th>
+{{--                                    <th>Description</th>--}}
                                     <th>Ref.</th>
                                     <th>Email</th>
                                     <th>Address</th>
@@ -63,7 +63,7 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{$row->project_name}}</td>
                                         <td>{{$row->company_name}}</td>
-                                        <td>{{$row->description}}</td>
+{{--                                        <td>{{$row->description}}</td>--}}
                                         <td>{{$row->project_ref}}</td>
                                         <td>{{$row->company_email}}</td>
                                         <td>{{$row->address}}</td>
@@ -137,7 +137,7 @@
                                     <th>SN</th>
                                     <th>Project Name</th>
                                     <th>Company Name</th>
-                                    <th>Description</th>
+{{--                                    <th>Description</th>--}}
                                     <th>Ref.</th>
                                     <th>Email</th>
                                     <th>Address</th>
