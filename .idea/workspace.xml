@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" afterDir="false" />
+    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="api for check">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_093550_create_requisition_details_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +202,10 @@
       <workItem from="1608699210105" duration="13221000" />
       <workItem from="1608780738756" duration="461000" />
       <workItem from="1608788997913" duration="8114000" />
-      <workItem from="1608953037214" duration="14738000" />
+      <workItem from="1608953037214" duration="15624000" />
+      <workItem from="1609040387730" duration="1810000" />
+      <workItem from="1609045069834" duration="123000" />
+      <workItem from="1609049445718" duration="16728000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -250,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608962196108</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="api for check">
+      <created>1608983009176</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608983009176</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +302,8 @@
     <MESSAGE value="bill paid check" />
     <MESSAGE value="all check to merge" />
     <MESSAGE value="Bill paid added to details page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bill paid added to details page" />
+    <MESSAGE value="api for check" />
+    <option name="LAST_COMMIT_MESSAGE" value="api for check" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

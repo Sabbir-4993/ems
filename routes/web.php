@@ -37,6 +37,7 @@ Route::resource('category', 'CategoryController');
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
 
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
+    Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
 
 });
 

@@ -31,8 +31,8 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        {{--        <form action="{{route('contractors.store')}}" method="post">--}}
-        {{--            @csrf--}}
+        <form action="{{route('requisition.store')}}" method="post">
+           @csrf
         <div class="row">
             <!-- left column -->
             <div class="col-md-4">
@@ -47,7 +47,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputName">Select Project</label>
-                                <select class="form-control">
+                                <select class="form-control" name="project_id">
                                     <option selected disabled>Select Project</option>
                                     @foreach(\App\Project::all() as $projects)
                                         <option value="{{$projects->id}}">{{$projects->project_name}}</option>
@@ -77,69 +77,40 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="form-group">
+                        <div class="form-group table-responsive p-0">
                             <label for="exampleInputmaterial">Requisition Details</label>
                             {{--                                <input type="text" name="email" class="form-control" id="exampleInputEmail" required=""--}}
                             {{--                                       placeholder="Enter Email Address">--}}
-                            <form enctype="multipart/form-data">
                                 <table class="table table-bordered" id="tbl_posts">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Post Name</th>
-                                        <th>No. of Vacancies</th>
-                                        <th>Age</th>
-                                        <th>Pay Scale</th>
+                                        <th>Product Name</th>
+                                        <th>Product Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Remarks </th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody id="tbl_posts_body">
-                                    <tr id="rec-1">
-                                        <td><span class="sn">1</span>.</td>
-                                        <td>Sanitary Inspector</td>
-                                        <td>02</td>
-                                        <td>21 to 42 years</td>
-                                        <td>5200-20200/-</td>
-                                        <td><a class="btn btn-xs delete-record" data-id="1"><i
-                                                    class="fas fa-trash"></i></a></td>
-                                    </tr>
-                                    <tr id="rec-2">
-                                        <td><span class="sn">2</span>.</td>
-                                        <td>Tax & Revenue Superintendent</td>
-                                        <td>02</td>
-                                        <td>21 to 42 years</td>
-                                        <td>5200-20200/-</td>
-                                        <td><a class="btn btn-xs delete-record" data-id="2"><i
-                                                    class="fas fa-trash"></i></a></td>
-                                    </tr>
 
-                                    <tr id="rec-3">
-                                        <td><span class="sn">3</span>.</td>
-                                        <td>Tax & Revenue Inspector</td>
-                                        <td>04</td>
-                                        <td>21 to 42 years</td>
-                                        <td>5200-20200/-</td>
-                                        <td><a class="btn btn-xs delete-record" data-id="3"><i
-                                                    class="fas fa-trash"></i></a></td>
-                                    </tr>
                                     </tbody>
                                 </table>
                                 <div style="display:none;">
                                     <table id="sample_table">
                                         <tr id="">
                                             <td><span class="sn"></span>.</td>
-                                            <td>ABC Posts</td>
-                                            <td>04</td>
-                                            <td>21 to 42 years</td>
-                                            <td>5200-20200/-</td>
-                                            <td><a class="btn btn-xs delete-record" data-id="0"><i class="fas fa-trash"></i></a></td>
+                                            <td><input class="form-control" type="text" name="particular[]" placeholder="Enter Product Details" required></td>
+                                            <td><input class="form-control" type="text" name="quantity[]" placeholder="Enter Product Quantity" required></td>
+                                            <td><input class="form-control" type="text" name="unit[]" placeholder="Enter Product Unit" required></td>
+                                            <td><input class="form-control" type="text" name="remarks[]" placeholder="Enter Product Remarks" required></td>
+                                            <td><a class="btn btn-xs delete-record" ><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="well clearfix">
-                                    <a class="btn btn-primary pull-right add-record" data-added="0"><i class="glyphicon glyphicon-plus"></i>Add Row</a>
+                                    <a class="btn btn-primary pull-right add-record" ><i class="glyphicon glyphicon-plus"></i>Add Row</a>
                                 </div>
-                            </form>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -154,7 +125,7 @@
                 </div>
             </div>
         </div>
-        {{--        </form>--}}
+       </form>
     </section>
     <!-- /.content -->
 @endsection
@@ -164,13 +135,12 @@
         jQuery(document).delegate('a.add-record', 'click', function(e) {
             e.preventDefault();
             var content = jQuery('#sample_table tr'),
-                size = jQuery('#tbl_posts >tbody >tr').length + 1,
-                element = null,
+                size = jQuery('#tbl_posts >tbody >tr').length,
                 element = content.clone();
             element.attr('id', 'rec-'+size);
             element.find('.delete-record').attr('data-id', size);
             element.appendTo('#tbl_posts_body');
-            element.find('.sn').html(size);
+            element.find('.sn').html(size+1);
         });
 
         jQuery(document).delegate('a.delete-record', 'click', function(e) {
