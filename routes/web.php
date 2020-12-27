@@ -33,6 +33,13 @@ Route::resource('contractors', 'ContractorController');
 
 Route::resource('category', 'CategoryController');
 
+//Requisition
+Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
+
+    Route::get('create-requisition', 'RequisitionController@index')->name('index');
+
+});
+
 //Route::get('payBill/{id}','ContractorController@payBill')->name('contractors.payBill');
 //Route::post('billPaid','ContractorController@BillPaid')->name('contractors.billPaid');
 

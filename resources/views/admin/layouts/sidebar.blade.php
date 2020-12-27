@@ -103,6 +103,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{route('employee.create')}}" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
@@ -122,6 +123,30 @@
                                 <a href="{{route('employee.index')}}" class="nav-link">
                                     <i class="fas fa-clipboard-list nav-icon"></i>
                                     <p>View Employee</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('requisition.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>
+                                Requisition
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('requisition.index')}}" class="nav-link">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Add Requisition</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-clipboard-list nav-icon"></i>
+                                    <p>View Requisition</p>
                                 </a>
                             </li>
                         </ul>
