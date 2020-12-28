@@ -19,6 +19,7 @@ class CreateRequisitionsTable extends Migration
             $table->string('project_id');
             $table->string('status')->nullable();
             $table->string('req_no')->nullable();
+            $table->string('requisition_date');
             $table->timestamps();
         });
     }

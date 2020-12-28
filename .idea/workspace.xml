@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="api for check">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_093550_create_requisition_details_table.php" afterDir="false" />
+    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/approved_details_requisitions.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/approved_requisition.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/pending_requisition.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/EMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EMS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -142,7 +152,6 @@
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
@@ -205,7 +214,8 @@
       <workItem from="1608953037214" duration="15624000" />
       <workItem from="1609040387730" duration="1810000" />
       <workItem from="1609045069834" duration="123000" />
-      <workItem from="1609049445718" duration="16728000" />
+      <workItem from="1609049445718" duration="16872000" />
+      <workItem from="1609126284546" duration="31424000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -263,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608983009176</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Requisitions insert to db successfully add">
+      <created>1609070575633</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1609070575633</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +320,8 @@
     <MESSAGE value="all check to merge" />
     <MESSAGE value="Bill paid added to details page" />
     <MESSAGE value="api for check" />
-    <option name="LAST_COMMIT_MESSAGE" value="api for check" />
+    <MESSAGE value="Requisitions insert to db successfully add" />
+    <option name="LAST_COMMIT_MESSAGE" value="Requisitions insert to db successfully add" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

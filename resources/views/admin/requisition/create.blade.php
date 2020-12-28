@@ -31,6 +31,12 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
+        @if(Session::has('message1'))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> {{Session::get('message1')}}</h5>
+                </div>
+        @endif
         <form action="{{route('requisition.store')}}" method="post">
            @csrf
         <div class="row">
@@ -56,9 +62,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputRequisition">Requisition No.</label>
-                                <input type="text" name="requisition_no" class="form-control"
-                                       id="exampleInputRequisition" required=""
-                                       placeholder="Enter Requisition No.">
+                                <input type="text" name="requisition_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">
                             </div>
 
                         </div>
@@ -100,10 +104,18 @@
                                     <table id="sample_table">
                                         <tr id="">
                                             <td><span class="sn"></span>.</td>
-                                            <td><input class="form-control" type="text" name="particular[]" placeholder="Enter Product Details" required></td>
-                                            <td><input class="form-control" type="text" name="quantity[]" placeholder="Enter Product Quantity" required></td>
-                                            <td><input class="form-control" type="text" name="unit[]" placeholder="Enter Product Unit" required></td>
-                                            <td><input class="form-control" type="text" name="remarks[]" placeholder="Enter Product Remarks" required></td>
+                                            <td>
+                                                <input type="text" id="" name="particular[]" placeholder="Enter Product Details" class="form-control"  >
+                                            </td>
+                                            <td>
+                                                <input type="text" id="" name="quantity[]" placeholder="Enter Product Quantity" class="form-control" >
+                                            </td>
+                                            <td>
+                                                <input type="text" id="" name="unit[]" placeholder="Enter Product Unit" class="form-control" >
+                                            </td>
+                                            <td>
+                                                <input type="text" id="" name="remarks[]" placeholder="Enter  Remarks" class="form-control " >
+                                            </td>
                                             <td><a class="btn btn-xs delete-record" ><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                     </table>
