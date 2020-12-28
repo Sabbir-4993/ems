@@ -108,9 +108,9 @@
                                         <!-- /.modal -->
                                         <div class="modal fade" id="modal-sm">
                                             <div class="modal-dialog modal-sm">
-                                                <form action="" method="post">
-{{--                                                    @csrf--}}
-{{--                                                    {{method_field('DELETE')}}--}}
+                                                <form action="{{route('employee.destroy',[$row->id])}}" method="post">
+                                                    @csrf
+                                                    {{method_field('DELETE')}}
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h4 class="modal-title">Delete Confirm!!</h4>

@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/project')}}">Project</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('assignProject.view')}}">Assign Project</a></li>
                         <li class="breadcrumb-item active">View Order History</li>
                     </ol>
                 </div><!-- /.col -->

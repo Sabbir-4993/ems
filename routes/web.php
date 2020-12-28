@@ -33,10 +33,26 @@ Route::resource('contractors', 'ContractorController');
 
 Route::resource('category', 'CategoryController');
 
+Route::resource('material', 'MaterialController');
+
+//Material
+Route::group(['prefix'=>'material-category','as'=>'material.'], function(){
+
+    Route::get('create-material-category', 'MaterialCategoryController@catindex')->name('catindex');
+
+    Route::get('material-category-list', 'MaterialCategoryController@catview')->name('catview');
+
+    Route::post('store-material-category', 'MaterialCategoryController@catstore')->name('catstore');
+
+    Route::post('material-category-edit/{id}', 'MaterialCategoryController@update')->name('update');
+
+});
+
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
 
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
+
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
 
 });

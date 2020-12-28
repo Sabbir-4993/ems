@@ -36,41 +36,55 @@
                     <div class="col-md-3">
 
                         <!-- Profile Image -->
-                        <div class="card card-primary card-outline">
-                            <div class="card-body box-profile">
-                                <div class="text-center">
-                                    <img class="img-size-64 img-circle" src="{{asset('uploads/profile')}}/{{$employee->image}}" width="100" alt="">
-                                </div>
-                                <br>
-                                <h3 class="profile-username text-center">{{$employee->name}}</h3>
-                                <p class="text-muted text-center">{{$employee->blood_group}}</p>
-
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <b>Designation</b>
-                                        <span class="text-muted float-right">
-                                            @foreach($designations as $designation)
-                                                {{$designation -> name}}
-                                            @endforeach
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Department</b>
-                                        <span class="text-muted float-right">
-                                            @foreach($departments as $department)
-                                                {{$department -> name}}
-                                            @endforeach
-                                        </span>
-                                    </li>
-                                </ul>
-                                <a href="tel: {{$employee->mobile_number}}" style="font-size: 16px;" class="btn btn-primary btn-block">
-                                    <i class="fas fa-phone"></i>
-                                    Call
-                                </a>
+                        <div class="card card-widget widget-user shadow">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-info">
+                                <h3 class="widget-user-username">{{$employee->name}}</h3>
+                                <h5 class="widget-user-desc">
+                                    @foreach($designations as $designation)
+                                        {{$designation -> name}}
+                                    @endforeach
+                                </h5>
                             </div>
-                            <!-- /.card-body -->
+                            <div class="widget-user-image">
+                                <img class="img-circle elevation-2" src="{{asset('uploads/profile')}}/{{$employee->image}}" alt="User Avatar">
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">Active</h5>
+                                            <span class="description-text">STATUS</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">13</h5>
+                                            <span class="description-text">EMP. NUMBER</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4">
+                                        <div class="description-block">
+                                            <h5 class="description-header">35</h5>
+                                            <span class="description-text">PRODUCTS</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="container">
+                                        <a href="tel: {{$employee->mobile_number}}" style="font-size: 16px;" class="btn btn-primary btn-block">
+                                            <i class="fas fa-phone"></i>
+                                            Call
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div>
                         </div>
-                        <!-- /.card -->
 
                         <!-- About Me Box -->
                         <div class="card card-primary">

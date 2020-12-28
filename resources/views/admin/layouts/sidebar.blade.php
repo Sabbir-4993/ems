@@ -11,15 +11,15 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-{{--            <div class="user-panel mt-3 pb-3 mb-3 d-flex">--}}
-{{--                <div class="image">--}}
-{{--                    <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2"--}}
-{{--                         alt="User Image">--}}
-{{--                </div>--}}
-{{--                <div class="info">--}}
-{{--                    <a href="#" class="d-block">{{Auth()->user()->name}}</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2"
+                         alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">{{Auth()->user()->name}}</a>
+                </div>
+            </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -154,6 +154,30 @@
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>
+                                Vendor
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Add Vendor</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-clipboard-list nav-icon"></i>
+                                    <p>View Vendor</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('material.create')}}" class="nav-link">
                             <i class="nav-icon fab fa-atlassian"></i>
                             <p>
                                 Material
@@ -162,13 +186,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('material.catindex')}}" class="nav-link">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Add Material Category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('material.catview')}}" class="nav-link">
+                                    <i class="fas fa-clipboard-list nav-icon"></i>
+                                    <p>Material Category List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('material.create')}}" class="nav-link">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Add Material</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('material.index')}}" class="nav-link">
                                     <i class="fas fa-clipboard-list nav-icon"></i>
                                     <p>View Material</p>
                                 </a>

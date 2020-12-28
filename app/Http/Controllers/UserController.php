@@ -121,6 +121,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employee = User::find($id);
+        $employee->delete();
+        return redirect()->back()->with('message', 'Employee Deleted Successfully');
     }
 }

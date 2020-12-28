@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/category/create')}}">Create</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('material.catindex')}}">Create</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -34,64 +34,36 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Contractor Category List</h3>
+                            <h3 class="card-title">Category List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th style="width: 5%">SN</th>
-                                    <th style="width: 20%">Category Name</th>
-                                    <th style="width: 60%">CategoryDetails</th>
-                                    <th style="width: 15%">Action</th>
+                                    <th>SN</th>
+                                    <th>Category Name</th>
+                                    <th>Details</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($categories as $key => $row)
-                                        <tr>
-                                            <td>{{$key+1}}</td>
-                                            <td>{{$row->cat_name}}</td>
-                                            <td>{{$row->cat_description}}</td>
-                                            <td>
-                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('category.edit',[$row->id])}}"><i class="fas fa-edit"></i></a>
-                                                <button type="button" class="btn btn-block bg-gradient-danger btn-xs" data-toggle="modal" data-target="#modal-sm{{$row->id}}">Delete</button>
-                                                <!-- /.modal -->
-                                                <div class="modal fade" id="modal-sm{{$row->id}}">
-                                                    <div class="modal-dialog modal-sm">
-                                                        <form action="{{route('category.destroy',[$row->id])}}" method="post">
-                                                            @csrf
-                                                            {{method_field('DELETE')}}
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title">Delete Confirm!!</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>Do you Want to Delete ?</p>
-                                                                </div>
-                                                                <div class="modal-footer justify-content-between">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
-                                                </div>
-                                                <!-- /.modal End -->
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($category as $key => $row)
+                                    <tr>
+                                        <td style="width: 5%">{{$key+1}}</td>
+                                        <td style="width: 25%">{{$row->name}}</td>
+                                        <td style="width: 50%">{{$row->details}}</td>
+                                        <td style="width: 20%">
+                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('material.update',[$row->id])}}"><i class="fas fa-edit"></i> Edit</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>SN</th>
                                     <th>Category Name</th>
-                                    <th>CategoryDetails</th>
+                                    <th>Details</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
@@ -111,9 +83,11 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 

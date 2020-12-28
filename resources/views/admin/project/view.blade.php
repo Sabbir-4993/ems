@@ -33,8 +33,8 @@
                     <h3 class="card-title">Projects Detail</h3>
 
                     <div class="card-tools">
-                        <button type="button" clasProject Status
-                                s="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <button type="button"
+                                class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
                         </button>
                         <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
@@ -150,7 +150,8 @@
                             <p class="text-muted">{{$projects->description}}</p>
                             <br>
                             <p class="text-sm text-muted">Project Create
-                                <b class="d-block">{{$projects->created_at->diffForHumans()}}</b>
+{{--                                <b class="d-block">{{$projects->created_at->diffForHumans()}}</b>--}}
+                                <b class="d-block">{{$projects->created_at}}</b>
                             </p>
                             <div class="text-muted">
                                 <p class="text-sm">Project Status
