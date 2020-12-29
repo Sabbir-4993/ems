@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('material.catview')}}">Category</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('material_category.index')}}">Category</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        <form action="{{route('material.catstore')}}" method="post">
+        <form action="{{route('material_category.store')}}" method="post">
             @csrf
             <div class="card card-secondary">
                 <div class="card-header">
@@ -47,7 +47,7 @@
                     <br>
 
                     <label for="exampleDepartmentDetails">Category Details</label>
-                    <textarea name="details" class="form-control @error('details') is-invalid @enderror" cols="30" rows="5" id=""></textarea>
+                    <textarea name="details" class="form-control" cols="30" rows="5" id=""></textarea>
                 </div>
                 <div class="card-footer">
                     <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>

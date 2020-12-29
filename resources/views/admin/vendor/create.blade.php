@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/contractors')}}">Contractor</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/vendor')}}">vendor</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -21,7 +21,16 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <!-- page title area end -->
+
+    <!-- Main content -->
     <section id="" class="content">
+        @if(Session::has('message'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
+            </div>
+        @endif
         <div class="container">
             @if(Session::has('message'))
                 <div class="alert alert-success alert-dismissible">
@@ -29,57 +38,66 @@
                     <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
                 </div>
             @endif
-            <form action="{{route('contractors.update',[$contractors->id])}}" method="post">
+            <form action="{{route('vendor.store')}}" method="post">
                 @csrf
-                {{method_field('PATCH')}}
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">Add Contractor</h3>
+                        <h3 class="card-title">Add Vendor</h3>
                     </div>
                     <div class="card-body">
-                        <label for="exampleInputDepartmentName">Name</label>
-                        <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" placeholder="" value="{{$contractors->contractor_name}}">
+
+                        <label for="exampleInput">Name</label>
+                        <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" placeholder="">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                         <br>
-                        <label for="exampleInputDepartmentName"> Number</label>
-                        <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="text" value="{{$contractors->contractor_phone}}">
+
+                        <label for="exampleInput"> Number</label>
+                        <input class="form-control @error('phone') is-invalid @enderror" name="phone" type="text" placeholder="">
                         @error('phone')
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                     </span>
+                            <strong>{{ $message }}</strong>
+                         </span>
                         @enderror
                         <br>
-                        <label for="exampleInputDepartmentName"> Address</label>
-                        <input class="form-control @error('address') is-invalid @enderror" name="address" type="text" value="{{$contractors->contractor_address}}">
+
+                        <label for="exampleInput"> Address</label>
+                        <input class="form-control @error('address') is-invalid @enderror" name="address" type="text" placeholder="">
                         @error('address')
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                     </span>
+                            <strong>{{ $message }}</strong>
+                         </span>
                         @enderror
                         <br>
-                        <label for="exampleInputDepartmentName"> Refer by</label>
-                        <input class="form-control @error('referBy') is-invalid @enderror" name="referBy" type="text" value="{{$contractors->assign_by}}">
+
+                        <label for="exampleInput"> Refer by</label>
+                        <input class="form-control @error('referBy') is-invalid @enderror" name="referBy" type="text" placeholder="">
                         @error('referBy')
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                     </span>
+                            <strong>{{ $message }}</strong>
+                         </span>
                         @enderror
                         <br>
-                        <label for="exampleInputDepartmentName"> Details</label>
-                        <input class="form-control @error('details') is-invalid @enderror" name="details" type="text" value="{{$contractors->contractor_details}}">
+
+                        <label for="exampleInput"> Details</label>
+                        <input class="form-control @error('details') is-invalid @enderror" name="details" type="text" placeholder="">
                         @error('details')
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                     </span>
+                            <strong>{{ $message }}</strong>
+                         </span>
                         @enderror
+                        <br>
+
+                        <div hidden>
+                           <p class="created_by"> {{Auth()->user()->id}}</p>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary float-right    ">
-                            Update
+                            Submit
                         </button>
                     </div>
                     <!-- /.card-body -->
@@ -87,6 +105,8 @@
             </form>
         </div>
     </section>
+    <!-- /.content -->
+@endsection
 
-
+@section('script')
 @endsection

@@ -14,8 +14,8 @@ class MaterialController extends Controller
      */
     public function index()
     {
-//        $material = Material::orderBy('id', 'DESC')->get();
-        return view('admin.material.index');
+        $material = Material::orderBy('id', 'DESC')->get();
+        return view('admin.material.index', compact('material'));
     }
 
     /**

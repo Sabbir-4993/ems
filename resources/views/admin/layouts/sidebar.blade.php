@@ -153,7 +153,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('vendor.create')}}" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
                             <p>
                                 Vendor
@@ -162,13 +162,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('vendor.create')}}" class="nav-link">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Add Vendor</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('vendor.index')}}" class="nav-link">
                                     <i class="fas fa-clipboard-list nav-icon"></i>
                                     <p>View Vendor</p>
                                 </a>
@@ -177,7 +177,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{route('material.create')}}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fab fa-atlassian"></i>
                             <p>
                                 Material
@@ -186,13 +186,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('material.catindex')}}" class="nav-link">
+                                <a href="{{route('material_category.create')}}" class="nav-link">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Add Material Category</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('material.catview')}}" class="nav-link">
+                                <a href="{{route('material_category.index')}}" class="nav-link">
                                     <i class="fas fa-clipboard-list nav-icon"></i>
                                     <p>Material Category List</p>
                                 </a>

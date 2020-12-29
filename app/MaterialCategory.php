@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MaterialCategory extends Model
 {
-    protected $fillable = [
-        'name', 'details'
+    protected $fillable=[
+        'name', 'details',
     ];
 }

@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('material.catindex')}}">Create</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/vendor/create')}}">Create</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -34,37 +34,47 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Category List</h3>
+                            <h3 class="card-title">vendor List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>SN</th>
-                                    <th>Category Name</th>
-                                    <th>Details</th>
+                                    <th>Sl</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address </th>
+                                    <th>Refer BY </th>
+                                    <th>Details </th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($category as $key => $row)
+                                @foreach($vendors as $key => $row)
                                     <tr>
-                                        <td style="width: 5%">{{$key+1}}</td>
-                                        <td style="width: 25%">{{$row->name}}</td>
-                                        <td style="width: 50%">{{$row->details}}</td>
-                                        <td style="width: 20%">
-                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('material.update',[$row->id])}}"><i class="fas fa-edit"></i> Edit</a>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$row->vendor_name}}</td>
+                                        <td>{{$row->vendor_phone}}</td>
+                                        <td>{{$row->vendor_address}}</td>
+                                        <td>{{$row->assign_by}}</td>
+                                        <td>{{$row->vendor_details}}</td>
+                                        <td>
+                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('vendor.edit',[$row->id])}}"><i class="fas fa-edit"></i></a>
+                                            {{--                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('vendors.payBill',[$row->id])}}"><i class="fas fa-money-bill"> Pay Bill</i></a>--}}
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>SN</th>
-                                    <th>Category Name</th>
-                                    <th>Details</th>
-                                    <th>Action</th>
+                                    <th >Sl</th>
+                                    <th style="width: 15%">Name</th>
+                                    <th style="width: 10%">Phone</th>
+                                    <th style="width: 25%">Address </th>
+                                    <th >Refer BY </th>
+                                    <th>Details </th>
+                                    <th >Action</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -83,11 +93,9 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-          href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 
@@ -124,3 +132,5 @@
         });
     </script>
 @endsection
+
+

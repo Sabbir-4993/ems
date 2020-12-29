@@ -33,20 +33,13 @@ Route::resource('contractors', 'ContractorController');
 
 Route::resource('category', 'CategoryController');
 
+Route::resource('vendor', 'VendorController');
+
 Route::resource('material', 'MaterialController');
 
-//Material
-Route::group(['prefix'=>'material-category','as'=>'material.'], function(){
+Route::resource('material_category', 'MaterialCategoryController');
 
-    Route::get('create-material-category', 'MaterialCategoryController@catindex')->name('catindex');
 
-    Route::get('material-category-list', 'MaterialCategoryController@catview')->name('catview');
-
-    Route::post('store-material-category', 'MaterialCategoryController@catstore')->name('catstore');
-
-    Route::post('material-category-edit/{id}', 'MaterialCategoryController@update')->name('update');
-
-});
 
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
@@ -71,5 +64,6 @@ Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');
 
     Route::post('assign-project-bill', 'AssignProjectController@projectBillPay')->name('payBill');
+
 });
 
