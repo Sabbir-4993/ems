@@ -64,20 +64,29 @@ class RequisitionController extends Controller
         return view('admin.requisition.details_requisitions',compact('detailsRequisitions'));
     }
     public function approveRequisition(Request $request ){
+
         $requisition = array();
         $requisition['updated_by'] = Auth()->id();
         $requisition['status'] = '1';
-        DB::table('requisitions')->where('requisitions.id', $request->id)->update($requisition);
-        $count = count($request->price);
-        for ($i=0; $i < $count; $i++) {
-            $task =  array();
-            $task['unit_price'] = $request->price[$i];
-            $task['pro_remarks'] = $request->pro_remarks[$i];
-            $task['total_price'] = $request->total[$i];
-            DB::table('requisition_details')->where('requisition_details.requisition_id', $request->id)->update($task);
-        }
-        return redirect()->route('requisition.pending')->with('message', 'Requisition Approved Successfully');
+//        DB::table('requisitions')->where('requisitions.id', $request->id)->update($requisition);
 
+        $a = DB::table('requisition_details')->where('requisition_id',$request->id)->get();
+        foreach ($a as $b){
+                dd($b);
+            }
+
+
+
+//        $count = count($request->price);
+//        for ($i=0; $i < $count; $i++) {
+//            $task =  array();
+//            $task['unit_price'] = $request->price[$i];
+//            $task['pro_remarks'] = $request->pro_remarks[$i];
+//            $task['total_price'] = $request->total[$i];
+//            DB::table('requisition_details')->where('requisition_id',$request->id)->update($task);
+//        }
+
+//        return redirect()->route('requisition.pending')->with('message', 'Requisition Approved Successfully');
 
     }
     public function completeRequisition(){

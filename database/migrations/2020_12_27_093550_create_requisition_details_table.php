@@ -21,6 +21,9 @@ class CreateRequisitionDetailsTable extends Migration
             $table->string('quantity');
             $table->string('unit');
             $table->string('remarks')->nullable();
+            $table->string('unit_price')->nullable();
+            $table->string('total_price')->nullable();
+            $table->string('pro_remarks')->nullable();
             $table->timestamps();
         });
     }
