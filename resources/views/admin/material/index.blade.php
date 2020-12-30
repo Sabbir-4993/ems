@@ -29,47 +29,58 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
+
+        @if(isset($errors) && $errors->any())
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
+            </div>
+        @endif
         <div class="container-fluid">
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h3 class="card-title">Material <small>File Upload </small></h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputFile">File Upload</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+            <form action="{{route('material.store')}}" enctype="multipart/form-data" method="post">
+            {{ csrf_field() }}
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">Material <small>File Upload </small></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">File Upload</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input name="material_file" type="file" class="custom-file-input" id="exampleInputFile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-primary float-right">
+                                    Submit
+                                </button>
+                                <br><br>
+                                Download <a href="{{asset('uploads/sample/sample.xlsx')}}" download=""><span class="badge-success">Sample File</span></a> for Details
+                            </div>
                         </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary float-right    ">
-                                Submit
-                            </button>
-                            <br><br>
-                            Download <a href="{{asset('uploads/sample/sample.xlsx')}}" download=""><span class="badge-success">Sample File</span></a> for Details
-                        </div>
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
                 </div>
-            </div>
-            <!-- /.row -->
+                <!-- /.row -->
+            </form>
         </div>
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    <section class="content container">
+    <section class="content">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">Material List</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -81,22 +92,26 @@
                         <td>Category</td>
                         <td>Unit</td>
                         <td>Price</td>
-                        <td>Stock</td>
+                        <td>Details</td>
                         <td>Action</td>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-
-                        </td>
-                    </tr>
+                    @foreach($material as $key => $row)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$row->material_name}}</td>
+                            <td>{{$row->category}}</td>
+                            <td>{{$row->unit}}</td>
+                            <td>{{$row->price}}</td>
+                            <td>{{$row->details}}</td>
+                            <td>
+                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="#">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                     <tfoot>
                     <tr>
@@ -105,7 +120,7 @@
                         <td>Category</td>
                         <td>Unit</td>
                         <td>Price</td>
-                        <td>Stock</td>
+                        <td>Details</td>
                         <td>Action</td>
                     </tr>
                     </tfoot>
