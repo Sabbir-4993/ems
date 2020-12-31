@@ -40,6 +40,7 @@ class RequisitionController extends Controller
                 $task['quantity'] = $request->quantity[$i];
                 $task['unit'] = $request->unit[$i];
                 $task['remarks'] = $request->remarks[$i];
+//                $task['total_price'] = $request->quantity[$i]*10;
                 DB::table('requisition_details')->insert($task);
             }
             return redirect()->back()->with('message', 'Requisition Submitted Successfully');

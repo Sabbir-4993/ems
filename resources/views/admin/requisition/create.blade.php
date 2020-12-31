@@ -91,7 +91,6 @@
                                         <th>#</th>
                                         <th>Product Name</th>
                                         <th>Product Quantity</th>
-                                        <th>Unit</th>
                                         <th>Remarks </th>
                                         <th>Action</th>
                                     </tr>
@@ -105,18 +104,20 @@
                                         <tr id="">
                                             <td><span class="sn"></span>.</td>
                                             <td>
-                                                <input type="text" id="" name="particular[]" placeholder="Enter Product Details" class="form-control"  >
+                                                <select class="form-control" name="particular[]">
+                                                    <option selected disabled>Select  Product </option>
+                                                    @foreach(\App\Material::all() as $product)
+                                                        <option value="{{$product->id}}">{{$product->material_name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </td>
                                             <td>
                                                 <input type="text" id="" name="quantity[]" placeholder="Enter Product Quantity" class="form-control" >
                                             </td>
                                             <td>
-                                                <input type="text" id="" name="unit[]" placeholder="Enter Product Unit" class="form-control" >
-                                            </td>
-                                            <td>
                                                 <input type="text" id="" name="remarks[]" placeholder="Enter  Remarks" class="form-control " >
                                             </td>
-                                            <td><a class="btn btn-xs delete-record" ><i class="fas fa-trash"></i></a></td>
+                                            <td><a class="btn btn-m delete-record" ><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                     </table>
                                 </div>

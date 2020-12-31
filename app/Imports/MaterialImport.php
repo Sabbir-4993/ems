@@ -16,9 +16,9 @@ use Throwable;
 class MaterialImport implements
     ToModel,
     WithHeadingRow,
-    SkipsOnError
-//    WithValidation,
-//    SkipsOnFailure
+    SkipsOnError,
+    WithValidation,
+    SkipsOnFailure
 {
     use Importable, SkipsErrors;
 
@@ -37,18 +37,18 @@ class MaterialImport implements
             'details' => $row['details'],
         ]);
     }
-//    public function onError(Throwable $e)
-//    {
-//
-//    }
+    public function onError(Throwable $e)
+    {
+
+    }
 //    public function rules(): array
 //    {
 //        return [
 //            '*.material_name' => ['material_name', 'unique:materials,material_name']
 //        ];
 //    }
-//    public function onFailure(Failure ...$failures)
-//    {
-//
-//    }
+    public function onFailure(Failure ...$failures)
+    {
+
+    }
 }
