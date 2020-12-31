@@ -31,6 +31,12 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
+        @if(Session::has('message1'))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> {{Session::get('message1')}}</h5>
+                </div>
+        @endif
         <form action="{{route('requisition.store')}}" method="post">
            @csrf
         <div class="row">
@@ -56,9 +62,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputRequisition">Requisition No.</label>
-                                <input type="text" name="requisition_no" class="form-control"
-                                       id="exampleInputRequisition" required=""
-                                       placeholder="Enter Requisition No.">
+                                <input type="text" name="requisition_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">
                             </div>
 
                         </div>
@@ -77,67 +81,48 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="form-group">
+                        <div class="form-group table-responsive p-0">
                             <label for="exampleInputmaterial">Requisition Details</label>
                             {{--                                <input type="text" name="email" class="form-control" id="exampleInputEmail" required=""--}}
                             {{--                                       placeholder="Enter Email Address">--}}
-                            <form enctype="multipart/form-data">
                                 <table class="table table-bordered" id="tbl_posts">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Post Name</th>
-                                        <th>No. of Vacancies</th>
-                                        <th>Age</th>
-                                        <th>Pay Scale</th>
+                                        <th>Product Name</th>
+                                        <th>Product Quantity</th>
+                                        <th>Remarks </th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody id="tbl_posts_body">
-                                    <tr id="rec-1">
-                                        <td><span class="sn">1</span>.</td>
-                                        <td>Sanitary Inspector</td>
-                                        <td>02</td>
-                                        <td>21 to 42 years</td>
-                                        <td>5200-20200/-</td>
-                                        <td><a class="btn btn-xs delete-record" data-id="1"><i
-                                                    class="fas fa-trash"></i></a></td>
-                                    </tr>
-                                    <tr id="rec-2">
-                                        <td><span class="sn">2</span>.</td>
-                                        <td>Tax & Revenue Superintendent</td>
-                                        <td>02</td>
-                                        <td>21 to 42 years</td>
-                                        <td>5200-20200/-</td>
-                                        <td><a class="btn btn-xs delete-record" data-id="2"><i
-                                                    class="fas fa-trash"></i></a></td>
-                                    </tr>
 
-                                    <tr id="rec-3">
-                                        <td><span class="sn">3</span>.</td>
-                                        <td>Tax & Revenue Inspector</td>
-                                        <td>04</td>
-                                        <td>21 to 42 years</td>
-                                        <td>5200-20200/-</td>
-                                        <td><a class="btn btn-xs delete-record" data-id="3"><i
-                                                    class="fas fa-trash"></i></a></td>
-                                    </tr>
                                     </tbody>
                                 </table>
                                 <div style="display:none;">
                                     <table id="sample_table">
                                         <tr id="">
                                             <td><span class="sn"></span>.</td>
-                                            <td>ABC Posts</td>
-                                            <td>04</td>
-                                            <td>21 to 42 years</td>
-                                            <td>5200-20200/-</td>
-                                            <td><a class="btn btn-xs delete-record" data-id="0"><i class="fas fa-trash"></i></a></td>
+                                            <td>
+                                                <select class="form-control" name="particular[]">
+                                                    <option selected disabled>Select  Product </option>
+                                                    @foreach(\App\Material::all() as $product)
+                                                        <option value="{{$product->id}}">{{$product->material_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="" name="quantity[]" placeholder="Enter Product Quantity" class="form-control" >
+                                            </td>
+                                            <td>
+                                                <input type="text" id="" name="remarks[]" placeholder="Enter  Remarks" class="form-control " >
+                                            </td>
+                                            <td><a class="btn btn-m delete-record" ><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="well clearfix">
-                                    <a class="btn btn-primary pull-right add-record" data-added="0"><i class="glyphicon glyphicon-plus"></i>Add Row</a>
+                                    <a class="btn btn-primary pull-right add-record" ><i class="glyphicon glyphicon-plus"></i>Add Row</a>
                                 </div>
                             </form>
                         </div>

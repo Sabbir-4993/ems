@@ -63,9 +63,9 @@
         </form>
     </div>
     <!-- /.content -->
-    </div>
+
     <!-- /.content-wrapper -->
 @endsection
 
-@section('script')
-@endsection
+@push('script')
+@endpush

@@ -13,8 +13,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2"
-                         alt="User Image">
+                    <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Sabbir</a>
@@ -35,6 +34,7 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{route('department.create')}}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -58,6 +58,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{route('designation.create')}}" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
@@ -81,6 +82,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-project-diagram"></i>

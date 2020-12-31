@@ -264,8 +264,6 @@
 
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">

@@ -30,15 +30,24 @@
             </div>
         @endif
 
-        @if(isset($errors) && $errors->any())
-            <div class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    {{ $error }}
-                @endforeach
-            </div>
+        @if(session('errors'))
+            @foreach($errors as $error)
+                <li>{{ $error }}</li>
+            @endforeach
         @endif
+        @if(session('success'))
+
+            @endif
+
+{{--        @if(isset($errors) && $errors->any())--}}
+{{--            <div class="alert alert-danger">--}}
+{{--                @foreach($errors->all() as $error)--}}
+{{--                    {{ $error }}--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        @endif--}}
         <div class="container-fluid">
-            <form action="{{route('material.store')}}" enctype="multipart/form-data" method="post">
+            <form action="#" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
                 <!-- /.row -->
                 <div class="row">
@@ -77,7 +86,7 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    <section class="content">
+    <div class="content">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Material List</h3>
@@ -129,10 +138,7 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-    </section>
-
     </div>
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('css')

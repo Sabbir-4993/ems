@@ -167,8 +167,6 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('css')
