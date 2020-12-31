@@ -2,12 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Material;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RequisitionController extends Controller
 {
+//    public function getMaterial(Request $request){
+//
+//        $search = $request->search;
+//
+//        if($search == ''){
+//            $materials = Material::orderby('material_name','asc')->select('id','material_name')->limit(5)->get();
+//        }else{
+//            $materials = Material::orderby('material_name','asc')->select('id','material_name')->where('material_name', 'like', '%' .$search . '%')->limit(5)->get();
+//        }
+//
+//        $response = array();
+//        foreach($materials as $material){
+//            $response[] = array("value"=>$material->id,"label"=>$material->material_name);
+//        }
+//        return response()->json($response);
+//    }
+
     public function index(){
         return view('admin.requisition.create');
     }
@@ -18,7 +36,6 @@ class RequisitionController extends Controller
             'requisition_no'=>'required',
             'particular'=>'required',
             'quantity'=>'required',
-            'unit'=>'required',
         ]);
 
         if($validator->fails()) {
@@ -32,15 +49,13 @@ class RequisitionController extends Controller
             $requisition['req_no'] = $request->requisition_no;
             $requisition['requisition_date'] = date('d/m/y');
             $requisitionId = DB::table('requisitions')->insertGetId($requisition);
-            $count = count($request->particular)-1;
+            $count = count($request->quantity)-1;
             for ($i=0; $i < $count; $i++) {
                 $task =  array();
                 $task['requisition_id'] = $requisitionId;
                 $task['particular'] = $request->particular[$i];
                 $task['quantity'] = $request->quantity[$i];
-                $task['unit'] = $request->unit[$i];
                 $task['remarks'] = $request->remarks[$i];
-//                $task['total_price'] = $request->quantity[$i]*10;
                 DB::table('requisition_details')->insert($task);
             }
             return redirect()->back()->with('message', 'Requisition Submitted Successfully');
@@ -48,7 +63,6 @@ class RequisitionController extends Controller
 
 
     }
-
     public function pendingRequisition(){
         $pendingRequisitions = DB::table('requisitions')
             ->where('requisitions.status', '0')
@@ -66,29 +80,34 @@ class RequisitionController extends Controller
     }
     public function approveRequisition(Request $request ){
 
-        $requisition = array();
-        $requisition['updated_by'] = Auth()->id();
-        $requisition['status'] = '1';
-//        DB::table('requisitions')->where('requisitions.id', $request->id)->update($requisition);
+        $validator = Validator::make($request->all(), [
+            'total'=>'required',
+        ]);
 
-        $a = DB::table('requisition_details')->where('requisition_id',$request->id)->get();
-        foreach ($a as $b){
-                dd($b);
+        if($validator->fails()) {
+            return redirect()->back()->with('message1', 'Check Input Data !');
+        }
+        else {
+            $requisition = array();
+            $requisition['updated_by'] = Auth()->id();
+            $requisition['status'] = '1';
+            $requisition['approved_date'] = date('d/m/y');
+            DB::table('requisitions')->where('id',$request->id)->update($requisition);
+            $count = count($request->total);
+            for ($i = 0; $i < $count; $i++) {
+                $approvedTask = array();
+                $approvedTask['requisition_id'] = $request->id;
+                $approvedTask['particular'] = $request->particular[$i];
+                $approvedTask['quantity'] = $request->quantity[$i];
+                $approvedTask['unit'] = $request->unit[$i];
+                $approvedTask['unit_price'] = $request->price[$i];
+                $approvedTask['total_price'] = $request->total[$i];
+                $approvedTask['pro_remarks'] = $request->remarks[$i];
+                DB::table('approved_requisition_details')->insert($approvedTask);
             }
+            return redirect()->route('requisition.complete')->with('message', 'Requisition Approved Successfully');
 
-
-
-//        $count = count($request->price);
-//        for ($i=0; $i < $count; $i++) {
-//            $task =  array();
-//            $task['unit_price'] = $request->price[$i];
-//            $task['pro_remarks'] = $request->pro_remarks[$i];
-//            $task['total_price'] = $request->total[$i];
-//            DB::table('requisition_details')->where('requisition_id',$request->id)->update($task);
-//        }
-
-//        return redirect()->route('requisition.pending')->with('message', 'Requisition Approved Successfully');
-
+        }
     }
     public function completeRequisition(){
         $approvedRequisitions = DB::table('requisitions')
@@ -96,11 +115,12 @@ class RequisitionController extends Controller
             ->get();
         return view('admin.requisition.approved_requisition',compact('approvedRequisitions'));
     }
+
     public function approvedDetailsRequisition($id){
         $approvedDetailsRequisitions = DB::table('requisitions')
-            ->join('requisition_details','requisition_details.requisition_id','=','requisitions.id')
+            ->join('approved_requisition_details','approved_requisition_details.requisition_id','=','requisitions.id')
             ->where('requisitions.id', $id)
-            ->select('requisition_details.*','requisitions.*')
+            ->select('approved_requisition_details.*','requisitions.*')
             ->get();
         return view('admin.requisition.approved_details_requisitions',compact('approvedDetailsRequisitions'));
     }

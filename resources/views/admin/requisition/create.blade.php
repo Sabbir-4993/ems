@@ -97,17 +97,20 @@
                                     </thead>
                                     <tbody id="tbl_posts_body">
 
+
                                     </tbody>
                                 </table>
+{{--                            <input type="text" id='employee_search'>--}}
+{{--                            <input type="text" id='employeeid' readonly>--}}
                                 <div style="display:none;">
                                     <table id="sample_table">
                                         <tr id="">
                                             <td><span class="sn"></span>.</td>
                                             <td>
                                                 <select class="form-control" name="particular[]">
-                                                    <option selected disabled>Select  Product </option>
-                                                    @foreach(\App\Material::all() as $product)
-                                                        <option value="{{$product->id}}">{{$product->material_name}}</option>
+                                                    <option selected disabled>Select Project</option>
+                                                    @foreach(\App\Material::orderby('material_name','asc')->get() as $material)
+                                                        <option value="{{$material->id}}">{{$material->material_name}}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -142,6 +145,9 @@
     </section>
     <!-- /.content -->
 @endsection
+@section('css')
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    @endsection
 
 @section('script')
     <script>
@@ -174,6 +180,33 @@
                 return false;
             }
         });
+
+        {{--$(document).ready(function(){--}}
+
+        {{--    $( "#employee_search" ).autocomplete({--}}
+        {{--        source: function( request, response ) {--}}
+        {{--            // Fetch data--}}
+        {{--            $.ajax({--}}
+        {{--                url:"{{route('requisition.getMaterials')}}",--}}
+        {{--                method: 'get',--}}
+        {{--                dataType: "json",--}}
+        {{--                data: {--}}
+        {{--                    search: request.term--}}
+        {{--                },--}}
+        {{--                success: function( data ) {--}}
+        {{--                    response( data );--}}
+        {{--                }--}}
+        {{--            });--}}
+        {{--        },--}}
+        {{--        select: function (event, li) {--}}
+        {{--            // Set selection--}}
+        {{--            $('#employee_search').val(li.item.label); // display the selected text--}}
+        {{--            $('#employeeid').val(li.item.value); // save selected id to input--}}
+        {{--            return false;--}}
+        {{--        }--}}
+        {{--    });--}}
+
+        {{--});--}}
     </script>
 
 @endsection

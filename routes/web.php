@@ -43,15 +43,16 @@ Route::resource('material_category', 'MaterialCategoryController');
 
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
-
+    //for getting Product
+//    Route::get('/material/getMaterial/','RequisitionController@getMaterial')->name('getMaterials');
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
-
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
     Route::get('pending-requisition', 'RequisitionController@pendingRequisition')->name('pending');
     Route::get('details-requisition/{id}', 'RequisitionController@detailsRequisition')->name('details');
     Route::post('approve-requisition', 'RequisitionController@approveRequisition')->name('approve');
     Route::get('complete-requisition', 'RequisitionController@completeRequisition')->name('complete');
     Route::get('approved-Details-requisition/{id}', 'RequisitionController@approvedDetailsRequisition')->name('approvedDetails');
+
 
 });
 

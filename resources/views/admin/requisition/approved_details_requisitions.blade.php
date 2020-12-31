@@ -60,7 +60,7 @@
                                                 <th>Product Unit</th>
                                                 <th>Price / Unit</th>
                                                 <th>Total Price  </th>
-                                                <th>Remarks from </th>
+                                                <th> Procurement Remarks</th>
                                             </tr>
                                             </thead>
                                             <tbody>
