@@ -48,7 +48,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(count($categories)>0)
                                     @foreach($categories as $key => $row)
                                         <tr>
                                             <td>{{$key+1}}</td>
@@ -87,9 +86,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                @else
-                                    <td>No Department to Display</td>
-                                @endif
                                 </tbody>
                                 <tfoot>
                                 <tr>

@@ -33,10 +33,19 @@ Route::resource('contractors', 'ContractorController');
 
 Route::resource('category', 'CategoryController');
 
+Route::resource('vendor', 'VendorController');
+
+Route::resource('material', 'MaterialController');
+
+Route::resource('material_category', 'MaterialCategoryController');
+
+
+
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
 
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
+
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
     Route::get('pending-requisition', 'RequisitionController@pendingRequisition')->name('pending');
     Route::get('details-requisition/{id}', 'RequisitionController@detailsRequisition')->name('details');
@@ -60,5 +69,6 @@ Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');
 
     Route::post('assign-project-bill', 'AssignProjectController@projectBillPay')->name('payBill');
+
 });
 

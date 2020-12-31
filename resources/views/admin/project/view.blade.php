@@ -150,9 +150,7 @@
                             <p class="text-muted">{{$projects->description}}</p>
                             <br>
                             <p class="text-sm text-muted">Project Create
-{{--                                <b class="d-block">{{$projects->created_at->diffForHumans()}}</b>                                --}}
-                                <b class="d-block">{{ \Carbon\Carbon::parse($projects->created_at)->diffForHumans() }}
-                                </b>
+                                <b class="d-block">{{$projects->created_at->diffForHumans()}}</b>
                             </p>
                             <div class="text-muted">
                                 <p class="text-sm">Project Status

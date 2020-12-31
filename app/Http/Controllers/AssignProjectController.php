@@ -38,16 +38,15 @@ class AssignProjectController extends Controller
         return redirect()->route('assignProject.view')->with('message', 'Project Assign Successfully');
     }
     public function viewProject(){
-        $assignProjectDetails =DB::table('assingproject')->get();
+        $assignProjectDetails =DB::table('assingproject')->orderBy('id', 'DESC')->get();
         return view('admin.contractor.assignProjectList')->with(compact('assignProjectDetails'));
     }
     public function viewProjectDetails($id){
-        $projects = DB::table('assingproject')->where('id',$id)->get();
+        $projects = DB::table('assingproject')->where('id',$id)->orderBy('id', 'DESC')->get();
 
         return view('admin.contractor.assignProjectDetails',compact('projects'));
     }
     public function projectBillPay(Request $request){
-
 
         $validator = Validator::make($request->all(), [
             'billing_no' => 'required|unique:billing_histories',
@@ -65,7 +64,7 @@ class AssignProjectController extends Controller
             $data['billing_method'] = $request->billing_method;
             $data['billing_details'] = $request->billing_details;
             $data['billing_date'] = date('d/m/y');
-            $billData = DB::table('assingproject')->where('work_order',$request->work_id)->get();
+            $billData = DB::table('assingproject')->where('work_order',$request->work_id)->orderBy('id', 'DESC')->get();
             foreach ($billData as $bill){
                 if ($bill->total_pay == null){
                     DB::table('billing_histories')->insert($data);

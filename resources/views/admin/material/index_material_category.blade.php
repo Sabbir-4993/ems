@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/department/create')}}">Create</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('material_category.create')}}">Create</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -34,7 +34,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Department List</h3>
+                            <h3 class="card-title">Category List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -42,22 +42,19 @@
                                 <thead>
                                 <tr>
                                     <th>SN</th>
-                                    <th>Department Name</th>
+                                    <th>Category Name</th>
                                     <th>Details</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($departments as $key => $row)
+                                @foreach($materialcategory as $key => $row)
                                     <tr>
                                         <td style="width: 5%">{{$key+1}}</td>
                                         <td style="width: 25%">{{$row->name}}</td>
-                                        <td style="width: 50%">{{$row->description}}</td>
+                                        <td style="width: 50%">{{$row->details}}</td>
                                         <td style="width: 20%">
-                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('department.edit',[$row->id])}}">
-                                                <i class="fas fa-edit"></i>
-                                                Edit
-                                            </a>
+                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('material_category.edit',[$row->id])}}"><i class="fas fa-edit"></i> Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -65,7 +62,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>SN</th>
-                                    <th>Department Name</th>
+                                    <th>Category Name</th>
                                     <th>Details</th>
                                     <th>Action</th>
                                 </tr>
