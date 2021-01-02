@@ -19,8 +19,8 @@ class CreateRequisitionDetailsTable extends Migration
             $table->foreign('requisition_id')->references('id')->on('requisitions');
             $table->longText('particular');
             $table->string('quantity');
-            $table->string('unit');
             $table->string('remarks')->nullable();
+            $table->string('approved_date')->nullable();
             $table->timestamps();
         });
     }

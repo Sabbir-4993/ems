@@ -17,7 +17,8 @@ class MaterialImport implements
     ToModel,
     WithHeadingRow,
     SkipsOnError
-
+//    WithValidation
+//    SkipsOnFailure
 {
     use Importable, SkipsErrors;
 
@@ -36,4 +37,5 @@ class MaterialImport implements
             'details' => $row['details'],
         ]);
     }
+
 }

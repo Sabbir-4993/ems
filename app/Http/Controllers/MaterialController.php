@@ -40,7 +40,24 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'material_name' => 'required',
+            'category' => 'required',
+            'unit' => 'required',
+            'price' => 'required',
+            'details' => 'required',
+        ]);
+
+        $material = new Material();
+        $material->material_name = $request->material_name;
+        $material->category = $request->category;
+        $material->unit = $request->unit;
+        $material->price = $request->price;
+        $material->details = $request->details;
+
+        $material->save();
+        return redirect()->back()->with('message','Material Created Successfully');
+
     }
 
     /**
@@ -88,17 +105,85 @@ class MaterialController extends Controller
         //
     }
 
-    public function importFile(Request $request){
-        $validator = Validator::make($request->all, [
-            'file' => 'required|max:5000|mimes:xlsx,xls,csv'
-        ]);
 
-        if ($validator->passes()){
+    public function upload(Request $request){
 
-            return redirect()->back()->with(['success'=>'File Upload Successfully']);
-        }else{
+        $material_file = $request->material_file->store('/material_store');
 
-            return redirect()->back()->with(['errors'=>$validator->error()->all()]);
-        }
+        $import = new MaterialImport;
+        $import->import($material_file);
+
+        (new MaterialImport)->import($material_file);
+        return redirect()->back()->with('message','Material Data Imported successfully.');
+
+//        dd($import->failures());
+
+//        $material_file = $request->material_file;
+//
+//        Excel::import(new ExcelImport($material_file));
+//        echo "Success";
+//
+//        $this->validate($request, [
+//            'material_file' => 'required|mimes:xls,xlsx'
+//        ]);
+//
+//        $path = $request->file('material_file')->getRealPath();
+//        $material = Excel::import(new ExcelImport(), $path);
+//        if ($material->count() > 0){
+//            foreach ($material->toArray() as $key => $value){
+//                foreach ($value as $row){
+//                    $insert_data[] = array(
+//                        'name' => $row['name'],
+//                        'category' => $row['category'],
+//                        'unit' => $row['unit'],
+//                        'price' => $row['price'],
+//                        'details' => $row['details'],
+//                    );
+//                }
+//            }
+//            if(!empty($insert_data))
+//            {
+//                dd($insert_data);
+//                DB::table('materials')->insert($insert_data);
+//            }
+//        }
+//        return redirect()->back()->with('message','Excel Data Imported successfully.');
+//
+//        $this->validate($request,[
+//            'name'=>'required',
+//            'category'=>'required',
+//            'unit'=>'required',
+//            'price'=>'required',
+//            'details'=>'required',
+//        ]);
+//
+//        $material = new Material();
+//        $material->name = $request->name;
+//        $material->category = $request->category;
+//        $material->unit = $request->unit;
+//        $material->price = $request->price;
+//        $material->details = $request->details;
+//
+//        $material->save();
+//
+//        return redirect()->back()->with('message','Material Created Successfully');
+//
+//
+//        return back()->with('message', 'Successfully Added Material');
+
+
+//        $validator = Validator::make($request->all, [
+//            'file' => 'required|max:5000|mimes:xlsx,xls,csv'
+//        ]);
+//
+//        if ($validator->passes()){
+//
+//            return redirect()->back()->with(['success'=>'File Upload Successfully']);
+//
+//        }else{
+//
+//            return redirect()->back()->with(['errors'=>$validator->error()->all()]);
+//        }
     }
 }
+
