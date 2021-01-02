@@ -124,4 +124,15 @@ class RequisitionController extends Controller
             ->get();
         return view('admin.requisition.approved_details_requisitions',compact('approvedDetailsRequisitions'));
     }
+
+    public function printRequisition($id){
+        $approvedDetailsRequisitions = DB::table('requisitions')
+            ->join('approved_requisition_details','approved_requisition_details.requisition_id','=','requisitions.id')
+            ->where('requisitions.id', $id)
+            ->select('approved_requisition_details.*','requisitions.*')
+            ->get();
+        return view('admin.requisition.print_requisitions',compact('approvedDetailsRequisitions'));
+    }
+
+
 }

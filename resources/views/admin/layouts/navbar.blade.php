@@ -96,7 +96,7 @@
                 <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
                     <a href="#" class="dropdown-item text-left text-center">
                         <i class="fas fa-user-alt"></i>
-{{--                        {{ Auth::user()->name }}--}}
+                        {{ Auth::user()->name }}
                     </a>
                     <a href="#" class="dropdown-item text-left text-center">
                         <nova-dark-theme-toggle label="{{ __('Dark Theme') }}"></nova-dark-theme-toggle>

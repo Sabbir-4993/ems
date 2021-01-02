@@ -52,6 +52,8 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
     Route::post('approve-requisition', 'RequisitionController@approveRequisition')->name('approve');
     Route::get('complete-requisition', 'RequisitionController@completeRequisition')->name('complete');
     Route::get('approved-Details-requisition/{id}', 'RequisitionController@approvedDetailsRequisition')->name('approvedDetails');
+    //print
+    Route::get('print-Requisition/{id}', 'RequisitionController@printRequisition')->name('print');
 
 
 });

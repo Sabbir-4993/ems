@@ -13,8 +13,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        {{--                        <li class="breadcrumb-item"><a href="{{route('requistion.store')}}">Requisition</a></li>--}}
-                        <li class="breadcrumb-item active">Requisition </li>
+                        <li class="breadcrumb-item"><a href="{{url('requisition/complete-requisition')}}">Approved Requisition</a></li>
+                        <li class="breadcrumb-item active">Requisition Details</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -164,19 +164,10 @@
                             </p>
                         </div>
                         <div class="text-center mt-5 mb-3">
-                            {{--                                @if($project ->total_due == 0 && $project ->total_payable == $project ->total_pay)--}}
-                            {{--                                    <a class="btn btn-danger btn-lg disabled"  href="#" data-toggle="modal"--}}
-                            {{--                                       data-target="#modal-sm{{$project->id}}">--}}
-                            {{--                                        <i class="fas fa-money-bill"></i>--}}
-                            {{--                                        Bill Paid--}}
-                            {{--                                    </a>--}}
-                            {{--                                @else--}}
-                            {{--                                    <a class="btn btn-primary btn-lg" href="#" data-toggle="modal"--}}
-                            {{--                                       data-target="#modal-sm{{$project->id}}">--}}
-                            {{--                                        <i class="fas fa-money-bill"></i>--}}
-                            {{--                                        Pay Bill--}}
-                            {{--                                    </a>--}}
-                            {{--                                @endif--}}
+                        <a class="btn btn-info btn-lg "  href="{{route('requisition.print',$row->id)}}" >
+                           <i class="fas fa-print"></i>
+                           Print
+                        </a>
                         </div>
                     </div>
                 </div>
