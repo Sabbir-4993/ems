@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": ">=2.4.0",
         "nesbot/carbon": "^2.43",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

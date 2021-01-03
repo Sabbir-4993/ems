@@ -7,7 +7,6 @@ use App\Material;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Imports\MaterialImport;
-use Maatwebsite\Excel\Excel;
 
 class MaterialController extends Controller
 {
@@ -40,15 +39,15 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        $material_file = $request->material_file->store('/material_store');
-
-        $import = new MaterialImport;
-        $import->import($material_file);
-
-
-
-        (new MaterialImport)->import($material_file);
-        return redirect()->back()->with('message','Material Data Imported successfully.');
+//        $material_file = $request->material_file->store('/material_store');
+//
+//        $import = new MaterialImport;
+//        $import->import($material_file);
+//
+//
+//
+//        (new MaterialImport)->import($material_file);
+//        return redirect()->back()->with('message','Material Data Imported successfully.');
 
 //        dd($import->failures());
 
