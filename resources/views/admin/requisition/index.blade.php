@@ -13,8 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        {{--                        <li class="breadcrumb-item"><a href="{{route('requistion.store')}}">Requisition</a></li>--}}
-                        <li class="breadcrumb-item active">Approved Requisition </li>
+                        <li class="breadcrumb-item"><a href="{{route('requisition.index')}}">Create</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -36,24 +35,24 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Pending Requisition List</h3>
+                            <h3 class="card-title">All Requisition List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Requisition By</th>
-                                    <th>Project Name</th>
-                                    <th>Requisition No</th>
-                                    <th>Date </th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>SN</th>
+                                        <th>Requisition By</th>
+                                        <th>Project Name</th>
+                                        <th>Requisition No</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($approvedRequisitions as $key=>$row)
+                                @foreach($requisition as $key=>$row)
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
@@ -79,7 +78,7 @@
                                         </td>
                                         <td class="project-actions text-center">
                                             <a class="btn btn-primary btn-m"
-                                               href="{{route('requisition.approvedDetails',[$row->id])}}">
+                                               href="#">
                                                 <i class="fas fa-folder"></i>
                                                 View
                                             </a>
@@ -88,15 +87,15 @@
                                 @endforeach
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Requisition By</th>
-                                    <th>Project Name</th>
-                                    <th>Requisition No</th>
-                                    <th>Date </th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>SN</th>
+                                        <th>Requisition By</th>
+                                        <th>Project Name</th>
+                                        <th>Requisition No</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -112,7 +111,6 @@
     </section>
     <!-- /.content -->
 @endsection
-
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">

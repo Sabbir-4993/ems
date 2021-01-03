@@ -16,8 +16,8 @@
                     <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Sabbir</a>
-{{--                    {{Auth()->user()->name}}--}}
+                    <a href="#" class="d-block">{{Auth()->user()->name}}</a>
+
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                     </li>
 {{--                    //Requisition Routes--}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('requisition.show')}}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Requisition
@@ -45,13 +45,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('requisition.index')}}" class="nav-link">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Add Requisition</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('requisition.show')}}" class="nav-link">
+                                    <i class="fas fa-clipboard-list nav-icon"></i>
+                                    <p>View Requisition</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('requisition.pending')}}" class="nav-link">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Pending Requisition </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('requisition.complete')}}" class="nav-link">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Approved Requisition </p>
                                 </a>
@@ -105,7 +117,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('project.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-project-diagram"></i>
                             <p>
                                 Project
@@ -147,30 +159,6 @@
                                 <a href="{{route('employee.index')}}" class="nav-link">
                                     <i class="fas fa-clipboard-list nav-icon"></i>
                                     <p>View Employee</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{route('requisition.index')}}" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>
-                                Requisition
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('requisition.index')}}" class="nav-link">
-                                    <i class="fas fa-plus nav-icon"></i>
-                                    <p>Add Requisition</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-clipboard-list nav-icon"></i>
-                                    <p>View Requisition</p>
                                 </a>
                             </li>
                         </ul>

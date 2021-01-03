@@ -13,8 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        {{--                        <li class="breadcrumb-item"><a href="{{route('requistion.store')}}">Requisition</a></li>--}}
-                        <li class="breadcrumb-item active">Requisition </li>
+                        <li class="breadcrumb-item active">Pending Requisition </li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -42,15 +41,15 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>SN</th>
-                                        <th>Requisition By</th>
-                                        <th>Project Name</th>
-                                        <th>Requisition No</th>
-                                        <th>Date </th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>SN</th>
+                                            <th>Requisition By</th>
+                                            <th>Project Name</th>
+                                            <th>Requisition No</th>
+                                            <th>Date </th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($pendingRequisitions as $key=>$row)
@@ -88,15 +87,15 @@
                                     @endforeach
                                     </tbody>
                                     <tfoot>
-                                    <tr>
-                                        <th>SN</th>
-                                        <th>Requisition By</th>
-                                        <th>Project Name</th>
-                                        <th>Requisition No</th>
-                                        <th>Date </th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>SN</th>
+                                            <th>Requisition By</th>
+                                            <th>Project Name</th>
+                                            <th>Requisition No</th>
+                                            <th>Date </th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </tfoot>
                                 </table>
                             </div>

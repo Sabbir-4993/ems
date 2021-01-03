@@ -1,124 +1,4 @@
 @extends('admin.layouts.master')
-<style>
-    #invoice{
-        position: center;
-
-    }
-
-    .invoice {
-        position: relative;
-        background-color: #f4f6f9;
-        min-height: 500px;
-    }
-
-    .invoice .company-details {
-        text-align: right;
-        margin-bottom: 20px;
-    }
-
-    .invoice .company-details .name {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-
-    .invoice .contacts {
-        margin-top: 20px;
-    }
-
-    .invoice .invoice-to {
-        float: left;
-    }
-
-    .invoice .invoice-to .to {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding: 0px;
-    }
-    .invoice main {
-        padding-bottom: 50px
-    }
-
-    .invoice table {
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 20px;
-        border: 1px solid black;
-
-    }
-    .invoice table th {
-        background: #eee;
-        white-space: nowrap;
-        font-weight: 700;
-        font-size: 14px;
-        border: 1px solid #5a5a5a;
-        height: 25px;
-        text-align: center;
-    }
-
-    .invoice table td {
-        background: #fff;
-        border: 1px solid #5a5a5a;
-        font-size: 14px;
-        color: black;
-    }
-
-    .invoice table tfoot td {
-        background: 0 0;
-        border-bottom: none;
-        white-space: nowrap;
-        text-align: right;
-        padding: 10px 20px;
-        font-size: 14px;
-        border-top: 1px solid black
-    }
-
-    .invoice table tfoot tr:first-child td {
-        border: 1px solid black
-    }
-
-    .invoice table tfoot tr:last-child td {
-        color: #3989c6;
-        font-size: 1.4em;
-        border-top: 1px solid black;
-    }
-
-    .invoice table tfoot tr td:first-child {
-        border: 1px solid black
-    }
-
-    .invoice footer {
-        width: 100%;
-        text-align: center;
-        color: #777;
-        border-top: 5px solid #5a5a5a;
-        padding: 8px 0px;
-    }
-    .logo{
-        height: 75px;
-        width: 250px;
-    }
-    .empty{
-        height: 75px;
-    }
-
-    @media print {
-        .invoice {
-            font-size: 11px!important;
-            overflow: hidden!important;
-        }
-
-        .invoice footer {
-            position: absolute;
-            bottom: 10px;
-            page-break-after: always
-        }
-
-        .invoice>div:last-child {
-            page-break-before: always
-        }
-    }
-</style>
 
 @section('content')
     <div class="content-header">
@@ -138,128 +18,286 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-    <div class="toolbar hidden-print">
-        <div class="text-center">
-            <button id="printInvoice" onclick="PrintDiv()" class="btn btn-info"><i class="fa fa-print"></i>Print</button>
-        </div>
-    </div>
-    <br>
-    <div id="invoice">
-        <div class="invoice overflow-auto">
-            <div class="container col-md-8">
-                @foreach($approvedDetailsRequisitions as $key=>$row)
 
-                <?php
-                $projectDetails =\App\Project::where('id',$row->project_id)->first();
-                ?>
-                @endforeach
-                <header>
-                    <div class="row">
-                        <div class="col-8">
-                            <h4 class="name" style="color: #0C9A9A">
-                                @php
-                                    $users = \App\User::where('id',$row->user_id)->first();
-                                @endphp
-                                REQUISITION FORM:
-                            </h4>
-                            <div class="col">
-                                <div class="row">
-                                    <span>REQ NO:</span><span> TAE / Procurement / 2020 _/<strong>{{$row->req_no}}</strong></span>
+{{--    <div class="toolbar hidden-print">--}}
+{{--        <div class="text-center">--}}
+{{--            <button id="printInvoice" onclick="PrintDiv()" class="btn btn-info"><i class="fa fa-print"></i>Print</button>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <br>--}}
+{{--    <div id="invoice">--}}
+{{--        <div class="invoice overflow-auto">--}}
+{{--            <div class="container col-md-8">--}}
+{{--                @foreach($approvedDetailsRequisitions as $key=>$row)--}}
+
+{{--                <?php--}}
+{{--                $projectDetails =\App\Project::where('id',$row->project_id)->first();--}}
+{{--                ?>--}}
+{{--                @endforeach--}}
+{{--                <header>--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-8">--}}
+{{--                            <h4 class="name" style="color: #0C9A9A">--}}
+{{--                                @php--}}
+{{--                                    $users = \App\User::where('id',$row->user_id)->first();--}}
+{{--                                @endphp--}}
+{{--                                REQUISITION FORM:--}}
+{{--                            </h4>--}}
+{{--                            <div class="col">--}}
+{{--                                <div class="row">--}}
+{{--                                    <span>REQ NO:</span><span> TAE / Procurement / 2020 _/<strong>{{$row->req_no}}</strong></span>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <span>Ref./Work Order: </span><strong>{{$projectDetails->project_ref}}</strong>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <h6 class="to">Date: <span>{{$row->requisition_date}}</span></h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-4 company-details">--}}
+{{--                            <a target="_blank" href="{{'/'}}">--}}
+{{--                                <img src="{{ asset('uploads/company_logo/logo.png') }}') }}"></a>                        </div>--}}
+{{--                    </div>--}}
+{{--                </header>--}}
+{{--                <main>--}}
+{{--                    <div class="row contacts">--}}
+{{--                        <div class="col invoice-to">--}}
+{{--                            <div class="text-gray-light"><u>Requisition Details:</u></div>--}}
+{{--                            <div class=" row ">--}}
+{{--                                <div class="col">--}}
+{{--                                    <p class="to">Project Name: <strong>{{$projectDetails->project_name}} </strong></p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col">--}}
+{{--                                    <p class="to float-right">Date: <span>{{$row->requisition_date}}</span></p>--}}
+{{--                                </div>--}}
+
+{{--                            </div>--}}
+
+{{--                            <div class=" row ">--}}
+{{--                                <div class="col">--}}
+{{--                                    <p class="to"> PCO: <span>{{$users->name}}</span></p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col">--}}
+{{--                                    <p class="float-right">Contact No. <span>{{$users->mobile_number}}</span></p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div >--}}
+{{--                                <div class="col">--}}
+{{--                                    <p class="float-left"> Project Address: <span>{{$projectDetails->address}}</span></p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <table>--}}
+{{--                        <thead>--}}
+{{--                        <tr>--}}
+{{--                            <th>SN</th>--}}
+{{--                            <th>Description of Particular</th>--}}
+{{--                            <th>Quantity</th>--}}
+{{--                            <th>Unit</th>--}}
+{{--                            <th>Price / Unit</th>--}}
+{{--                            <th>Total Price  </th>--}}
+{{--                            <th>  Remarks</th>--}}
+{{--                        </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody>--}}
+{{--                        @foreach($approvedDetailsRequisitions as $key=>$row)--}}
+{{--                            <tr>--}}
+{{--                                <td class="text-center">{{$key+1}}</td>--}}
+{{--                                <td class="text-center">--}}
+{{--                                    {{$row->particular}}--}}
+{{--                                </td>--}}
+{{--                                <td class="text-center">--}}
+{{--                                    {{$row->quantity}}--}}
+{{--                                </td>--}}
+{{--                                <td class="text-center">--}}
+{{--                                    {{$row->unit}}--}}
+{{--                                </td>--}}
+{{--                                <td class="text-center">--}}
+{{--                                    {{$row->unit_price}}--}}
+{{--                                </td >--}}
+{{--                                <td class="text-center">--}}
+{{--                                    {{$row->total_price}}--}}
+{{--                                </td >--}}
+{{--                                <td >--}}
+{{--                                </td>--}}
+{{--                        @endforeach--}}
+{{--                        </tbody>--}}
+{{--                    </table>--}}
+{{--                    <div class="empty"></div>--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col" style="text-align: center; text-decoration: overline;">Prepared BY</div>--}}
+{{--                        <div class="col" style="text-align: center; text-decoration: overline;">Received BY</div>--}}
+{{--                        <div class="col" style="text-align: center; text-decoration: overline;">Approved BY</div>--}}
+{{--                    </div>--}}
+{{--                </main>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+    <!-- Content Wrapper. Contains page content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Main content -->
+                        <div class="invoice p-3 mb-3">
+                            <!-- title row -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4>
+                                        <i class="fas fa-globe"></i> AdminLTE, Inc.
+                                        <small class="float-right">Date: 2/10/2014</small>
+                                    </h4>
                                 </div>
-                                <div class="row">
-                                    <span>Ref./Work Order: </span><strong>{{$projectDetails->project_ref}}</strong>
+                                <!-- /.col -->
+                            </div>
+                            <!-- info row -->
+                            <div class="row invoice-info">
+                                <div class="col-sm-4 invoice-col">
+                                    From
+                                    <address>
+                                        <strong>Admin, Inc.</strong><br>
+                                        795 Folsom Ave, Suite 600<br>
+                                        San Francisco, CA 94107<br>
+                                        Phone: (804) 123-5432<br>
+                                        Email: info@almasaeedstudio.com
+                                    </address>
                                 </div>
-                                <div class="row">
-                                    <h6 class="to">Date: <span>{{$row->requisition_date}}</span></h6>
+                                <!-- /.col -->
+                                <div class="col-sm-4 invoice-col">
+                                    To
+                                    <address>
+                                        <strong>John Doe</strong><br>
+                                        795 Folsom Ave, Suite 600<br>
+                                        San Francisco, CA 94107<br>
+                                        Phone: (555) 539-1037<br>
+                                        Email: john.doe@example.com
+                                    </address>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 invoice-col">
+                                    <b>Invoice #007612</b><br>
+                                    <br>
+                                    <b>Order ID:</b> 4F3S8J<br>
+                                    <b>Payment Due:</b> 2/22/2014<br>
+                                    <b>Account:</b> 968-34567
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <!-- Table row -->
+                            <div class="row">
+                                <div class="col-12 table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>SN</th>
+                                            <th>Description of Particular</th>
+                                            <th>Quantity</th>
+                                            <th>Price / Unit</th>
+                                            <th>Unit Price</th>
+                                            <th>Total Price</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($approvedDetailsRequisitions as $key=>$row)
+                                        <tr>
+                                            <td>{{$key+1}}</td>
+                                            <td>{{$row->particular}}</td>
+                                            <td>{{$row->quantity}}</td>
+                                            <td>{{$row->unit}}</td>
+                                            <td>{{$row->unit_price}}</td>
+                                            <td>{{$row->total_price}}</td>
+                                            <td></td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <div class="row">
+                                <!-- accepted payments column -->
+                                <div class="col-6">
+                                    <p class="lead">Payment Methods:</p>
+                                    <img src="{{ asset('backend/dist/img/credit/visa.png') }}" alt="Visa">
+                                    <img src="{{ asset('backend/dist/img/credit/mastercard.png') }}" alt="Mastercard">
+                                    <img src="{{ asset('backend/dist/img/credit/american-express.png') }}" alt="American Express">
+                                    <img src="{{ asset('backend/dist/img/credit/paypal2.png') }}" alt="Paypal">
+
+                                    <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
+                                        plugg
+                                        dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                                    </p>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-6">
+                                    <p class="lead">Amount Due 2/22/2014</p>
+
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tr>
+                                                <th style="width:50%">Subtotal:</th>
+                                                <td>$250.30</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tax (9.3%)</th>
+                                                <td>$10.34</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Shipping:</th>
+                                                <td>$5.80</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total:</th>
+                                                <td>$265.24</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                            <!-- this row will not appear when printing -->
+                            <div class="row no-print">
+                                <div class="col-12">
+                                    <button id="printInvoice" onclick="PrintDiv()" class="btn btn-info"><i class="fa fa-print"></i>Print</button>
+{{--                                    <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit--}}
+{{--                                        Payment--}}
+{{--                                    </button>--}}
+                                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                        <i class="fas fa-download"></i> Generate PDF
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4 company-details">
-                            <a target="_blank" href="{{'/'}}">
-                                <img src="{{ asset('uploads/company_logo/logo.png') }}"></a>                        </div>
-                    </div>
-                </header>
-                <main>
-                    <div class="row contacts">
-                        <div class="col invoice-to">
-                            <div class="text-gray-light"><u>Requisition Details:</u></div>
-                            <div class=" row ">
-                                <div class="col">
-                                    <p class="to">Project Name: <strong>{{$projectDetails->project_name}} </strong></p>
-                                </div>
-                                <div class="col">
-                                    <p class="to float-right">Date: <span>{{$row->requisition_date}}</span></p>
-                                </div>
-
-                            </div>
-
-                            <div class=" row ">
-                                <div class="col">
-                                    <p class="to"> PCO: <span>{{$users->name}}</span></p>
-                                </div>
-                                <div class="col">
-                                    <p class="float-right">Contact No. <span>{{$users->mobile_number}}</span></p>
-                                </div>
-                            </div>
-                            <div >
-                                <div class="col">
-                                    <p class="float-left"> Project Address: <span>{{$projectDetails->address}}</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>SN</th>
-                            <th>Description of Particular</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Price / Unit</th>
-                            <th>Total Price  </th>
-                            <th>  Remarks</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($approvedDetailsRequisitions as $key=>$row)
-                            <tr>
-                                <td class="text-center">{{$key+1}}</td>
-                                <td class="text-center">
-                                    {{$row->particular}}
-                                </td>
-                                <td class="text-center">
-                                    {{$row->quantity}}
-                                </td>
-                                <td class="text-center">
-                                    {{$row->unit}}
-                                </td>
-                                <td class="text-center">
-                                    {{$row->unit_price}}
-                                </td >
-                                <td class="text-center">
-                                    {{$row->total_price}}
-                                </td >
-                                <td >
-                                </td>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <div class="empty"></div>
-                    <div class="row">
-                        <div class="col" style="text-align: center; text-decoration: overline;">Prepared BY</div>
-                        <div class="col" style="text-align: center; text-decoration: overline;">Received BY</div>
-                        <div class="col" style="text-align: center; text-decoration: overline;">Approved BY</div>
-                    </div>
-                </main>
-            </div>
-        </div>
-    </div>
-
+                        <!-- /.invoice -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
 
 
 
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
+@endsection
+
 @section('script')
+    <!-- AdminLTE App -->
+    <script src="{{ asset('backend/dist/js/adminlte.min.js') }}"></script>
+
     <script type="text/javascript">
         function PrintDiv() {
             var printContents = document.getElementById('invoice').innerHTML;

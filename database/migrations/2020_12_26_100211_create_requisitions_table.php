@@ -16,10 +16,12 @@ class CreateRequisitionsTable extends Migration
         Schema::create('requisitions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('updated_by')->nullable();
             $table->string('project_id');
             $table->string('status')->nullable();
             $table->string('req_no')->nullable();
             $table->string('requisition_date');
+            $table->string('approved_date');
             $table->timestamps();
         });
     }

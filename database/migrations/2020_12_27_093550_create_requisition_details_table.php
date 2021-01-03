@@ -21,6 +21,7 @@ class CreateRequisitionDetailsTable extends Migration
             $table->string('quantity');
             $table->string('remarks')->nullable();
             $table->string('approved_date')->nullable();
+            $table->string('approval_remarks')->nullable();
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Requisition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -29,6 +30,13 @@ class RequisitionController extends Controller
     public function index(){
         return view('admin.requisition.create');
     }
+
+    public function show(){
+
+        $requisition = Requisition::orderBy('id', 'DESC')->get();
+        return view('admin.requisition.index', compact('requisition'));
+    }
+
     public function storeRequisition( Request  $request){
 
         $validator = Validator::make($request->all(), [
@@ -41,6 +49,7 @@ class RequisitionController extends Controller
         if($validator->fails()) {
             return redirect()->back()->with('message1', 'Check Input Data !');
         }
+
         else{
             $requisition = array();
             $requisition['user_id'] = Auth()->id();
