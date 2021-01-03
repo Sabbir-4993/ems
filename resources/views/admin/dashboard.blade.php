@@ -26,17 +26,21 @@
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
+                    <a href="{{route('requisition.pending')}}" class="small-box-footer">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-
-                            <p>New Orders</p>
+                            @php
+                                use Illuminate\Support\Facades\DB;
+                                $requisition = count(DB::table('requisitions')->where('status','0')->get());
+                            @endphp
+                            <h1>{{$requisition}} </h1>
+                            <p>Pending Requisition</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fas fa-cogs"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
+                    </a>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
@@ -50,7 +54,6 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -65,7 +68,6 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -80,7 +82,6 @@
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -97,16 +98,6 @@
                                 <i class="ion ion-clipboard mr-1"></i>
                                 To Do List
                             </h3>
-
-                            <div class="card-tools">
-                                <ul class="pagination pagination-sm">
-                                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                                </ul>
-                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

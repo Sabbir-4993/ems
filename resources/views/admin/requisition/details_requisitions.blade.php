@@ -88,7 +88,7 @@
                                                             <input class="form-control" type="text" name="total[]" value="{{$material->price*$row->quantity}}" readonly>
                                                         </td>
                                                         <td>
-                                                                <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" placeholder="Enter  Remarks" class="form-control " readonly>
+                                                                <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
                                                             </td>
                                                         <td>
                                                             <input class="form-control" type="text" name="pro_remarks[]">
