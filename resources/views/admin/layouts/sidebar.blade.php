@@ -287,6 +287,25 @@
                             {{--                        Assign Project List--}}
                         </ul>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p>
+                                Assign Work
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            {{--                        Contractor Category--}}
+                            <li class="nav-item">
+                                <a href="{{route('assignWork.index')}}" class="nav-link">
+                                    <i class="fas fa-bezier-curve nav-icon"></i>
+                                    <p>Assign Work </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

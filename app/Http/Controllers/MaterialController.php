@@ -58,6 +58,16 @@ class MaterialController extends Controller
         $material->save();
         return redirect()->back()->with('message','Material Created Successfully');
 
+        $material_file = $request->material_file->store('/material_store');
+
+        $import = new MaterialImport;
+        $import->import($material_file);
+
+
+
+        (new MaterialImport)->import($material_file);
+        return redirect()->back()->with('message','Material Data Imported successfully.');
+
     }
 
     /**
@@ -170,20 +180,51 @@ class MaterialController extends Controller
 //
 //
 //        return back()->with('message', 'Successfully Added Material');
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Material  $material
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Material $material)
+    {
+        //
+    }
 
-//        $validator = Validator::make($request->all, [
-//            'file' => 'required|max:5000|mimes:xlsx,xls,csv'
-//        ]);
-//
-//        if ($validator->passes()){
-//
-//            return redirect()->back()->with(['success'=>'File Upload Successfully']);
-//
-//        }else{
-//
-//            return redirect()->back()->with(['errors'=>$validator->error()->all()]);
-//        }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Material  $material
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Material $material)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Material  $material
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Material $material)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Material  $material
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Material $material)
+    {
+        //
     }
 }
 

@@ -61,9 +61,6 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
 
 });
 
-//Route::get('payBill/{id}','ContractorController@payBill')->name('contractors.payBill');
-//Route::post('billPaid','ContractorController@BillPaid')->name('contractors.billPaid');
-
 Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
 
     Route::get('assign-project', 'AssignProjectController@index')->name('index');
@@ -75,6 +72,18 @@ Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');
 
     Route::post('assign-project-bill', 'AssignProjectController@projectBillPay')->name('payBill');
+
+});
+Route::group(['prefix'=>'assignWork','as'=>'assignWork.'], function(){
+
+    Route::get('assign-work', 'AssignWorkController@index')->name('index');
+
+});
+Route::group(['prefix'=>'todo','as'=>'todo.'], function(){
+
+    Route::post('Todo-work', 'TodoController@storeTodo')->name('store');
+    Route::get('Todo-list', 'TodoController@fetchUserTodo')->name('list');
+    Route::get('delete-todo/{id}', 'TodoController@deleteTodo')->name('delete');
 
 });
 
