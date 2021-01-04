@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="" />
+    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Model/Todo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_03_052138_create_todos_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/todo/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/EMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EMS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Imports/MaterialImport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -19,10 +36,29 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -41,7 +77,6 @@
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
       <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
-      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
@@ -125,20 +160,39 @@
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lNjgHBCUfci1nX8IBGT21GqbQu" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VueJs Project/VueInventory" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Web Development\htdocs\ems\resources\views\admin" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -155,7 +209,141 @@
       <option name="presentableId" value="Default" />
       <updated>1607444555628</updated>
       <workItem from="1607444558230" duration="5657000" />
+      <workItem from="1608200972923" duration="1520000" />
+      <workItem from="1608202851937" duration="1499000" />
+      <workItem from="1608348330687" duration="61000" />
+      <workItem from="1608435302757" duration="882000" />
+      <workItem from="1608438661835" duration="22299000" />
+      <workItem from="1608528850887" duration="14423000" />
+      <workItem from="1608613539383" duration="18618000" />
+      <workItem from="1608696050702" duration="9000" />
+      <workItem from="1608699210105" duration="13221000" />
+      <workItem from="1608780738756" duration="461000" />
+      <workItem from="1608788997913" duration="8114000" />
+      <workItem from="1608953037214" duration="15624000" />
+      <workItem from="1609040387730" duration="1810000" />
+      <workItem from="1609045069834" duration="123000" />
+      <workItem from="1609049445718" duration="16872000" />
+      <workItem from="1609126284546" duration="31523000" />
+      <workItem from="1609214302263" duration="17953000" />
+      <workItem from="1609301549811" duration="1270000" />
+      <workItem from="1609311898811" duration="2093000" />
+      <workItem from="1609388723790" duration="25994000" />
+      <workItem from="1609558782409" duration="184000" />
+      <workItem from="1609559019695" duration="446000" />
+      <workItem from="1609559970029" duration="4563000" />
+      <workItem from="1609565502182" duration="871000" />
+      <workItem from="1609566396879" duration="2704000" />
+      <workItem from="1609571039078" duration="1456000" />
+      <workItem from="1609573146396" duration="7172000" />
+      <workItem from="1609649329998" duration="21674000" />
     </task>
+    <task id="LOCAL-00001" summary="contractor model done">
+      <created>1608456548354</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608456548354</updated>
+    </task>
+    <task id="LOCAL-00002" summary="assign project and category create done">
+      <created>1608547601804</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608547601804</updated>
+    </task>
+    <task id="LOCAL-00003" summary="payment and bill contractor">
+      <created>1608638460513</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608638460513</updated>
+    </task>
+    <task id="LOCAL-00004" summary="pay bill done">
+      <created>1608716664550</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608716664550</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bill paid check">
+      <created>1608806771990</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608806771990</updated>
+    </task>
+    <task id="LOCAL-00006" summary="all check to merge">
+      <created>1608953381706</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1608953381706</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Bill paid added to details page">
+      <created>1608962196108</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608962196108</updated>
+    </task>
+    <task id="LOCAL-00008" summary="api for check">
+      <created>1608983009176</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608983009176</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Requisitions insert to db successfully add">
+      <created>1609070575633</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1609070575633</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Requisitions  approved">
+      <created>1609162936956</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1609162936956</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Requisitions  approved not done">
+      <created>1609230977657</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1609230977657</updated>
+    </task>
+    <task id="LOCAL-00012" summary="marge done">
+      <created>1609395376076</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1609395376076</updated>
+    </task>
+    <task id="LOCAL-00013" summary="partially Requisition done">
+      <created>1609415803832</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1609415803832</updated>
+    </task>
+    <task id="LOCAL-00014" summary="requisition print option done">
+      <created>1609571083346</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1609571083346</updated>
+    </task>
+    <task id="LOCAL-00015" summary="pending Requisition added to dash">
+      <created>1609589447083</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1609589447083</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,11 +354,43 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/dev_Zakir" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="contractor model done" />
+    <MESSAGE value="assign project and category create done" />
+    <MESSAGE value="payment and bill contractor" />
+    <MESSAGE value="pay bill done" />
+    <MESSAGE value="bill paid check" />
+    <MESSAGE value="all check to merge" />
+    <MESSAGE value="Bill paid added to details page" />
+    <MESSAGE value="api for check" />
+    <MESSAGE value="Requisitions insert to db successfully add" />
+    <MESSAGE value="Requisitions  approved" />
+    <MESSAGE value="Requisitions  approved not done" />
+    <MESSAGE value="marge done" />
+    <MESSAGE value="partially Requisition done" />
+    <MESSAGE value="requisition print option done" />
+    <MESSAGE value="pending Requisition added to dash" />
+    <option name="LAST_COMMIT_MESSAGE" value="pending Requisition added to dash" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -180,7 +400,16 @@
           <line>1</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

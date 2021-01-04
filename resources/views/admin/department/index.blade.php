@@ -40,64 +40,35 @@
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>SN</th>
-                                        <th>Department Name</th>
-                                        <th>Details</th>
-                                        <th>Action</th>
-                                    </tr>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Department Name</th>
+                                    <th>Details</th>
+                                    <th>Action</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($departments)>0)
-                                    @foreach($departments as $key=>$row)
-                                        <tr>
-                                            <td>{{$key+1}}</td>
-                                            <td>{{$row->name}}</td>
-                                            <td>{{$row->description}}</td>
-                                            <td>
-                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('department.edit',[$row->id])}}"><i class="fas fa-edit"></i></a>
-                                                <a class="btn btn-block bg-gradient-danger btn-xs" data-toggle="modal" data-target="#modal-sm{{$row->id}}" href=""><i class="fas fa-trash"></i></a>
-                                            </td>
-                                            <!-- /.modal -->
-                                            <div class="modal fade" id="modal-sm{{$row->id}}">
-                                                <div class="modal-dialog modal-sm">
-                                                    <form action="{{route('department.destroy',[$row->id])}}" method="post">
-                                                        @csrf
-                                                        {{method_field('DELETE')}}
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Delete Confirm!!</h4>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Do you Want to Delete ?</p>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
-                                            <!-- /.modal End -->
-                                        </tr>
-                                    @endforeach
-                                    @else
-                                        <td>No Department to Display</td>
-                                    @endif
+                                @foreach($departments as $key => $row)
+                                    <tr>
+                                        <td style="width: 5%">{{$key+1}}</td>
+                                        <td style="width: 25%">{{$row->name}}</td>
+                                        <td style="width: 50%">{{$row->description}}</td>
+                                        <td style="width: 20%">
+                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('department.edit',[$row->id])}}">
+                                                <i class="fas fa-edit"></i>
+                                                Edit
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
-                                    <tr>
-                                        <th>SN</th>
-                                        <th>Department Name</th>
-                                        <th>Details</th>
-                                        <th>Action</th>
-                                    </tr>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Department Name</th>
+                                    <th>Details</th>
+                                    <th>Action</th>
+                                </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -112,16 +83,15 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 @endsection
-@section('css')
-<!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
+
 @section('script')
 
     <!-- DataTables  & Plugins -->
@@ -155,4 +125,3 @@
         });
     </script>
 @endsection
-

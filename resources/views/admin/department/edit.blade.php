@@ -48,9 +48,7 @@
                 </div>
                 <div class="card-body">
                     <label for="exampleDepartmentDetails">Department Details</label>
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="5">
-                        {{$department->description}}
-                    </textarea>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="5">{{$department->description}}</textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -58,6 +56,7 @@
                     @enderror
                 </div>
                 <div class="card-footer">
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary float-right">
                         Submit
                     </button>
@@ -67,8 +66,6 @@
         </form>
     </div>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('script')

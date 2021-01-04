@@ -54,6 +54,7 @@
                     @enderror
                 </div>
                 <div class="card-footer">
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary float-right    ">
                         Submit
                     </button>
@@ -63,8 +64,6 @@
         </form>
     </div>
     <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
 @endsection
 
 @section('script')

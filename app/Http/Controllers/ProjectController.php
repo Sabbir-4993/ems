@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -62,9 +63,10 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        //
+        $projects = project::find($id);
+        return view('admin.project.view', compact('projects'));
     }
 
     /**
@@ -106,4 +108,5 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('project.index')->with('message', 'Project Deleted Successfully');
     }
+
 }

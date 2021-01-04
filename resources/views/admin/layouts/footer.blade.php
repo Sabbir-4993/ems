@@ -1,4 +1,4 @@
-    <footer class="main-footer">
+    <footer class="main-footer text-right">
         <strong>Copyright &copy;2020 <a href="https://www.trimatric.com/">Trimatric</a>.</strong>
         All rights reserved.
     </footer>
@@ -45,7 +45,28 @@
     <script src="{{ asset('backend/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script>
+    <script>
+        $(".nav-item").on("click", function(e){
+            $("li.nav-item").removeClass("active");
+            $(this).addClass("active");
+        });s
+    </script>
+
+    <script>
+        /** add active class and stay opened when selected */
+        var url = window.location;
+
+        // for sidebar menu entirely but not cover treeview
+        $('ul.nav-sidebar a').filter(function() {
+            return this.href == url;
+        }).addClass('active');
+
+        // for treeview
+        $('ul.nav-treeview a').filter(function() {
+            return this.href == url;
+        }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open') .prev('a').addClass('active');
+    </script>
     @yield('script')
 
-</body>
+    </body>
 </html>
