@@ -83,7 +83,7 @@
                                         <td>{{$row->est_budget}}</td>
                                         <td>{{$row->pro_duration}}</td>
                                         <td>{{$row->project_start}}</td>
-                                        <td class="project-actions text-right">
+                                        <td class="project-actions text-left">
                                             <a class="btn btn-primary btn-xs"
                                                href="{{route('project.show',[$row->id])}}">
                                                 <i class="fas fa-folder"></i>

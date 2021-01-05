@@ -24,10 +24,12 @@
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{route('project.show',[$projects->id])}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        {{method_field('PATCH')}}
-        <!-- Default box -->
+        @if(Session::has('message'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
+            </div>
+        @endif
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Projects Detail</h3>
@@ -58,7 +60,10 @@
                                     <div class="info-box bg-light">
                                         <div class="info-box-content">
                                             <span class="info-box-text text-center text-muted">Total amount spent</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{$projects->total_amount}} BDT</span>
+                                            @php
+                                            $ammount = \Illuminate\Support\Facades\DB::table('billing_histories')->where('project_id',$projects->id)->sum('billing_amount');
+                                                @endphp
+                                            <span class="info-box-number text-center text-muted mb-0">{{$ammount}} BDT</span>
                                         </div>
                                     </div>
                                 </div>
@@ -73,74 +78,61 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <h4>Recent Activity</h4>
+                                    <a class="btn btn-primary text-left float-right" href="#" data-toggle="modal" data-target="#modal-m{{$projects->id}}">
+                                    <i class="fas fa-toolbox"></i> Add Sub Work
+                                    </a><br>
+                                    <h4 class="text-center">Work Details</h4>
                                     <div class="post">
                                         <div class="user-block">
-                                            <img class="img-circle img-bordered-sm"
-                                                 src="{{ asset('backend/dist/img/user1-128x128.jpg') }}"
-                                                 alt="user image">
-                                            <span class="username">
-                                          <a href="#">Jonathan Burke Jr.</a>
-                                        </span>
-                                            <span class="description">Shared publicly - 7:45 PM today</span>
+                                            <table id="example1" class="table table-bordered table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>SN</th>
+                                                    <th>Work Name</th>
+                                                    <th>Assign By</th>
+                                                    <th> Start Date</th>
+                                                    <th> End Date</th>
+                                                    <th> Day Left</th>
+                                                    <th> Ref. NO.</th>
+                                                    <th> Action</th>
+                                                </tr>
+                                                </thead>
+                                                @php
+                                                    $upwork = \App\Model\SubWork::where('project_id',$projects->id)->get();
+                                                    @endphp
+                                                <tbody>
+                                                @foreach($upwork as $key=>$row)
+                                                    <tr>
+                                                        <td>{{$key+1}}</td>
+                                                        <td>{{$row->subWork_name}}</td>
+                                                        <td>{{$row->assign_employee}}</td>
+                                                        <td>{{$row->subWork_start}}</td>
+                                                        <td>{{$row->subWork_end}}</td>
+                                                        @php
+                                                            $diff = Carbon\Carbon::parse($row->subWork_end)->diffInDays(Carbon\Carbon::now())
+                                                        @endphp
+                                                        <td>
+                                                            @if($diff <= 0)
+                                                                <span class="badge badge-danger">Over Date</span>
+                                                            @else
+                                                                {{$diff}}
+                                                            @endif
+                                                        </td>
+                                                        <td>{{$row->ref_no}}</td>
+                                                        <td class="project-actions text-left">
+                                                            <a class="btn btn-primary btn-m"
+                                                               href="{{route('subWork.details',[$row->id])}}">
+                                                                <i class="fas fa-folder"></i>
+                                                                View
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <!-- /.user-block -->
-                                        <p>
-                                            Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.
-                                        </p>
-
-                                        <p>
-                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo
-                                                File 1 v2</a>
-                                        </p>
                                     </div>
 
-                                    <div class="post clearfix">
-                                        <div class="user-block">
-                                            <img class="img-circle img-bordered-sm"
-                                                 src="{{ asset('backend/dist/img/user7-128x128.jpg') }}"
-                                                 alt="User Image">
-                                            <span class="username">
-                                          <a href="#">Sarah Ross</a>
-                                        </span>
-                                            <span class="description">Sent you a message - 3 days ago</span>
-                                        </div>
-                                        <!-- /.user-block -->
-                                        <p>
-                                            Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.
-                                        </p>
-                                        <p>
-                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo
-                                                File 2</a>
-                                        </p>
-                                    </div>
-
-                                    <div class="post">
-                                        <div class="user-block">
-                                            <img class="img-circle img-bordered-sm"
-                                                 src="{{ asset('backend/dist/img/user1-128x128.jpg') }}"
-                                                 alt="user image">
-                                            <span class="username">
-                                          <a href="#">Jonathan Burke Jr.</a>
-                                        </span>
-                                            <span class="description">Shared publicly - 5 days ago</span>
-                                        </div>
-                                        <!-- /.user-block -->
-                                        <p>
-                                            Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.
-                                        </p>
-
-                                        <p>
-                                            <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo
-                                                File 1 v1</a>
-                                        </p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -213,9 +205,124 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-        </form>
     </section>
+{{--    //model part--}}
+    <div class="modal fade" id="modal-m{{$projects->id}}">
+        @if(Session::has('message'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
+            </div>
+        @endif
+        <div class="modal-dialog modal-m">
+            <form action="{{route('subWork.store')}}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Approved Work!!</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <input type="hidden" name="project_id" value="{{ $projects ->id }}">
+                    <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInput">Add Work Name: </label>
+                        <input class="form-control" name="work_name" placeholder="Enter Work Name"  type="text" required="">
+                    </div>
+                    <div class="form-group">
+                            <label for="end_date" class="col-form-label">Work Start</label>
+                            <input class="form-control" type="date"  name="work_start">
+                    </div>
+                        <!-- /.form-group -->
+                    <div class="form-group">
+                            <label for="end_date" class="col-form-label">Work End</label>
+                            <input class="form-control" type="date" name="work_end">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Assign Employee</label>
+                        <select class="select2" multiple="multiple" id="chosen-select" name="employee_id[]" data-placeholder="Select a State" style="width: 100%;">
+                                @foreach(\App\User::all() as $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                @endforeach
+                         </select>
+                    </div>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Add Work</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+
+@section('css')
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+@endsection
+
+@section('script')
+    <!-- Select2 -->
+    <script src="{{asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('backend/dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+
+    </script>
+
 @endsection

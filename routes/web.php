@@ -39,8 +39,6 @@ Route::resource('material', 'MaterialController');
 
 Route::resource('material_category', 'MaterialCategoryController');
 
-
-
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
     //for getting Product
@@ -72,15 +70,20 @@ Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
 
 });
 Route::group(['prefix'=>'assignWork','as'=>'assignWork.'], function(){
-
     Route::get('assign-work', 'AssignWorkController@index')->name('index');
+    Route::post('store-work', 'AssignWorkController@storeWork')->name('store');
 
 });
 Route::group(['prefix'=>'todo','as'=>'todo.'], function(){
-
     Route::post('Todo-work', 'TodoController@storeTodo')->name('store');
     Route::get('Todo-list', 'TodoController@fetchUserTodo')->name('list');
     Route::get('delete-todo/{id}', 'TodoController@deleteTodo')->name('delete');
+
+});
+Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
+    Route::post('sub-work', 'SubWorkController@storeSubWork')->name('store');
+    Route::post('sub-work-refNo', 'SubWorkController@storeSubWorkRefNo')->name('storeRefNo');
+    Route::get('sub-work-details/{id}', 'SubWorkController@SubWorkDetails')->name('details');
 
 });
 
