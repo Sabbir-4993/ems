@@ -18,7 +18,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $material=DB::table('materials')->orderBy('id', 'DESC')->get();
+        $material = DB::table('materials')->orderBy('id', 'DESC')->get();
         return view('admin.material.index', compact('material'));
     }
 
@@ -35,7 +35,7 @@ class MaterialController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -56,7 +56,7 @@ class MaterialController extends Controller
         $material->details = $request->details;
 
         $material->save();
-        return redirect()->back()->with('message','Material Created Successfully');
+        return redirect()->back()->with('message', 'Material Created Successfully');
 
         $material_file = $request->material_file->store('/material_store');
 
@@ -64,16 +64,15 @@ class MaterialController extends Controller
         $import->import($material_file);
 
 
-
         (new MaterialImport)->import($material_file);
-        return redirect()->back()->with('message','Material Data Imported successfully.');
+        return redirect()->back()->with('message', 'Material Data Imported successfully.');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Material  $material
+     * @param \App\Material $material
      * @return \Illuminate\Http\Response
      */
     public function show(Material $material)
@@ -84,7 +83,7 @@ class MaterialController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Material  $material
+     * @param \App\Material $material
      * @return \Illuminate\Http\Response
      */
     public function edit(Material $material)
@@ -95,8 +94,8 @@ class MaterialController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Material  $material
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Material $material
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Material $material)
@@ -107,7 +106,7 @@ class MaterialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Material  $material
+     * @param \App\Material $material
      * @return \Illuminate\Http\Response
      */
     public function destroy(Material $material)
@@ -116,7 +115,8 @@ class MaterialController extends Controller
     }
 
 
-    public function upload(Request $request){
+    public function upload(Request $request)
+    {
 
         $material_file = $request->material_file->store('/material_store');
 
@@ -124,7 +124,7 @@ class MaterialController extends Controller
         $import->import($material_file);
 
         (new MaterialImport)->import($material_file);
-        return redirect()->back()->with('message','Material Data Imported successfully.');
+        return redirect()->back()->with('message', 'Material Data Imported successfully.');
 
 //        dd($import->failures());
 
@@ -182,49 +182,4 @@ class MaterialController extends Controller
 //        return back()->with('message', 'Successfully Added Material');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Material  $material
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Material $material)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Material  $material
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Material $material)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Material  $material
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Material $material)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Material  $material
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Material $material)
-    {
-        //
-    }
 }
-

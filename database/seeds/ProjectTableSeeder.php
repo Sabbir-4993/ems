@@ -26,6 +26,9 @@ class ProjectTableSeeder extends Seeder
             'pro_duration' => '36',
             'project_start' => '2021-1-01',
             'project_end' => '2021-1-31',
+            'created_at' => '2021-1-01',
+            'updated_at' => '2021-1-01',
+
         ]);
 
     }

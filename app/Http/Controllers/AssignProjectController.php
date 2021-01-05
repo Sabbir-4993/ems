@@ -80,7 +80,7 @@ class AssignProjectController extends Controller
                     return redirect()->back()->with('message', ' No Bill Due !...All Bill Paid ');
 
                 }
-                elseif ($bill->total_due <= $request->pay_amount){
+                elseif ($bill->total_due < $request->pay_amount){
                     return redirect()->back()->with('message2', ' Bill Amount Check ! You Are Paying Extra Bill');
                 }
                 else{
@@ -99,4 +99,5 @@ class AssignProjectController extends Controller
 
         }
     }
+
 }

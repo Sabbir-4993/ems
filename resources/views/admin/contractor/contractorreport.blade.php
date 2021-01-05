@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master');
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/project/create')}}">Create</a></li>
+                        <li class="breadcrumb-item"><a href="#">Report</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -34,85 +34,45 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Project List</h3>
+                            <h3 class="card-title">Contractor List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                    <th style="width: 1%">SN</th>
-                                    <th style="width: 8%">Project Name</th>
-                                    <th style="width: 10%">Company Name</th>
-{{--                                    <th>Description</th>--}}
-                                    <th style="width: 10%">Ref.</th>
-                                    <th style="width: 10%">Email</th>
-                                    <th style="width: 10%">Address</th>
-{{--                                    <th style="width: 10%">Contact</th>--}}
-                                    <th style="width: 8%">Project Lead</th>
-                                    <th style="width: 5%">Status</th>
-                                    <th style="width: 5%">Budget</th>
-                                    <th style="width: 3%">Duration</th>
-                                    <th style="width: 8%">Start</th>
-                                    <th style="width: 10%">Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>Sl</th>
+                                        <th>Work Order</th>
+                                        <th>Bill No.</th>
+                                        <th>Billing Amount</th>
+                                        <th>Billing Method</th>
+                                        <th>Billing Details</th>
+                                        <th>Billing Date</th>
+                                    </tr>
                                 </thead>
-                                <tbody>
-                                @foreach($projects as $key=>$row)
+                                @php
+                                    $billhistory = \Illuminate\Support\Facades\DB::table('billing_histories')->get();
+                                @endphp
+                                @foreach($billhistory as $key=>$row)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$row->project_name}}</td>
-                                        <td>{{$row->company_name}}</td>
-{{--                                        <td>{{$row->description}}</td>--}}
-                                        <td>{{$row->project_ref}}</td>
-                                        <td>{{$row->company_email}}</td>
-                                        <td>{{$row->address}}</td>
-{{--                                        <td>{{$row->phone}}</td>--}}
-                                        <td>{{$row->project_leader}}</td>
-                                        <td>
-                                            @if($row->status=='0')
-                                                <span class="badge badge-primary">Running</span>
-                                            @elseif($row->status=='1')
-                                                <span class="badge badge-warning">Hold</span>
-                                            @elseif($row->status=='2')
-                                                <span class="badge badge-danger">Canceled</span>
-                                            @elseif($row->status=='3')
-                                                <span class="badge badge-success">Complete</span>
-                                            @endif
-                                        </td>
-                                        <td>{{$row->est_budget}}</td>
-                                        <td>{{$row->pro_duration}}</td>
-                                        <td>{{$row->project_start}}</td>
-                                        <td class="project-actions text-right">
-                                            <a class="btn btn-primary btn-xs"
-                                               href="{{route('project.show',[$row->id])}}">
-                                                <i class="fas fa-folder"></i>
-                                                View
-                                            </a>
-                                            <a class="btn btn-info btn-xs" href="{{route('project.edit',[$row->id])}}">
-                                                <i class="fas fa-pencil-alt"></i>
-                                                Edit
-                                            </a>
-                                        </td>
+                                        <td>{{$row->project_work_no}}</td>
+                                        <td>{{$row->billing_no}}</td>
+                                        <td>{{$row->billing_amount}}</td>
+                                        <td>{{$row->billing_method}}</td>
+                                        <td>{{$row->billing_details}}</td>
+                                        <td>{{$row->billing_date}}</td>
                                     </tr>
                                 @endforeach
-                                </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>SN</th>
-                                    <th>Project Name</th>
-                                    <th>Company Name</th>
-{{--                                    <th>Description</th>--}}
-                                    <th>Ref.</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-{{--                                    <th>Contact</th>--}}
-                                    <th>Project Lead</th>
-                                    <th>Status</th>
-                                    <th>Budget</th>
-                                    <th>Duration</th>
-                                    <th>Start</th>
-                                    <th>Action</th>
+                                    <th>Sl</th>
+                                    <th>Work Order</th>
+                                    <th>Bill No.</th>
+                                    <th>Billing Amount</th>
+                                    <th>Billing Method</th>
+                                    <th>Billing Details</th>
+                                    <th>Billing Date</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -128,8 +88,6 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('css')
@@ -171,4 +129,3 @@
         });
     </script>
 @endsection
-

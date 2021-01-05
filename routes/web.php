@@ -41,6 +41,9 @@ Route::post('material_upload', 'MaterialController@upload')->name('material.uplo
 
 Route::resource('material_category', 'MaterialCategoryController');
 
+//Report
+Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
+
 
 
 //Requisition
