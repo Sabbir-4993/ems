@@ -16,6 +16,7 @@ class SubWork extends Model
         'subWork_end',
         'ref_no',
         'created_by',
+        'remarks',
     ];
 
 }

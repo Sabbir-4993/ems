@@ -45,16 +45,20 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
+                    <a href="{{route('project.index')}}" class="small-box-footer">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>Bounce Rate</p>
+                            @php
+                                $project = count(\App\Project::all());
+                            @endphp
+                            <h1>{{$project}} </h1>
+                            <p>Project</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">

@@ -83,6 +83,9 @@ Route::group(['prefix'=>'todo','as'=>'todo.'], function(){
 Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
     Route::post('sub-work', 'SubWorkController@storeSubWork')->name('store');
     Route::post('sub-work-refNo', 'SubWorkController@storeSubWorkRefNo')->name('storeRefNo');
+    Route::post('sub-work-delay-remark', 'SubWorkController@storeRemarks')->name('storeRemark');
+    Route::post('sub-work-particular', 'SubWorkController@storeParticulars')->name('storeParticular');
+    Route::post('sub-work-particular/{id}', 'SubWorkController@storeParticularsDelete')->name('deleteParticular');
     Route::get('sub-work-details/{id}', 'SubWorkController@SubWorkDetails')->name('details');
 
 });

@@ -91,9 +91,9 @@
                                                     <th>Work Name</th>
                                                     <th>Assign By</th>
                                                     <th> Start Date</th>
-                                                    <th> End Date</th>
                                                     <th> Day Left</th>
                                                     <th> Ref. NO.</th>
+                                                    <th> Remark</th>
                                                     <th> Action</th>
                                                 </tr>
                                                 </thead>
@@ -105,9 +105,16 @@
                                                     <tr>
                                                         <td>{{$key+1}}</td>
                                                         <td>{{$row->subWork_name}}</td>
-                                                        <td>{{$row->assign_employee}}</td>
+                                                        <td>
+                                                            @php
+                                                                $user_id = explode(',', $row->assign_employee);
+                                                                $users =\App\User::whereIn('id', $user_id)->get();
+                                                            @endphp
+                                                            @foreach($users as $user)
+                                                                <b class="d-block">{{$user->name}}</b>
+                                                            @endforeach
+                                                        </td>
                                                         <td>{{$row->subWork_start}}</td>
-                                                        <td>{{$row->subWork_end}}</td>
                                                         @php
                                                             $diff = Carbon\Carbon::parse($row->subWork_end)->diffInDays(Carbon\Carbon::now())
                                                         @endphp
@@ -119,6 +126,7 @@
                                                             @endif
                                                         </td>
                                                         <td>{{$row->ref_no}}</td>
+                                                        <td>{{$row->remarks}}</td>
                                                         <td class="project-actions text-left">
                                                             <a class="btn btn-primary btn-m"
                                                                href="{{route('subWork.details',[$row->id])}}">
