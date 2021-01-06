@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -39,7 +40,6 @@ class ProjectController extends Controller
         $this->validate($request,[
             'project_name' => 'required',
             'company_name' => 'required',
-            'project_ref' => 'required',
             'address' => 'required',
             'company_email' => 'required',
             'phone' => 'required',
@@ -106,6 +106,38 @@ class ProjectController extends Controller
         $project = project::find($id);
         $project->delete();
         return redirect()->route('project.index')->with('message', 'Project Deleted Successfully');
+    }
+
+    public function order(Request $request){
+
+//        $this->validate($request,[
+//            'project_id' => 'required',
+//            'work_order' => 'required',
+//            'status' => 'required',
+//            'details' => 'required',
+//            'created_by' => 'required',
+//        ]);
+//        $data = array();
+//        $data['project_id'] = $request->project_id;
+//        $data['work_order'] = $request->work_order;
+//        $data['status'] = $request->status;
+//        $data['details'] = $request->details;
+//        $data['created_by'] = $request->created_by;
+
+
+        return view('admin.project.workorder');
+
+//        dd($data);
+//        DB::table('workorder')->insert($data);
+//        return redirect()->route('project.store')->with('message', 'Work Order Created Successfully');
+
+
+
+    }
+
+    public function list(){
+        $project = Project::orderBy('id', 'DESC')->get();
+        return view('admin.project.workorderlist', compact('project'));
     }
 
 }

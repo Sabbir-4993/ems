@@ -13,16 +13,16 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/project/create')}}">Create</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/project')}}">Project</a></li>
+                        <li class="breadcrumb-item active">Details</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
-    <section class="content">
+    <section class="content container">
         @if(Session::has('message'))
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -34,83 +34,55 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Project List</h3>
+                            <h3 class="card-title">Department List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th style="width: 1%">SN</th>
-                                    <th style="width: 8%">Project Name</th>
-                                    <th style="width: 10%">Company Name</th>
-                                    <th style="width: 10%">Email</th>
-                                    <th style="width: 10%">Address</th>
-                                    <th style="width: 10%">Contact</th>
-                                    <th style="width: 8%">Project Lead</th>
-                                    <th style="width: 5%">Status</th>
-                                    <th style="width: 5%">Budget</th>
-                                    <th style="width: 3%">Duration</th>
-                                    <th style="width: 8%">Start</th>
-                                    <th style="width: 10%">Action</th>
+                                    <th>SN</th>
+                                    <th>Project Name</th>
+                                    <th>Work Order Number</th>
+                                    <th>Status</th>
+                                    <th>Details</th>
+                                    <th>Created By</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($projects as $key=>$row)
+                                    @php
+                                      $workorder = \Illuminate\Support\Facades\DB::table('workorder')
+                                                  ->where('project_id', $project->name)
+                                                  ->get();
+                                    @endphp
+
                                     <tr>
-                                        <td>{{$key+1}}</td>
-                                        <td>{{$row->project_name}}</td>
-                                        <td>{{$row->company_name}}</td>
-                                        <td>{{$row->company_email}}</td>
-                                        <td>{{$row->address}}</td>
-                                        <td>{{$row->phone}}</td>
-                                        <td>{{$row->project_leader}}</td>
-                                        <td>
-                                            @if($row->status=='0')
-                                                <span class="badge badge-primary">Running</span>
-                                            @elseif($row->status=='1')
-                                                <span class="badge badge-warning">Hold</span>
-                                            @elseif($row->status=='2')
-                                                <span class="badge badge-danger">Canceled</span>
-                                            @elseif($row->status=='3')
-                                                <span class="badge badge-success">Complete</span>
-                                            @endif
-                                        </td>
-                                        <td>{{$row->est_budget}}</td>
-                                        <td>{{$row->pro_duration}}</td>
-                                        <td>{{$row->project_start}}</td>
-                                        <td class="project-actions text-right">
-                                            <a class="btn btn-secondary btn-xs"
-                                               href="{{route('project.order')}}">
-                                                <i class="fas fa-folder"></i>
-                                                Add WO.
-                                            </a>
-                                            <a class="btn btn-primary btn-xs"
-                                               href="{{route('project.show',[$row->id])}}">
-                                                <i class="fas fa-folder"></i>
-                                                View
-                                            </a>
-                                            <a class="btn btn-info btn-xs" href="{{route('project.edit',[$row->id])}}">
-                                                <i class="fas fa-pencil-alt"></i>
-                                                Edit
-                                            </a>
-                                        </td>
+                                        @foreach($workorder as $key=>$row)
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="">
+                                                    <i class="fas fa-edit"></i>
+                                                    Edit
+                                                </a>
+                                            </td>
+                                        @endforeach
                                     </tr>
-                                @endforeach
+
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>SN</th>
                                     <th>Project Name</th>
-                                    <th>Company Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Contact</th>
-                                    <th>Project Lead</th>
+                                    <th>Work Order Number</th>
                                     <th>Status</th>
-                                    <th>Budget</th>
-                                    <th>Duration</th>
-                                    <th>Start</th>
+                                    <th>Details</th>
+                                    <th>Created By</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
@@ -127,13 +99,13 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
+
 @endsection
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 
@@ -170,4 +142,3 @@
         });
     </script>
 @endsection
-

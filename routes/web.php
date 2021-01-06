@@ -27,6 +27,10 @@ Route::resource('designation', 'DesignationController');
 
 Route::resource('project', 'ProjectController');
 
+Route::get('project/work/order', 'ProjectController@order')->name('project.order');
+
+Route::get('project/work/order/list', 'ProjectController@list')->name('project.list');
+
 Route::resource('employee', 'UserController');
 
 Route::resource('contractors', 'ContractorController');
@@ -43,8 +47,6 @@ Route::resource('material_category', 'MaterialCategoryController');
 
 //Report
 Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
-
-
 
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){

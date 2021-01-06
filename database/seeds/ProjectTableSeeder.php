@@ -15,7 +15,6 @@ class ProjectTableSeeder extends Seeder
             'project_name' => 'EGMCL',
             'company_name' => 'Epic Garments',
             'description' => 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.',
-            'project_ref' => 'EG-AS136426-EP-001',
             'company_email' => 'info@egmcl.com',
             'address' => 'Baipayl, Dhaka',
             'phone' => '0123456789',

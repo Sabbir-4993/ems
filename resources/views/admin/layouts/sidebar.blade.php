@@ -147,6 +147,12 @@
                                 <p>View Project</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('project.list')}}" class="nav-link">
+                                <i class="fas fa-clipboard-list nav-icon"></i>
+                                <p>Work Order List</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

@@ -11,5 +11,7 @@ class ReportController extends Controller
         $today = date('d/m/y');
         $bill = DB::table('billing_histories')->where('id')->where('billing_date', $today)->get();
         return view('admin.contractor.contractorreport', compact('bill'));
+
+
     }
 }
