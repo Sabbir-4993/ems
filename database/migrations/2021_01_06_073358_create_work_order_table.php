@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkorderTable extends Migration
+class CreateWorkOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateWorkorderTable extends Migration
      */
     public function up()
     {
-        Schema::create('workorder', function (Blueprint $table) {
+        Schema::create('work_orders', function (Blueprint $table) {
             $table->id();
             $table->string('project_id');
             $table->string('work_order');
             $table->string('status');
             $table->string('details');
             $table->string('created_by');
+            $table->string('created_date');
             $table->timestamps();
         });
     }

@@ -27,10 +27,6 @@ Route::resource('designation', 'DesignationController');
 
 Route::resource('project', 'ProjectController');
 
-Route::get('project/work/order', 'ProjectController@order')->name('project.order');
-
-Route::get('project/work/order/list', 'ProjectController@list')->name('project.list');
-
 Route::resource('employee', 'UserController');
 
 Route::resource('contractors', 'ContractorController');
@@ -49,9 +45,17 @@ Route::resource('material_category', 'MaterialCategoryController');
 Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
 
 //Requisition
+Route::group(['prefix'=>'workOrder','as'=>'workOrder.'], function (){
+    Route::get('project/work/order', 'WorkOrderController@addWorkOrder')->name('addWorkOrder');
+    Route::post('work-order-store', 'WorkOrderController@workOrderStore')->name('orderStore');
+    Route::get('project/work/order/list', 'WorkOrderController@workOrderList')->name('list');
+});
+
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
-    //for getting Product
+
     Route::POST('work-order','RequisitionController@getWorkNo')->name('getWorkNo');
+    //for getting Product
+    Route::POST('product-list','RequisitionController@getMaterial')->name('getMaterial');
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
     Route::get('', 'RequisitionController@show')->name('show');
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');

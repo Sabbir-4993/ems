@@ -79,10 +79,10 @@
                                         <td>{{$row->est_budget}}</td>
                                         <td>{{$row->pro_duration}}</td>
                                         <td>{{$row->project_start}}</td>
-                                        <td class="project-actions text-right">
+                                        <td class="project-actions text-left">
                                             <a class="btn btn-secondary btn-xs"
-                                               href="{{route('project.order')}}">
-                                                <i class="fas fa-folder"></i>
+                                               href="{{route('workOrder.addWorkOrder')}}">
+                                                <i class="fas fa-plus"></i>
                                                 Add WO.
                                             </a>
                                             <a class="btn btn-primary btn-xs"
@@ -98,24 +98,6 @@
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Project Name</th>
-                                    <th>Company Name</th>
-{{--                                    <th>Description</th>--}}
-                                    <th>Ref.</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Contact</th>
-                                    <th>Project Lead</th>
-                                    <th>Status</th>
-                                    <th>Budget</th>
-                                    <th>Duration</th>
-                                    <th>Start</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->

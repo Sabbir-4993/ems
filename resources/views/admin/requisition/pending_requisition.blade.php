@@ -57,7 +57,7 @@
                                             <td>{{$key+1}}</td>
                                             <td>
                                                 @php
-                                                    $users = \App\User::where('id',$row->user_id)->first();
+                                                    $users = \App\User::where('id',$row->created_by)->first();
                                                 @endphp
                                                 {{$users->name}}
                                             </td>
@@ -86,17 +86,6 @@
                                         </tr>
                                     @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>SN</th>
-                                            <th>Requisition By</th>
-                                            <th>Project Name</th>
-                                            <th>Requisition No</th>
-                                            <th>Date </th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

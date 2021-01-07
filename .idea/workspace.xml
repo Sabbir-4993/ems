@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_31_2020_10_27_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_31_2020_10_27_AM__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="Requisition Modification with cat">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/daynamic.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_06_073358_create_workorder_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_06_073358_create_work_order_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/workorder.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/work-order.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/workorderlist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/work-order-list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/pending_requisition.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/pending_requisition.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +36,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="composer.json" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -167,11 +180,12 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VueJs Project/VueInventory" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/project" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -184,6 +198,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Web Development\htdocs\ems\resources\views\admin\project" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin" />
     </key>
   </component>
@@ -235,7 +250,7 @@
       <workItem from="1609818153006" duration="20744000" />
       <workItem from="1609904278850" duration="15177000" />
       <workItem from="1609991334145" duration="3249000" />
-      <workItem from="1609994955344" duration="3020000" />
+      <workItem from="1609994955344" duration="23809000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -356,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609922196428</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Requisition Modification">
+      <created>1609998124381</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1609998124381</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +427,8 @@
     <MESSAGE value="pending Requisition added to dash" />
     <MESSAGE value="assign project details" />
     <MESSAGE value="project details and particular done" />
-    <option name="LAST_COMMIT_MESSAGE" value="project details and particular done" />
+    <MESSAGE value="Requisition Modification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Requisition Modification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -419,6 +442,16 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php</url>
           <line>4</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>
+          <line>150</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php</url>
+          <line>114</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

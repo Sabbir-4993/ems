@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Add / Remove Table Rows Dynamically</title>
+    <style>
+        form{
+            margin: 20px 0;
+        }
+        form input, button{
+            padding: 5px;
+        }
+        table{
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td{
+            border: 1px solid #cdcdcd;
+        }
+        table th, table td{
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".add-row").click(function(){
+                var name = $("#name").val();
+                var particular = $("#particular").val();
+                var email = $("#email").val();
+                var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td><td>" + particular + "</td></tr>";
+                $("table tbody").append(markup);
+            });
+
+            // Find and remove selected table rows
+            $(".delete-row").click(function(){
+                $("table tbody").find('input[name="record"]').each(function(){
+                    if($(this).is(":checked")){
+                        $(this).parents("tr").remove();
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<form>
+    <input type="text" id="name" placeholder="Name">
+    <select class="form-control" name="particular" id="particular">
+        <option selected > Category</option>
+        <option selected >Select Category</option>
+    </select>
+    <input type="text" id="email" placeholder="Email Address">
+    <input type="button" class="add-row" value="Add Row">
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Select</th>
+        <th>name</th>
+        <th>option</th>
+        <th>sub</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<button type="button" class="delete-row">Delete Row</button>
+</body>
+</html>
+<table id="sample_table" style="display:none;">
+    <tr id="">
+        <td><span class="sn"></span>.</td>
+        <td>
+            <div class="form-group">
+
+                <select class="form-control" name="particular[]" id="particular">
+                    <option selected disabled>Select Category</option>
+                    @foreach(\App\Material::orderby('material_name','asc')->get() as $material)
+                    <option value="{{$material->id}}">{{$material->material_name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </td>
+        <td>
+            <input type="text" id="" name="quantity[]" placeholder="Enter Product Quantity" class="form-control" >
+        </td>
+        <td>
+            <input type="text" id="" name="remarks[]" placeholder="Enter  Remarks" class="form-control " >
+        </td>
+        <td><a class="btn btn-m delete-record" ><i class="fas fa-trash"></i></a></td>
+    </tr>
+</table>

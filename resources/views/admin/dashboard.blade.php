@@ -25,6 +25,8 @@
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
+                    <a href="{{route('requisition.pending')}}" class="small-box-footer">
+
                     <div class="info-box shadow">
                         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
@@ -40,19 +42,25 @@
                         </div>
                         <!-- /.info-box-content -->
                     </div>
+                    </a>
                     <!-- /.info-box -->
                 </div>
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
+                <a href="{{route('project.index')}}" class="small-box-footer">
                     <div class="info-box mb-3 shadow">
-                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                        @php
+                            $project = count(\App\Project::all());
+                        @endphp
+                        <span class="info-box-icon bg-danger elevation-1"><i class="ion ion-stats-bars"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
-                            <span class="info-box-number">41,410</span>
+                            <span class="info-box-text">Project</span>
+                            <span class="info-box-number">{{$project}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
+                    </a>
                     <!-- /.info-box -->
                 </div>
                 <!-- /.col -->
@@ -60,6 +68,18 @@
                 <!-- fix for small devices only -->
                 <div class="clearfix hidden-md-up"></div>
 
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3 shadow">
+                        <span class="info-box-icon bg-success elevation-1"><i class="ion ion-person-add"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Employee</span>
+                            <span class="info-box-number">76</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3 shadow">
                         <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
@@ -72,57 +92,13 @@
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3 shadow">
-                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                <!-- /.row (main row) -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </section >
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
-                            <span class="info-box-number">2,000</span>
-                        <div class="icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <a href="{{route('project.index')}}" class="small-box-footer">
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            @php
-                                $project = count(\App\Project::all());
-                            @endphp
-                            <h1>{{$project}} </h1>
-                            <p>Project</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>44</h3>
-
-                            <p>User Registrations</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
+    <section class="content">
+        <div class="container-fluid">
             <!-- Main row -->
             <div class="row">
                 <!-- Left col -->
@@ -252,10 +228,7 @@
                 </section>
                 <!-- right col -->
             </div>
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <div class="modal fade" id="modal-m">
+            <div class="modal fade" id="modal-m">
         <div class="modal-dialog modal-m">
             <form  id="addTodo">
                 @csrf
@@ -285,6 +258,8 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+        </div>
+    </section >
 
     <!-- /.content -->
     <!-- /.content-wrapper -->

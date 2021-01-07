@@ -46,46 +46,45 @@
                                     <th>Work Order Number</th>
                                     <th>Status</th>
                                     <th>Details</th>
-                                    <th>Created By</th>
+                                    <th>Created Date</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @php
-                                      $workorder = \Illuminate\Support\Facades\DB::table('workorder')
-                                                  ->where('project_id', $project->name)
-                                                  ->get();
+                                      $workOrder = \Illuminate\Support\Facades\DB::table('work_orders')->get();
                                     @endphp
-
+                                    @foreach($workOrder as $key=>$row)
                                     <tr>
-                                        @foreach($workorder as $key=>$row)
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{$key+1}}</td>
+                                            <td>
+                                                @php
+                                                $project = \App\Project::where('id',$row->project_id)->first();
+                                                    @endphp
+                                                {{$project->project_name}}</td>
+                                            <td>{{$row->work_order}}</td>
+                                            <td>
+                                                @if($row->status=='0')
+                                                    <span class="badge badge-primary">Running</span>
+                                                @elseif($row->status=='1')
+                                                    <span class="badge badge-warning">Hold</span>
+                                                @elseif($row->status=='2')
+                                                    <span class="badge badge-danger">Canceled</span>
+                                                @elseif($row->status=='3')
+                                                    <span class="badge badge-success">Complete</span>
+                                                @endif
+                                             </td>
+                                            <td>{{$row->details}}</td>
+                                            <td>{{$row->created_date}}</td>
                                             <td>
                                                 <a class="btn btn-block bg-gradient-secondary btn-xs" href="">
                                                     <i class="fas fa-edit"></i>
                                                     Edit
                                                 </a>
                                             </td>
-                                        @endforeach
                                     </tr>
-
+                                    @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Project Name</th>
-                                    <th>Work Order Number</th>
-                                    <th>Status</th>
-                                    <th>Details</th>
-                                    <th>Created By</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->

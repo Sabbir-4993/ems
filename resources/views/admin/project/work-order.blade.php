@@ -31,7 +31,7 @@
             </div>
         @endif
 
-        <form action="#" method="post">
+        <form action="{{route('workOrder.orderStore')}}" method="post">
             @csrf
             <div class="card card-secondary">
                 <div class="card-header">
@@ -76,10 +76,7 @@
                         <label for="inputStatus">Details</label>
                         <textarea name="details" id="details" cols="10" class="form-control" rows="5" required=""></textarea>
                     </div>
-                    <div class="form-group" disabled="">
-                        <label for="inputStatus">Created By</label>
-                        <input class="form-control" disabled name="created_by" type="text" value="{{Auth()->user()->name}}">
-                    </div>
+                        <input class="form-control"  name="created_by" type="hidden" value="{{Auth()->user()->id}}">
                 </div>
                 <div class="card-footer">
                     <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>

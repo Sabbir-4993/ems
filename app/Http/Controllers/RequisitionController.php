@@ -17,11 +17,9 @@ class RequisitionController extends Controller
     }
     public function storeRequisition( Request  $request){
 
+//        dd($request->all());
         $validator = Validator::make($request->all(), [
-            'project_id'=>'required',
-            'requisition_no'=>'required',
-            'particular'=>'required',
-            'quantity'=>'required',
+            'req_no'=>'required|unique:requisitions',
         ]);
 
         if($validator->fails()) {
@@ -30,10 +28,11 @@ class RequisitionController extends Controller
 
         else{
             $requisition = array();
-            $requisition['user_id'] = Auth()->id();
+            $requisition['created_by'] = Auth()->id();
             $requisition['project_id'] = $request->project_id;
+            $requisition['work_order'] = $request->work_order;
             $requisition['status'] = 0;
-            $requisition['req_no'] = $request->requisition_no;
+            $requisition['req_no'] = $request->req_no;
             $requisition['requisition_date'] = date('d/m/y');
             $requisitionId = DB::table('requisitions')->insertGetId($requisition);
             $count = count($request->quantity)-1;
@@ -123,11 +122,19 @@ class RequisitionController extends Controller
 
     public function getWorkNo(Request $request){
 
-        $parent_id = $request->cat_id;
-        $subcategories = SubWork::where('project_id',$parent_id)
-            ->select('subWork_name','id')
+        $id = $request->project_id;
+        $work_orders = DB::table('work_orders')->where('project_id',$id)
+            ->select('work_order','id')
             ->get();
-        return response()->json($subcategories);
+        return response()->json($work_orders);
+    }
+
+    public function getMaterial(Request $request){
+        $id = $request->cat_id;
+        $materials = DB::table('materials')->where('category',$id)
+            ->select('material_name','id')
+            ->get();
+        return response()->json($materials);
     }
 
 }

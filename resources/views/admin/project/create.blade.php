@@ -91,18 +91,6 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label for="exampleInputWorkOrder">Work Order Ref./PI Ref.</label>
-                                <input class="form-control @error('project_ref') is-invalid @enderror"
-                                       name="project_ref" type="text" placeholder="Enter Reference Number">
-                                @error('project_ref')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
                                 <label for="exampleInputAddress">Contact No.</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" name="phone"
                                        type="text" placeholder="Enter Number">
