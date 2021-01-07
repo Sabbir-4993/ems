@@ -66,8 +66,6 @@
         </form>
     </div>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('script')

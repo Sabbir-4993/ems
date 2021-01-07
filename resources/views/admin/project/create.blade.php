@@ -102,16 +102,6 @@
                             </div>
                             <!-- /.form-group -->
 
-{{--                            <div class="form-group">--}}
-{{--                                <label for="exampleInputCompanyEmail">Contact Person</label>--}}
-{{--                                <input class="form-control @error('company_email') is-invalid @enderror"--}}
-{{--                                       name="company_email" type="text" placeholder="Enter Contact Name">--}}
-{{--                                @error('company_email')--}}
-{{--                                <span class="invalid-feedback" role="alert">--}}
-{{--                                    <strong>{{ $message }}</strong>--}}
-{{--                                </span>--}}
-{{--                                @enderror--}}
-{{--                            </div>--}}
                             <div class="form-group">
                                 <label for="exampleInputAddress">Contact No.</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" name="phone"

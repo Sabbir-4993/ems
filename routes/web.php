@@ -27,6 +27,10 @@ Route::resource('designation', 'DesignationController');
 
 Route::resource('project', 'ProjectController');
 
+Route::get('project/work/order', 'ProjectController@order')->name('project.order');
+
+Route::get('project/work/order/list', 'ProjectController@list')->name('project.list');
+
 Route::resource('employee', 'UserController');
 
 Route::resource('contractors', 'ContractorController');
@@ -37,13 +41,19 @@ Route::resource('vendor', 'VendorController');
 
 Route::resource('material', 'MaterialController');
 
+Route::post('material_upload', 'MaterialController@upload')->name('material.upload');
+
 Route::resource('material_category', 'MaterialCategoryController');
+
+//Report
+Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
 
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
     //for getting Product
     Route::POST('work-order','RequisitionController@getWorkNo')->name('getWorkNo');
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
+    Route::get('', 'RequisitionController@show')->name('show');
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
     Route::get('pending-requisition', 'RequisitionController@pendingRequisition')->name('pending');
     Route::get('details-requisition/{id}', 'RequisitionController@detailsRequisition')->name('details');

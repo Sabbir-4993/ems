@@ -23,7 +23,7 @@
 <!-- /.content-header -->
 
 <!-- Main content -->
-<section class="content container">
+<section class="content">
     @if(Session::has('message'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -119,9 +119,8 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
 @endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">

@@ -30,6 +30,15 @@
             </div>
         @endif
 
+        @if(session('errors'))
+            @foreach($errors as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        @endif
+        @if(session('success'))
+
+            @endif
+
         @if(isset($errors) && $errors->any())
             <div class="alert alert-danger">
                 @foreach($errors->all() as $error)
@@ -38,14 +47,14 @@
             </div>
         @endif
         <div class="container-fluid">
-            <form action="{{route('material.store')}}" enctype="multipart/form-data" method="post">
-            {{ csrf_field() }}
+            <form action="{{route('material.upload')}}" enctype="multipart/form-data" method="post">
+            @csrf
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card card-default">
                             <div class="card-header">
-                                <h3 class="card-title">Material <small>File Upload </small></h3>
+                                <h3 class="card-title">Material <small>File Upload</small></h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
@@ -77,7 +86,7 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    <section class="content">
+    <div class="content">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Material List</h3>
@@ -98,10 +107,17 @@
                     </thead>
                     <tbody>
                     @foreach($material as $key => $row)
+                        @php
+                            $materialcategorys = \App\MaterialCategory::where('id', $row->category)->get();
+                        @endphp
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$row->material_name}}</td>
-                            <td>{{$row->category}}</td>
+                            <td>
+                                @foreach($materialcategorys as $materialcategory)
+                                    {{$materialcategory->name}}
+                                @endforeach
+                            </td>
                             <td>{{$row->unit}}</td>
                             <td>{{$row->price}}</td>
                             <td>{{$row->details}}</td>
@@ -129,8 +145,7 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-    </section>
-    <!-- /.content-wrapper -->
+    </div>
 @endsection
 
 @section('css')

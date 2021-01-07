@@ -1,4 +1,3 @@
-
 @extends('admin.layouts.master')
 
 @section('content')
@@ -132,7 +131,6 @@
         </form>
     </section>
     <!-- /.content -->
-    </div>
 @endsection
 
 @section('script')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Requisition;
 use App\Model\SubWork;
 use App\User;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class RequisitionController extends Controller
         if($validator->fails()) {
             return redirect()->back()->with('message1', 'Check Input Data !');
         }
+
         else{
             $requisition = array();
             $requisition['user_id'] = Auth()->id();
@@ -100,6 +102,7 @@ class RequisitionController extends Controller
             ->get();
         return view('admin.requisition.approved_requisition',compact('approvedRequisitions'));
     }
+
     public function approvedDetailsRequisition($id){
         $approvedDetailsRequisitions = DB::table('requisitions')
             ->join('approved_requisition_details','approved_requisition_details.requisition_id','=','requisitions.id')
@@ -108,6 +111,7 @@ class RequisitionController extends Controller
             ->get();
         return view('admin.requisition.approved_details_requisitions',compact('approvedDetailsRequisitions'));
     }
+
     public function printRequisition($id){
         $approvedDetailsRequisitions = DB::table('requisitions')
             ->join('approved_requisition_details','approved_requisition_details.requisition_id','=','requisitions.id')

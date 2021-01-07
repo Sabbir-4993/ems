@@ -1,4 +1,4 @@
-    <footer class="main-footer">
+    <footer class="main-footer text-right">
         <strong>Copyright &copy;2020 <a href="https://www.trimatric.com/">Trimatric</a>.</strong>
         All rights reserved.
     </footer>
@@ -49,7 +49,7 @@
         $(".nav-item").on("click", function(e){
             $("li.nav-item").removeClass("active");
             $(this).addClass("active");
-        });
+        });s
     </script>
 
     <script>

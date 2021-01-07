@@ -59,8 +59,8 @@
                                                 <th>Product quantity</th>
                                                 <th>Product Unit</th>
                                                 <th>Price / Unit</th>
-                                                <th>Total Price  </th>
-                                                <th> Procurement Remarks</th>
+                                                <th>Total Price </th>
+                                                <th>Procurement Remarks</th>
                                             </tr>
                                             </thead>
                                             <tbody>

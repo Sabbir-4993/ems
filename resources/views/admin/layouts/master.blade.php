@@ -7,7 +7,8 @@
 
         @yield('content')
 
-    </div>
+</div>
+<!-- /.content-wrapper -->
 
 @include('admin.layouts.footer')
 
