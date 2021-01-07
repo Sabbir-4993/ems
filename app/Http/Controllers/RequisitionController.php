@@ -3,29 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Model\SubWork;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RequisitionController extends Controller
 {
-//    public function getMaterial(Request $request){
-//
-//        $search = $request->search;
-//
-//        if($search == ''){
-//            $materials = Material::orderby('material_name','asc')->select('id','material_name')->limit(5)->get();
-//        }else{
-//            $materials = Material::orderby('material_name','asc')->select('id','material_name')->where('material_name', 'like', '%' .$search . '%')->limit(5)->get();
-//        }
-//
-//        $response = array();
-//        foreach($materials as $material){
-//            $response[] = array("value"=>$material->id,"label"=>$material->material_name);
-//        }
-//        return response()->json($response);
-//    }
-
     public function index(){
         return view('admin.requisition.create');
     }
@@ -115,7 +100,6 @@ class RequisitionController extends Controller
             ->get();
         return view('admin.requisition.approved_requisition',compact('approvedRequisitions'));
     }
-
     public function approvedDetailsRequisition($id){
         $approvedDetailsRequisitions = DB::table('requisitions')
             ->join('approved_requisition_details','approved_requisition_details.requisition_id','=','requisitions.id')
@@ -124,7 +108,6 @@ class RequisitionController extends Controller
             ->get();
         return view('admin.requisition.approved_details_requisitions',compact('approvedDetailsRequisitions'));
     }
-
     public function printRequisition($id){
         $approvedDetailsRequisitions = DB::table('requisitions')
             ->join('approved_requisition_details','approved_requisition_details.requisition_id','=','requisitions.id')
@@ -134,5 +117,13 @@ class RequisitionController extends Controller
         return view('admin.requisition.print_requisitions',compact('approvedDetailsRequisitions'));
     }
 
+    public function getWorkNo(Request $request){
+
+        $parent_id = $request->cat_id;
+        $subcategories = SubWork::where('project_id',$parent_id)
+            ->select('subWork_name','id')
+            ->get();
+        return response()->json($subcategories);
+    }
 
 }

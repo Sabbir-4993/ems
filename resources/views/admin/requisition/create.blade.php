@@ -53,11 +53,16 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputName">Select Project</label>
-                                <select class="form-control" name="project_id">
+                                <select name="category" id="category">
                                     <option selected disabled>Select Project</option>
                                     @foreach(\App\Project::all() as $projects)
                                         <option value="{{$projects->id}}">{{$projects->project_name}}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Select City:</label>
+                                <select name="subcategory" id="subcategory">
                                 </select>
                             </div>
                             <div class="form-group">
@@ -83,8 +88,6 @@
                     <div class="card-body">
                         <div class="form-group table-responsive p-0">
                             <label for="exampleInputmaterial">Requisition Details</label>
-                            {{--                                <input type="text" name="email" class="form-control" id="exampleInputEmail" required=""--}}
-                            {{--                                       placeholder="Enter Email Address">--}}
                                 <table class="table table-bordered" id="tbl_posts">
                                     <thead>
                                     <tr>
@@ -100,8 +103,6 @@
 
                                     </tbody>
                                 </table>
-{{--                            <input type="text" id='employee_search'>--}}
-{{--                            <input type="text" id='employeeid' readonly>--}}
                                 <div style="display:none;">
                                     <table id="sample_table">
                                         <tr id="">
@@ -181,32 +182,28 @@
             }
         });
 
-        {{--$(document).ready(function(){--}}
 
-        {{--    $( "#employee_search" ).autocomplete({--}}
-        {{--        source: function( request, response ) {--}}
-        {{--            // Fetch data--}}
-        {{--            $.ajax({--}}
-        {{--                url:"{{route('requisition.getMaterials')}}",--}}
-        {{--                method: 'get',--}}
-        {{--                dataType: "json",--}}
-        {{--                data: {--}}
-        {{--                    search: request.term--}}
-        {{--                },--}}
-        {{--                success: function( data ) {--}}
-        {{--                    response( data );--}}
-        {{--                }--}}
-        {{--            });--}}
-        {{--        },--}}
-        {{--        select: function (event, li) {--}}
-        {{--            // Set selection--}}
-        {{--            $('#employee_search').val(li.item.label); // display the selected text--}}
-        {{--            $('#employeeid').val(li.item.value); // save selected id to input--}}
-        {{--            return false;--}}
-        {{--        }--}}
-        {{--    });--}}
+        $(document).ready(function () {
 
-        {{--});--}}
+            $('#category').on('change',function(e) {
+
+                var cat_id = e.target.value;
+                $.ajax({
+
+                    url:"{{ route('requisition.getWorkNo')}}",
+                    type:"POST",
+                    data: {
+                        cat_id: cat_id,
+                        _token: '{{csrf_token()}}',
+                    },
+                    success:function (data) {
+                        $('#subcategory').empty();
+                        $('#subcategory').append('<option value="'+data.id+'">'+data.name+'</option>');
+                    }
+                })
+            });
+        });
+
     </script>
 
 @endsection

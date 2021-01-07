@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_31_2020_10_27_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_31_2020_10_27_AM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SubWorkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SubWorkController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/SubWork.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/SubWork.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/work/work_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/work/work_details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +233,9 @@
       <workItem from="1609731754498" duration="86000" />
       <workItem from="1609736206271" duration="12920000" />
       <workItem from="1609818153006" duration="20744000" />
-      <workItem from="1609904278850" duration="11744000" />
+      <workItem from="1609904278850" duration="15177000" />
+      <workItem from="1609991334145" duration="3249000" />
+      <workItem from="1609994955344" duration="3020000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -348,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609848400728</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="project details and particular done">
+      <created>1609922196428</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1609922196428</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +404,8 @@
     <MESSAGE value="requisition print option done" />
     <MESSAGE value="pending Requisition added to dash" />
     <MESSAGE value="assign project details" />
-    <option name="LAST_COMMIT_MESSAGE" value="assign project details" />
+    <MESSAGE value="project details and particular done" />
+    <option name="LAST_COMMIT_MESSAGE" value="project details and particular done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

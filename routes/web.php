@@ -42,7 +42,7 @@ Route::resource('material_category', 'MaterialCategoryController');
 //Requisition
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
     //for getting Product
-//    Route::get('/material/getMaterial/','RequisitionController@getMaterial')->name('getMaterials');
+    Route::POST('work-order','RequisitionController@getWorkNo')->name('getWorkNo');
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
     Route::get('pending-requisition', 'RequisitionController@pendingRequisition')->name('pending');
