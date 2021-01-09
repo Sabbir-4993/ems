@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -40,7 +40,6 @@ class ProjectController extends Controller
         $this->validate($request,[
             'project_name' => 'required',
             'company_name' => 'required',
-            'project_ref' => 'required',
             'address' => 'required',
             'company_email' => 'required',
             'phone' => 'required',

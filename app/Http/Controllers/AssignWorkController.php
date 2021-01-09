@@ -10,8 +10,9 @@ class AssignWorkController extends Controller
         return view('admin.todo.create');
     }
 
-//    public function storeWork( Request  $request){
+    public function storeWork( Request  $request){
 
+        dd($request->all());
 //        $request->validate([
 //            'contractor_name' => 'required',
 //            'project_name' => 'required',
@@ -21,6 +22,6 @@ class AssignWorkController extends Controller
 //            'work_order' => 'required|unique:assingproject',
 //            'total_payable' => 'required',
 //        ]);
-//    }
+    }
 
 }

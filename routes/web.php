@@ -41,12 +41,21 @@ Route::post('material_upload', 'MaterialController@upload')->name('material.uplo
 
 Route::resource('material_category', 'MaterialCategoryController');
 
-
+//Report
+Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
 
 //Requisition
+Route::group(['prefix'=>'workOrder','as'=>'workOrder.'], function (){
+    Route::get('project/work/order', 'WorkOrderController@addWorkOrder')->name('addWorkOrder');
+    Route::post('work-order-store', 'WorkOrderController@workOrderStore')->name('orderStore');
+    Route::get('project/work/order/list', 'WorkOrderController@workOrderList')->name('list');
+});
+
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
+
+    Route::POST('work-order','RequisitionController@getWorkNo')->name('getWorkNo');
     //for getting Product
-//    Route::get('/material/getMaterial/','RequisitionController@getMaterial')->name('getMaterials');
+    Route::POST('product-list','RequisitionController@getMaterial')->name('getMaterial');
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
     Route::get('', 'RequisitionController@show')->name('show');
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
@@ -75,15 +84,23 @@ Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
 
 });
 Route::group(['prefix'=>'assignWork','as'=>'assignWork.'], function(){
-
     Route::get('assign-work', 'AssignWorkController@index')->name('index');
+    Route::post('store-work', 'AssignWorkController@storeWork')->name('store');
 
 });
 Route::group(['prefix'=>'todo','as'=>'todo.'], function(){
-
     Route::post('Todo-work', 'TodoController@storeTodo')->name('store');
     Route::get('Todo-list', 'TodoController@fetchUserTodo')->name('list');
     Route::get('delete-todo/{id}', 'TodoController@deleteTodo')->name('delete');
+
+});
+Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
+    Route::post('sub-work', 'SubWorkController@storeSubWork')->name('store');
+    Route::post('sub-work-refNo', 'SubWorkController@storeSubWorkRefNo')->name('storeRefNo');
+    Route::post('sub-work-delay-remark', 'SubWorkController@storeRemarks')->name('storeRemark');
+    Route::post('sub-work-particular', 'SubWorkController@storeParticulars')->name('storeParticular');
+    Route::post('sub-work-particular/{id}', 'SubWorkController@storeParticularsDelete')->name('deleteParticular');
+    Route::get('sub-work-details/{id}', 'SubWorkController@SubWorkDetails')->name('details');
 
 });
 

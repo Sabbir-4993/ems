@@ -13,94 +13,93 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Pending Requisition </li>
+                        <li class="breadcrumb-item"><a href="{{url('/project')}}">Project</a></li>
+                        <li class="breadcrumb-item active">Details</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <!-- page title area end -->
-
     <!-- Main content -->
-    <section id="" class="content">
+    <section class="content container">
         @if(Session::has('message'))
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Pending Requisition List</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>SN</th>
-                                            <th>Requisition By</th>
-                                            <th>Project Name</th>
-                                            <th>Requisition No</th>
-                                            <th>Date </th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($pendingRequisitions as $key=>$row)
-                                        <tr>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Department List</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Project Name</th>
+                                    <th>Work Order Number</th>
+                                    <th>Status</th>
+                                    <th>Details</th>
+                                    <th>Created Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                      $workOrder = \Illuminate\Support\Facades\DB::table('work_orders')->get();
+                                    @endphp
+                                    @foreach($workOrder as $key=>$row)
+                                    <tr>
                                             <td>{{$key+1}}</td>
                                             <td>
                                                 @php
-                                                    $users = \App\User::where('id',$row->created_by)->first();
-                                                @endphp
-                                                {{$users->name}}
-                                            </td>
-                                            <td>
-                                            @php
-                                            $project = \App\Project::where('id',$row->project_id)->first();
-                                            @endphp
-                                                {{$project->project_name}}
-                                            </td>
-                                            <td>{{$row->req_no}}</td>
-                                            <td>{{$row->requisition_date}}</td>
+                                                $project = \App\Project::where('id',$row->project_id)->first();
+                                                    @endphp
+                                                {{$project->project_name}}</td>
+                                            <td>{{$row->work_order}}</td>
                                             <td>
                                                 @if($row->status=='0')
-                                                    <span class="badge badge-warning">Pending</span>
+                                                    <span class="badge badge-primary">Running</span>
                                                 @elseif($row->status=='1')
+                                                    <span class="badge badge-warning">Hold</span>
+                                                @elseif($row->status=='2')
+                                                    <span class="badge badge-danger">Canceled</span>
+                                                @elseif($row->status=='3')
                                                     <span class="badge badge-success">Complete</span>
                                                 @endif
-                                            </td>
-                                            <td class="project-actions text-center">
-                                                <a class="btn btn-primary btn-m"
-                                                   href="{{route('requisition.details',[$row->id])}}">
-                                                    <i class="fas fa-folder"></i>
-                                                    View
+                                             </td>
+                                            <td>{{$row->details}}</td>
+                                            <td>{{$row->created_date}}</td>
+                                            <td>
+                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="">
+                                                    <i class="fas fa-edit"></i>
+                                                    Edit
                                                 </a>
                                             </td>
-                                        </tr>
+                                    </tr>
                                     @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- /.card -->
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.col -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.row -->
+                <!-- /.col -->
             </div>
-
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-@endsection
 
+@endsection
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">

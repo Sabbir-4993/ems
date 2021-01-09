@@ -30,7 +30,7 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        <form action="#" method="post">
+        <form action="{{route('assignWork.store')}}" method="post">
             @csrf
             <div class="row">
                 <!-- left column -->
@@ -42,24 +42,19 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form >
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="">Department</label>
-                                    <select id="inputStatus" class="form-control custom-select" name="department_id"
-                                            required="">
-                                        <option value="" selected disabled>Select Employee</option>
+                                    <label for="">Employee</label>
+                                    <select class="select2" multiple="multiple" id="chosen-select" name="employee_id[]" data-placeholder="Select a State" style="width: 100%;">
                                         @foreach(\App\User::all() as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Designation</label>
-                                    <select class="form-control" name="designation" id="" required="">
+                                    <label for="">Project</label>
+                                    <select class="form-control" name="project" id="" required="">
                                         <option value="" selected disabled>Select Project</option>
-
                                         @foreach(\App\Project::all() as $project)
                                             <option value="{{$project->id}}">{{$project->project_name}}</option>
                                         @endforeach
@@ -68,7 +63,6 @@
                                 </div>
                             </div>
                             <!-- /.card-body -->
-                        </form>
                     </div>
                     <!-- /.card -->
                 </div>
@@ -82,14 +76,14 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputName">First Name</label>
-                                <input type="text" name="first_name" class="form-control" id="exampleInputName" required=""
-                                       placeholder="Enter First Name">
+                                <label for="exampleInputName">Start Date</label>
+                                <input type="date" name="start_date" class="form-control" required=""
+                                       placeholder="Enter Start Date">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName">First Name</label>
-                                <input type="text" name="first_name" class="form-control" id="exampleInputName" required=""
-                                       placeholder="Enter First Name">
+                                <label for="exampleInputName">End Date</label>
+                                <input type="date" name="end_date" class="form-control" required=""
+                                       placeholder="Enter End Date">
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -107,5 +101,33 @@
         </form>
     </section>
 
+@endsection
+
+@section('css')
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css') }}">
+@endsection
+
+@section('script')
+    <!-- Select2 -->
+    <script src="{{asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('backend/dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+
+    </script>
 @endsection
 

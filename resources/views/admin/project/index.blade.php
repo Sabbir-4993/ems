@@ -41,20 +41,18 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>SN</th>
-                                    <th>Project Name</th>
-                                    <th>Company Name</th>
-{{--                                    <th>Description</th>--}}
-                                    <th>Ref.</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Contact</th>
-                                    <th>Project Lead</th>
-                                    <th>Status</th>
-                                    <th>Budget</th>
-                                    <th>Duration</th>
-                                    <th>Start</th>
-                                    <th>Action</th>
+                                    <th style="width: 1%">SN</th>
+                                    <th style="width: 8%">Project Name</th>
+                                    <th style="width: 10%">Company Name</th>
+                                    <th style="width: 10%">Email</th>
+                                    <th style="width: 10%">Address</th>
+                                    <th style="width: 10%">Contact</th>
+                                    <th style="width: 8%">Project Lead</th>
+                                    <th style="width: 5%">Status</th>
+                                    <th style="width: 5%">Budget</th>
+                                    <th style="width: 3%">Duration</th>
+                                    <th style="width: 8%">Start</th>
+                                    <th style="width: 10%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -63,8 +61,6 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{$row->project_name}}</td>
                                         <td>{{$row->company_name}}</td>
-{{--                                        <td>{{$row->description}}</td>--}}
-                                        <td>{{$row->project_ref}}</td>
                                         <td>{{$row->company_email}}</td>
                                         <td>{{$row->address}}</td>
                                         <td>{{$row->phone}}</td>
@@ -83,7 +79,12 @@
                                         <td>{{$row->est_budget}}</td>
                                         <td>{{$row->pro_duration}}</td>
                                         <td>{{$row->project_start}}</td>
-                                        <td class="project-actions text-right">
+                                        <td class="project-actions text-left">
+                                            <a class="btn btn-secondary btn-xs"
+                                               href="{{route('workOrder.addWorkOrder')}}">
+                                                <i class="fas fa-plus"></i>
+                                                Add WO.
+                                            </a>
                                             <a class="btn btn-primary btn-xs"
                                                href="{{route('project.show',[$row->id])}}">
                                                 <i class="fas fa-folder"></i>
@@ -93,63 +94,10 @@
                                                 <i class="fas fa-pencil-alt"></i>
                                                 Edit
                                             </a>
-                                            <a class="btn btn-danger btn-xs" href="#" data-toggle="modal"
-                                               data-target="#modal-sm{{$row->id}}">
-                                                <i class="fas fa-trash"></i>
-                                                Delete
-                                            </a>
                                         </td>
-                                        <!-- /.modal -->
-                                        <div class="modal fade" id="modal-sm{{$row->id}}">
-                                            <div class="modal-dialog modal-sm">
-                                                <form action="{{route('project.destroy',[$row->id])}}" method="post">
-                                                    @csrf
-                                                    {{method_field('DELETE')}}
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Delete Confirm!!</h4>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Do you Want to Delete ?</p>
-                                                        </div>
-                                                        <div class="modal-footer justify-content-between">
-                                                            <button type="button" class="btn btn-default"
-                                                                    data-dismiss="modal">Close
-                                                            </button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <!-- /.modal-content -->
-                                            </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
-                                        <!-- /.modal End -->
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Project Name</th>
-                                    <th>Company Name</th>
-{{--                                    <th>Description</th>--}}
-                                    <th>Ref.</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Contact</th>
-                                    <th>Project Lead</th>
-                                    <th>Status</th>
-                                    <th>Budget</th>
-                                    <th>Duration</th>
-                                    <th>Start</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->

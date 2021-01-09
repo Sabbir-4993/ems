@@ -144,7 +144,7 @@
                                     <b class="d-block text-gray" style="font-size: 16px;">
                                         <i class="fas fa-user"></i>
                                         @php
-                                            $users = \App\User::where('id',$row->user_id)->first();
+                                            $users = \App\User::where('id',$row->created_by)->first();
                                         @endphp
                                         {{$users->name}}
                                     </b>
@@ -186,14 +186,5 @@
 
 @endsection
 
-{{--<script>--}}
-{{--    $(document).ready(function(){--}}
-{{--        var qty=$("#qty");--}}
-{{--        qty.keyup(function(){--}}
-{{--            var total=isNaN(parseInt(qty.val()* $("#price").val())) ? 0 :(qty.val()* $("#price").val())--}}
-{{--            $("#total").val(total);--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
 
 

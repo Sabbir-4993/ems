@@ -8,17 +8,16 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4.2",
-        "cyber-duck/laravel-excel": "^2.1",
+        "php": "^7.2.5|^8.0",
+        "ext-json": "*",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "harvesthq/chosen": "^1.8",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": ">=2.4.0",
-        "maatwebsite/excel": "^3.1",
-        "nesbot/carbon": "^2.43",
-        "ext-json": "*"
+        "nesbot/carbon": "^2.43"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

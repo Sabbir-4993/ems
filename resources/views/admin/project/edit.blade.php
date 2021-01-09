@@ -81,17 +81,6 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label for="exampleInputWorkOrder">Ref./Work Order</label>
-                                <input class="form-control @error('project_ref') is-invalid @enderror"
-                                       name="project_ref" type="text" placeholder="Enter Reference Number" value="{{$project->project_ref}}">
-                                @error('project_ref')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
                                 <label for="exampleInputCompanyEmail">Company Email</label>
                                 <input class="form-control @error('company_email') is-invalid @enderror"
                                        name="company_email" type="text" placeholder="Enter Company Email" value="{{$project->company_email}}">

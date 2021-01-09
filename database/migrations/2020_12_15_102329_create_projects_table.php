@@ -18,7 +18,6 @@ class CreateProjectsTable extends Migration
             $table->string('project_name');
             $table->string('company_name');
             $table->string('description');
-            $table->string('project_ref');
             $table->string('company_email');
             $table->longText('address');
             $table->string('phone');

@@ -4,46 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Material;
 use App\Requisition;
+use App\Model\SubWork;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RequisitionController extends Controller
 {
-//    public function getMaterial(Request $request){
-//
-//        $search = $request->search;
-//
-//        if($search == ''){
-//            $materials = Material::orderby('material_name','asc')->select('id','material_name')->limit(5)->get();
-//        }else{
-//            $materials = Material::orderby('material_name','asc')->select('id','material_name')->where('material_name', 'like', '%' .$search . '%')->limit(5)->get();
-//        }
-//
-//        $response = array();
-//        foreach($materials as $material){
-//            $response[] = array("value"=>$material->id,"label"=>$material->material_name);
-//        }
-//        return response()->json($response);
-//    }
-
     public function index(){
         return view('admin.requisition.create');
     }
-
-    public function show(){
-
-        $requisition = Requisition::orderBy('id', 'DESC')->get();
-        return view('admin.requisition.index', compact('requisition'));
-    }
-
     public function storeRequisition( Request  $request){
 
         $validator = Validator::make($request->all(), [
-            'project_id'=>'required',
-            'requisition_no'=>'required',
-            'particular'=>'required',
-            'quantity'=>'required',
+            'req_no'=>'required|unique:requisitions',
         ]);
 
         if($validator->fails()) {
@@ -52,10 +27,10 @@ class RequisitionController extends Controller
 
         else{
             $requisition = array();
-            $requisition['user_id'] = Auth()->id();
+            $requisition['created_by'] = Auth()->id();
             $requisition['project_id'] = $request->project_id;
             $requisition['status'] = 0;
-            $requisition['req_no'] = $request->requisition_no;
+            $requisition['req_no'] = $request->req_no;
             $requisition['requisition_date'] = date('d/m/y');
             $requisitionId = DB::table('requisitions')->insertGetId($requisition);
             $count = count($request->quantity)-1;
@@ -143,5 +118,21 @@ class RequisitionController extends Controller
         return view('admin.requisition.print_requisitions',compact('approvedDetailsRequisitions'));
     }
 
+    public function getWorkNo(Request $request){
+
+        $id = $request->project_id;
+        $work_orders = DB::table('work_orders')->where('project_id',$id)
+            ->select('work_order','id')
+            ->get();
+        return response()->json($work_orders);
+    }
+
+    public function getMaterial(Request $request){
+        $id = $request->cat_id;
+        $materials = DB::table('materials')->where('category',$id)
+            ->select('material_name','id')
+            ->get();
+        return response()->json($materials);
+    }
 
 }
