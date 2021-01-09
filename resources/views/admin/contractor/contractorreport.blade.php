@@ -64,7 +64,7 @@
                                         <select class="custom-select" name="project_name">
                                             <option selected="selected" disabled>Select  Project</option>
                                             @foreach($projects as $workorder)
-                                                    <option>{{$workorder->id}}</option>
+                                                    <option value="{{$workorder->id}}">{{$workorder->id}}</option>
                                             @endforeach
                                         </select>
                                     </div>

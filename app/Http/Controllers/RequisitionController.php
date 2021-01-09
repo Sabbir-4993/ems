@@ -17,7 +17,6 @@ class RequisitionController extends Controller
     }
     public function storeRequisition( Request  $request){
 
-//        dd($request->all());
         $validator = Validator::make($request->all(), [
             'req_no'=>'required|unique:requisitions',
         ]);
@@ -30,7 +29,6 @@ class RequisitionController extends Controller
             $requisition = array();
             $requisition['created_by'] = Auth()->id();
             $requisition['project_id'] = $request->project_id;
-            $requisition['work_order'] = $request->work_order;
             $requisition['status'] = 0;
             $requisition['req_no'] = $request->req_no;
             $requisition['requisition_date'] = date('d/m/y');
