@@ -32,22 +32,22 @@
             </div>
         @endif
         @if(Session::has('message1'))
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h5><i class="icon fas fa-check"></i> {{Session::get('message1')}}</h5>
-                </div>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> {{Session::get('message1')}}</h5>
+            </div>
         @endif
         <form action="{{route('requisition.store')}}" method="post">
-           @csrf
-        <div class="row">
-            <!-- left column -->
-            <div class="col-md-4">
-                <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Requisition Added</h3>
-                    </div>
-                    <!-- /.card-header -->
+            @csrf
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-4">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Requisition Added</h3>
+                        </div>
+                        <!-- /.card-header -->
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputName">Select Project</label>
@@ -70,53 +70,53 @@
 
                         </div>
                         <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
-            </div>
-            <!--/.col (left) -->
-            <!-- right column -->
-            <div class="col-md-8">
-                <!-- Form Element sizes -->
-                <div class="card card-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title">Requisition Details</h3>
-                    </div>
-                    <div class="card-body">
-                       <div class="form-group">
-                           <form>
-                               <div class="form-group">
-                                   <label for="exampleInputName">Select Material Category</label>
-                                   <select name="category" id="category" class="form-control">
-                                       <option selected  >Select Material Category</option>
-                                       @foreach(\App\MaterialCategory::orderby('name','asc')->get() as $category)
-                                           <option value="{{$category->id}}">{{$category->name}}</option>
-                                       @endforeach
-                                   </select>
-                               </div>
-                               <div class="form-group">
-                                   <label for="title">Select Material:</label>
-                                   <select name="particular[]" id="particular" class="form-control" required>
-                                   </select>
-                               </div>
+                <!--/.col (left) -->
+                <!-- right column -->
+                <div class="col-md-8">
+                    <!-- Form Element sizes -->
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Requisition Details</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputName">Select Material Category</label>
+                                        <select name="category" id="category" class="form-control">
+                                            <option selected  >Select Material Category</option>
+                                            @foreach(\App\MaterialCategory::orderby('name','asc')->get() as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title">Select Material:</label>
+                                        <select name="particular[]" id="particular" class="form-control" required>
+                                        </select>
+                                    </div>
 
-                               <div class="form-group">
-                                   <label for="title">Product Quantity:</label>
-                                   <input type="text" id="quantity" name="quantity[]" placeholder="Enter Product Quantity" class="form-control" >
-                               </div>
+                                    <div class="form-group">
+                                        <label for="title">Product Quantity:</label>
+                                        <input type="text" id="quantity" name="quantity[]" placeholder="Enter Product Quantity" class="form-control" >
+                                    </div>
 
-                               <div class="form-group">
-                                   <label for="title">Remarks:</label>
-                                   <input type="text" id="remarks" name="remarks[]" placeholder="Enter  Remarks" class="form-control " >
-                               </div>
-                           </form>
-                       </div>
-                    </div>
-                    <div class="form-group container">
-                        <button type="button" id="add-row" class="btn btn-info float-right" >Add Row</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group table-responsive p-0">
-                            <label for="exampleInputmaterial">Requisition Details</label>
+                                    <div class="form-group">
+                                        <label for="title">Remarks:</label>
+                                        <input type="text" id="remarks" name="remarks[]" placeholder="Enter  Remarks" class="form-control " >
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="form-group container">
+                            <button type="button" id="add-row" class="btn btn-info float-right" >Add Row</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group table-responsive p-0">
+                                <label for="exampleInputmaterial">Requisition Details</label>
                                 <table class="table table-bordered" id="tbl_posts">
                                     <thead>
                                     <tr>
@@ -129,28 +129,28 @@
                                     <tbody>
                                     </tbody>
                                 </table>
-                            <button type="button" id="delete-row" class=" btn btn-danger">Delete Row</button>
+                                <button type="button" id="delete-row" class=" btn btn-danger">Delete Row</button>
+                            </div>
                         </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card-body -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
-            </div>
-            <!--/.col (right) -->
-            <div class="col-md-12">
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-info float-right">Submit</button>
+                <!--/.col (right) -->
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-info float-right">Submit</button>
+                    </div>
                 </div>
             </div>
-        </div>
-       </form>
+        </form>
     </section>
     <!-- /.content -->
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    @endsection
+@endsection
 
 @section('script')
     <script>

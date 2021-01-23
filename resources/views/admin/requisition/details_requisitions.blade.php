@@ -94,7 +94,7 @@
                                                             <input class="form-control" type="text" name="pro_remarks[]">
                                                         </td>
                                                          @endforeach
-                                                @endforeach
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -173,6 +173,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <div class="row card-footer">
                         <div class="col-12">
                             <input type="submit" value="Approved" class="btn btn-success float-left">

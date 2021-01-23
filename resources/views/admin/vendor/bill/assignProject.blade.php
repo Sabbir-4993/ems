@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('assignProject.view')}}">Assign Project</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('vendorAssignProject.view')}}">Assign Project</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
-        <form action="{{route('assignProject.store')}}" method="post">
+        <form action="{{route('vendorAssignProject.store')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -46,17 +46,17 @@
                         </div>
                         <div class="card-body">
                             @php
-                                use App\Category;use App\Contractor;use App\Project;
+                                use App\Category;use App\Project;use App\Vendor;
                                 $categories = Category::all();
                                 $projects = Project::all();
-                                $contractors = Contractor::all();
+                                $vendors = Vendor::all();
                             @endphp
                             <div class="form-group">
-                                <label class="col-form-label">Contractor Select</label>
-                                <select class="custom-select" name="contractor_name">
-                                    <option selected="selected" disabled>Select Contractor </option>
-                                    @foreach($contractors as $contractor)
-                                        <option value="{{$contractor->id}}">{{$contractor->contractor_name}}</option>
+                                <label class="col-form-label">Select Vendor </label>
+                                <select class="custom-select" name="vendor_name">
+                                    <option selected="selected" disabled>Select Vendor </option>
+                                    @foreach($vendors as $vendor)
+                                        <option value="{{$vendor->id}}">{{$vendor->vendor_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -109,13 +109,9 @@
                                 <input class="form-control" type="date"  id="assign_date" name="assign_date">
                             </div>
                             <div class="form-group">
-                                <label for="end_date" class="col-form-label">End Date</label>
-                                <input class="form-control" type="date"  id="end_date" name="end_date">
-                            </div>
-                            <div class="form-group">
-                                    <label for="exampleDepartmentDetails">Work Order No</label>
-                                    <input class="form-control @error('work_order') is-invalid @enderror" name="work_order" type="text" placeholder="">
-                                    @error('work_order')
+                                    <label for="exampleDepartmentDetails">PI No</label>
+                                    <input class="form-control @error('pi_number') is-invalid @enderror" name="pi_number" type="text" placeholder="">
+                                    @error('pi_number')
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

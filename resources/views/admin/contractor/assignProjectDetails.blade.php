@@ -59,149 +59,149 @@
                     </div>
                 </div>
                 @foreach($projects as $project)
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-                            <div class="row">
-                                <div class="col-12 col-sm-4">
-                                    <div class="info-box bg-light">
-                                        <div class="info-box-content">
-                                            <span class="info-box-text text-center text-muted">Total Budget</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{$project->total_payable}} BDT</span>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                                <div class="row">
+                                    <div class="col-12 col-sm-4">
+                                        <div class="info-box bg-light">
+                                            <div class="info-box-content">
+                                                <span class="info-box-text text-center text-muted">Total Budget</span>
+                                                <span class="info-box-number text-center text-muted mb-0">{{$project->total_payable}} BDT</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="info-box bg-light">
+                                            <div class="info-box-content">
+                                                <span class="info-box-text text-center text-muted">Total Pay Ammount</span>
+                                                <span class="info-box-number text-center text-muted mb-0">{{$project->total_pay}} BDT</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="info-box bg-light">
+                                            <div class="info-box-content">
+                                                <span class="info-box-text text-center text-muted">Due Amount</span>
+                                                <span class="info-box-number text-center text-muted mb-0">{{$project->total_due}} BDT</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="info-box bg-light">
-                                        <div class="info-box-content">
-                                            <span class="info-box-text text-center text-muted">Total Pay Ammount</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{$project->total_pay}} BDT</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="info-box bg-light">
-                                        <div class="info-box-content">
-                                            <span class="info-box-text text-center text-muted">Due Amount</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{$project->total_due}} BDT</span>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4>Billing History</h4>
+                                        <div class="post">
+                                            @php
+                                                $billhistory = \Illuminate\Support\Facades\DB::table('billing_histories')
+                                                                ->where('work_order',$project->work_order)
+                                                                ->get();
+                                            @endphp
+                                            <div class="user-block">
+                                                <table id="example1" class="table table-bordered table-striped display">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>SN</th>
+                                                        <th>Work Order</th>
+                                                        <th>BILLING No</th>
+                                                        <th>Billing Amount</th>
+                                                        <th>Billing Method</th>
+                                                        <th>Billing Details</th>
+                                                        <th>Billing Date</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($billhistory as $key=>$row)
+                                                        <tr>
+                                                            <td>{{$key+1}}</td>
+                                                            <td>{{$row->work_order}}</td>
+                                                            <td>{{$row->billing_no}}</td>
+                                                            <td>{{$row->billing_amount}}</td>
+                                                            <td>{{$row->billing_method}}</td>
+                                                            <td>{{$row->billing_details}}</td>
+                                                            <td>{{$row->billing_date}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <h4>Billing History</h4>
-                                    <div class="post">
-                                        @php
-                                        $billhistory = \Illuminate\Support\Facades\DB::table('billing_histories')
-                                                        ->where('project_work_no',$project->work_order)
-                                                        ->get();
-                                        @endphp
-                                        <div class="user-block">
-                                            <table id="example1" class="table table-bordered table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>SN</th>
-                                                    <th>Work Order</th>
-                                                    <th>BILLING No</th>
-                                                    <th>Billing Amount</th>
-                                                    <th>Billing Method</th>
-                                                    <th>Billing Details</th>
-                                                    <th>Billing Date</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($billhistory as $key=>$row)
-                                                <tr>
-                                                    <td>{{$key+1}}</td>
-                                                    <td>{{$row->project_work_no}}</td>
-                                                    <td>{{$row->billing_no}}</td>
-                                                    <td>{{$row->billing_amount}}</td>
-                                                    <td>{{$row->billing_method}}</td>
-                                                    <td>{{$row->billing_details}}</td>
-                                                    <td>{{$row->billing_date}}</td>
-                                                </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                            <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+                                @php
+                                    $projectDetails = \App\Project::where('id',$project->project_id)->first();
+                                    $contractorDetails = \App\Contractor::where('id',$project->contractor_id)->first();
+                                @endphp
+                                <h3 class="text-success"><i class="fas fa-project-diagram"></i>
+                                    {{$projectDetails->project_name}}
+                                </h3>
+                                <br>
+                                <div class="text-muted">
+                                    <p class="text-sm">Project Status
+                                        @if($projectDetails->status=='0')
+                                            <b class="d-block">
+                                                <span class="badge badge-primary">Running</span>
+                                            </b>
+                                        @elseif($projectDetails->status=='1')
+                                            <b class="d-block">
+                                                <span class="badge badge-warning">Hold</span>
+                                            </b>
+                                        @elseif($projectDetails->status=='2')
+                                            <b class="d-block">
+                                                <span class="badge badge-danger">Canceled</span>
+                                            </b>
+                                        @elseif($projectDetails->status=='3')
+                                            <b class="d-block">
+                                                <span class="badge badge-success">Complete</span>
+                                            </b>
+                                        @endif
+                                    </p>
+                                    <p class="text-sm">Client Company
+                                        <b class="d-block">{{$projectDetails->company_name}}</b>
+                                    </p>
+                                    <p class="text-sm">Project Leader
+                                        <b class="d-block">{{$projectDetails->project_leader}}</b>
+                                    </p>
+                                    <p class="text-sm">Project Work ID
+                                        <b class="d-block">{{$project->work_order}}</b>
+                                    </p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                            @php
-                                $projectDetails = \App\Project::where('id',$project->project_id)->first();
-                                $contractorDetails = \App\Contractor::where('id',$project->contractor_id)->first();
-                            @endphp
-                            <h3 class="text-success"><i class="fas fa-project-diagram"></i>
-                                {{$projectDetails->project_name}}
-                            </h3>
-                            <br>
-                            <div class="text-muted">
-                                <p class="text-sm">Project Status
-                                    @if($projectDetails->status=='0')
-                                        <b class="d-block">
-                                            <span class="badge badge-primary">Running</span>
+                                <div class="text-muted">
+                                    <p class="text-sm">Contractor Name
+                                        <b class="d-block text-gray" style="font-size: 16px;">
+                                            <i class="fas fa-user"></i>
+                                            {{$contractorDetails->contractor_name}}
                                         </b>
-                                    @elseif($projectDetails->status=='1')
-                                        <b class="d-block">
-                                            <span class="badge badge-warning">Hold</span>
-                                        </b>
-                                    @elseif($projectDetails->status=='2')
-                                        <b class="d-block">
-                                            <span class="badge badge-danger">Canceled</span>
-                                        </b>
-                                    @elseif($projectDetails->status=='3')
-                                        <b class="d-block">
-                                            <span class="badge badge-success">Complete</span>
-                                        </b>
+                                    </p>
+                                    <p class="text-sm">Contractor Number
+                                        <a href="tel: {{$contractorDetails->contractor_phone}}" style="font-size: 16px;" class="d-block text-info">
+                                            <i class="fas fa-phone"></i>
+                                            {{$contractorDetails->contractor_phone}}
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="text-center mt-5 mb-3">
+                                    @if($project ->total_due == 0 && $project ->total_payable == $project ->total_pay)
+                                        <a class="btn btn-danger btn-lg disabled"  href="#" data-toggle="modal"
+                                           data-target="#modal-sm{{$project->id}}">
+                                            <i class="fas fa-money-bill"></i>
+                                            Bill Paid
+                                        </a>
+                                    @else
+                                        <a class="btn btn-primary btn-lg" href="#" data-toggle="modal"
+                                           data-target="#modal-sm{{$project->id}}">
+                                            <i class="fas fa-money-bill"></i>
+                                            Pay Bill
+                                        </a>
                                     @endif
-                                </p>
-                                <p class="text-sm">Client Company
-                                    <b class="d-block">{{$projectDetails->company_name}}</b>
-                                </p>
-                                <p class="text-sm">Project Leader
-                                    <b class="d-block">{{$projectDetails->project_leader}}</b>
-                                </p>
-                                <p class="text-sm">Project Work ID
-                                    <b class="d-block">{{$project->work_order}}</b>
-                                </p>
-                            </div>
-                            <div class="text-muted">
-                            <p class="text-sm">Contractor Name
-                                <b class="d-block text-gray" style="font-size: 16px;">
-                                    <i class="fas fa-user"></i>
-                                    {{$contractorDetails->contractor_name}}
-                                </b>
-                            </p>
-                            <p class="text-sm">Contractor Number
-                                <a href="tel: {{$contractorDetails->contractor_phone}}" style="font-size: 16px;" class="d-block text-info">
-                                    <i class="fas fa-phone"></i>
-                                    {{$contractorDetails->contractor_phone}}
-                                </a>
-                            </p>
-                            </div>
-                            <div class="text-center mt-5 mb-3">
-                                @if($project ->total_due == 0 && $project ->total_payable == $project ->total_pay)
-                                    <a class="btn btn-danger btn-lg disabled"  href="#" data-toggle="modal"
-                                       data-target="#modal-sm{{$project->id}}">
-                                        <i class="fas fa-money-bill"></i>
-                                        Bill Paid
-                                    </a>
-                                @else
-                                    <a class="btn btn-primary btn-lg" href="#" data-toggle="modal"
-                                       data-target="#modal-sm{{$project->id}}">
-                                        <i class="fas fa-money-bill"></i>
-                                        Pay Bill
-                                    </a>
-                                @endif
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
-                <!-- /.card-body -->
+            @endforeach
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </form>
@@ -219,6 +219,8 @@
                         </div>
                         <input type="hidden" name="work_id" value="{{ $project ->work_order }}">
                         <input type="hidden" name="project_id" value="{{ $project ->project_id }}">
+                        <input type="hidden" name="contractor_id" value="{{ $contractorDetails ->id }}">
+                        <input type="hidden" name="project_work_no" value="{{ $project ->project_work_order }}">
                         <div class="modal-body">
                             <label for="exampleInput">Bill No</label>
                             <input class="form-control @error('billing_no') is-invalid @enderror" name="billing_no" type="text" placeholder="Enter Bill NO" required="">

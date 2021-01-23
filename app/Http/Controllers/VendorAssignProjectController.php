@@ -2,54 +2,49 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use phpDocumentor\Reflection\Types\Null_;
 
-class AssignProjectController extends Controller
+class VendorAssignProjectController extends Controller
 {
     public function index(){
-        return view('admin.contractor.assignProject');
+        return view('admin.vendor.bill.assignProject');
     }
     public function storeProject( Request  $request){
         $request->validate([
-            'contractor_name' => 'required',
+            'vendor_name' => 'required',
             'project_name' => 'required',
             'category_name' => 'required',
             'assign_date' => 'required',
-            'end_date' => 'required',
-            'work_order' => 'required|unique:assingproject',
+            'pi_number' => 'required|unique:vendor_assign_projects',
             'total_payable' => 'required',
         ]);
         $data = array();
-        $data['contractor_id'] = $request->contractor_name;
+        $data['vendor_id'] = $request->vendor_name;
         $data['project_id'] = $request->project_name;
         $data['project_work_order'] = $request->project_work_order;
         $data['category_id'] = $request->category_name;
         $data['assign_date'] = $request->assign_date;
-        $data['end_date'] = $request->end_date;
-        $data['work_order'] = $request->work_order;
+        $data['pi_number'] = $request->pi_number;
         $data['total_payable'] = $request->total_payable;
-        DB::table('assingproject')->insert($data);
-        return redirect()->route('assignProject.view')->with('message', 'Project Assign Successfully');
+        DB::table('vendor_assign_projects')->insert($data);
+        return redirect()->route('vendorAssignProject.view')->with('message', 'Project Assign Successfully');
     }
     public function viewProject(){
-        $assignProjectDetails =DB::table('assingproject')->orderBy('id', 'DESC')->get();
-        return view('admin.contractor.assignProjectList',compact('assignProjectDetails'));
+        $assignProjectDetails =DB::table('vendor_assign_projects')->orderBy('id', 'DESC')->get();
+        return view('admin.vendor.bill.assignProjectList')->with(compact('assignProjectDetails'));
     }
     public function viewProjectDetails($id){
-        $projects = DB::table('assingproject')->where('id',$id)->orderBy('id', 'DESC')->get();
+        $projects = DB::table('vendor_assign_projects')->where('id',$id)->orderBy('id', 'DESC')->get();
 
-        return view('admin.contractor.assignProjectDetails',compact('projects'));
+        return view('admin.vendor.bill.assignProjectDetails',compact('projects'));
     }
+
     public function projectBillPay(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'billing_no' => 'required|unique:billing_histories',
+            'billing_no' => 'required|unique:vendor_billing_histories',
             'pay_amount' => 'required',
         ]);
 
@@ -58,19 +53,19 @@ class AssignProjectController extends Controller
         }else{
             $data = array();
             $data['project_id'] = $request->project_id;
-            $data['contractor_id'] = $request->contractor_id;
+            $data['vendor_id'] = $request->vendor_id;
             $data['project_work_no'] = $request->project_work_no;
-            $data['work_order'] = $request->work_id;
+            $data['pi_number'] = $request->pi_number;
             $data['billing_no'] = $request->billing_no;
             $data['billing_amount'] = $request->pay_amount;
             $data['billing_method'] = $request->billing_method;
             $data['billing_details'] = $request->billing_details;
             $data['billing_date'] = date('Y-m-d');
-            $billData = DB::table('assingproject')->where('work_order',$request->work_id)->orderBy('id', 'DESC')->get();
+            $billData = DB::table('vendor_assign_projects')->where('pi_number',$request->pi_number)->orderBy('id', 'DESC')->get();
             foreach ($billData as $bill){
                 if ($bill->total_pay == null){
-                    DB::table('billing_histories')->insert($data);
-                    DB::table('assingproject')->where('work_order',$request->work_id)
+                    DB::table('vendor_billing_histories')->insert($data);
+                    DB::table('vendor_assign_projects')->where('pi_number',$request->pi_number)
                         ->update([
                             'total_due'=>DB::raw('total_payable -'.$request->pay_amount),
                             'total_pay'=>$request->pay_amount
@@ -87,13 +82,13 @@ class AssignProjectController extends Controller
                 }
                 else{
 
-                        DB::table('billing_histories')->insert($data);
-                        DB::table('assingproject')->where('work_order',$request->work_id)
-                            ->update([
-                                'total_pay'=>DB::raw('total_pay +'.$request->pay_amount),
-                                'total_due'=>DB::raw('total_payable -'.'total_pay'),
-                            ]);
-                        return redirect()->back()->with('message', 'Contractor Bill Paid Successfully');
+                    DB::table('vendor_billing_histories')->insert($data);
+                    DB::table('vendor_assign_projects')->where('pi_number',$request->pi_number)
+                        ->update([
+                            'total_pay'=>DB::raw('total_pay +'.$request->pay_amount),
+                            'total_due'=>DB::raw('total_payable -'.'total_pay'),
+                        ]);
+                    return redirect()->back()->with('message', 'Contractor Bill Paid Successfully');
 
                 }
             }
@@ -101,5 +96,6 @@ class AssignProjectController extends Controller
 
         }
     }
+
 
 }

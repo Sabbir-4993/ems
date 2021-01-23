@@ -116,13 +116,13 @@
                                                         </td>
                                                         <td>{{$row->subWork_start}}</td>
                                                         @php
-                                                            $diff = Carbon\Carbon::parse($row->subWork_end)->diffInDays(Carbon\Carbon::now())
+                                                            $diff = Carbon\Carbon::parse($row->subWork_end);
                                                         @endphp
                                                         <td>
-                                                            @if($diff <= 0)
+                                                            @if($diff ->isPast())
                                                                 <span class="badge badge-danger">Over Date</span>
                                                             @else
-                                                                {{$diff}}
+                                                                <b class="d-block">{{Carbon\Carbon::parse($row->subWork_end)->diffInDays(Carbon\Carbon::now())}}</b>
                                                             @endif
                                                         </td>
                                                         <td>{{$row->ref_no}}</td>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssingprojectTable extends Migration
+class CreateVendorAssignProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateAssingprojectTable extends Migration
      */
     public function up()
     {
-        Schema::create('assingproject', function (Blueprint $table) {
+        Schema::create('vendor_assign_projects', function (Blueprint $table) {
             $table->id();
-            $table->string('contractor_id');
+            $table->string('vendor_id');
             $table->string('project_id');
             $table->string('project_work_order');
             $table->string('category_id');
             $table->string('assign_date');
-            $table->string('end_date');
-            $table->string('work_order');
+            $table->string('pi_number');
             $table->string('total_payable');
             $table->string('total_pay')->nullable();
             $table->string('total_due')->nullable();
@@ -36,6 +35,6 @@ class CreateAssingprojectTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assingproject');
+        Schema::dropIfExists('vendor_assign_projects');
     }
 }
