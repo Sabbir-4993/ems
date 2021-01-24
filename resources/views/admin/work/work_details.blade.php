@@ -148,12 +148,12 @@
                                 </p>
                                 <p class="text-sm">Remaining Day
                                 @php
-                                    $diff = Carbon\Carbon::parse($detailswork->subWork_end)->diffInDays(Carbon\Carbon::now())
+                                    $diff = Carbon\Carbon::parse($detailswork->subWork_end);
                                 @endphp
-                                @if($diff <= 0)
+                                @if($diff ->isPast())
                                         <b class="d-block"><span class="badge badge-danger">Over Date</span></b>
                                 @else
-                                <b class="d-block">{{$diff}}</b>
+                                <b class="d-block">{{Carbon\Carbon::parse($detailswork->subWork_end)->diffInDays(Carbon\Carbon::now())}}</b>
                                 @endif
                                 </p>
                             </div>
@@ -163,7 +163,7 @@
                                     <i class="fas fa-toolbox"></i>
                                     Refer No
                                 </a>
-                                @if($diff <= 0)
+                                @if($diff ->isPast())
                                     <a class="btn btn-info btn-lg "  href="#" data-toggle="modal"  data-target="#modal-sm" >
                                         <i class="fas fa-reply"></i>
                                         Remark

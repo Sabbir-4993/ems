@@ -89,17 +89,6 @@
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Contractor Name</th>
-                                    <th>Project Name</th>
-                                    <th>Contractor Category</th>
-                                    <th>Work Order</th>
-                                    <th>Total Payable</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->

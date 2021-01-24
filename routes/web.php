@@ -41,8 +41,21 @@ Route::post('material_upload', 'MaterialController@upload')->name('material.uplo
 
 Route::resource('material_category', 'MaterialCategoryController');
 
-//Report
-Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
+// Contractor Report
+Route::group(['prefix'=>'contractor','as'=>'contractor.'], function (){
+    Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
+    Route::post('contractor/report/search', 'ReportController@BillSearch')->name('today.search');
+    Route::get('contractor/today/report', 'ReportController@todayReport')->name('today');
+    Route::get('contractor/weekly/report', 'ReportController@weeklyReport')->name('week');
+});
+// Vendor Report
+
+Route::group(['prefix'=>'vendor','as'=>'vendor.'], function (){
+    Route::get('vendor/report/bill', 'VendorReportController@vendorBill')->name('bill');
+    Route::post('vendor/report/search', 'VendorReportController@billSearch')->name('today.search');
+    Route::get('vendor/today/report', 'VendorReportController@todayReport')->name('today');
+    Route::get('vendor/weekly/report', 'VendorReportController@weeklyReport')->name('week');
+});
 
 //Requisition
 Route::group(['prefix'=>'workOrder','as'=>'workOrder.'], function (){
@@ -103,4 +116,14 @@ Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
     Route::get('sub-work-details/{id}', 'SubWorkController@SubWorkDetails')->name('details');
 
 });
+//vendor
+Route::group(['prefix'=>'vendorAssignProject','as'=>'vendorAssignProject.'], function(){
+
+    Route::get('Assign-Project', 'VendorAssignProjectController@index')->name('index');
+    Route::post('store-assign-project', 'VendorAssignProjectController@storeProject')->name('store');
+    Route::get('view-assign-project', 'VendorAssignProjectController@viewProject')->name('view');
+    Route::get('view-assign-project-details/{id}', 'VendorAssignProjectController@viewProjectDetails')->name('details');
+    Route::post('assign-project-bill', 'VendorAssignProjectController@projectBillPay')->name('payBill');
+});
+
 

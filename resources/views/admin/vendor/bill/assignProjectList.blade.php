@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.master')
 
 @section('content')
@@ -13,28 +14,23 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/project')}}">Project</a></li>
-                        <li class="breadcrumb-item active">Details</li>
+                        <li class="breadcrumb-item"><a href="{{route('vendorAssignProject.index')}}">Assign</a></li>
+                        <li class="breadcrumb-item active">Project List</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
-    <section class="content container">
-        @if(Session::has('message'))
-            <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
-            </div>
-        @endif
+    <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Work Order List Project Based</h3>
+                            <h3 class="card-title">Assign Project List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -42,48 +38,56 @@
                                 <thead>
                                 <tr>
                                     <th>SN</th>
+                                    <th>Contractor Name</th>
                                     <th>Project Name</th>
-                                    <th>Work Order Number</th>
-                                    <th>Status</th>
-                                    <th>Details</th>
-                                    <th>Created Date</th>
+                                    <th>Contractor Category</th>
+                                    <th>Work Order</th>
+                                    <th>Total Payable</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($assignProjectDetails as $key=>$row)
                                     @php
-                                      $workOrder = \Illuminate\Support\Facades\DB::table('work_orders')->get();
+                                        $projects = \App\Project::where('id',$row->project_id)->get();
+                                        $vendors = \App\Vendor::where('id',$row->vendor_id)->get();
+                                        $categories = \App\Category::where('id',$row->category_id)->get();
                                     @endphp
-                                    @foreach($workOrder as $key=>$row)
                                     <tr>
-                                            <td>{{$key+1}}</td>
-                                            <td>
-                                                @php
-                                                $project = \App\Project::where('id',$row->project_id)->first();
-                                                    @endphp
-                                                {{$project->project_name}}</td>
-                                            <td>{{$row->work_order}}</td>
-                                            <td>
-                                                @if($row->status=='0')
-                                                    <span class="badge badge-primary">Running</span>
-                                                @elseif($row->status=='1')
-                                                    <span class="badge badge-warning">Hold</span>
-                                                @elseif($row->status=='2')
-                                                    <span class="badge badge-danger">Canceled</span>
-                                                @elseif($row->status=='3')
-                                                    <span class="badge badge-success">Complete</span>
-                                                @endif
-                                             </td>
-                                            <td>{{$row->details}}</td>
-                                            <td>{{$row->created_date}}</td>
-                                            <td>
-                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="">
-                                                    <i class="fas fa-edit"></i>
-                                                    Edit
-                                                </a>
-                                            </td>
+                                        <td>{{$key+1}}</td>
+                                        <td>
+                                            @foreach($vendors as $vendor)
+                                                {{ $vendor ->vendor_name }}
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach($projects as $project)
+                                                {{ $project ->project_name }}
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                             @foreach($categories as $category)
+                                                {{ $category ->cat_name }}
+                                            @endforeach
+                                        </td>
+                                        <td>{{$row ->pi_number  }}</td>
+                                        <td>{{ $row ->total_payable }}</td>
+                                        <td class="project-actions text-center">
+                                            <a class="btn btn-primary btn-sm"
+                                               href="{{route('vendorAssignProject.details',[$row->id])}}">
+                                                <i class="fas fa-folder"></i>
+                                                View
+                                            </a>
+                                            @if($row ->total_due == 0 && $row ->total_payable == $row ->total_pay)
+                                            <a class="btn btn-danger btn-sm disabled">
+                                                <i class="fas fa-money-bill"></i>
+                                                Bill Paid
+                                            </a>
+                                            @endif
+                                        </td>
+
                                     </tr>
-                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -98,7 +102,6 @@
         <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-
 @endsection
 
 @section('css')
@@ -141,3 +144,4 @@
         });
     </script>
 @endsection
+

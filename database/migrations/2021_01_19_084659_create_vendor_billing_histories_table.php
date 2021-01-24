@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillingHistoriesTable extends Migration
+class CreateVendorBillingHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateBillingHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('billing_histories', function (Blueprint $table) {
+        Schema::create('vendor_billing_histories', function (Blueprint $table) {
             $table->id();
             $table->string('project_id');
-            $table->string('contractor_id');
+            $table->string('vendor_id');
             $table->string('project_work_no');
+            $table->string('pi_number');
             $table->string('billing_no');
             $table->string('billing_amount');
             $table->string('billing_method');
@@ -34,6 +35,6 @@ class CreateBillingHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billing_histories');
+        Schema::dropIfExists('vendor_billing_histories');
     }
 }

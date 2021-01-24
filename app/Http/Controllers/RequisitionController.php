@@ -17,6 +17,7 @@ class RequisitionController extends Controller
     }
     public function storeRequisition( Request  $request){
 
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'req_no'=>'required|unique:requisitions',
         ]);
@@ -33,7 +34,7 @@ class RequisitionController extends Controller
             $requisition['req_no'] = $request->req_no;
             $requisition['requisition_date'] = date('d/m/y');
             $requisitionId = DB::table('requisitions')->insertGetId($requisition);
-            $count = count($request->quantity)-1;
+            $count = count($request->quantity);
             for ($i=0; $i < $count; $i++) {
                 $task =  array();
                 $task['requisition_id'] = $requisitionId;

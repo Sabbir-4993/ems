@@ -266,7 +266,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('today.bill')}}" class="nav-link">
+                                    <a href="{{route('contractor.today.bill')}}" class="nav-link">
                                         <i class="fas fa-money-bill nav-icon"></i>
                                         <p>Report</p>
                                     </a>
@@ -337,6 +337,39 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav nav-treeview">
+                        {{--Bill Payment--}}
+                        <li class="nav-item">
+                            <a href="{{route('department.create')}}" class="nav-link">
+                                <i class="nav-icon fas fa-money-check"></i>
+                                <p>
+                                    Bill Payment
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('vendorAssignProject.index')}}" class="nav-link">
+                                        <i class="fas fa-bezier-curve nav-icon"></i>
+                                        <p>Assign Vendor Project </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('vendorAssignProject.view')}}" class="nav-link">
+                                        <i class="fas fa-money-bill nav-icon"></i>
+                                        <p>Vendor Bill Payment </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('vendor.bill')}}" class="nav-link">
+                                        <i class="fas fa-money-bill nav-icon"></i>
+                                        <p>Vendor Report  </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
                 </li>
 
                 {{--Assign Task--}}

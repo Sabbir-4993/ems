@@ -22,7 +22,7 @@ class CreateSubWorksTable extends Migration
             $table->string('subWork_end');
             $table->string('ref_no')->nullable();
             $table->string('created_by');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }
