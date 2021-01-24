@@ -2,41 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorAssignProjectController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorReportController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Model/BillingHistory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_045415_create_vendor_assign_projects_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_084659_create_vendor_billing_histories_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProject.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectDetails.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectList.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/vendorReport.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_21_101408_create_assingproject_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_21_101408_create_assingproject_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_22_105457_create_billing_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_22_105457_create_billing_histories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_05_044131_create_sub_works_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_05_044131_create_sub_works_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backend/plugins/chart.js/Chart.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backend/plugins/chart.js/Chart.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backend/plugins/chart.js/Chart.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backend/plugins/chart.js/Chart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backend/plugins/chart.js/Chart.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backend/plugins/chart.js/Chart.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorreport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/work-order-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/work-order-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/daynamic.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/work/work_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/work/work_details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,7 +255,8 @@
       <workItem from="1611201262863" duration="780000" />
       <workItem from="1611217376226" duration="4270000" />
       <workItem from="1611373283859" duration="594000" />
-      <workItem from="1611379115892" duration="19187000" />
+      <workItem from="1611379115892" duration="19259000" />
+      <workItem from="1611459870131" duration="2061000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -423,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610022833128</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="report done vendor and contractor">
+      <created>1611404427299</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1611404427299</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +449,8 @@
     <MESSAGE value="project details and particular done" />
     <MESSAGE value="Requisition Modification" />
     <MESSAGE value="Requisition Modification with category work order" />
-    <option name="LAST_COMMIT_MESSAGE" value="Requisition Modification with category work order" />
+    <MESSAGE value="report done vendor and contractor" />
+    <option name="LAST_COMMIT_MESSAGE" value="report done vendor and contractor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
