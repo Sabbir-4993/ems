@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="{{ asset('uploads/company_logo/logo.png') }}" alt="Trimatric Logo"
-             class="brand-image img-circle elevation-3" style="opacity: 1">
+             class="brand-image img elevation-3" style="opacity: 1">
         <span class="brand-text font-weight-light">TRIMATRIC</span>
     </a>
 
@@ -33,6 +33,36 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+
+                {{--Permission--}}
+                <li class="nav-header">Permission</li>
+                <li class="nav-item">
+                    <a href="{{route('permission.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Permission
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('permission.create')}}" class="nav-link">
+                                <i class="fas fa-clipboard-list nav-icon"></i>
+                                <p>Permission Create</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('permission.index')}}" class="nav-link">
+                                <i class="fas fa-clipboard-list nav-icon"></i>
+                                <p>Permission View</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
                 {{--Management--}}
                 <li class="nav-header">Management</li>
                 <li class="nav-item">
@@ -54,13 +84,16 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
+
                             <ul class="nav nav-treeview">
+                                @if(isset(auth()->user()->permission['name']['department']['can-add']))
                                 <li class="nav-item">
                                     <a href="{{route('department.create')}}" class="nav-link">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Add Department</p>
                                     </a>
                                 </li>
+                                @endif
                                 <li class="nav-item">
                                     <a href="{{route('department.index')}}" class="nav-link">
                                         <i class="fas fa-clipboard-list nav-icon"></i>
@@ -68,7 +101,9 @@
                                     </a>
                                 </li>
                             </ul>
+
                         </li>
+
 
                         {{--Designation--}}
                         <li class="nav-item">

@@ -87,13 +87,13 @@ class AssignProjectController extends Controller
                 }
                 else{
 
-                        DB::table('billing_histories')->insert($data);
-                        DB::table('assingproject')->where('work_order',$request->work_id)
-                            ->update([
-                                'total_pay'=>DB::raw('total_pay +'.$request->pay_amount),
-                                'total_due'=>DB::raw('total_payable -'.'total_pay'),
-                            ]);
-                        return redirect()->back()->with('message', 'Contractor Bill Paid Successfully');
+                    DB::table('billing_histories')->insert($data);
+                    DB::table('assingproject')->where('work_order',$request->work_id)
+                        ->update([
+                            'total_pay'=>DB::raw('total_pay +'.$request->pay_amount),
+                            'total_due'=>DB::raw('total_payable -'.'total_pay'),
+                        ]);
+                    return redirect()->back()->with('message', 'Contractor Bill Paid Successfully');
 
                 }
             }

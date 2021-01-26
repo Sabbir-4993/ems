@@ -2,9 +2,12 @@
 
 namespace App;
 
+use App\Permission;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use function Symfony\Component\Translation\t;
+use App\Designation;
 
 class User extends Authenticatable
 {
@@ -43,5 +46,13 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo('App\Role');
+    }
+
+    public function designation(){
+        return $this->hasOne(Designation::class, 'designation', 'designation_id');
+    }
+
+    public function permission(){
+        return $this->hasOne(Permission::class);
     }
 }

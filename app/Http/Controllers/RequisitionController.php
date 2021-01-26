@@ -17,7 +17,7 @@ class RequisitionController extends Controller
     }
     public function storeRequisition( Request  $request){
 
-        dd($request->all());
+//        dd($request->all());
         $validator = Validator::make($request->all(), [
             'req_no'=>'required|unique:requisitions',
         ]);

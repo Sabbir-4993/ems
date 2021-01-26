@@ -54,22 +54,15 @@
                                         <td style="width: 25%">{{$row->name}}</td>
                                         <td style="width: 50%">{{$row->description}}</td>
                                         <td style="width: 20%">
+                                         @if(isset(auth()->user()->permission['name']['department']['can-edit']))
                                             <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('department.edit',[$row->id])}}">
-                                                <i class="fas fa-edit"></i>
-                                                Edit
+                                                <i class="fas fa-edit"></i>Edit
                                             </a>
+                                        @endif
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Department Name</th>
-                                    <th>Details</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -87,8 +80,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-          href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 

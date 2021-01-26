@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
 Auth::routes();
 
+Route::group(['middleware'=>'auth'], function(){
 //Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::resource('permission', 'PermissionController');
+
+Route::post('get_permission', 'PermissionController@getUser')->name('permission.getUser');
 
 Route::resource('department', 'DepartmentController');
 
@@ -99,13 +103,11 @@ Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
 Route::group(['prefix'=>'assignWork','as'=>'assignWork.'], function(){
     Route::get('assign-work', 'AssignWorkController@index')->name('index');
     Route::post('store-work', 'AssignWorkController@storeWork')->name('store');
-
 });
 Route::group(['prefix'=>'todo','as'=>'todo.'], function(){
     Route::post('Todo-work', 'TodoController@storeTodo')->name('store');
     Route::get('Todo-list', 'TodoController@fetchUserTodo')->name('list');
     Route::get('delete-todo/{id}', 'TodoController@deleteTodo')->name('delete');
-
 });
 Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
     Route::post('sub-work', 'SubWorkController@storeSubWork')->name('store');
@@ -124,6 +126,8 @@ Route::group(['prefix'=>'vendorAssignProject','as'=>'vendorAssignProject.'], fun
     Route::get('view-assign-project', 'VendorAssignProjectController@viewProject')->name('view');
     Route::get('view-assign-project-details/{id}', 'VendorAssignProjectController@viewProjectDetails')->name('details');
     Route::post('assign-project-bill', 'VendorAssignProjectController@projectBillPay')->name('payBill');
+});
+
 });
 
 
