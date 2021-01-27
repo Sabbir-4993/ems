@@ -74,7 +74,7 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
     //for getting Product
     Route::POST('product-list','RequisitionController@getMaterial')->name('getMaterial');
     Route::get('create-requisition', 'RequisitionController@index')->name('index');
-    Route::get('', 'RequisitionController@show')->name('show');
+//    Route::get('', 'RequisitionController@show')->name('show');
     Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');
     Route::get('pending-requisition', 'RequisitionController@pendingRequisition')->name('pending');
     Route::get('details-requisition/{id}', 'RequisitionController@detailsRequisition')->name('details');

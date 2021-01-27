@@ -135,7 +135,7 @@
                                 <b class="d-block text-gray" style="font-size: 16px;">
                                     <i class="fas fa-user"></i>
                                     @php
-                                        $users = \App\User::where('id',$row->user_id)->first();
+                                        $users = \App\User::where('id',$row->created_by)->first();
                                     @endphp
                                     {{$users->name}}
                                 </b>

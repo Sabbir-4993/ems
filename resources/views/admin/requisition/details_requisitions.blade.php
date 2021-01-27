@@ -59,33 +59,26 @@
                                                     <th>Product quantity</th>
                                                     <th> Unit</th>
                                                     <th>Price/Unit</th>
-                                                    <th>Total Price</th>
-                                                    <th>Product Remarks </th>
+                                                    <th> Remarks </th>
                                                     <th>Remarks from </th>
+                                                    <th>Action </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($detailsRequisitions as $key=>$row)
                                                     <tr>
                                                     <td>{{$key+1}}</td>
-                                                        @php
-                                                            $materials = \App\Material::where('id',$row->particular)->get();
-                                                        @endphp
-                                                        @foreach($materials as $material)
                                                         <td>
-                                                           <input type="text"  name="particular[]" value="{{$material->material_name}}" class="form-control" readonly >
+                                                           <input type="text"  name="particular[]" value="{{$row->particular}}" class="form-control" readonly >
                                                         </td>
                                                          <td>
                                                             <input type="text" id="" name="quantity[]" value="{{$row->quantity}}"  class="form-control" readonly >
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="" name="unit[]" value="{{$material->unit}}"  class="form-control" readonly >
+                                                            <input type="text" id="" name="unit[]" value="{{$row->unit}}"  class="form-control" readonly >
                                                         </td>
                                                         <td>
-                                                        <input class="form-control" type="text"  name="price[]" value="{{$material->price}}" readonly>
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control" type="text" name="total[]" value="{{$material->price*$row->quantity}}" readonly>
+                                                        <input class="form-control" type="text" id="price" name="price[]" >
                                                         </td>
                                                         <td>
                                                                 <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
@@ -93,8 +86,11 @@
                                                         <td>
                                                             <input class="form-control" type="text" name="pro_remarks[]">
                                                         </td>
-                                                         @endforeach
+                                                        <td>
+
+                                                        </td>
                                                     </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -173,7 +169,6 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
                     <div class="row card-footer">
                         <div class="col-12">
                             <input type="submit" value="Approved" class="btn btn-success float-left">
@@ -184,6 +179,9 @@
         </div>
         <!-- /.card -->
     </form>
+
+@endsection
+@section('script')
 
 @endsection
 

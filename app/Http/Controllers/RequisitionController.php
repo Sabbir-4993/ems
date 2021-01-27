@@ -17,7 +17,6 @@ class RequisitionController extends Controller
     }
     public function storeRequisition( Request  $request){
 
-//        dd($request->all());
         $validator = Validator::make($request->all(), [
             'req_no'=>'required|unique:requisitions',
         ]);
@@ -30,6 +29,7 @@ class RequisitionController extends Controller
             $requisition = array();
             $requisition['created_by'] = Auth()->id();
             $requisition['project_id'] = $request->project_id;
+            $requisition['work_order'] = $request->work_order;
             $requisition['status'] = 0;
             $requisition['req_no'] = $request->req_no;
             $requisition['requisition_date'] = date('d/m/y');
@@ -40,6 +40,7 @@ class RequisitionController extends Controller
                 $task['requisition_id'] = $requisitionId;
                 $task['particular'] = $request->particular[$i];
                 $task['quantity'] = $request->quantity[$i];
+                $task['unit'] = $request->unit[$i];
                 $task['remarks'] = $request->remarks[$i];
                 DB::table('requisition_details')->insert($task);
             }
@@ -66,7 +67,7 @@ class RequisitionController extends Controller
     public function approveRequisition(Request $request ){
 
         $validator = Validator::make($request->all(), [
-            'total'=>'required',
+            'price'=>'required',
         ]);
 
         if($validator->fails()) {
@@ -78,7 +79,7 @@ class RequisitionController extends Controller
             $requisition['status'] = '1';
             $requisition['approved_date'] = date('d/m/y');
             DB::table('requisitions')->where('id',$request->id)->update($requisition);
-            $count = count($request->total);
+            $count = count($request->price);
             for ($i = 0; $i < $count; $i++) {
                 $approvedTask = array();
                 $approvedTask['requisition_id'] = $request->id;
@@ -86,7 +87,7 @@ class RequisitionController extends Controller
                 $approvedTask['quantity'] = $request->quantity[$i];
                 $approvedTask['unit'] = $request->unit[$i];
                 $approvedTask['unit_price'] = $request->price[$i];
-                $approvedTask['total_price'] = $request->total[$i];
+                $approvedTask['total_price'] = $request->quantity[$i]*$request->price[$i];
                 $approvedTask['pro_remarks'] = $request->remarks[$i];
                 DB::table('approved_requisition_details')->insert($approvedTask);
             }

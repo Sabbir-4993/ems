@@ -58,7 +58,7 @@
                                         <td>{{$key+1}}</td>
                                         <td>
                                             @php
-                                                $users = \App\User::where('id',$row->user_id)->first();
+                                                $users = \App\User::where('id',$row->created_by)->first();
                                             @endphp
                                             {{$users->name}}
                                         </td>
@@ -74,7 +74,7 @@
                                             @if($row->status=='0')
                                                 <span class="badge badge-warning">Pending</span>
                                             @elseif($row->status=='1')
-                                                <span class="badge badge-success">Complete</span>
+                                                <span class="badge badge-success">Approved</span>
                                             @endif
                                         </td>
                                         <td class="project-actions text-center">
@@ -87,17 +87,6 @@
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Requisition By</th>
-                                    <th>Project Name</th>
-                                    <th>Requisition No</th>
-                                    <th>Date </th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->
