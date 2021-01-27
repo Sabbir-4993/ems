@@ -83,53 +83,27 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputName">Select Material Category</label>
-                                        <select name="category" id="category" class="form-control">
-                                            <option selected  >Select Material Category</option>
-                                            @foreach(\App\MaterialCategory::orderby('name','asc')->get() as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="title">Select Material:</label>
-                                        <select name="particular[]" id="particular" class="form-control" required>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="title">Product Quantity:</label>
-                                        <input type="text" id="quantity" name="quantity[]" placeholder="Enter Product Quantity" class="form-control" >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="title">Remarks:</label>
-                                        <input type="text" id="remarks" name="remarks[]" placeholder="Enter  Remarks" class="form-control " >
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="form-group container">
-                            <button type="button" id="add-row" class="btn btn-info float-right" >Add Row</button>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group table-responsive p-0">
-                                <label for="exampleInputmaterial">Requisition Details</label>
-                                <table class="table table-bordered" id="tbl_posts">
+                                <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Product Name</th>
-                                        <th>Product Quantity</th>
-                                        <th>Remarks </th>
+                                        <th scope="col">Particulars</th>
+                                        <th scope="col">Qty</th>
+                                        <th scope="col">Unit</th>
+                                        <th scope="col">Remarks</th>
+                                        <th><a href="#" class="btn btn-primary addRow" id="addRow"><i class="fa fa-plus-square"></i></a></th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                        <td><input name="particular[]" id="particular" class="form-control" required></td>
+                                        <td><input name="quantity[]" class="form-control" type="text" ></td>
+                                        <td><input name="unit[]" class="form-control" type="text" ></td>
+                                        <td><input name="remarks[]" class="form-control" type="text" ></td>
+                                        <td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>
+                                    </tr>
                                     </tbody>
                                 </table>
-                                <button type="button" id="delete-row" class=" btn btn-danger">Delete Row</button>
+
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -146,32 +120,17 @@
             </div>
         </form>
     </section>
+
     <!-- /.content -->
 @endsection
 @section('css')
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function(){
-            $("#add-row").click(function(){
-                var particular = $("#particular").val();
-                var quantity = $("#quantity").val();
-                var remarks = $("#remarks").val();
-                var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + particular + "</td><td>" + quantity + "</td><td>" + remarks + "</td></tr>";
-                $("table tbody").append(markup);
-            });
 
-            // Find and remove selected table rows
-            $("#delete-row").click(function(){
-                $("table tbody").find('input[name="record"]').each(function(){
-                    if($(this).is(":checked")){
-                        $(this).parents("tr").remove();
-                    }
-                });
-            });
-        });
+    <script>
         // for project
         $(document).ready(function () {
 
@@ -218,6 +177,27 @@
             });
         });
 
+        $('#addRow').on('click', function (){
+            addRow();
+        });
+        function addRow(){
+            var th='<tr>'+
+                '<td><input name="particular[]" id="particular" class="form-control" required></td>'+
+                '<td><input name="quantity[]" class="form-control" type="text"></td>'+
+                '<td><input name="unit[]" class="form-control" type="text"></td>'+
+                '<td><input name="remarks[]" class="form-control" type="text"></td>'+
+                '<td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>'+
+                '</tr>';
+            $('tbody').append(th);
+        };
+        $(document).on('click', '#remove', function() {
+                var last=$('tbody tr').length;
+                if(last==1){
+                    alert("Can't Delete the last Particulars form");
+                }else {
+                    $(this).parent().parent().remove();
+                }
+        });
     </script>
 
 @endsection

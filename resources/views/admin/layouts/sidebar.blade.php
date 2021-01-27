@@ -173,12 +173,12 @@
                                 <p>Add Requisition</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('requisition.show')}}" class="nav-link">
-                                <i class="fas fa-clipboard-list nav-icon"></i>
-                                <p>View Requisition</p>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{route('requisition.show')}}" class="nav-link">--}}
+{{--                                <i class="fas fa-clipboard-list nav-icon"></i>--}}
+{{--                                <p>View Requisition</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
                             <a href="{{route('requisition.pending')}}" class="nav-link">
                                 <i class="fas fa-exclamation-triangle"></i>

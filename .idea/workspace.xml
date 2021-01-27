@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_093550_create_requisition_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_093550_create_requisition_details_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/approved_details_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/approved_details_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/approved_requisition.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/approved_requisition.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/vendorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/vendorReport.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +178,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-role" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -256,7 +266,15 @@
       <workItem from="1611217376226" duration="4270000" />
       <workItem from="1611373283859" duration="594000" />
       <workItem from="1611379115892" duration="19259000" />
-      <workItem from="1611459870131" duration="2061000" />
+      <workItem from="1611459870131" duration="4879000" />
+      <workItem from="1611471528407" duration="105000" />
+      <workItem from="1611471860854" duration="29000" />
+      <workItem from="1611472075478" duration="189000" />
+      <workItem from="1611546386686" duration="15889000" />
+      <workItem from="1611633117686" duration="4164000" />
+      <workItem from="1611638743150" duration="3211000" />
+      <workItem from="1611651890111" duration="1707000" />
+      <workItem from="1611729199886" duration="2902000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -398,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611404427299</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="report done vendor and contractor">
+      <created>1611462133999</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1611462133999</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

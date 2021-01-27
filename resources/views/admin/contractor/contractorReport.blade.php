@@ -211,9 +211,9 @@
                     processData:false,
                     success: function(data){
                         $("#sendFormData").trigger("reset"); //reset form
-
                         var table;
                         table = $('#example1').DataTable();
+                        table.clear();
                         if(data!='') {
                             $.each(data, function(i, item) {
                                 table.row.add([
@@ -229,7 +229,6 @@
                             });
                         }
                         else {
-                            $('#example1').html('<h3>No Data are available</h3>');
                         }
                         table.draw();
 
