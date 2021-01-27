@@ -164,6 +164,14 @@
                                                     <td><input type="checkbox" name="name[material][can-view]" @if(isset($permission['name']['material']['can-view'])) checked @endif value="1"></td>
                                                     <td><input type="checkbox" name="name[material][can-list]" @if(isset($permission['name']['material']['can-list'])) checked @endif value="1"></td>
                                                 </tr>
+                                                <tr>
+                                                    <td>Requisition</td>
+                                                    <td><input type="checkbox" name="name[requisition][can-add]" @if(isset($permission['name']['requisition']['can-add'])) checked @endif value="1"></td>
+                                                    <td><input type="checkbox" name="name[requisition][can-edit]" @if(isset($permission['name']['requisition']['can-edit'])) checked @endif value="1"></td>
+                                                    <td><input type="checkbox" name="name[requisition][can-pending]" @if(isset($permission['name']['requisition']['can-pending'])) checked @endif value="1"> Pending</td>
+                                                    <td><input type="checkbox" name="name[requisition][can-approve]" @if(isset($permission['name']['requisition']['can-approve'])) checked @endif value="1"> Approve</td>
+                                                    <td><input type="checkbox" name="name[requisition][can-list]" @if(isset($permission['name']['requisition']['can-list'])) checked @endif value="1"></td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>

@@ -173,6 +173,14 @@
                                                 <td><input type="checkbox" name="name[material]['can-view']" value="1"></td>
                                                 <td><input type="checkbox" name="name[material]['can-list']" value="1"></td>
                                             </tr>
+                                            <tr>
+                                                <td>Requisition</td>
+                                                <td><input type="checkbox" name="name[requisition]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[requisition]['can-edit']" value="1"></td>
+                                                <td><input type="checkbox" name="name[requisition]['can-pending']" value="1"></td>
+                                                <td><input type="checkbox" name="name[requisition]['can-approve']" value="1"></td>
+                                                <td><input type="checkbox" name="name[requisition]['can-list']" value="1"></td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>

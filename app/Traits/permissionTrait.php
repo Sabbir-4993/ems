@@ -112,7 +112,7 @@ trait permissionTrait
         //for Approved Requisition
 
         //for Contractor
-        if (!isset(auth()->user()->$permission['name']['contractors']['can-add']) && \Route::is('contractors.create')) {
+        if (!isset(auth()->user()->permission['name']['contractors']['can-add']) && \Route::is('contractors.create')) {
             return abort(401);
         }
         if (!isset(auth()->user()->permission['name']['contractors']['can-edit']) && \Route::is('contractors.edit')) {
@@ -191,6 +191,16 @@ trait permissionTrait
             return abort(401);
         }
 
+//        Requisition
+        if (!isset(auth()->user()->$permission['name']['requisition']['can-add']) && \Route::is('requisition.index')) {
+            return abort(401);
+        }
+        if (!isset(auth()->user()->permission['name']['requisition']['can-pending']) && \Route::is('requisition.pending')) {
+            return abort(401);
+        }
+        if (!isset(auth()->user()->permission['name']['requisition']['can-approve']) && \Route::is('requisition.complete')) {
+            return abort(401);
+        }
 
         //for Assign Task
 

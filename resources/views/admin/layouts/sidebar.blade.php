@@ -220,8 +220,9 @@
 
                 {{--Requisition--}}
                 <li class="nav-header">Procurement</li>
+                @if(isset(auth()->user()->permission['name']['requisition']['can-list']))
                 <li class="nav-item">
-                    <a href="{{route('requisition.show')}}" class="nav-link">
+                    <a href="{{route('requisition.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Requisition
@@ -229,32 +230,39 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @if(isset(auth()->user()->permission['name']['requisition']['can-add']))
                         <li class="nav-item">
                             <a href="{{route('requisition.index')}}" class="nav-link">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Add Requisition</p>
                             </a>
                         </li>
+                        @endif
 {{--                        <li class="nav-item">--}}
 {{--                            <a href="{{route('requisition.show')}}" class="nav-link">--}}
 {{--                                <i class="fas fa-clipboard-list nav-icon"></i>--}}
 {{--                                <p>View Requisition</p>--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
+                        @if(isset(auth()->user()->permission['name']['requisition']['can-pending']))
                         <li class="nav-item">
                             <a href="{{route('requisition.pending')}}" class="nav-link">
                                 <i class="fas fa-exclamation-triangle"></i>
                                 <p>Pending Requisition </p>
                             </a>
                         </li>
+                        @endif
+                        @if(isset(auth()->user()->permission['name']['requisition']['can-approve']))
                         <li class="nav-item">
                             <a href="{{route('requisition.complete')}}" class="nav-link">
                                 <i class="fas fa-check-square"></i>
                                 <p>Approved Requisition </p>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
+                @endif
 
                 {{--Contractor--}}
                 <li class="nav-item">

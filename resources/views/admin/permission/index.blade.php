@@ -296,6 +296,27 @@
                                                 <span class="badge badge-success">material_can_list</span>
                                             @endif
 
+                                            {{--Requisition--}}
+                                            @if(isset($row['name']['requisition']['can-add']))
+                                                <span class="badge badge-primary">requisition_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['requisition']['can-edit']))
+                                                <span class="badge badge-secondary">requisition_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['requisition']['can-pending']))
+                                                <span class="badge badge-warning">requisition_pending</span>
+                                            @endif
+
+                                            @if(isset($row['name']['requisition']['can-approve']))
+                                                <span class="badge badge-success">requisition_approve</span>
+                                            @endif
+
+                                            @if(isset($row['name']['requisition']['can-list']))
+                                                <span class="badge badge-info">requisition_menu</span>
+                                            @endif
+
 
                                         </td>
                                         <td style="width: 10%; text-align: center" class="text-center">
