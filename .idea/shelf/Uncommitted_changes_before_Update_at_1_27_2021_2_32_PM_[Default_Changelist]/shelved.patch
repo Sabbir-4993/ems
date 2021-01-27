@@ -1,0 +1,1203 @@
+Index: resources/views/admin/permission/create.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@extends('admin.layouts.master')\r\n@include('admin.layouts.scripts')\r\n\r\n@section('content')\r\n    <!-- Content Header (Page header) -->\r\n    <div class=\"content-header\">\r\n        <div class=\"container-fluid\">\r\n            <div class=\"row mb-2\">\r\n                <div class=\"col-sm-6\">\r\n                    <li class=\"breadcrumb-item\">\r\n                        <a href=\"{{ url()->previous() }}\"><i class=\"fas fa-long-arrow-alt-left\"></i> Back</a>\r\n                    </li>\r\n                </div><!-- /.col -->\r\n                <div class=\"col-sm-6\">\r\n                    <ol class=\"breadcrumb float-sm-right\">\r\n                        <li class=\"breadcrumb-item\"><a href=\"{{url('/')}}\">Home</a></li>\r\n                        <li class=\"breadcrumb-item\"><a href=\"{{route('permission.index')}}\">Permission</a></li>\r\n                        <li class=\"breadcrumb-item active\">Create</li>\r\n                    </ol>\r\n                </div><!-- /.col -->\r\n            </div><!-- /.row -->\r\n        </div><!-- /.container-fluid -->\r\n    </div>\r\n    <!-- /.content-header -->\r\n\r\n    <!-- Main content -->\r\n    <section class=\"content\">\r\n        <div class=\"container-fluid\">\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <div class=\"container\">\r\n                        @if(Session::has('message'))\r\n                            <div class=\"alert alert-success alert-dismissible\">\r\n                                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;\r\n                                </button>\r\n                                <h5><i class=\"icon fas fa-check\"></i> {{Session::get('message')}}</h5>\r\n                            </div>\r\n                        @endif\r\n                        <div class=\"card \">\r\n                            <div class=\"card-header\">\r\n                                <h3 class=\"card-title\">Create Permission</h3>\r\n                            </div>\r\n\r\n                            <!-- /.card-header -->\r\n                            <div class=\"card-body\">\r\n                                <!-- form start -->\r\n                                <form action=\"{{route('permission.store')}}\" method=\"POST\">\r\n                                    @csrf\r\n                                    <div class=\"card-body\">\r\n                                        <div class=\"form-group\">\r\n                                            <label for=\"exampleInputDesignation\">Select Designation</label>\r\n                                            <select class=\"form-control @error('designation_id') is-invalid @enderror \" name=\"designation_id\" id=\"designation_id\"\r\n                                                    required=\"\">\r\n                                                <option value=\"\" selected disabled>Select Designation</option>\r\n                                                @foreach(\\App\\Designation::all() as $designation)\r\n                                                    <option value=\"{{$designation->id}}\">{{$designation->name}}</option>\r\n                                                @endforeach\r\n                                            </select>\r\n                                        </div>\r\n\r\n                                        <div class=\"form-group\">\r\n                                            <label for=\"exampleInputUser\">Select User</label>\r\n                                            <select class=\"form-control\" name=\"user_id\" id=\"emp_name\" required=\"\">\r\n                                            </select>\r\n                                        </div>\r\n\r\n                                        <label for=\"exampleInputPermission\">Permission</label>\r\n                                        <div class=\"form-group\">\r\n                                            <div class=\"form-check\">\r\n                                                <input type=\"checkbox\" class=\"form-check-input\" id=\"checkPermissionAll\" value=\"1\">\r\n                                                <label class=\"form-check-label\" for=\"checkPermissionAll\">Select All</label>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"card-body table-responsive p-0\">\r\n                                        <table id=\"\" class=\"table table-hover text-nowrap\">\r\n                                            <thead>\r\n                                            <tr>\r\n                                                <th>Permission</th>\r\n                                                <th>can-add</th>\r\n                                                <th>can-edit</th>\r\n                                                <th>can-delete</th>\r\n                                                <th>can-view</th>\r\n                                                <th>can-list</th>\r\n                                            </tr>\r\n                                            </thead>\r\n                                            <tbody>\r\n                                            <tr>\r\n                                                <td>Permission</td>\r\n                                                <td><input type=\"checkbox\" name=\"name[permission]['can-add']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[permission]['can-edit']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[permission]['can-delete']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[permission]['can-view']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[permission]['can-list']\" value=\"1\"></td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>Department</td>\r\n                                                <td><input type=\"checkbox\" name=\"name[department]['can-add']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[department]['can-edit']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[department]['can-delete']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[department]['can-view']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[department]['can-list']\" value=\"1\"></td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>Designation</td>\r\n                                                <td><input type=\"checkbox\" name=\"name[designation]['can-add']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[designation]['can-edit']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[designation]['can-delete']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[designation]['can-view']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[designation]['can-list']\" value=\"1\"></td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>Employee</td>\r\n                                                <td><input type=\"checkbox\" name=\"name[user]['can-add']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[user]['can-edit']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[user]['can-delete']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[user]['can-view']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[user]['can-list']\" value=\"1\"></td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>Project</td>\r\n                                                <td><input type=\"checkbox\" name=\"name[project]['can-add']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[project]['can-edit']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[project]['can-delete']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[project]['can-view']\" value=\"1\"></td>\r\n                                                <td><input type=\"checkbox\" name=\"name[project]['can-list']\" value=\"1\"></td>\r\n                                            </tr>\r\n                                            </tbody>\r\n                                        </table>\r\n                                    </div>\r\n                                    <!-- /.card-body -->\r\n\r\n                                    <div class=\"card-footer\">\r\n                                        <button type=\"submit\" class=\"btn btn-primary float-right\">Submit</button>\r\n                                    </div>\r\n                                </form>\r\n                            </div>\r\n                            <!-- /.card-body -->\r\n                        </div>\r\n                    </div>\r\n                    <!-- /.card -->\r\n                </div>\r\n                <!-- /.col -->\r\n            </div>\r\n            <!-- /.row -->\r\n        </div>\r\n        <!-- /.container-fluid -->\r\n    </section>\r\n    <!-- /.content -->\r\n@endsection\r\n\r\n@section('css')\r\n\r\n@endsection\r\n@section('script')\r\n\r\n    <script>\r\n        // for project\r\n        $(document).ready(function () {\r\n\r\n            $('#designation_id').on('change', function (e) {\r\n\r\n                var designation_id = e.target.value;\r\n                $.ajax({\r\n\r\n                    url: \"{{ route('permission.getUser')}}\",\r\n                    type: \"POST\",\r\n                    data: {\r\n                        designation_id: designation_id,\r\n                        _token: '{{csrf_token()}}',\r\n                    },\r\n                    success: function (data) {\r\n                        $('#emp_name').empty();\r\n                        $.each(data, function (i, value) {\r\n                            $('#emp_name').append('<option value=\"' + value.id + '\">' + value.name + '</option>');\r\n                        });\r\n                    }\r\n                })\r\n            });\r\n        });\r\n    </script>\r\n\r\n    <script>\r\n        $(\"#checkPermissionAll\").click(function () {\r\n            if ($(this).is(':checked')) {\r\n                // check all the checkbox\r\n                $('input[type=checkbox]').prop('checked', true);\r\n            } else {\r\n                // un check all the checkbox\r\n                $('input[type=checkbox]').prop('checked', false);\r\n            }\r\n        });\r\n\r\n        function checkPermissionByGroup(className, checkThis){\r\n            const groupIdName = $(\"#\"+checkThis.id);\r\n            const classCheckBox = $('.'+className+' input');\r\n\r\n            if(groupIdName.is(':checked')){\r\n                classCheckBox.prop('checked', true);\r\n            }else{\r\n                classCheckBox.prop('checked', false);\r\n            }\r\n            implementAllChecked();\r\n        }\r\n\r\n        function checkSinglePermission(groupClassName, groupID, countTotalPermission) {\r\n            const classCheckbox = $('.'+groupClassName+ ' input');\r\n            const groupIDCheckBox = $(\"#\"+groupID);\r\n\r\n            // if there is any occurance where something is not selected then make selected = false\r\n            if($('.'+groupClassName+ ' input:checked').length == countTotalPermission){\r\n                groupIDCheckBox.prop('checked', true);\r\n            }else{\r\n                groupIDCheckBox.prop('checked', false);\r\n            }\r\n            implementAllChecked();\r\n        }\r\n\r\n        {{--function implementAllChecked() {--}}\r\n        {{--    const countPermissions = {{ count($all_permissions) }};--}}\r\n        {{--    const countPermissionGroups = {{ count($permission_groups) }};--}}\r\n\r\n        {{--    //  console.log((countPermissions + countPermissionGroups));--}}\r\n        {{--    //  console.log($('input[type=\"checkbox\"]:checked').length);--}}\r\n\r\n        {{--    if($('input[type=\"checkbox\"]:checked').length >= (countPermissions + countPermissionGroups)){--}}\r\n        {{--        $(\"#checkPermissionAll\").prop('checked', true);--}}\r\n        {{--    }else{--}}\r\n        {{--        $(\"#checkPermissionAll\").prop('checked', false);--}}\r\n        {{--    }--}}\r\n        {{--}--}}\r\n    </script>\r\n@endsection\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/admin/permission/create.blade.php b/resources/views/admin/permission/create.blade.php
+--- a/resources/views/admin/permission/create.blade.php	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/resources/views/admin/permission/create.blade.php	(date 1611736170321)
+@@ -81,18 +81,10 @@
+                                                 <th>can-edit</th>
+                                                 <th>can-delete</th>
+                                                 <th>can-view</th>
+-                                                <th>can-list</th>
++                                                <th>menu</th>
+                                             </tr>
+                                             </thead>
+                                             <tbody>
+-                                            <tr>
+-                                                <td>Permission</td>
+-                                                <td><input type="checkbox" name="name[permission]['can-add']" value="1"></td>
+-                                                <td><input type="checkbox" name="name[permission]['can-edit']" value="1"></td>
+-                                                <td><input type="checkbox" name="name[permission]['can-delete']" value="1"></td>
+-                                                <td><input type="checkbox" name="name[permission]['can-view']" value="1"></td>
+-                                                <td><input type="checkbox" name="name[permission]['can-list']" value="1"></td>
+-                                            </tr>
+                                             <tr>
+                                                 <td>Department</td>
+                                                 <td><input type="checkbox" name="name[department]['can-add']" value="1"></td>
+@@ -100,6 +92,14 @@
+                                                 <td><input type="checkbox" name="name[department]['can-delete']" value="1"></td>
+                                                 <td><input type="checkbox" name="name[department]['can-view']" value="1"></td>
+                                                 <td><input type="checkbox" name="name[department]['can-list']" value="1"></td>
++                                            </tr>
++                                            <tr>
++                                                <td>Permission</td>
++                                                <td><input type="checkbox" name="name[permission]['can-add']" value="1"></td>
++                                                <td><input type="checkbox" name="name[permission]['can-edit']" value="1"></td>
++                                                <td><input type="checkbox" name="name[permission]['can-delete']" value="1"></td>
++                                                <td><input type="checkbox" name="name[permission]['can-view']" value="1"></td>
++                                                <td><input type="checkbox" name="name[permission]['can-list']" value="1"></td>
+                                             </tr>
+                                             <tr>
+                                                 <td>Designation</td>
+@@ -124,6 +124,22 @@
+                                                 <td><input type="checkbox" name="name[project]['can-delete']" value="1"></td>
+                                                 <td><input type="checkbox" name="name[project]['can-view']" value="1"></td>
+                                                 <td><input type="checkbox" name="name[project]['can-list']" value="1"></td>
++                                            </tr>
++                                            <tr>
++                                                <td>Contractors</td>
++                                                <td><input type="checkbox" name="name[contractors]['can-add']" value="1"></td>
++                                                <td><input type="checkbox" name="name[contractors]['can-edit']" value="1"></td>
++                                                <td><input type="checkbox" name="name[contractors]['can-delete']" value="1"></td>
++                                                <td><input type="checkbox" name="name[contractors]['can-view']" value="1"></td>
++                                                <td><input type="checkbox" name="name[contractors]['can-list']" value="1"></td>
++                                            </tr>
++                                            <tr>
++                                                <td>Vendor</td>
++                                                <td><input type="checkbox" name="name[vendor]['can-add']" value="1"></td>
++                                                <td><input type="checkbox" name="name[vendor]['can-edit']" value="1"></td>
++                                                <td><input type="checkbox" name="name[vendor]['can-delete']" value="1"></td>
++                                                <td><input type="checkbox" name="name[vendor]['can-view']" value="1"></td>
++                                                <td><input type="checkbox" name="name[vendor]['can-list']" value="1"></td>
+                                             </tr>
+                                             </tbody>
+                                         </table>
+Index: app/Traits/permissionTrait.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Traits;\r\n\r\ntrait permissionTrait{\r\n    public function hasPermission()\r\n    {\r\n        //for Permission\r\n        if (!isset(auth()->user()->permission['name']['permission']['can-add']) && \\Route::is('permission.create')){\r\n            return abort(401);\r\n        }\r\n        if (!isset(auth()->user()->permission['name']['permission']['can-edit']) && \\Route::is('permission.edit')){\r\n            return abort(401);\r\n        }\r\n        if (!isset(auth()->user()->permission['name']['permission']['can-delete']) && \\Route::is('permission.destroy')){\r\n            return abort(401);\r\n        }\r\n        if (!isset(auth()->user()->permission['name']['permission']['can-view']) && \\Route::is('permission.index')){\r\n            return abort(401);\r\n        }\r\n//        if (!isset(auth()->user()->permission['name']['permission']['can-list']) && \\Route::is('permission.show')){\r\n//            return abort(401);\r\n//        }\r\n\r\n\r\n        //for Department\r\n        if (!isset(auth()->user()->permission['name']['department']['can-add']) && \\Route::is('department.create')){\r\n            return abort(401);\r\n        }\r\n        if (!isset(auth()->user()->permission['name']['department']['can-edit']) && \\Route::is('department.edit')){\r\n            return abort(401);\r\n        }\r\n        if (!isset(auth()->user()->permission['name']['department']['can-delete']) && \\Route::is('department.destroy')){\r\n            return abort(401);\r\n        }\r\n        if (!isset(auth()->user()->permission['name']['department']['can-view']) && \\Route::is('department.index')){\r\n            return abort(401);\r\n        }\r\n//        if (!isset(auth()->user()->permission['name']['department']['can-list']) && \\Route::is('department.show')){\r\n//            return abort(401);\r\n//        }\r\n\r\n\r\n        //for Designation\r\n        //for Employee\r\n        //for Project\r\n        //for Create Requisition\r\n        //for pending Requisition\r\n        //for Approved Requisition\r\n        //for Contractor Add\r\n        //for Contractor Assign Project\r\n        //for Contractor Bill Payment\r\n        //for Material\r\n        //for Vendor\r\n        //for Assign Task\r\n        //for Assign Work\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Traits/permissionTrait.php b/app/Traits/permissionTrait.php
+--- a/app/Traits/permissionTrait.php	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/app/Traits/permissionTrait.php	(date 1611729175127)
+@@ -2,29 +2,15 @@
+ 
+ namespace App\Traits;
+ 
++
+ trait permissionTrait{
+     public function hasPermission()
+     {
+         //for Permission
+-        if (!isset(auth()->user()->permission['name']['permission']['can-add']) && \Route::is('permission.create')){
+-            return abort(401);
+-        }
+-        if (!isset(auth()->user()->permission['name']['permission']['can-edit']) && \Route::is('permission.edit')){
+-            return abort(401);
+-        }
+-        if (!isset(auth()->user()->permission['name']['permission']['can-delete']) && \Route::is('permission.destroy')){
+-            return abort(401);
+-        }
+-        if (!isset(auth()->user()->permission['name']['permission']['can-view']) && \Route::is('permission.index')){
+-            return abort(401);
+-        }
+-//        if (!isset(auth()->user()->permission['name']['permission']['can-list']) && \Route::is('permission.show')){
+-//            return abort(401);
+-//        }
+ 
+ 
+         //for Department
+-        if (!isset(auth()->user()->permission['name']['department']['can-add']) && \Route::is('department.create')){
++        if (!isset(auth()->user()->$permission['name']['department']['can-add']) && \Route::is('department.create')){
+             return abort(401);
+         }
+         if (!isset(auth()->user()->permission['name']['department']['can-edit']) && \Route::is('department.edit')){
+@@ -36,24 +22,37 @@
+         if (!isset(auth()->user()->permission['name']['department']['can-view']) && \Route::is('department.index')){
+             return abort(401);
+         }
+-//        if (!isset(auth()->user()->permission['name']['department']['can-list']) && \Route::is('department.show')){
+-//            return abort(401);
+-//        }
++        if (!isset(auth()->user()->permission['name']['department']['can-list']) && \Route::is('department.show')){
++            return abort(401);
++        }
+ 
+ 
+         //for Designation
++
+         //for Employee
++
+         //for Project
++
+         //for Create Requisition
++
+         //for pending Requisition
++
+         //for Approved Requisition
++
+         //for Contractor Add
++
+         //for Contractor Assign Project
++
+         //for Contractor Bill Payment
++
+         //for Material
++
+         //for Vendor
++
+         //for Assign Task
++
+         //for Assign Work
+ 
++
+     }
+ }
+Index: app/Http/Middleware/HasPermission.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Http\\Middleware;\r\n\r\nuse Closure;\r\nuse App\\Traits\\permissionTrait;\r\n\r\nclass HasPermission\r\n{\r\n    use permissionTrait;\r\n    /**\r\n     * Handle an incoming request.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @param  \\Closure  $next\r\n     * @return mixed\r\n     */\r\n    public function handle($request, Closure $next)\r\n    {\r\n        $this->hasPermission();\r\n        return $next($request);\r\n\r\n    }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Http/Middleware/HasPermission.php b/app/Http/Middleware/HasPermission.php
+--- a/app/Http/Middleware/HasPermission.php	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/app/Http/Middleware/HasPermission.php	(date 1611721333958)
+@@ -1,10 +1,10 @@
+ <?php
+ 
+ namespace App\Http\Middleware;
+-
+-use Closure;
+ use App\Traits\permissionTrait;
+ 
++use Closure;
++
+ class HasPermission
+ {
+     use permissionTrait;
+@@ -20,6 +20,12 @@
+         $this->hasPermission();
+         return $next($request);
+ 
++//        if (isset(auth()->user()->permission['name']['department']['can-add'])){
++//            return $next($request);
++//        }else{
++//            abort(401);
++//        }
++
+     }
+ 
+ }
+Index: routes/web.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nuse Illuminate\\Support\\Facades\\Route;\r\n\r\n/*\r\n|--------------------------------------------------------------------------\r\n| Web Routes\r\n|--------------------------------------------------------------------------\r\n|\r\n| Here is where you can register web routes for your application. These\r\n| routes are loaded by the RouteServiceProvider within a group which\r\n| contains the \"web\" middleware group. Now create something great!\r\n|\r\n*/\r\n\r\n\r\nAuth::routes();\r\n\r\nRoute::group(['middleware'=>'auth'], function(){\r\n//Auth::routes(['register' => false]);\r\n\r\nRoute::get('/', 'HomeController@index')->name('home');\r\n\r\nRoute::resource('permission', 'PermissionController');\r\n\r\nRoute::post('get_permission', 'PermissionController@getUser')->name('permission.getUser');\r\n\r\nRoute::resource('department', 'DepartmentController');\r\n\r\nRoute::resource('designation', 'DesignationController');\r\n\r\nRoute::resource('project', 'ProjectController');\r\n\r\nRoute::resource('employee', 'UserController');\r\n\r\nRoute::resource('contractors', 'ContractorController');\r\n\r\nRoute::resource('category', 'CategoryController');\r\n\r\nRoute::resource('vendor', 'VendorController');\r\n\r\nRoute::resource('material', 'MaterialController');\r\n\r\nRoute::post('material_upload', 'MaterialController@upload')->name('material.upload');\r\n\r\nRoute::resource('material_category', 'MaterialCategoryController');\r\n\r\n// Contractor Report\r\nRoute::group(['prefix'=>'contractor','as'=>'contractor.'], function (){\r\n    Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');\r\n    Route::post('contractor/report/search', 'ReportController@BillSearch')->name('today.search');\r\n    Route::get('contractor/today/report', 'ReportController@todayReport')->name('today');\r\n    Route::get('contractor/weekly/report', 'ReportController@weeklyReport')->name('week');\r\n});\r\n// Vendor Report\r\n\r\nRoute::group(['prefix'=>'vendor','as'=>'vendor.'], function (){\r\n    Route::get('vendor/report/bill', 'VendorReportController@vendorBill')->name('bill');\r\n    Route::post('vendor/report/search', 'VendorReportController@billSearch')->name('today.search');\r\n    Route::get('vendor/today/report', 'VendorReportController@todayReport')->name('today');\r\n    Route::get('vendor/weekly/report', 'VendorReportController@weeklyReport')->name('week');\r\n});\r\n\r\n//Requisition\r\nRoute::group(['prefix'=>'workOrder','as'=>'workOrder.'], function (){\r\n    Route::get('project/work/order', 'WorkOrderController@addWorkOrder')->name('addWorkOrder');\r\n    Route::post('work-order-store', 'WorkOrderController@workOrderStore')->name('orderStore');\r\n    Route::get('project/work/order/list', 'WorkOrderController@workOrderList')->name('list');\r\n});\r\n\r\nRoute::group(['prefix'=>'requisition','as'=>'requisition.'], function (){\r\n\r\n    Route::POST('work-order','RequisitionController@getWorkNo')->name('getWorkNo');\r\n    //for getting Product\r\n    Route::POST('product-list','RequisitionController@getMaterial')->name('getMaterial');\r\n    Route::get('create-requisition', 'RequisitionController@index')->name('index');\r\n    Route::get('', 'RequisitionController@show')->name('show');\r\n    Route::post('store-requisition', 'RequisitionController@storeRequisition')->name('store');\r\n    Route::get('pending-requisition', 'RequisitionController@pendingRequisition')->name('pending');\r\n    Route::get('details-requisition/{id}', 'RequisitionController@detailsRequisition')->name('details');\r\n    Route::post('approve-requisition', 'RequisitionController@approveRequisition')->name('approve');\r\n    Route::get('complete-requisition', 'RequisitionController@completeRequisition')->name('complete');\r\n    Route::get('approved-Details-requisition/{id}', 'RequisitionController@approvedDetailsRequisition')->name('approvedDetails');\r\n    //print\r\n    Route::get('print-Requisition/{id}', 'RequisitionController@printRequisition')->name('print');\r\n\r\n\r\n});\r\n\r\nRoute::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){\r\n\r\n    Route::get('assign-project', 'AssignProjectController@index')->name('index');\r\n\r\n    Route::post('store-assign-project', 'AssignProjectController@storeProject')->name('store');\r\n\r\n    Route::get('view-assign-project', 'AssignProjectController@viewProject')->name('view');\r\n\r\n    Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');\r\n\r\n    Route::post('assign-project-bill', 'AssignProjectController@projectBillPay')->name('payBill');\r\n\r\n});\r\nRoute::group(['prefix'=>'assignWork','as'=>'assignWork.'], function(){\r\n    Route::get('assign-work', 'AssignWorkController@index')->name('index');\r\n    Route::post('store-work', 'AssignWorkController@storeWork')->name('store');\r\n});\r\nRoute::group(['prefix'=>'todo','as'=>'todo.'], function(){\r\n    Route::post('Todo-work', 'TodoController@storeTodo')->name('store');\r\n    Route::get('Todo-list', 'TodoController@fetchUserTodo')->name('list');\r\n    Route::get('delete-todo/{id}', 'TodoController@deleteTodo')->name('delete');\r\n});\r\nRoute::group(['prefix'=>'subWork','as'=>'subWork.'], function(){\r\n    Route::post('sub-work', 'SubWorkController@storeSubWork')->name('store');\r\n    Route::post('sub-work-refNo', 'SubWorkController@storeSubWorkRefNo')->name('storeRefNo');\r\n    Route::post('sub-work-delay-remark', 'SubWorkController@storeRemarks')->name('storeRemark');\r\n    Route::post('sub-work-particular', 'SubWorkController@storeParticulars')->name('storeParticular');\r\n    Route::post('sub-work-particular/{id}', 'SubWorkController@storeParticularsDelete')->name('deleteParticular');\r\n    Route::get('sub-work-details/{id}', 'SubWorkController@SubWorkDetails')->name('details');\r\n\r\n});\r\n//vendor\r\nRoute::group(['prefix'=>'vendorAssignProject','as'=>'vendorAssignProject.'], function(){\r\n\r\n    Route::get('Assign-Project', 'VendorAssignProjectController@index')->name('index');\r\n    Route::post('store-assign-project', 'VendorAssignProjectController@storeProject')->name('store');\r\n    Route::get('view-assign-project', 'VendorAssignProjectController@viewProject')->name('view');\r\n    Route::get('view-assign-project-details/{id}', 'VendorAssignProjectController@viewProjectDetails')->name('details');\r\n    Route::post('assign-project-bill', 'VendorAssignProjectController@projectBillPay')->name('payBill');\r\n});\r\n\r\n});\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/routes/web.php b/routes/web.php
+--- a/routes/web.php	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/routes/web.php	(date 1611729872998)
+@@ -29,22 +29,18 @@
+ 
+ Route::resource('designation', 'DesignationController');
+ 
+-Route::resource('project', 'ProjectController');
+-
+ Route::resource('employee', 'UserController');
+ 
+-Route::resource('contractors', 'ContractorController');
+-
+-Route::resource('category', 'CategoryController');
+-
+-Route::resource('vendor', 'VendorController');
+-
+ Route::resource('material', 'MaterialController');
+ 
+ Route::post('material_upload', 'MaterialController@upload')->name('material.upload');
+ 
+ Route::resource('material_category', 'MaterialCategoryController');
+ 
++//Contractor
++Route::resource('contractors', 'ContractorController');
++Route::resource('category', 'CategoryController');
++
+ // Contractor Report
+ Route::group(['prefix'=>'contractor','as'=>'contractor.'], function (){
+     Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');
+@@ -52,8 +48,22 @@
+     Route::get('contractor/today/report', 'ReportController@todayReport')->name('today');
+     Route::get('contractor/weekly/report', 'ReportController@weeklyReport')->name('week');
+ });
++
++
++// Vendor
++Route::resource('vendor', 'VendorController');
++
++//vendor Assign Project
++Route::group(['prefix'=>'vendorAssignProject','as'=>'vendorAssignProject.'], function(){
++
++    Route::get('Assign-Project', 'VendorAssignProjectController@index')->name('index');
++    Route::post('store-assign-project', 'VendorAssignProjectController@storeProject')->name('store');
++    Route::get('view-assign-project', 'VendorAssignProjectController@viewProject')->name('view');
++    Route::get('view-assign-project-details/{id}', 'VendorAssignProjectController@viewProjectDetails')->name('details');
++    Route::post('assign-project-bill', 'VendorAssignProjectController@projectBillPay')->name('payBill');
++    });
++
+ // Vendor Report
+-
+ Route::group(['prefix'=>'vendor','as'=>'vendor.'], function (){
+     Route::get('vendor/report/bill', 'VendorReportController@vendorBill')->name('bill');
+     Route::post('vendor/report/search', 'VendorReportController@billSearch')->name('today.search');
+@@ -87,28 +97,28 @@
+ 
+ });
+ 
++//Project
++Route::resource('project', 'ProjectController');
++
+ Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
+-
+     Route::get('assign-project', 'AssignProjectController@index')->name('index');
+-
+     Route::post('store-assign-project', 'AssignProjectController@storeProject')->name('store');
+-
+     Route::get('view-assign-project', 'AssignProjectController@viewProject')->name('view');
+-
+     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');
+-
+     Route::post('assign-project-bill', 'AssignProjectController@projectBillPay')->name('payBill');
+-
+ });
++
+ Route::group(['prefix'=>'assignWork','as'=>'assignWork.'], function(){
+     Route::get('assign-work', 'AssignWorkController@index')->name('index');
+     Route::post('store-work', 'AssignWorkController@storeWork')->name('store');
+ });
++
+ Route::group(['prefix'=>'todo','as'=>'todo.'], function(){
+     Route::post('Todo-work', 'TodoController@storeTodo')->name('store');
+     Route::get('Todo-list', 'TodoController@fetchUserTodo')->name('list');
+     Route::get('delete-todo/{id}', 'TodoController@deleteTodo')->name('delete');
+ });
++
+ Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
+     Route::post('sub-work', 'SubWorkController@storeSubWork')->name('store');
+     Route::post('sub-work-refNo', 'SubWorkController@storeSubWorkRefNo')->name('storeRefNo');
+@@ -118,15 +128,6 @@
+     Route::get('sub-work-details/{id}', 'SubWorkController@SubWorkDetails')->name('details');
+ 
+ });
+-//vendor
+-Route::group(['prefix'=>'vendorAssignProject','as'=>'vendorAssignProject.'], function(){
+-
+-    Route::get('Assign-Project', 'VendorAssignProjectController@index')->name('index');
+-    Route::post('store-assign-project', 'VendorAssignProjectController@storeProject')->name('store');
+-    Route::get('view-assign-project', 'VendorAssignProjectController@viewProject')->name('view');
+-    Route::get('view-assign-project-details/{id}', 'VendorAssignProjectController@viewProjectDetails')->name('details');
+-    Route::post('assign-project-bill', 'VendorAssignProjectController@projectBillPay')->name('payBill');
+-});
+ 
+ });
+ 
+Index: resources/views/admin/department/create.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@extends('admin.layouts.master')\r\n\r\n@section('content')\r\n    <!-- Content Header (Page header) -->\r\n    <div class=\"content-header\">\r\n        <div class=\"container-fluid\">\r\n            <div class=\"row mb-2\">\r\n                <div class=\"col-sm-6\">\r\n                    <li class=\"breadcrumb-item\">\r\n                        <a href=\"{{ url()->previous() }}\"><i class=\"fas fa-long-arrow-alt-left\"></i> Back</a>\r\n                    </li>\r\n                </div><!-- /.col -->\r\n                <div class=\"col-sm-6\">\r\n                    <ol class=\"breadcrumb float-sm-right\">\r\n                        <li class=\"breadcrumb-item\"><a href=\"{{url('/')}}\">Home</a></li>\r\n                        <li class=\"breadcrumb-item\"><a href=\"{{url('/department')}}\">Department</a></li>\r\n                        <li class=\"breadcrumb-item active\">Create</li>\r\n                    </ol>\r\n                </div><!-- /.col -->\r\n            </div><!-- /.row -->\r\n        </div><!-- /.container-fluid -->\r\n    </div>\r\n    <!-- /.content-header -->\r\n\r\n    <!-- Main content -->\r\n    <div class=\"container\">\r\n        @if(Session::has('message'))\r\n            <div class=\"alert alert-success alert-dismissible\">\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\r\n                <h5><i class=\"icon fas fa-check\"></i> {{Session::get('message')}}</h5>\r\n            </div>\r\n        @endif\r\n        <form action=\"{{route('department.store')}}\" method=\"post\">\r\n            @csrf\r\n            <div class=\"card card-secondary\">\r\n                <div class=\"card-header\">\r\n                    <h3 class=\"card-title\">Add Department</h3>\r\n                </div>\r\n                <div class=\"card-body\">\r\n                    <label for=\"exampleInputDepartmentName\">Department Name</label>\r\n                    <input class=\"form-control @error('name') is-invalid @enderror\" name=\"name\" type=\"text\" placeholder=\"\">\r\n                    @error('name')\r\n                    <span class=\"invalid-feedback\" role=\"alert\">\r\n                        <strong>{{ $message }}</strong>\r\n                    </span>\r\n                    @enderror\r\n                    <br>\r\n                    <label for=\"exampleDepartmentDetails\">Department Details</label>\r\n                    <textarea name=\"description\" class=\"form-control @error('description') is-invalid @enderror\" cols=\"30\" rows=\"5\" id=\"\"></textarea>\r\n                    @error('description')\r\n                    <span class=\"invalid-feedback\" role=\"alert\">\r\n                            <strong>{{ $message }}</strong>\r\n                        </span>\r\n                    @enderror\r\n                </div>\r\n                <div class=\"card-footer\">\r\n                    <a href=\"{{ url()->previous() }}\" class=\"btn btn-secondary\">Cancel</a>\r\n                    <button type=\"submit\" class=\"btn btn-primary float-right    \">\r\n                        Submit\r\n                    </button>\r\n                </div>\r\n                <!-- /.card-body -->\r\n            </div>\r\n        </form>\r\n    </div>\r\n    <!-- /.content -->\r\n@endsection\r\n\r\n@section('script')\r\n<!-- bs-custom-file-input -->\r\n<script src=\"{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}\"></script>\r\n@endsection\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/admin/department/create.blade.php b/resources/views/admin/department/create.blade.php
+--- a/resources/views/admin/department/create.blade.php	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/resources/views/admin/department/create.blade.php	(date 1611732710106)
+@@ -53,12 +53,14 @@
+                         </span>
+                     @enderror
+                 </div>
++                @if(isset(auth()->user()->permission['name']['department']['can-add']))
+                 <div class="card-footer">
+                     <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
+                     <button type="submit" class="btn btn-primary float-right    ">
+                         Submit
+                     </button>
+                 </div>
++            @endif
+                 <!-- /.card-body -->
+             </div>
+         </form>
+Index: resources/views/errors/401.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/401.blade.php b/resources/views/errors/401.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215619)
++++ b/resources/views/errors/401.blade.php	(date 1611722215619)
+@@ -0,0 +1,5 @@
++@extends('errors::minimal')
++
++@section('title', __('Unauthorized'))
++@section('code', '401')
++@section('message', __('Unauthorized'))
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8298d33a-ec25-4812-9948-8120251eb317\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/app/Http/Controllers/PermissionController.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/app/Http/Middleware/HasPermission.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/app/Permission.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/app/Traits/permissionTrait.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/database/migrations/2021_01_23_100524_create_permissions_table.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/resources/views/admin/layouts/scripts.blade.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/resources/views/admin/permission/create.blade.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/resources/views/admin/permission/index.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/Designation.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/Designation.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/Http/Kernel.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/Http/Kernel.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/User.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/User.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/composer.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/composer.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/config/app.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/config/app.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/public/backend/pages/tables/data.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/public/backend/pages/tables/data.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/public/backend/pages/tables/simple.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/public/backend/pages/tables/simple.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/public/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/public/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/public/uploads/company_logo/logo.png\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/public/uploads/company_logo/logo.png\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/admin/department/index.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/admin/department/index.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/admin/employee/index.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/admin/employee/index.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/resources/views/admin/requisition/index.blade.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/resources/views/admin/requisition/index.blade.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/routes/web.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/routes/web.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\" doNotAsk=\"true\" synchronizationState=\"SYNCHRONIZE\">\r\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\r\n    <execution>\r\n      <executable path=\"composer\" />\r\n    </execution>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"composer.json\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"GitToolBoxStore\">\r\n    <option name=\"projectConfigVersion\" value=\"2\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/resources/views/admin/dashboard.blade.php\" root0=\"FORCE_HIGHLIGHTING\" root1=\"SKIP_HIGHLIGHTING\" root2=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"PackageJsonUpdateNotifier\">\r\n    <dismissed value=\"$PROJECT_DIR$/package.json\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\">\r\n    <include_path>\r\n      <path value=\"$PROJECT_DIR$/vendor/asm89/stack-cors\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/brick/math\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/inflector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/instantiator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/lexer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/dragonmantank/cron-expression\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/egulias/email-validator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/facade/flare-client-php\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/facade/ignition\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/facade/ignition-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/fideloper/proxy\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/filp/whoops\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/fruitcake/laravel-cors\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/guzzle\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/promises\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/guzzlehttp/psr7\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/hamcrest/hamcrest-php\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laravel/framework\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laravel/tinker\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/league/commonmark\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/league/flysystem\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/league/mime-type-detection\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/mockery/mockery\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/monolog/monolog\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/myclabs/deep-copy\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nesbot/carbon\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nikic/php-parser\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/nunomaduro/collision\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/opis/closure\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/manifest\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phar-io/version\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-common\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/type-resolver\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpoption/phpoption\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpspec/prophecy\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-code-coverage\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-file-iterator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-text-template\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-timer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/php-token-stream\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpunit/phpunit\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/container\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/event-dispatcher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/http-message\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/log\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psr/simple-cache\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/psy/psysh\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/ralouphie/getallheaders\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/ramsey/collection\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/ramsey/uuid\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/comparator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/diff\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/environment\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/exporter\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/global-state\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-enumerator\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/object-reflector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/recursion-context\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/resource-operations\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/type\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/sebastian/version\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/swiftmailer/swiftmailer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/console\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/css-selector\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/deprecation-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/error-handler\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/finder\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-client-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-foundation\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-kernel\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/mime\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-ctype\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-iconv\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php72\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php73\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php80\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/process\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/routing\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/service-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/string\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation-contracts\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-dumper\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/theseer/tokenizer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/vlucas/phpdotenv\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/voku/portable-ascii\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/webmozart/assert\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/laravel/ui\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/harvesthq/chosen\" />\r\n    </include_path>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1lNjgHBCUfci1nX8IBGT21GqbQu\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../laravel-role\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"reference.settings.ide.settings.notifications\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"E:\\Web Development\\htdocs\\ems\\resources\\views\\admin\\vendor\\bill\" />\r\n      <recent name=\"E:\\Web Development\\htdocs\\ems\\app\\Http\\Controllers\\vendor\" />\r\n      <recent name=\"E:\\Web Development\\htdocs\\ems\\resources\\views\\admin\\project\" />\r\n      <recent name=\"E:\\Web Development\\htdocs\\ems\\resources\\views\\admin\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"E:\\Web Development\\htdocs\\ems\\app\\Http\\Controllers\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"phpunit.xml\" type=\"PHPUnitRunConfigurationType\" factoryName=\"PHPUnit\">\r\n      <TestRunner scope=\"XML\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8298d33a-ec25-4812-9948-8120251eb317\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1607444555628</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1607444555628</updated>\r\n      <workItem from=\"1607444558230\" duration=\"5657000\" />\r\n      <workItem from=\"1608200972923\" duration=\"1520000\" />\r\n      <workItem from=\"1608202851937\" duration=\"1499000\" />\r\n      <workItem from=\"1608348330687\" duration=\"61000\" />\r\n      <workItem from=\"1608435302757\" duration=\"882000\" />\r\n      <workItem from=\"1608438661835\" duration=\"22299000\" />\r\n      <workItem from=\"1608528850887\" duration=\"14423000\" />\r\n      <workItem from=\"1608613539383\" duration=\"18618000\" />\r\n      <workItem from=\"1608696050702\" duration=\"9000\" />\r\n      <workItem from=\"1608699210105\" duration=\"13221000\" />\r\n      <workItem from=\"1608780738756\" duration=\"461000\" />\r\n      <workItem from=\"1608788997913\" duration=\"8114000\" />\r\n      <workItem from=\"1608953037214\" duration=\"15624000\" />\r\n      <workItem from=\"1609040387730\" duration=\"1810000\" />\r\n      <workItem from=\"1609045069834\" duration=\"123000\" />\r\n      <workItem from=\"1609049445718\" duration=\"16872000\" />\r\n      <workItem from=\"1609126284546\" duration=\"31523000\" />\r\n      <workItem from=\"1609214302263\" duration=\"17953000\" />\r\n      <workItem from=\"1609301549811\" duration=\"1270000\" />\r\n      <workItem from=\"1609311898811\" duration=\"2093000\" />\r\n      <workItem from=\"1609388723790\" duration=\"25994000\" />\r\n      <workItem from=\"1609558782409\" duration=\"184000\" />\r\n      <workItem from=\"1609559019695\" duration=\"446000\" />\r\n      <workItem from=\"1609559970029\" duration=\"4563000\" />\r\n      <workItem from=\"1609565502182\" duration=\"871000\" />\r\n      <workItem from=\"1609566396879\" duration=\"2704000\" />\r\n      <workItem from=\"1609571039078\" duration=\"1456000\" />\r\n      <workItem from=\"1609573146396\" duration=\"7172000\" />\r\n      <workItem from=\"1609649329998\" duration=\"21804000\" />\r\n      <workItem from=\"1609731754498\" duration=\"86000\" />\r\n      <workItem from=\"1609736206271\" duration=\"12920000\" />\r\n      <workItem from=\"1609818153006\" duration=\"20744000\" />\r\n      <workItem from=\"1609904278850\" duration=\"15177000\" />\r\n      <workItem from=\"1609991334145\" duration=\"3249000\" />\r\n      <workItem from=\"1609994955344\" duration=\"23932000\" />\r\n      <workItem from=\"1610163199800\" duration=\"22995000\" />\r\n      <workItem from=\"1610252242733\" duration=\"2047000\" />\r\n      <workItem from=\"1610281605102\" duration=\"360000\" />\r\n      <workItem from=\"1610336186359\" duration=\"6513000\" />\r\n      <workItem from=\"1610423152415\" duration=\"15931000\" />\r\n      <workItem from=\"1610598300963\" duration=\"597000\" />\r\n      <workItem from=\"1610771984708\" duration=\"992000\" />\r\n      <workItem from=\"1610780481839\" duration=\"703000\" />\r\n      <workItem from=\"1610860871182\" duration=\"18829000\" />\r\n      <workItem from=\"1610887656562\" duration=\"3000\" />\r\n      <workItem from=\"1610941019323\" duration=\"25170000\" />\r\n      <workItem from=\"1611027461902\" duration=\"14845000\" />\r\n      <workItem from=\"1611114368413\" duration=\"13250000\" />\r\n      <workItem from=\"1611201262863\" duration=\"780000\" />\r\n      <workItem from=\"1611217376226\" duration=\"4270000\" />\r\n      <workItem from=\"1611373283859\" duration=\"594000\" />\r\n      <workItem from=\"1611379115892\" duration=\"19187000\" />\r\n      <workItem from=\"1611464172863\" duration=\"18779000\" />\r\n      <workItem from=\"1611549780478\" duration=\"11544000\" />\r\n      <workItem from=\"1611635311746\" duration=\"20700000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"contractor model done\">\r\n      <created>1608456548354</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608456548354</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"assign project and category create done\">\r\n      <created>1608547601804</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608547601804</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"payment and bill contractor\">\r\n      <created>1608638460513</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608638460513</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"pay bill done\">\r\n      <created>1608716664550</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608716664550</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"bill paid check\">\r\n      <created>1608806771990</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608806771990</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"all check to merge\">\r\n      <created>1608953381706</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608953381706</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Bill paid added to details page\">\r\n      <created>1608962196108</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608962196108</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"api for check\">\r\n      <created>1608983009176</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608983009176</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Requisitions insert to db successfully add\">\r\n      <created>1609070575633</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609070575633</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Requisitions  approved\">\r\n      <created>1609162936956</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609162936956</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Requisitions  approved not done\">\r\n      <created>1609230977657</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609230977657</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"marge done\">\r\n      <created>1609395376076</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609395376076</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"partially Requisition done\">\r\n      <created>1609415803832</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609415803832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"requisition print option done\">\r\n      <created>1609571083346</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609571083346</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"pending Requisition added to dash\">\r\n      <created>1609589447083</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609589447083</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"assign project details\">\r\n      <created>1609848400728</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609848400728</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"project details and particular done\">\r\n      <created>1609922196428</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609922196428</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Requisition Modification\">\r\n      <created>1609998124381</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1609998124381</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Requisition Modification with category work order\">\r\n      <created>1610022833128</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1610022833128</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"20\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.History.Properties\">\r\n    <option name=\"COLUMN_ID_ORDER\">\r\n      <list>\r\n        <option value=\"Default.Root\" />\r\n        <option value=\"Default.Author\" />\r\n        <option value=\"Default.Date\" />\r\n        <option value=\"Default.Subject\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"1\">\r\n          <value>\r\n            <State>\r\n              <option name=\"SHOW_ONLY_AFFECTED_CHANGES\" value=\"true\" />\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"HEAD\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                  <entry key=\"roots\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"$PROJECT_DIR$\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/dev_Zakir\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"OPEN_GENERIC_TABS\">\r\n      <map>\r\n        <entry key=\"1\" value=\"TOOL_WINDOW\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"contractor model done\" />\r\n    <MESSAGE value=\"assign project and category create done\" />\r\n    <MESSAGE value=\"payment and bill contractor\" />\r\n    <MESSAGE value=\"pay bill done\" />\r\n    <MESSAGE value=\"bill paid check\" />\r\n    <MESSAGE value=\"all check to merge\" />\r\n    <MESSAGE value=\"Bill paid added to details page\" />\r\n    <MESSAGE value=\"api for check\" />\r\n    <MESSAGE value=\"Requisitions insert to db successfully add\" />\r\n    <MESSAGE value=\"Requisitions  approved\" />\r\n    <MESSAGE value=\"Requisitions  approved not done\" />\r\n    <MESSAGE value=\"marge done\" />\r\n    <MESSAGE value=\"partially Requisition done\" />\r\n    <MESSAGE value=\"requisition print option done\" />\r\n    <MESSAGE value=\"pending Requisition added to dash\" />\r\n    <MESSAGE value=\"assign project details\" />\r\n    <MESSAGE value=\"project details and particular done\" />\r\n    <MESSAGE value=\"Requisition Modification\" />\r\n    <MESSAGE value=\"Requisition Modification with category work order\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Requisition Modification with category work order\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"php\">\r\n          <url>file://$PROJECT_DIR$/resources/views/admin/layouts/content.blade.php</url>\r\n          <line>1</line>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"php\">\r\n          <url>file://$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php</url>\r\n          <line>4</line>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"php\">\r\n          <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>\r\n          <line>163</line>\r\n          <option name=\"timeStamp\" value=\"5\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"php\">\r\n          <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>\r\n          <line>364</line>\r\n          <option name=\"timeStamp\" value=\"7\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"php\">\r\n          <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>\r\n          <line>372</line>\r\n          <option name=\"timeStamp\" value=\"8\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/.idea/workspace.xml	(date 1611736170429)
+@@ -5,33 +5,24 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/HasPermission.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/Permission.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/Traits/permissionTrait.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_23_100524_create_permissions_table.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layouts/scripts.blade.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/resources/views/admin/permission/index.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/401.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/419.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/429.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/500.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/illustrated-layout.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/layout.blade.php" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/resources/views/errors/minimal.blade.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/Designation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Designation.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/HasPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/HasPermission.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/Traits/permissionTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/permissionTrait.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/public/backend/pages/tables/data.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/pages/tables/data.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/public/backend/pages/tables/simple.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/pages/tables/simple.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/public/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/public/uploads/company_logo/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/company_logo/logo.png" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/admin/department/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/department/index.blade.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/admin/employee/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/employee/index.blade.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/index.blade.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/resources/views/admin/department/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/department/create.blade.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -287,7 +278,8 @@
+       <workItem from="1611379115892" duration="19187000" />
+       <workItem from="1611464172863" duration="18779000" />
+       <workItem from="1611549780478" duration="11544000" />
+-      <workItem from="1611635311746" duration="20700000" />
++      <workItem from="1611635311746" duration="20785000" />
++      <workItem from="1611719611212" duration="9481000" />
+     </task>
+     <task id="LOCAL-00001" summary="contractor model done">
+       <created>1608456548354</created>
+@@ -468,19 +460,7 @@
+         </entry>
+         <entry key="MAIN">
+           <value>
+-            <State>
+-              <option name="FILTERS">
+-                <map>
+-                  <entry key="branch">
+-                    <value>
+-                      <list>
+-                        <option value="origin/dev_Zakir" />
+-                      </list>
+-                    </value>
+-                  </entry>
+-                </map>
+-              </option>
+-            </State>
++            <State />
+           </value>
+         </entry>
+       </map>
+Index: resources/views/errors/minimal.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/minimal.blade.php b/resources/views/errors/minimal.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215652)
++++ b/resources/views/errors/minimal.blade.php	(date 1611722215652)
+@@ -0,0 +1,62 @@
++<!DOCTYPE html>
++<html lang="en">
++    <head>
++        <meta charset="utf-8">
++        <meta name="viewport" content="width=device-width, initial-scale=1">
++
++        <title>@yield('title')</title>
++
++        <!-- Fonts -->
++        <link rel="dns-prefetch" href="//fonts.gstatic.com">
++        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
++
++        <!-- Styles -->
++        <style>
++            html, body {
++                background-color: #fff;
++                color: #636b6f;
++                font-family: 'Nunito', sans-serif;
++                font-weight: 100;
++                height: 100vh;
++                margin: 0;
++            }
++
++            .full-height {
++                height: 100vh;
++            }
++
++            .flex-center {
++                align-items: center;
++                display: flex;
++                justify-content: center;
++            }
++
++            .position-ref {
++                position: relative;
++            }
++
++            .code {
++                border-right: 2px solid;
++                font-size: 26px;
++                padding: 0 15px 0 15px;
++                text-align: center;
++            }
++
++            .message {
++                font-size: 18px;
++                text-align: center;
++            }
++        </style>
++    </head>
++    <body>
++        <div class="flex-center position-ref full-height">
++            <div class="code">
++                @yield('code')
++            </div>
++
++            <div class="message" style="padding: 10px;">
++                @yield('message')
++            </div>
++        </div>
++    </body>
++</html>
+Index: resources/views/errors/layout.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/layout.blade.php b/resources/views/errors/layout.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215650)
++++ b/resources/views/errors/layout.blade.php	(date 1611722215650)
+@@ -0,0 +1,57 @@
++<!DOCTYPE html>
++<html lang="en">
++    <head>
++        <meta charset="utf-8">
++        <meta name="viewport" content="width=device-width, initial-scale=1">
++
++        <title>@yield('title')</title>
++
++        <!-- Fonts -->
++        <link rel="dns-prefetch" href="//fonts.gstatic.com">
++        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
++
++        <!-- Styles -->
++        <style>
++            html, body {
++                background-color: #fff;
++                color: #636b6f;
++                font-family: 'Nunito', sans-serif;
++                font-weight: 100;
++                height: 100vh;
++                margin: 0;
++            }
++
++            .full-height {
++                height: 100vh;
++            }
++
++            .flex-center {
++                align-items: center;
++                display: flex;
++                justify-content: center;
++            }
++
++            .position-ref {
++                position: relative;
++            }
++
++            .content {
++                text-align: center;
++            }
++
++            .title {
++                font-size: 36px;
++                padding: 20px;
++            }
++        </style>
++    </head>
++    <body>
++        <div class="flex-center position-ref full-height">
++            <div class="content">
++                <div class="title">
++                    @yield('message')
++                </div>
++            </div>
++        </div>
++    </body>
++</html>
+Index: resources/views/errors/illustrated-layout.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/illustrated-layout.blade.php b/resources/views/errors/illustrated-layout.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215643)
++++ b/resources/views/errors/illustrated-layout.blade.php	(date 1611722215643)
+@@ -0,0 +1,486 @@
++<!DOCTYPE html>
++<html lang="en">
++    <head>
++        <meta charset="utf-8">
++        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
++
++        <title>@yield('title')</title>
++
++        <!-- Fonts -->
++        <link rel="dns-prefetch" href="//fonts.gstatic.com">
++        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
++
++        <!-- Styles -->
++        <style>
++            html {
++                line-height: 1.15;
++                    -ms-text-size-adjust: 100%;
++                -webkit-text-size-adjust: 100%;
++            }
++
++            body {
++                margin: 0;
++            }
++
++            header,
++            nav,
++            section {
++                display: block;
++            }
++
++            figcaption,
++            main {
++                display: block;
++            }
++
++            a {
++                background-color: transparent;
++                -webkit-text-decoration-skip: objects;
++            }
++
++            strong {
++                font-weight: inherit;
++            }
++
++            strong {
++                font-weight: bolder;
++            }
++
++            code {
++                font-family: monospace, monospace;
++                font-size: 1em;
++            }
++
++            dfn {
++                font-style: italic;
++            }
++
++            svg:not(:root) {
++                overflow: hidden;
++            }
++
++            button,
++            input {
++                font-family: sans-serif;
++                font-size: 100%;
++                line-height: 1.15;
++                margin: 0;
++            }
++
++            button,
++            input {
++                overflow: visible;
++            }
++
++            button {
++                text-transform: none;
++            }
++
++            button,
++            html [type="button"],
++            [type="reset"],
++            [type="submit"] {
++                -webkit-appearance: button;
++            }
++
++            button::-moz-focus-inner,
++            [type="button"]::-moz-focus-inner,
++            [type="reset"]::-moz-focus-inner,
++            [type="submit"]::-moz-focus-inner {
++                border-style: none;
++                padding: 0;
++            }
++
++            button:-moz-focusring,
++            [type="button"]:-moz-focusring,
++            [type="reset"]:-moz-focusring,
++            [type="submit"]:-moz-focusring {
++                outline: 1px dotted ButtonText;
++            }
++
++            legend {
++                -webkit-box-sizing: border-box;
++                        box-sizing: border-box;
++                color: inherit;
++                display: table;
++                max-width: 100%;
++                padding: 0;
++                white-space: normal;
++            }
++
++            [type="checkbox"],
++            [type="radio"] {
++                -webkit-box-sizing: border-box;
++                        box-sizing: border-box;
++                padding: 0;
++            }
++
++            [type="number"]::-webkit-inner-spin-button,
++            [type="number"]::-webkit-outer-spin-button {
++                height: auto;
++            }
++
++            [type="search"] {
++                -webkit-appearance: textfield;
++                outline-offset: -2px;
++            }
++
++            [type="search"]::-webkit-search-cancel-button,
++            [type="search"]::-webkit-search-decoration {
++                -webkit-appearance: none;
++            }
++
++            ::-webkit-file-upload-button {
++                -webkit-appearance: button;
++                font: inherit;
++            }
++
++            menu {
++                display: block;
++            }
++
++            canvas {
++                display: inline-block;
++            }
++
++            template {
++                display: none;
++            }
++
++            [hidden] {
++                display: none;
++            }
++
++            html {
++                -webkit-box-sizing: border-box;
++                        box-sizing: border-box;
++                font-family: sans-serif;
++            }
++
++            *,
++            *::before,
++            *::after {
++                -webkit-box-sizing: inherit;
++                        box-sizing: inherit;
++            }
++
++            p {
++                margin: 0;
++            }
++
++            button {
++                background: transparent;
++                padding: 0;
++            }
++
++            button:focus {
++                outline: 1px dotted;
++                outline: 5px auto -webkit-focus-ring-color;
++            }
++
++            *,
++            *::before,
++            *::after {
++                border-width: 0;
++                border-style: solid;
++                border-color: #dae1e7;
++            }
++
++            button,
++            [type="button"],
++            [type="reset"],
++            [type="submit"] {
++                border-radius: 0;
++            }
++
++            button,
++            input {
++                font-family: inherit;
++            }
++
++            input::-webkit-input-placeholder {
++                color: inherit;
++                opacity: .5;
++            }
++
++            input:-ms-input-placeholder {
++                color: inherit;
++                opacity: .5;
++            }
++
++            input::-ms-input-placeholder {
++                color: inherit;
++                opacity: .5;
++            }
++
++            input::placeholder {
++                color: inherit;
++                opacity: .5;
++            }
++
++            button,
++            [role=button] {
++                cursor: pointer;
++            }
++
++            .bg-transparent {
++                background-color: transparent;
++            }
++
++            .bg-white {
++                background-color: #fff;
++            }
++
++            .bg-teal-light {
++                background-color: #64d5ca;
++            }
++
++            .bg-blue-dark {
++                background-color: #2779bd;
++            }
++
++            .bg-indigo-light {
++                background-color: #7886d7;
++            }
++
++            .bg-purple-light {
++                background-color: #a779e9;
++            }
++
++            .bg-no-repeat {
++                background-repeat: no-repeat;
++            }
++
++            .bg-cover {
++                background-size: cover;
++            }
++
++            .border-grey-light {
++                border-color: #dae1e7;
++            }
++
++            .hover\:border-grey:hover {
++                border-color: #b8c2cc;
++            }
++
++            .rounded-lg {
++                border-radius: .5rem;
++            }
++
++            .border-2 {
++                border-width: 2px;
++            }
++
++            .hidden {
++                display: none;
++            }
++
++            .flex {
++                display: -webkit-box;
++                display: -ms-flexbox;
++                display: flex;
++            }
++
++            .items-center {
++                -webkit-box-align: center;
++                    -ms-flex-align: center;
++                        align-items: center;
++            }
++
++            .justify-center {
++                -webkit-box-pack: center;
++                    -ms-flex-pack: center;
++                        justify-content: center;
++            }
++
++            .font-sans {
++                font-family: Nunito, sans-serif;
++            }
++
++            .font-light {
++                font-weight: 300;
++            }
++
++            .font-bold {
++                font-weight: 700;
++            }
++
++            .font-black {
++                font-weight: 900;
++            }
++
++            .h-1 {
++                height: .25rem;
++            }
++
++            .leading-normal {
++                line-height: 1.5;
++            }
++
++            .m-8 {
++                margin: 2rem;
++            }
++
++            .my-3 {
++                margin-top: .75rem;
++                margin-bottom: .75rem;
++            }
++
++            .mb-8 {
++                margin-bottom: 2rem;
++            }
++
++            .max-w-sm {
++                max-width: 30rem;
++            }
++
++            .min-h-screen {
++                min-height: 100vh;
++            }
++
++            .py-3 {
++                padding-top: .75rem;
++                padding-bottom: .75rem;
++            }
++
++            .px-6 {
++                padding-left: 1.5rem;
++                padding-right: 1.5rem;
++            }
++
++            .pb-full {
++                padding-bottom: 100%;
++            }
++
++            .absolute {
++                position: absolute;
++            }
++
++            .relative {
++                position: relative;
++            }
++
++            .pin {
++                top: 0;
++                right: 0;
++                bottom: 0;
++                left: 0;
++            }
++
++            .text-black {
++                color: #22292f;
++            }
++
++            .text-grey-darkest {
++                color: #3d4852;
++            }
++
++            .text-grey-darker {
++                color: #606f7b;
++            }
++
++            .text-2xl {
++                font-size: 1.5rem;
++            }
++
++            .text-5xl {
++                font-size: 3rem;
++            }
++
++            .uppercase {
++                text-transform: uppercase;
++            }
++
++            .antialiased {
++                -webkit-font-smoothing: antialiased;
++                -moz-osx-font-smoothing: grayscale;
++            }
++
++            .tracking-wide {
++                letter-spacing: .05em;
++            }
++
++            .w-16 {
++                width: 4rem;
++            }
++
++            .w-full {
++                width: 100%;
++            }
++
++            @media (min-width: 768px) {
++                .md\:bg-left {
++                    background-position: left;
++                }
++
++                .md\:bg-right {
++                    background-position: right;
++                }
++
++                .md\:flex {
++                    display: -webkit-box;
++                    display: -ms-flexbox;
++                    display: flex;
++                }
++
++                .md\:my-6 {
++                    margin-top: 1.5rem;
++                    margin-bottom: 1.5rem;
++                }
++
++                .md\:min-h-screen {
++                    min-height: 100vh;
++                }
++
++                .md\:pb-0 {
++                    padding-bottom: 0;
++                }
++
++                .md\:text-3xl {
++                    font-size: 1.875rem;
++                }
++
++                .md\:text-15xl {
++                    font-size: 9rem;
++                }
++
++                .md\:w-1\/2 {
++                    width: 50%;
++                }
++            }
++
++            @media (min-width: 992px) {
++                .lg\:bg-center {
++                    background-position: center;
++                }
++            }
++        </style>
++    </head>
++    <body class="antialiased font-sans">
++        <div class="md:flex min-h-screen">
++            <div class="w-full md:w-1/2 bg-white flex items-center justify-center">
++                <div class="max-w-sm m-8">
++                    <div class="text-black text-5xl md:text-15xl font-black">
++                        @yield('code', __('Oh no'))
++                    </div>
++
++                    <div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
++
++                    <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">
++                        @yield('message')
++                    </p>
++
++                    <a href="{{ app('router')->has('home') ? route('home') : url('/') }}">
++                        <button class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">
++                            {{ __('Go Home') }}
++                        </button>
++                    </a>
++                </div>
++            </div>
++
++            <div class="relative pb-full md:flex md:pb-0 md:min-h-screen w-full md:w-1/2">
++                @yield('image')
++            </div>
++        </div>
++    </body>
++</html>
+Index: resources/views/errors/503.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/503.blade.php b/resources/views/errors/503.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215634)
++++ b/resources/views/errors/503.blade.php	(date 1611722215634)
+@@ -0,0 +1,5 @@
++@extends('errors::minimal')
++
++@section('title', __('Service Unavailable'))
++@section('code', '503')
++@section('message', __($exception->getMessage() ?: 'Service Unavailable'))
+Index: resources/views/errors/500.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/500.blade.php b/resources/views/errors/500.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215631)
++++ b/resources/views/errors/500.blade.php	(date 1611722215631)
+@@ -0,0 +1,5 @@
++@extends('errors::minimal')
++
++@section('title', __('Server Error'))
++@section('code', '500')
++@section('message', __('Server Error'))
+Index: config/app.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nreturn [\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Application Name\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | This value is the name of your application. This value is used when the\r\n    | framework needs to place the application's name in a notification or\r\n    | any other location as required by the application or its packages.\r\n    |\r\n    */\r\n\r\n    'name' => env('APP_NAME', 'Laravel'),\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Application Environment\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | This value determines the \"environment\" your application is currently\r\n    | running in. This may determine how you prefer to configure various\r\n    | services the application utilizes. Set this in your \".env\" file.\r\n    |\r\n    */\r\n\r\n    'env' => env('APP_ENV', 'production'),\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Application Debug Mode\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | When your application is in debug mode, detailed error messages with\r\n    | stack traces will be shown on every error that occurs within your\r\n    | application. If disabled, a simple generic error page is shown.\r\n    |\r\n    */\r\n\r\n    'debug' => env('APP_DEBUG', false),\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Application URL\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | This URL is used by the console to properly generate URLs when using\r\n    | the Artisan command line tool. You should set this to the root of\r\n    | your application so that it is used when running Artisan tasks.\r\n    |\r\n    */\r\n\r\n    'url' => env('APP_URL', 'http://localhost'),\r\n\r\n    'asset_url' => env('ASSET_URL', null),\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Application Timezone\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | Here you may specify the default timezone for your application, which\r\n    | will be used by the PHP date and date-time functions. We have gone\r\n    | ahead and set this to a sensible default for you out of the box.\r\n    |\r\n    */\r\n\r\n    'timezone' => 'Asia/Dhaka',\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Application Locale Configuration\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | The application locale determines the default locale that will be used\r\n    | by the translation service provider. You are free to set this value\r\n    | to any of the locales which will be supported by the application.\r\n    |\r\n    */\r\n\r\n    'locale' => 'en',\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Application Fallback Locale\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | The fallback locale determines the locale to use when the current one\r\n    | is not available. You may change the value to correspond to any of\r\n    | the language folders that are provided through your application.\r\n    |\r\n    */\r\n\r\n    'fallback_locale' => 'en',\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Faker Locale\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | This locale will be used by the Faker PHP library when generating fake\r\n    | data for your database seeds. For example, this will be used to get\r\n    | localized telephone numbers, street address information and more.\r\n    |\r\n    */\r\n\r\n    'faker_locale' => 'en_US',\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Encryption Key\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | This key is used by the Illuminate encrypter service and should be set\r\n    | to a random, 32 character string, otherwise these encrypted strings\r\n    | will not be safe. Please do this before deploying an application!\r\n    |\r\n    */\r\n\r\n    'key' => env('APP_KEY'),\r\n\r\n    'cipher' => 'AES-256-CBC',\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Autoloaded Service Providers\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | The service providers listed here will be automatically loaded on the\r\n    | request to your application. Feel free to add your own services to\r\n    | this array to grant expanded functionality to your applications.\r\n    |\r\n    */\r\n\r\n    'providers' => [\r\n\r\n        /*\r\n         * Laravel Framework Service Providers...\r\n         */\r\n        Illuminate\\Auth\\AuthServiceProvider::class,\r\n        Illuminate\\Broadcasting\\BroadcastServiceProvider::class,\r\n        Illuminate\\Bus\\BusServiceProvider::class,\r\n        Illuminate\\Cache\\CacheServiceProvider::class,\r\n        Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider::class,\r\n        Illuminate\\Cookie\\CookieServiceProvider::class,\r\n        Illuminate\\Database\\DatabaseServiceProvider::class,\r\n        Illuminate\\Encryption\\EncryptionServiceProvider::class,\r\n        Illuminate\\Filesystem\\FilesystemServiceProvider::class,\r\n        Illuminate\\Foundation\\Providers\\FoundationServiceProvider::class,\r\n        Illuminate\\Hashing\\HashServiceProvider::class,\r\n        Illuminate\\Mail\\MailServiceProvider::class,\r\n        Illuminate\\Notifications\\NotificationServiceProvider::class,\r\n        Illuminate\\Pagination\\PaginationServiceProvider::class,\r\n        Illuminate\\Pipeline\\PipelineServiceProvider::class,\r\n        Illuminate\\Queue\\QueueServiceProvider::class,\r\n        Illuminate\\Redis\\RedisServiceProvider::class,\r\n        Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider::class,\r\n        Illuminate\\Session\\SessionServiceProvider::class,\r\n        Illuminate\\Translation\\TranslationServiceProvider::class,\r\n        Illuminate\\Validation\\ValidationServiceProvider::class,\r\n        Illuminate\\View\\ViewServiceProvider::class,\r\n\r\n\r\n        /*\r\n         * Package Service Providers...\r\n         */\r\n//        Cyberduck\\LaravelExcel\\ExcelLegacyServiceProvider::class,\r\n\r\n        /*\r\n         * Application Service Providers...\r\n         */\r\n        App\\Providers\\AppServiceProvider::class,\r\n        App\\Providers\\AuthServiceProvider::class,\r\n        // App\\Providers\\BroadcastServiceProvider::class,\r\n        App\\Providers\\EventServiceProvider::class,\r\n        App\\Providers\\RouteServiceProvider::class,\r\n\r\n    ],\r\n\r\n    /*\r\n    |--------------------------------------------------------------------------\r\n    | Class Aliases\r\n    |--------------------------------------------------------------------------\r\n    |\r\n    | This array of class aliases will be registered when this application\r\n    | is started. However, feel free to register as many as you wish as\r\n    | the aliases are \"lazy\" loaded so they don't hinder performance.\r\n    |\r\n    */\r\n\r\n    'aliases' => [\r\n\r\n        'App' => Illuminate\\Support\\Facades\\App::class,\r\n        'Arr' => Illuminate\\Support\\Arr::class,\r\n        'Artisan' => Illuminate\\Support\\Facades\\Artisan::class,\r\n        'Auth' => Illuminate\\Support\\Facades\\Auth::class,\r\n        'Blade' => Illuminate\\Support\\Facades\\Blade::class,\r\n        'Broadcast' => Illuminate\\Support\\Facades\\Broadcast::class,\r\n        'Bus' => Illuminate\\Support\\Facades\\Bus::class,\r\n        'Cache' => Illuminate\\Support\\Facades\\Cache::class,\r\n        'Config' => Illuminate\\Support\\Facades\\Config::class,\r\n        'Cookie' => Illuminate\\Support\\Facades\\Cookie::class,\r\n        'Crypt' => Illuminate\\Support\\Facades\\Crypt::class,\r\n        'DB' => Illuminate\\Support\\Facades\\DB::class,\r\n        'Eloquent' => Illuminate\\Database\\Eloquent\\Model::class,\r\n        'Event' => Illuminate\\Support\\Facades\\Event::class,\r\n        'File' => Illuminate\\Support\\Facades\\File::class,\r\n        'Gate' => Illuminate\\Support\\Facades\\Gate::class,\r\n        'Hash' => Illuminate\\Support\\Facades\\Hash::class,\r\n        'Http' => Illuminate\\Support\\Facades\\Http::class,\r\n        'Lang' => Illuminate\\Support\\Facades\\Lang::class,\r\n        'Log' => Illuminate\\Support\\Facades\\Log::class,\r\n        'Mail' => Illuminate\\Support\\Facades\\Mail::class,\r\n        'Notification' => Illuminate\\Support\\Facades\\Notification::class,\r\n        'Password' => Illuminate\\Support\\Facades\\Password::class,\r\n        'Queue' => Illuminate\\Support\\Facades\\Queue::class,\r\n        'Redirect' => Illuminate\\Support\\Facades\\Redirect::class,\r\n        'Redis' => Illuminate\\Support\\Facades\\Redis::class,\r\n        'Request' => Illuminate\\Support\\Facades\\Request::class,\r\n        'Response' => Illuminate\\Support\\Facades\\Response::class,\r\n        'Route' => Illuminate\\Support\\Facades\\Route::class,\r\n        'Schema' => Illuminate\\Support\\Facades\\Schema::class,\r\n        'Session' => Illuminate\\Support\\Facades\\Session::class,\r\n        'Storage' => Illuminate\\Support\\Facades\\Storage::class,\r\n        'Str' => Illuminate\\Support\\Str::class,\r\n        'URL' => Illuminate\\Support\\Facades\\URL::class,\r\n        'Validator' => Illuminate\\Support\\Facades\\Validator::class,\r\n        'View' => Illuminate\\Support\\Facades\\View::class,\r\n\r\n\r\n    ],\r\n\r\n];\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config/app.php b/config/app.php
+--- a/config/app.php	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/config/app.php	(date 1611722568117)
+@@ -39,7 +39,7 @@
+     |
+     */
+ 
+-    'debug' => env('APP_DEBUG', false),
++    'debug' => env('APP_DEBUG', true),
+ 
+     /*
+     |--------------------------------------------------------------------------
+Index: resources/views/errors/429.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/429.blade.php b/resources/views/errors/429.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215629)
++++ b/resources/views/errors/429.blade.php	(date 1611722215629)
+@@ -0,0 +1,5 @@
++@extends('errors::minimal')
++
++@section('title', __('Too Many Requests'))
++@section('code', '429')
++@section('message', __('Too Many Requests'))
+Index: resources/views/errors/419.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/419.blade.php b/resources/views/errors/419.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215626)
++++ b/resources/views/errors/419.blade.php	(date 1611722215626)
+@@ -0,0 +1,5 @@
++@extends('errors::minimal')
++
++@section('title', __('Page Expired'))
++@section('code', '419')
++@section('message', __('Page Expired'))
+Index: resources/views/errors/404.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/404.blade.php b/resources/views/errors/404.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215623)
++++ b/resources/views/errors/404.blade.php	(date 1611722215623)
+@@ -0,0 +1,5 @@
++@extends('errors::minimal')
++
++@section('title', __('Not Found'))
++@section('code', '404')
++@section('message', __('Not Found'))
+Index: resources/views/admin/contractor/contractorReport.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@extends('admin.layouts.master');\r\n\r\n@section('content')\r\n    <!-- Content Header (Page header) -->\r\n    <div class=\"content-header\">\r\n        <div class=\"container-fluid\">\r\n            <div class=\"row mb-2\">\r\n                <div class=\"col-sm-6\">\r\n                    <li class=\"breadcrumb-item\">\r\n                        <a href=\"{{ url()->previous() }}\"><i class=\"fas fa-long-arrow-alt-left\"></i> Back</a>\r\n                    </li>\r\n                </div><!-- /.col -->\r\n                <div class=\"col-sm-6\">\r\n                    <ol class=\"breadcrumb float-sm-right\">\r\n                        <li class=\"breadcrumb-item\"><a href=\"{{url('/')}}\">Home</a></li>\r\n                        <li class=\"breadcrumb-item\"><a href=\"#\">Report</a></li>\r\n                    </ol>\r\n                </div><!-- /.col -->\r\n            </div><!-- /.row -->\r\n        </div><!-- /.container-fluid -->\r\n    </div>\r\n    <!-- /.content-header -->\r\n\r\n    <!-- Main content -->\r\n    <section class=\"content\">\r\n        @if(Session::has('message'))\r\n            <div class=\"alert alert-success alert-dismissible\">\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\r\n                <h5><i class=\"icon fas fa-check\"></i> {{Session::get('message')}}</h5>\r\n            </div>\r\n        @endif\r\n        <div class=\"container-fluid\">\r\n            <form id=\"sendFormData\">\r\n                @csrf\r\n            <div class=\"row\">\r\n                    <div class=\"col-12\">\r\n                        <div class=\"card card-purple\">\r\n                            <div class=\"card-header\">\r\n                                <h3 class=\"card-title\">Report</h3>\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                                <div class=\"row\">\r\n                                    @php\r\n                                        use App\\Contractor;\r\n                                        $contractors = Contractor::all();\r\n                                    @endphp\r\n                                    <div class=\"col-md-4\">\r\n                                        <!-- Date -->\r\n                                        <div class=\"form-group\">\r\n                                            <label for=\"exampleInputName\">Select Project</label>\r\n                                            <select name=\"project_id\" id=\"project\" class=\"form-control\">\r\n                                                <option selected disabled >Select Project</option>\r\n                                                @foreach(\\App\\Project::all() as $projects)\r\n                                                    <option value=\"{{$projects->id}}\">{{$projects->project_name}}</option>\r\n                                                @endforeach\r\n                                            </select>\r\n                                        </div>\r\n                                        <!-- /.form-group -->\r\n                                    </div>\r\n                                    <div class=\"col-md-4\">\r\n                                        <!-- Date -->\r\n                                        <div class=\"form-group\">\r\n                                            <label for=\"title\">Select Work Order:</label>\r\n                                            <select name=\"work_order\" id=\"work-order\" class=\"form-control\" required>\r\n                                            </select>\r\n                                        </div>\r\n                                        <!-- /.form-group -->\r\n                                    </div>\r\n                                    <div class=\"col-md-4\">\r\n                                        <!-- Date -->\r\n                                        <div class=\"form-group\">\r\n                                            <label for=\"end_date\" class=\"exampleInputName\">Contractor</label>\r\n                                            <select class=\"form-control\" name=\"contractor_name\">\r\n                                                <option selected=\"selected\" disabled>Select Contractor </option>\r\n                                                @foreach($contractors as $contractor)\r\n                                                    <option value=\"{{$contractor->id}}\">{{$contractor->contractor_name}}</option>\r\n                                                @endforeach\r\n                                            </select>\r\n                                        </div>\r\n                                        <!-- /.form-group -->\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"row\">\r\n                                    <div class=\"col-md-6\">\r\n                                        <!-- Date -->\r\n                                        <div class=\"form-group\">\r\n                                            <label for=\"end_date\" class=\"col-form-label\">From</label>\r\n                                            <input class=\"form-control\" type=\"date\"  id=\"start_date\" name=\"from\">\r\n                                        </div>\r\n                                        <!-- /.form-group -->\r\n                                    </div>\r\n                                    <div class=\"col-md-6\">\r\n                                        <!-- Date -->\r\n                                        <div class=\"form-group\">\r\n                                            <label for=\"end_date\" class=\"col-form-label\">To</label>\r\n                                            <input class=\"form-control\" type=\"date\"  id=\"end_date\" name=\"to\">\r\n                                        </div>\r\n                                        <!-- /.form-group -->\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- /.card-body -->\r\n                            <div class=\"row card-footer\">\r\n                                <div class=\"col-12\">\r\n                                    <input type=\"submit\" id=\"submit\" value=\"Search\" class=\"btn btn-success float-right\">\r\n                                </div>\r\n                            </div>\r\n                        </div> <!-- /.card -->\r\n                    </div>\r\n                <!-- /.col -->\r\n            </div>\r\n            </form>\r\n            <div class=\"col-12\">\r\n                <div class=\"card\">\r\n                    <div class=\"card-header\">\r\n                        <h3 class=\"card-title\"> Billing Report </h3>\r\n                        <div class=\"m-3 dropdown float-right\">\r\n                            <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">\r\n                                Select Day\r\n                            </button>\r\n                            <div class=\"dropdown-menu \">\r\n                                <button class=\"dropdown-item\" id=\"today\" >Today</button>\r\n                                <button class=\"dropdown-item\" id=\"week\">Last 7 Day</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <!-- /.card-header -->\r\n                    <div class=\"card-body\">\r\n                        <table id=\"example1\" class=\"display\" >\r\n                            <thead>\r\n                            <tr>\r\n                                <th>Project</th>\r\n                                <th>Contractor</th>\r\n                                <th>Work Order</th>\r\n                                <th>Bill No.</th>\r\n                                <th>Billing Amount</th>\r\n                                <th>Billing Method</th>\r\n                                <th>Billing Details</th>\r\n                                <th>Billing Date</th>\r\n                            </tr>\r\n                            </thead>\r\n                        </table>\r\n                    </div>\r\n                    <!-- /.card-body -->\r\n                </div>\r\n                <!-- /.card -->\r\n            </div>\r\n            <!-- /.row -->\r\n        </div>\r\n        <!-- /.container-fluid -->\r\n    </section>\r\n    <!-- /.content -->\r\n@endsection\r\n\r\n@section('css')\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.datatables.net/v/dt/dt-1.10.23/af-2.3.5/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.7/sb-1.0.1/datatables.min.css\"/>\r\n@endsection\r\n\r\n@section('script')\r\n\r\n    <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js\"></script>\r\n    <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js\"></script>\r\n    <script type=\"text/javascript\" src=\"https://cdn.datatables.net/v/dt/dt-1.10.23/af-2.3.5/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.7/sb-1.0.1/datatables.min.js\"></script>\r\n    <script>\r\n\r\n        $(document).ready( function () {\r\n            $('#example1').DataTable({\r\n                responsive: true,\r\n                dom: 'Bfrtip',\r\n                buttons: [\r\n                    'copy', 'excel', 'pdf', 'print'\r\n                ],\r\n            });\r\n        });\r\n\r\n        // for project\r\n        $(document).ready(function () {\r\n\r\n            $('#project').on('change',function(e) {\r\n\r\n                var project_id = e.target.value;\r\n                $.ajax({\r\n\r\n                    url:\"{{ route('requisition.getWorkNo')}}\",\r\n                    type:\"POST\",\r\n                    data: {\r\n                        project_id: project_id,\r\n                        _token: '{{csrf_token()}}',\r\n                    },\r\n                    success:function (data) {\r\n                        $('#work-order').empty();\r\n                        $.each(data, function(i, value) {\r\n                            $('#work-order').append('<option value=\"'+value.id+'\">'+value.work_order+'</option>');\r\n                        });\r\n                    }\r\n                })\r\n            });\r\n        });\r\n\r\n        $(document).ready(function(e){\r\n            $(\"#sendFormData\").on('submit', function(e){\r\n                e.preventDefault();\r\n                var formData = new FormData(this);\r\n                formData.append('action', 'savadata');\r\n                $.ajax({\r\n                    type: 'POST',\r\n                    url: '{{route('contractor.today.search')}}',\r\n                    data: formData,\r\n                    contentType: false,\r\n                    cache: false,\r\n                    processData:false,\r\n                    success: function(data){\r\n                        $(\"#sendFormData\").trigger(\"reset\"); //reset form\r\n\r\n                        var table;\r\n                        table = $('#example1').DataTable();\r\n                        if(data!='') {\r\n                            $.each(data, function(i, item) {\r\n                                table.row.add([\r\n                                    data[i].project_name,\r\n                                    data[i].contractor_name,\r\n                                    data[i].work_order,\r\n                                    data[i].billing_no,\r\n                                    data[i].billing_amount,\r\n                                    data[i].billing_method,\r\n                                    data[i].billing_details,\r\n                                    data[i].billing_date,\r\n                                ]);\r\n                            });\r\n                        }\r\n                        else {\r\n                            $('#example1').html('<h3>No Data are available</h3>');\r\n                        }\r\n                        table.draw();\r\n\r\n                    }\r\n                });\r\n            });\r\n        });\r\n\r\n        //today report data\r\n        $(document).ready(function(){\r\n            $(\"#today\").on('click', function(e){\r\n                $.ajax({\r\n                    type: 'get',\r\n                    url: '{{route('contractor.today')}}',\r\n                    success: function(data){\r\n                        var table;\r\n                        table = $('#example1').DataTable();\r\n                        table.clear();\r\n                        if(data!='') {\r\n                            $.each(data, function(i, item) {\r\n                                table.row.add([\r\n                                    data[i].project_name,\r\n                                    data[i].contractor_name,\r\n                                    data[i].work_order,\r\n                                    data[i].billing_no,\r\n                                    data[i].billing_amount,\r\n                                    data[i].billing_method,\r\n                                    data[i].billing_details,\r\n                                    data[i].billing_date,\r\n                                ]);\r\n                            });\r\n                        }\r\n                        else {\r\n                        }\r\n                        table.draw();\r\n\r\n                    }\r\n                });\r\n            });\r\n        });\r\n        //Weekly Bill\r\n        $(document).ready(function(){\r\n            $(\"#week\").on('click', function(e){\r\n                $.ajax({\r\n                    type: 'get',\r\n                    url: '{{route('contractor.week')}}',\r\n                    success: function(data){\r\n                        var table;\r\n                        table = $('#example1').DataTable();\r\n                        table.clear();\r\n                        if(data!='') {\r\n                            $.each(data, function(i, item) {\r\n                                table.row.add([\r\n                                    data[i].project_name,\r\n                                    data[i].contractor_name,\r\n                                    data[i].work_order,\r\n                                    data[i].billing_no,\r\n                                    data[i].billing_amount,\r\n                                    data[i].billing_method,\r\n                                    data[i].billing_details,\r\n                                    data[i].billing_date,\r\n                                ]);\r\n                            });\r\n                        }\r\n                        else {\r\n                        }\r\n                        table.draw();\r\n\r\n                    }\r\n                });\r\n            });\r\n        });\r\n\r\n    </script>\r\n@endsection\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/admin/contractor/contractorReport.blade.php b/resources/views/admin/contractor/contractorReport.blade.php
+--- a/resources/views/admin/contractor/contractorReport.blade.php	(revision ef8a08a174fae4ea9653d2053121adb985952f2a)
++++ b/resources/views/admin/contractor/contractorReport.blade.php	(date 1611463543826)
+@@ -32,7 +32,7 @@
+         <div class="container-fluid">
+             <form id="sendFormData">
+                 @csrf
+-            <div class="row">
++                <div class="row">
+                     <div class="col-12">
+                         <div class="card card-purple">
+                             <div class="card-header">
+@@ -107,8 +107,8 @@
+                             </div>
+                         </div> <!-- /.card -->
+                     </div>
+-                <!-- /.col -->
+-            </div>
++                    <!-- /.col -->
++                </div>
+             </form>
+             <div class="col-12">
+                 <div class="card">
+Index: resources/views/errors/403.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/errors/403.blade.php b/resources/views/errors/403.blade.php
+new file mode 100644
+--- /dev/null	(date 1611722215621)
++++ b/resources/views/errors/403.blade.php	(date 1611722215621)
+@@ -0,0 +1,5 @@
++@extends('errors::minimal')
++
++@section('title', __('Forbidden'))
++@section('code', '403')
++@section('message', __($exception->getMessage() ?: 'Forbidden'))

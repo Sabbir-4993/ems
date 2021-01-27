@@ -53,12 +53,14 @@
                         </span>
                     @enderror
                 </div>
+                @if(isset(auth()->user()->permission['name']['department']['can-add']))
                 <div class="card-footer">
                     <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary float-right    ">
                         Submit
                     </button>
                 </div>
+            @endif
                 <!-- /.card-body -->
             </div>
         </form>

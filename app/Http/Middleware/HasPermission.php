@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
+use App\Traits\permissionTrait;
 
 use Closure;
-use App\Traits\permissionTrait;
 
 class HasPermission
 {
@@ -19,6 +19,12 @@ class HasPermission
     {
         $this->hasPermission();
         return $next($request);
+
+//        if (isset(auth()->user()->permission['name']['department']['can-add'])){
+//            return $next($request);
+//        }else{
+//            abort(401);
+//        }
 
     }
 

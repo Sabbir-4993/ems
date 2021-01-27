@@ -65,25 +65,237 @@
                                         </td>
                                         <td style="width: 40%; text-align: center">
 
+                                            {{--Department--}}
                                             @if(isset($row['name']['department']['can-add']))
-                                                <span class="badge badge-primary">department_can_add</span>
+                                                <span class="badge badge-primary">dept_can_add</span>
                                             @endif
 
                                             @if(isset($row['name']['department']['can-edit']))
-                                                <span class="badge badge-secondary">department_can_edit</span>
+                                                <span class="badge badge-secondary">dept_can_edit</span>
                                             @endif
 
                                             @if(isset($row['name']['department']['can-delete']))
-                                                <span class="badge badge-warning">department_can_delete</span>
+                                                <span class="badge badge-warning">dept_can_delete</span>
                                             @endif
 
                                             @if(isset($row['name']['department']['can-view']))
-                                                <span class="badge badge-info">department_can_view</span>
+                                                <span class="badge badge-info">dept_can_view</span>
                                             @endif
 
                                             @if(isset($row['name']['department']['can-list']))
-                                                <span class="badge badge-success">department_can_list</span>
+                                                <span class="badge badge-success">dept_can_list</span>
                                             @endif
+
+                                            {{--permission--}}
+                                            @if(isset($row['name']['permission']['can-add']))
+                                                <span class="badge badge-primary">permission_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['permission']['can-edit']))
+                                                <span class="badge badge-secondary">permission_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['permission']['can-delete']))
+                                                <span class="badge badge-warning">permission_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['permission']['can-view']))
+                                                <span class="badge badge-info">permission_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['permission']['can-list']))
+                                                <span class="badge badge-success">permission_can_list</span>
+                                            @endif
+
+                                            {{--Designation--}}
+                                            @if(isset($row['name']['designation']['can-add']))
+                                                <span class="badge badge-primary">designation_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['designation']['can-edit']))
+                                                <span class="badge badge-secondary">designation_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['designation']['can-delete']))
+                                                <span class="badge badge-warning">designation_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['designation']['can-view']))
+                                                <span class="badge badge-info">designation_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['designation']['can-list']))
+                                                <span class="badge badge-success">designation_can_list</span>
+                                            @endif
+
+                                            {{--User--}}
+                                            @if(isset($row['name']['user']['can-add']))
+                                                <span class="badge badge-primary">user_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['user']['can-edit']))
+                                                <span class="badge badge-secondary">user_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['user']['can-delete']))
+                                                <span class="badge badge-warning">user_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['user']['can-view']))
+                                                <span class="badge badge-info">user_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['user']['can-list']))
+                                                <span class="badge badge-success">user_can_list</span>
+                                            @endif
+
+                                            {{--Project--}}
+                                            @if(isset($row['name']['project']['can-add']))
+                                                <span class="badge badge-primary">project_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project']['can-edit']))
+                                                <span class="badge badge-secondary">project_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project']['can-delete']))
+                                                <span class="badge badge-warning">project_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project']['can-view']))
+                                                <span class="badge badge-info">project_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project']['can-list']))
+                                                <span class="badge badge-success">project_can_list</span>
+                                            @endif
+
+                                            {{--Project Order--}}
+                                            @if(isset($row['name']['project_work_order']['can-add']))
+                                                <span class="badge badge-primary">work_order_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project_work_order']['can-edit']))
+                                                <span class="badge badge-secondary">work_order_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project_work_order']['can-delete']))
+                                                <span class="badge badge-warning">work_order_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project_work_order']['can-view']))
+                                                <span class="badge badge-info">work_order_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['project_work_order']['can-list']))
+                                                <span class="badge badge-success">work_order_can_list</span>
+                                            @endif
+
+                                            {{--Contractors--}}
+                                            @if(isset($row['name']['contractors']['can-add']))
+                                                <span class="badge badge-primary">contractor_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractors']['can-edit']))
+                                                <span class="badge badge-secondary">contractor_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractors']['can-delete']))
+                                                <span class="badge badge-warning">contractor_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractors']['can-view']))
+                                                <span class="badge badge-info">contractor_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractors']['can-list']))
+                                                <span class="badge badge-success">contractor_can_list</span>
+                                            @endif
+
+                                            {{--Contractors Bill--}}
+                                            @if(isset($row['name']['contractor_bill']['can-add']))
+                                                <span class="badge badge-primary">contractor_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractor_bill']['can-edit']))
+                                                <span class="badge badge-secondary">contractor_bill_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractor_bill']['can-report']))
+                                                <span class="badge badge-warning">contractor_report</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractors']['can-view']))
+                                                <span class="badge badge-info">contractor_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['contractor_bill']['can-list']))
+                                                <span class="badge badge-success">contractor_can_list</span>
+                                            @endif
+
+                                            {{--Vendor--}}
+                                            @if(isset($row['name']['vendor']['can-add']))
+                                                <span class="badge badge-primary">vendor_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor']['can-edit']))
+                                                <span class="badge badge-secondary">vendor_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor']['can-delete']))
+                                                <span class="badge badge-warning">vendor_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor']['can-view']))
+                                                <span class="badge badge-info">vendor_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor']['can-list']))
+                                                <span class="badge badge-success">vendor_can_list</span>
+                                            @endif
+
+                                            {{--Vendor Bill--}}
+                                            @if(isset($row['name']['vendor_bill']['can-add']))
+                                                <span class="badge badge-primary">vendor_bill</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor_bill']['can-edit']))
+                                                <span class="badge badge-secondary">vendor_bill_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor_bill']['can-report']))
+                                                <span class="badge badge-warning">vendor_report</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor_bill']['can-view']))
+                                                <span class="badge badge-info">vendor_bill_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['vendor_bill']['can-list']))
+                                                <span class="badge badge-success">vendor_bill_list</span>
+                                            @endif
+
+                                            {{--material--}}
+                                            @if(isset($row['name']['material']['can-add']))
+                                                <span class="badge badge-primary">material_can_add</span>
+                                            @endif
+
+                                            @if(isset($row['name']['material']['can-edit']))
+                                                <span class="badge badge-secondary">material_can_edit</span>
+                                            @endif
+
+                                            @if(isset($row['name']['material']['can-delete']))
+                                                <span class="badge badge-warning">material_can_delete</span>
+                                            @endif
+
+                                            @if(isset($row['name']['material']['can-view']))
+                                                <span class="badge badge-info">material_can_view</span>
+                                            @endif
+
+                                            @if(isset($row['name']['material']['can-list']))
+                                                <span class="badge badge-success">material_can_list</span>
+                                            @endif
+
 
                                         </td>
                                         <td style="width: 10%; text-align: center" class="text-center">

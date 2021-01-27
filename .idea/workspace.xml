@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_27_2021_2_32_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_27_2021_2_32_PM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_27_2021_4_39_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_27_2021_4_39_PM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/401.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/419.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/429.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/500.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/illustrated-layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/minimal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/company_logo/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/company_logo/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/HasPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/HasPermission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/permissionTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/permissionTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/department/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/department/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +194,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/uploads/company_logo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -183,14 +207,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Web Development\htdocs\ems\public\uploads\company_logo" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin\vendor\bill" />
       <recent name="E:\Web Development\htdocs\ems\app\Http\Controllers\vendor" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin\project" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Web Development\htdocs\ems\public\uploads\company_logo" />
       <recent name="E:\Web Development\htdocs\ems\app\Http\Controllers" />
     </key>
   </component>
@@ -268,7 +290,7 @@
       <workItem from="1611633117686" duration="4164000" />
       <workItem from="1611638743150" duration="3211000" />
       <workItem from="1611651890111" duration="1707000" />
-      <workItem from="1611729199886" duration="6302000" />
+      <workItem from="1611729199886" duration="2902000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -417,14 +439,7 @@
       <option name="project" value="LOCAL" />
       <updated>1611462133999</updated>
     </task>
-    <task id="LOCAL-00022" summary="requisition and details vendor and contractor">
-      <created>1611735998090</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1611735998090</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,8 +491,7 @@
     <MESSAGE value="Requisition Modification" />
     <MESSAGE value="Requisition Modification with category work order" />
     <MESSAGE value="report done vendor and contractor" />
-    <MESSAGE value="requisition and details vendor and contractor" />
-    <option name="LAST_COMMIT_MESSAGE" value="requisition and details vendor and contractor" />
+    <option name="LAST_COMMIT_MESSAGE" value="report done vendor and contractor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

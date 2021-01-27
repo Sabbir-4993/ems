@@ -29,21 +29,17 @@ Route::resource('department', 'DepartmentController');
 
 Route::resource('designation', 'DesignationController');
 
-Route::resource('project', 'ProjectController');
-
 Route::resource('employee', 'UserController');
-
-Route::resource('contractors', 'ContractorController');
-
-Route::resource('category', 'CategoryController');
-
-Route::resource('vendor', 'VendorController');
 
 Route::resource('material', 'MaterialController');
 
 Route::post('material_upload', 'MaterialController@upload')->name('material.upload');
 
 Route::resource('material_category', 'MaterialCategoryController');
+
+//Contractor
+Route::resource('contractors', 'ContractorController');
+Route::resource('category', 'CategoryController');
 
 // Contractor Report
 Route::group(['prefix'=>'contractor','as'=>'contractor.'], function (){
@@ -52,8 +48,22 @@ Route::group(['prefix'=>'contractor','as'=>'contractor.'], function (){
     Route::get('contractor/today/report', 'ReportController@todayReport')->name('today');
     Route::get('contractor/weekly/report', 'ReportController@weeklyReport')->name('week');
 });
-// Vendor Report
 
+
+// Vendor
+Route::resource('vendor', 'VendorController');
+
+//vendor Assign Project
+Route::group(['prefix'=>'vendorAssignProject','as'=>'vendorAssignProject.'], function(){
+
+    Route::get('Assign-Project', 'VendorAssignProjectController@index')->name('index');
+    Route::post('store-assign-project', 'VendorAssignProjectController@storeProject')->name('store');
+    Route::get('view-assign-project', 'VendorAssignProjectController@viewProject')->name('view');
+    Route::get('view-assign-project-details/{id}', 'VendorAssignProjectController@viewProjectDetails')->name('details');
+    Route::post('assign-project-bill', 'VendorAssignProjectController@projectBillPay')->name('payBill');
+    });
+
+// Vendor Report
 Route::group(['prefix'=>'vendor','as'=>'vendor.'], function (){
     Route::get('vendor/report/bill', 'VendorReportController@vendorBill')->name('bill');
     Route::post('vendor/report/search', 'VendorReportController@billSearch')->name('today.search');
@@ -87,28 +97,28 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
 
 });
 
+//Project
+Route::resource('project', 'ProjectController');
+
 Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
-
-    Route::get('assign-project', 'AssignProjectController@index')->name('index');
-
+    Route::get('assign-project', 'AssignProworkOrderStorejectController@index')->name('index');
     Route::post('store-assign-project', 'AssignProjectController@storeProject')->name('store');
-
     Route::get('view-assign-project', 'AssignProjectController@viewProject')->name('view');
-
     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');
-
     Route::post('assign-project-bill', 'AssignProjectController@projectBillPay')->name('payBill');
-
 });
+
 Route::group(['prefix'=>'assignWork','as'=>'assignWork.'], function(){
     Route::get('assign-work', 'AssignWorkController@index')->name('index');
     Route::post('store-work', 'AssignWorkController@storeWork')->name('store');
 });
+
 Route::group(['prefix'=>'todo','as'=>'todo.'], function(){
     Route::post('Todo-work', 'TodoController@storeTodo')->name('store');
     Route::get('Todo-list', 'TodoController@fetchUserTodo')->name('list');
     Route::get('delete-todo/{id}', 'TodoController@deleteTodo')->name('delete');
 });
+
 Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
     Route::post('sub-work', 'SubWorkController@storeSubWork')->name('store');
     Route::post('sub-work-refNo', 'SubWorkController@storeSubWorkRefNo')->name('storeRefNo');
@@ -117,15 +127,6 @@ Route::group(['prefix'=>'subWork','as'=>'subWork.'], function(){
     Route::post('sub-work-particular/{id}', 'SubWorkController@storeParticularsDelete')->name('deleteParticular');
     Route::get('sub-work-details/{id}', 'SubWorkController@SubWorkDetails')->name('details');
 
-});
-//vendor
-Route::group(['prefix'=>'vendorAssignProject','as'=>'vendorAssignProject.'], function(){
-
-    Route::get('Assign-Project', 'VendorAssignProjectController@index')->name('index');
-    Route::post('store-assign-project', 'VendorAssignProjectController@storeProject')->name('store');
-    Route::get('view-assign-project', 'VendorAssignProjectController@viewProject')->name('view');
-    Route::get('view-assign-project-details/{id}', 'VendorAssignProjectController@viewProjectDetails')->name('details');
-    Route::post('assign-project-bill', 'VendorAssignProjectController@projectBillPay')->name('payBill');
 });
 
 });

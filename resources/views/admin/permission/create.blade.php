@@ -81,31 +81,31 @@
                                                 <th>can-edit</th>
                                                 <th>can-delete</th>
                                                 <th>can-view</th>
-                                                <th>can-list</th>
+                                                <th>menu</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td>Permission</td>
-                                                <td><input type="checkbox" name="name[permission]['can-add']" value="1"></td>
-                                                <td><input type="checkbox" name="name[permission]['can-edit']" value="1"></td>
-                                                <td><input type="checkbox" name="name[permission]['can-delete']" value="1"></td>
-                                                <td><input type="checkbox" name="name[permission]['can-view']" value="1"></td>
-                                                <td><input type="checkbox" name="name[permission]['can-list']" value="1"></td>
-                                            </tr>
-                                            <tr>
                                                 <td>Department</td>
                                                 <td><input type="checkbox" name="name[department]['can-add']" value="1"></td>
                                                 <td><input type="checkbox" name="name[department]['can-edit']" value="1"></td>
-                                                <td><input type="checkbox" name="name[department]['can-delete']" value="1"></td>
+                                                <td><input type="checkbox" name="name[department]['can-delete']" value="1" disabled></td>
                                                 <td><input type="checkbox" name="name[department]['can-view']" value="1"></td>
                                                 <td><input type="checkbox" name="name[department]['can-list']" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Permission</td>
+                                                <td><input type="checkbox" name="name[permission]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[permission]['can-edit']" value="1"></td>
+                                                <td><input type="checkbox" name="name[permission]['can-delete']" value="1" disabled></td>
+                                                <td><input type="checkbox" name="name[permission]['can-view']" value="1"></td>
+                                                <td><input type="checkbox" name="name[permission]['can-list']" value="1"></td>
                                             </tr>
                                             <tr>
                                                 <td>Designation</td>
                                                 <td><input type="checkbox" name="name[designation]['can-add']" value="1"></td>
                                                 <td><input type="checkbox" name="name[designation]['can-edit']" value="1"></td>
-                                                <td><input type="checkbox" name="name[designation]['can-delete']" value="1"></td>
+                                                <td><input type="checkbox" name="name[designation]['can-delete']" value="1" disabled></td>
                                                 <td><input type="checkbox" name="name[designation]['can-view']" value="1"></td>
                                                 <td><input type="checkbox" name="name[designation]['can-list']" value="1"></td>
                                             </tr>
@@ -113,7 +113,7 @@
                                                 <td>Employee</td>
                                                 <td><input type="checkbox" name="name[user]['can-add']" value="1"></td>
                                                 <td><input type="checkbox" name="name[user]['can-edit']" value="1"></td>
-                                                <td><input type="checkbox" name="name[user]['can-delete']" value="1"></td>
+                                                <td><input type="checkbox" name="name[user]['can-delete']" value="1" disabled></td>
                                                 <td><input type="checkbox" name="name[user]['can-view']" value="1"></td>
                                                 <td><input type="checkbox" name="name[user]['can-list']" value="1"></td>
                                             </tr>
@@ -121,9 +121,57 @@
                                                 <td>Project</td>
                                                 <td><input type="checkbox" name="name[project]['can-add']" value="1"></td>
                                                 <td><input type="checkbox" name="name[project]['can-edit']" value="1"></td>
-                                                <td><input type="checkbox" name="name[project]['can-delete']" value="1"></td>
+                                                <td><input type="checkbox" name="name[project]['can-delete']" value="1" disabled></td>
                                                 <td><input type="checkbox" name="name[project]['can-view']" value="1"></td>
                                                 <td><input type="checkbox" name="name[project]['can-list']" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Order</td>
+                                                <td><input type="checkbox" name="name[project_work_order]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[project_work_order]['can-edit']" value="1" disabled></td>
+                                                <td><input type="checkbox" name="name[project_work_order]['can-delete']" value="1" disabled></td>
+                                                <td><input type="checkbox" name="name[project_work_order]['can-view']" value="1"></td>
+                                                <td><input type="checkbox" name="name[project_work_order]['can-list']" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Contractors</td>
+                                                <td><input type="checkbox" name="name[contractors]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[contractors]['can-edit']" value="1"></td>
+                                                <td><input type="checkbox" name="name[contractors]['can-delete']" value="1" disabled></td>
+                                                <td><input type="checkbox" name="name[contractors]['can-view']" value="1"></td>
+                                                <td><input type="checkbox" name="name[contractors]['can-list']" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Contractor Bill</td>
+                                                <td><input type="checkbox" name="name[contractor_bill]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[contractor_bill]['can-edit']" value="1"></td>
+                                                <td><input type="checkbox" name="name[contractor_bill]['can-report']" value="1"> Report</td>
+                                                <td><input type="checkbox" name="name[contractor_bill]['can-view']" value="1"></td>
+                                                <td><input type="checkbox" name="name[contractor_bill]['can-list']" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor</td>
+                                                <td><input type="checkbox" name="name[vendor]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[vendor]['can-edit']" value="1"></td>
+                                                <td><input type="checkbox" name="name[vendor]['can-delete']" value="1" disabled></td>
+                                                <td><input type="checkbox" name="name[vendor]['can-view']" value="1"></td>
+                                                <td><input type="checkbox" name="name[vendor]['can-list']" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vendor Bill</td>
+                                                <td><input type="checkbox" name="name[vendor_bill]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[vendor_bill]['can-edit']" value="1" disabled></td>
+                                                <td><input type="checkbox" name="name[vendor_bill]['can-report']" value="1"> Report</td>
+                                                <td><input type="checkbox" name="name[vendor_bill]['can-view']" value="1"></td>
+                                                <td><input type="checkbox" name="name[vendor_bill]['can-list']" value="1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Material</td>
+                                                <td><input type="checkbox" name="name[material]['can-add']" value="1"></td>
+                                                <td><input type="checkbox" name="name[material]['can-edit']" value="1"></td>
+                                                <td><input type="checkbox" name="name[material]['can-delete']" value="1"></td>
+                                                <td><input type="checkbox" name="name[material]['can-view']" value="1"></td>
+                                                <td><input type="checkbox" name="name[material]['can-list']" value="1"></td>
                                             </tr>
                                             </tbody>
                                         </table>
