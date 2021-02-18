@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TRIMATRIC | Dashboard</title>
+    <title>TRIMATRIC | Architects and Engine
+        ers </title>
     <link rel="icon" href="{{ asset('backend/dist/img/AdminLTELogo.png') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

@@ -18,6 +18,7 @@ class CreateBillingHistoriesTable extends Migration
             $table->string('project_id');
             $table->string('contractor_id');
             $table->string('project_work_no');
+            $table->string('work_order');
             $table->string('billing_no');
             $table->string('billing_amount');
             $table->string('billing_method');

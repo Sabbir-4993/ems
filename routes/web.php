@@ -101,7 +101,7 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
 Route::resource('project', 'ProjectController');
 
 Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
-    Route::get('assign-project', 'AssignProworkOrderStorejectController@index')->name('index');
+    Route::get('assign-project', 'AssignProjectController@index')->name('index');
     Route::post('store-assign-project', 'AssignProjectController@storeProject')->name('store');
     Route::get('view-assign-project', 'AssignProjectController@viewProject')->name('view');
     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');

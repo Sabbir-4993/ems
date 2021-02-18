@@ -52,6 +52,7 @@ class RequisitionController extends Controller
     public function pendingRequisition(){
         $pendingRequisitions = DB::table('requisitions')
             ->where('requisitions.status', '0')
+            ->orderBy('id', 'DESC')
             ->get();
         return view('admin.requisition.pending_requisition',compact('pendingRequisitions'));
     }
@@ -98,6 +99,7 @@ class RequisitionController extends Controller
     public function completeRequisition(){
         $approvedRequisitions = DB::table('requisitions')
             ->where('requisitions.status', '1')
+            ->orderBy('id', 'DESC')
             ->get();
         return view('admin.requisition.approved_requisition',compact('approvedRequisitions'));
     }

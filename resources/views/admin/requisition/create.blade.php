@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('requisition.show')}}">Requisition</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('requisition.pending')}}">Requisition</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -86,6 +86,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
+                                        <th scope="col">SN</th>
                                         <th scope="col">Particulars</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Unit</th>
@@ -95,6 +96,7 @@
                                     </thead>
                                     <tbody>
                                     <tr>
+                                        <td>1</td>
                                         <td><input name="particular[]" id="particular" class="form-control" required></td>
                                         <td><input name="quantity[]" class="form-control" type="text" ></td>
                                         <td><input name="unit[]" class="form-control" type="text" ></td>
@@ -181,7 +183,9 @@
             addRow();
         });
         function addRow(){
+            var rowCount = $('tbody tr').length + 1;
             var th='<tr>'+
+                ' <td>'+rowCount+'</td>'+
                 '<td><input name="particular[]" id="particular" class="form-control" required></td>'+
                 '<td><input name="quantity[]" class="form-control" type="text"></td>'+
                 '<td><input name="unit[]" class="form-control" type="text"></td>'+
@@ -191,11 +195,12 @@
             $('tbody').append(th);
         };
         $(document).on('click', '#remove', function() {
-                var last=$('tbody tr').length;
+            var last=$('tbody tr').length;
                 if(last==1){
                     alert("Can't Delete the last Particulars form");
                 }else {
                     $(this).parent().parent().remove();
+                    last--;
                 }
         });
     </script>

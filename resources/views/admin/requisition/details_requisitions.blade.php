@@ -58,10 +58,11 @@
                                                     <th>Product Name</th>
                                                     <th>Product quantity</th>
                                                     <th> Unit</th>
-                                                    <th>Price/Unit</th>
                                                     <th> Remarks </th>
-                                                    <th>Remarks from </th>
-                                                    <th>Action </th>
+                                                    <th>Price/Unit</th>
+                                                    <th>Total</th>
+                                                    <th>Notes </th>
+{{--                                                    <th>Action </th>--}}
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -72,32 +73,43 @@
                                                            <input type="text"  name="particular[]" value="{{$row->particular}}" class="form-control" readonly >
                                                         </td>
                                                          <td>
-                                                            <input type="text" id="" name="quantity[]" value="{{$row->quantity}}"  class="form-control" readonly >
+                                                            <input class="form-control " type="number" id="quantity{{$key}}" name="quantity[]" value="{{$row->quantity}}"   readonly >
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="" name="unit[]" value="{{$row->unit}}"  class="form-control" readonly >
+                                                            <input type="text" id="unit" name="unit[]" value="{{$row->unit}}"  class="form-control" readonly >
                                                         </td>
                                                         <td>
-                                                        <input class="form-control" type="text" id="price" name="price[]" >
+                                                            <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
                                                         </td>
                                                         <td>
-                                                                <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
-                                                            </td>
+                                                        <input class="form-control " type="number" id="price{{$key}}"   name="price[]" >
+                                                        </td>
+                                                        <td>
+                                                        <input class="form-control " type="text" id="total{{$key}}"   name="total[]" >
+                                                        </td>
                                                         <td>
                                                             <input class="form-control" type="text" name="pro_remarks[]">
                                                         </td>
-                                                        <td>
-
-                                                        </td>
+{{--                                                        <td>--}}
+{{--                                                        </td>--}}
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
+                                                <tfoot>
+                                                <th colspan="5"></th>
+                                                <th>Total =</th>
+                                                <th>
+                                                    <output id="result"></output></th>
+                                                <th> </th>
+{{--                                                <th> </th>--}}
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                             <h3 class="text-success"><i class="fas fa-project-diagram"></i>
                                 @php
@@ -182,7 +194,22 @@
 
 @endsection
 @section('script')
+    <script>
+        {{--var value2 = parseFloat($('#quantity{{$key}}').val());--}}
+        {{--var value1 = parseFloat($('#price{{$key}}').val());--}}
+        const $inputs = $('input[type="number"]')
+        $inputs.change(function() {
+            var total = 0;
+            $inputs.each(function() {
+                if ($(this).val() != '') {
+                    $('#total{{$key}}').val(parseFloat($('#quantity{{$key}}').val()) * parseFloat($('#price{{$key}}').val()) );
+                }
+            });
+            total +=($('#total{{$key}}').val()) ;
 
+            $('#result').html(total);
+        });
+    </script>
 @endsection
 
 
