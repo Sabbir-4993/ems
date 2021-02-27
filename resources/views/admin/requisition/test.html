@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    quantity :<br />
+    <input type="text" id="qty0" name="qty" value="25" />
+    <br />
+    Price:<br />
+    <input type="number" id="price0"  name="price" onkeyup="AutoCalc()" />
+    <br />
+    <br />
+    <label>
+        Total</label>
+    <input type="text" id="total0" name="total" disabled="disabled" />
+    <br />
+    <br />
+    quantity :<br />
+    <input type="text" id="qty1" name="qty" value="255" />
+    <br />
+    Price:<br />
+    <input type="number" id="price1"  name="price" onkeyup="AutoCalc()" />
+    <br />
+    <br />
+    <label>
+        Total</label>
+    <input type="text" id="total1" name="total" disabled="disabled" /><br><br>
+    <label>
+        Sub total</label>
+    <input type="text" id="subtotal" name="subtotal" disabled="disabled" value=""  />
+</div>
+<script>
+    function AutoCalc() {
+        var textBox = new Array();
+        textBox = document.getElementsByTagName('input');
+        var subtotal = 0;
+
+        for (i = 0; i < textBox.length; i++) {
+                var total = document.getElementById('qty'+[i]).value * document.getElementById('price'+[i]).value;
+                document.getElementById('total'+[i]).value =  total;
+                subtotal = subtotal +  parseFloat(document.getElementById('total'+[i]).value);
+                document.getElementById('subtotal').value = parseFloat(subtotal) ;
+
+        }
+    }
+
+</script>
+</body>
+</html>

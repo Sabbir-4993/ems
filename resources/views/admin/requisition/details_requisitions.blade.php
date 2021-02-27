@@ -73,7 +73,7 @@
                                                            <input type="text"  name="particular[]" value="{{$row->particular}}" class="form-control" readonly >
                                                         </td>
                                                          <td>
-                                                            <input class="form-control " type="number" id="quantity{{$key}}" name="quantity[]" value="{{$row->quantity}}"   readonly >
+                                                            <input class="form-control " type="text" id="qty{{$key}}" name="quantity[]" value="{{$row->quantity}}" readonly >
                                                         </td>
                                                         <td>
                                                             <input type="text" id="unit" name="unit[]" value="{{$row->unit}}"  class="form-control" readonly >
@@ -82,7 +82,7 @@
                                                             <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
                                                         </td>
                                                         <td>
-                                                        <input class="form-control " type="number" id="price{{$key}}"   name="price[]" >
+                                                        <input class="form-control " type="text" id="price{{$key}}"   name="price[]"  onchange="AutoCalc()" >
                                                         </td>
                                                         <td>
                                                         <input class="form-control " type="text" id="total{{$key}}"   name="total[]" >
@@ -99,7 +99,8 @@
                                                 <th colspan="5"></th>
                                                 <th>Total =</th>
                                                 <th>
-                                                    <output id="result"></output></th>
+                                                    <output id="subtotal"></output>
+                                                </th>
                                                 <th> </th>
 {{--                                                <th> </th>--}}
                                                 </tfoot>
@@ -195,20 +196,17 @@
 @endsection
 @section('script')
     <script>
-        {{--var value2 = parseFloat($('#quantity{{$key}}').val());--}}
-        {{--var value1 = parseFloat($('#price{{$key}}').val());--}}
-        const $inputs = $('input[type="number"]')
-        $inputs.change(function() {
-            var total = 0;
-            $inputs.each(function() {
-                if ($(this).val() != '') {
-                    $('#total{{$key}}').val(parseFloat($('#quantity{{$key}}').val()) * parseFloat($('#price{{$key}}').val()) );
-                }
-            });
-            total +=($('#total{{$key}}').val()) ;
-
-            $('#result').html(total);
-        });
+        function AutoCalc() {
+            var textBox = new Array();
+            textBox = document.getElementsByTagName('input');
+            var subtotal = 0;
+            for (i = 0; i < textBox.length; i++) {
+                var total = document.getElementById('qty'+[i]).value * document.getElementById('price'+[i]).value;
+                document.getElementById('total'+[i]).value = total;
+                subtotal = subtotal +  parseFloat(document.getElementById('total'+[i]).value);
+                document.getElementById('subtotal').value = parseFloat(subtotal);
+            }
+        }
     </script>
 @endsection
 
