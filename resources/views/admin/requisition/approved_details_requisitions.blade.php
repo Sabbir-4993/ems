@@ -87,6 +87,16 @@
                                                     </td>
                                             @endforeach
                                             </tbody>
+                                            <tfoot>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Total =</td>
+                                            <td>{{$approvedDetailsRequisitions->sum('total_price')}}
+                                            </td>
+                                            <td></td>
+                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
