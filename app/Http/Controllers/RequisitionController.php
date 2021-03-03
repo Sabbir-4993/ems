@@ -29,6 +29,7 @@ class RequisitionController extends Controller
             $requisition = array();
             $requisition['created_by'] = Auth()->id();
             $requisition['project_id'] = $request->project_id;
+            $requisition['requisition_by'] = $request->requisition_by;
             $requisition['work_order'] = $request->work_order;
             $requisition['status'] = 0;
             $requisition['req_no'] = $request->req_no;

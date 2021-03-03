@@ -20,6 +20,7 @@ class CreateWorkOrderTable extends Migration
             $table->string('status');
             $table->string('details');
             $table->string('created_by');
+            $table->string('updated_by');
             $table->string('created_date');
             $table->timestamps();
         });

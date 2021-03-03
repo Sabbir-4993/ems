@@ -129,12 +129,32 @@
                                 <label for="inputStatus">Status</label>
                                 <select id="inputStatus" class="form-control custom-select" name="status"
                                         required="">
-                                    <option value="{{$project}}"></option>
-                                    <option selected disabled>Select one</option>
-                                    <option value="0">On Running</option>
-                                    <option value="1">On Hold</option>
-                                    <option value="2">Canceled</option>
-                                    <option value="3">Complete</option>
+                                    @if($project->status=='0')
+                                        <option  disabled>Select one</option>
+                                        <option value="0" selected>On Running</option>
+                                        <option value="1">On Hold</option>
+                                        <option value="2">Canceled</option>
+                                        <option value="3">Complete</option>
+                                    @elseif($project->status=='1')
+                                        <option  disabled>Select one</option>
+                                        <option value="0">On Running</option>
+                                        <option value="1" selected>On Hold</option>
+                                        <option value="2">Canceled</option>
+                                        <option value="3">Complete</option>
+                                    @elseif($project->status=='2')
+                                        <option  disabled>Select one</option>
+                                        <option value="0">On Running</option>
+                                        <option value="1">On Hold</option>
+                                        <option value="2" selected>Canceled</option>
+                                        <option value="3">Complete</option>
+                                    @elseif($project->status=='3')
+                                        <option disabled>Select one</option>
+                                        <option value="0">On Running</option>
+                                        <option value="1">On Hold</option>
+                                        <option value="2">Canceled</option>
+                                        <option value="3" selected>Complete</option>
+                                    @endif
+
                                 </select>
                             </div>
                         </div>

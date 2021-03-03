@@ -29,6 +29,12 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
+        @if(Session::has('message1'))
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> {{Session::get('message1')}}</h5>
+            </div>
+        @endif
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -80,11 +86,66 @@
                                         <td>{{$row->pro_duration}}</td>
                                         <td>{{$row->project_start}}</td>
                                         <td class="project-actions text-left">
-                                            <a class="btn btn-secondary btn-xs"
-                                               href="{{route('workOrder.addWorkOrder')}}">
-                                                <i class="fas fa-plus"></i>
+                                            <a class="btn btn-primary btn-xs" href="#" data-toggle="modal"
+                                               data-target="#modal-m{{$row->id}}">
+                                                <i class="fas fa-money-bill"></i>
                                                 Add WO.
                                             </a>
+                                            <div class="modal fade" id="modal-m{{$row->id}}">
+                                                <div class="modal-dialog modal-m">
+                                                    <form action="{{route('workOrder.orderStore')}}" method="post">
+                                                        @csrf
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Add Work Order!!</h4>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                           <div class="modal-body">
+                                                               <input class="form-control" name="project_name"   value="{{$row->id}}" type="hidden" required="">
+                                                               <div class="form-group">
+                                                                   <label for="example">Work Order Number</label>
+                                                                   <input class="form-control @error('work_order') is-invalid @enderror" name="work_order" type="text" placeholder="" required="">
+                                                                   @error('work_order')
+                                                                   <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                   @enderror
+                                                               </div>
+                                                               <div class="form-group">
+                                                                   <label for="inputStatus">WO. Status</label>
+                                                                   <select id="inputStatus" class="form-control custom-select" name="status"
+                                                                           required>
+                                                                       <option selected disabled>Select Status</option>
+                                                                       <option value="0">On Running</option>
+                                                                       <option value="1">On Hold</option>
+                                                                       <option value="2">Canceled</option>
+                                                                       <option value="3">Complete</option>
+                                                                   </select>
+                                                               </div>
+                                                               <div class="form-group">
+                                                                   <label for="inputStatus">Details</label>
+                                                                   <textarea name="details" id="details" cols="10" class="form-control" rows="5" required=""></textarea>
+                                                               </div>
+                                                               <input class="form-control"  name="created_by" type="hidden" value="{{Auth()->user()->id}}">
+                                                            <div class="modal-footer justify-content-between">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-danger">Add Work Order</button>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                    <!-- /.modal-content -->
+                                                <!-- /.modal-dialog -->
+                                            </div>
+{{--                                            <a class="btn btn-secondary btn-xs"--}}
+{{--                                               href="{{route('workOrder.addWorkOrder')}}">--}}
+{{--                                                <i class="fas fa-plus"></i>--}}
+{{--                                                Add WO.--}}
+{{--                                            </a>--}}
                                             <a class="btn btn-primary btn-xs"
                                                href="{{route('project.show',[$row->id])}}">
                                                 <i class="fas fa-folder"></i>
@@ -107,11 +168,11 @@
                 <!-- /.col -->
             </div>
             <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
+        </div>            <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
     </div>
+
     <!-- /.content-wrapper -->
 @endsection
 

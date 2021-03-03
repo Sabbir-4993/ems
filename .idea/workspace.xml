@@ -2,9 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/uploads/profile/2021-03-03-1614765058-Sumon.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_06_073358_create_work_order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_06_073358_create_work_order_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/.idea/project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/work-order-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/work-order-list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/approved_details_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/approved_details_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +327,11 @@
       <workItem from="1614398448491" duration="11236000" />
       <workItem from="1614425044063" duration="3000" />
       <workItem from="1614496119030" duration="117000" />
-      <workItem from="1614505989231" duration="1561000" />
+      <workItem from="1614505989231" duration="2226000" />
+      <workItem from="1614510111406" duration="6000" />
+      <workItem from="1614574448989" duration="3080000" />
+      <workItem from="1614656848238" duration="1915000" />
+      <workItem from="1614747330112" duration="11679000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -479,7 +501,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614408984044</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="approved details with total price calculate">
+      <created>1614508384577</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1614508384577</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +563,8 @@
     <MESSAGE value="requisition and details vendor and contractor" />
     <MESSAGE value="price calculate" />
     <MESSAGE value="total and subtotal calculation done" />
-    <option name="LAST_COMMIT_MESSAGE" value="total and subtotal calculation done" />
+    <MESSAGE value="approved details with total price calculate" />
+    <option name="LAST_COMMIT_MESSAGE" value="approved details with total price calculate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

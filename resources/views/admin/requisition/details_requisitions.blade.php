@@ -153,6 +153,23 @@
                                     <b class="d-block text-gray" style="font-size: 16px;">
                                         <i class="fas fa-user"></i>
                                         @php
+                                            $users = \App\User::where('id',$row->requisition_by)->first();
+                                        @endphp
+                                        {{$users->name}}
+                                    </b>
+                                </p>
+                                <p class="text-sm"> Number
+                                    <a href="tel: {{$users->mobile_number}}" style="font-size: 16px;" class="d-block text-info">
+                                        <i class="fas fa-phone"></i>
+                                        {{$users->mobile_number}}
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="text-muted">
+                                <p class="text-sm">Requisition Create BY :
+                                    <b class="d-block text-gray" style="font-size: 16px;">
+                                        <i class="fas fa-user"></i>
+                                        @php
                                             $users = \App\User::where('id',$row->created_by)->first();
                                         @endphp
                                         {{$users->name}}

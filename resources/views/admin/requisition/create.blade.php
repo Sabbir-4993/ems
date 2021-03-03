@@ -67,6 +67,18 @@
                                 <label for="exampleInputRequisition">Requisition No.</label>
                                 <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputName">Select PCO</label>
+                                <select name="requisition_by" id="requisition_by" class="form-control" required>
+                                    @php
+                                        $designation =  \App\Designation::where('name','Project Coordinator')->first();
+                                        @endphp
+                                    <option selected disabled >Select PCO</option>
+                                    @foreach(\App\User::where('designation',$designation->id)->get() as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                         </div>
                         <!-- /.card-body -->

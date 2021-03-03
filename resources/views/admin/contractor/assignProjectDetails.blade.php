@@ -217,10 +217,10 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <input type="hidden" name="work_id" value="{{ $project ->work_order }}">
-                        <input type="hidden" name="project_id" value="{{ $project ->project_id }}">
-                        <input type="hidden" name="contractor_id" value="{{ $contractorDetails ->id }}">
-                        <input type="hidden" name="project_work_no" value="{{ $project ->project_work_order }}">
+                        <input type="hidden" name="work_id" value="{{ $project->work_order }}">
+                        <input type="hidden" name="project_id" value="{{ $project->project_id }}">
+                        <input type="hidden" name="contractor_id" value="{{ $contractorDetails->id }}">
+                        <input type="hidden" name="project_work_no" value="{{ $project->project_work_order }}">
                         <div class="modal-body">
                             <label for="exampleInput">Bill No</label>
                             <input class="form-control @error('billing_no') is-invalid @enderror" name="billing_no" type="text" placeholder="Enter Bill NO" required="">

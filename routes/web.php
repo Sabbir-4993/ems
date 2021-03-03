@@ -76,6 +76,8 @@ Route::group(['prefix'=>'workOrder','as'=>'workOrder.'], function (){
     Route::get('project/work/order', 'WorkOrderController@addWorkOrder')->name('addWorkOrder');
     Route::post('work-order-store', 'WorkOrderController@workOrderStore')->name('orderStore');
     Route::get('project/work/order/list', 'WorkOrderController@workOrderList')->name('list');
+    Route::post('work-order/update/{id}', 'WorkOrderController@updateWorkOrder')->name('update');
+
 });
 
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){

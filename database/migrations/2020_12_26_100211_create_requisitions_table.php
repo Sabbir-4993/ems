@@ -16,6 +16,7 @@ class CreateRequisitionsTable extends Migration
         Schema::create('requisitions', function (Blueprint $table) {
             $table->id();
             $table->string('project_id');
+            $table->string('requisition_by');
             $table->string('work_order');
             $table->string('status')->nullable();
             $table->string('req_no')->nullable();
