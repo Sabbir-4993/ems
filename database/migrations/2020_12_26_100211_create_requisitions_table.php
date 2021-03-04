@@ -19,7 +19,7 @@ class CreateRequisitionsTable extends Migration
             $table->string('requisition_by');
             $table->string('work_order');
             $table->string('status')->nullable();
-            $table->string('req_no')->nullable();
+            $table->string('req_no')->unique();
             $table->string('requisition_date');
             $table->string('approved_date')->nullable();
             $table->integer('created_by');

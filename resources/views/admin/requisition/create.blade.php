@@ -63,10 +63,10 @@
                                 <select name="work_order" id="work-order" class="form-control" required>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputRequisition">Requisition No.</label>
-                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputRequisition">Requisition No.</label>--}}
+{{--                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label for="exampleInputName">Select PCO</label>
                                 <select name="requisition_by" id="requisition_by" class="form-control" required>
@@ -108,11 +108,11 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td><input name="particular[]" id="particular" class="form-control" required></td>
-                                        <td><input name="quantity[]" class="form-control" type="text" ></td>
-                                        <td><input name="unit[]" class="form-control" type="text" ></td>
-                                        <td><input name="remarks[]" class="form-control" type="text" ></td>
+                                        <td style="width:1%">1</td>
+                                        <td style="width:50%"><input name="particular[]" id="particular" class="form-control row-cols-xl-4" required></td>
+                                        <td style="width:10%"><input name="quantity[]" class="form-control" type="text" ></td>
+                                        <td style="width:10%"><input name="unit[]" class="form-control" type="text" ></td>
+                                        <td style="width:30%"><input name="remarks[]" class="form-control" type="text" ></td>
                                         <td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>
                                     </tr>
                                     </tbody>
@@ -197,11 +197,11 @@
         function addRow(){
             var rowCount = $('tbody tr').length + 1;
             var th='<tr>'+
-                ' <td>'+rowCount+'</td>'+
-                '<td><input name="particular[]" id="particular" class="form-control" required></td>'+
-                '<td><input name="quantity[]" class="form-control" type="text"></td>'+
-                '<td><input name="unit[]" class="form-control" type="text"></td>'+
-                '<td><input name="remarks[]" class="form-control" type="text"></td>'+
+                ' <td style="width:1%">'+rowCount+'</td>'+
+                '<td style="width:50%"><input name="particular[]" id="particular" class="form-control" required></td>'+
+                '<td style="width:10%"><input name="quantity[]" class="form-control" type="text"></td>'+
+                '<td style="width:10%"><input name="unit[]" class="form-control" type="text"></td>'+
+                '<td style="width:30%"><input name="remarks[]" class="form-control" type="text"></td>'+
                 '<td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>'+
                 '</tr>';
             $('tbody').append(th);

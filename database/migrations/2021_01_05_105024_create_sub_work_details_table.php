@@ -16,8 +16,8 @@ class CreateSubWorkDetailsTable extends Migration
         Schema::create('sub_work_details', function (Blueprint $table) {
             $table->id();
             $table->integer('subWork_id');
-            $table->string('work_name');
-            $table->string('work_details');
+            $table->longText('work_name');
+            $table->longText('work_details');
             $table->timestamps();
         });
     }

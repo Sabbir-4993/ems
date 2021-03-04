@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Project;
 use App\Requisition;
 use App\Model\SubWork;
 use App\User;
@@ -17,8 +18,13 @@ class RequisitionController extends Controller
     }
     public function storeRequisition( Request  $request){
 
+        $project = Project::where('id',$request->project_id)->first();
+        $workorder = DB::table('work_orders')->where('id',$request->work_order)->first();
+        $requisition_no = $project->project_name.'-'.$workorder->work_order;
+        $Req_has = Requisition::where('req_no',$requisition_no)->get();
+
         $validator = Validator::make($request->all(), [
-            'req_no'=>'required|unique:requisitions',
+            'work_order'=>'required',
         ]);
 
         if($validator->fails()) {
@@ -32,7 +38,14 @@ class RequisitionController extends Controller
             $requisition['requisition_by'] = $request->requisition_by;
             $requisition['work_order'] = $request->work_order;
             $requisition['status'] = 0;
-            $requisition['req_no'] = $request->req_no;
+            if ($Req_has ==null){
+                $requisition['req_no'] = $requisition_no.'-'.'1';
+            }else{
+                $workorder = Requisition::where('work_order',$request->work_order)->get();
+                $req_no  =count($workorder);
+                $requisition['req_no'] = $requisition_no.'-'.$req_no+1;
+            }
+
             $requisition['requisition_date'] = date('d/m/y');
             $requisitionId = DB::table('requisitions')->insertGetId($requisition);
             $count = count($request->quantity);
