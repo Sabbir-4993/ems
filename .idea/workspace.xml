@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/addRow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/addTable.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_100211_create_requisitions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_05_105024_create_sub_work_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_05_105024_create_sub_work_details_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_06_073358_create_work_order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_06_073358_create_work_order_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/material/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/material/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/material/index_material_category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/material/index_material_category.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProject.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +327,25 @@
       <workItem from="1614574448989" duration="3080000" />
       <workItem from="1614656848238" duration="1915000" />
       <workItem from="1614747330112" duration="11873000" />
-      <workItem from="1614829225109" duration="13564000" />
+      <workItem from="1614829225109" duration="13666000" />
+      <workItem from="1615003787803" duration="12338000" />
+      <workItem from="1615091829824" duration="599000" />
+      <workItem from="1615106805305" duration="843000" />
+      <workItem from="1615174637182" duration="663000" />
+      <workItem from="1615181141182" duration="6548000" />
+      <workItem from="1615195435224" duration="5485000" />
+      <workItem from="1615263228880" duration="5992000" />
+      <workItem from="1615285859955" duration="2316000" />
+      <workItem from="1615348724364" duration="5123000" />
+      <workItem from="1615359959913" duration="15000" />
+      <workItem from="1615375188179" duration="1195000" />
+      <workItem from="1615433162654" duration="3628000" />
+      <workItem from="1615450855212" duration="21000" />
+      <workItem from="1615609957853" duration="727000" />
+      <workItem from="1615613034120" duration="1236000" />
+      <workItem from="1615694217200" duration="12326000" />
+      <workItem from="1615713081163" duration="3629000" />
+      <workItem from="1615784310330" duration="1990000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -502,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614772815291</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="update requisition no and table">
+      <created>1614859889860</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1614859889860</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="contractor model done" />
     <MESSAGE value="assign project and category create done" />
     <MESSAGE value="payment and bill contractor" />
     <MESSAGE value="pay bill done" />
@@ -559,7 +592,8 @@
     <MESSAGE value="total and subtotal calculation done" />
     <MESSAGE value="approved details with total price calculate" />
     <MESSAGE value="modification requisition and print option" />
-    <option name="LAST_COMMIT_MESSAGE" value="modification requisition and print option" />
+    <MESSAGE value="update requisition no and table" />
+    <option name="LAST_COMMIT_MESSAGE" value="update requisition no and table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -581,12 +615,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>
-          <line>433</line>
+          <line>403</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>
-          <line>443</line>
+          <line>413</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

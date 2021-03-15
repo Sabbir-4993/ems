@@ -80,13 +80,19 @@
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label class="col-form-label">Category Select</label>
+                                <a class="btn btn-info btn-sm float-right"  href="#" data-toggle="modal"  data-target="#modal-sm" >
+                                    <i class="fas fa-plus"></i>
+                                    Add Category
+                                </a>
                                 <select class="custom-select" name="category_name">
                                     <option selected="selected" disabled>Select Contractor Category</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->cat_name}}</option>
                                     @endforeach
                                 </select>
+
                             </div>
+
                             <!-- /.form-group -->
                         </div>
                         <!-- /.card-body -->
@@ -140,6 +146,43 @@
         </form>
     </section>
     <!-- /.content -->
+    <div class="modal fade" id="modal-sm">
+        <div class="modal-dialog modal-m">
+            <form action="{{route('category.store')}}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="card-title">Add Contractor  Category</h3>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="exampleInputDepartmentName">Category Name</label>
+                        <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" placeholder="">
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                        @enderror
+                        <br>
+
+                        <label for="exampleDepartmentDetails">Category Details</label>
+                        <textarea name="description" class="form-control" cols="30" rows="5" id=""></textarea>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Add Category</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
 @endsection
 
 @section('script')

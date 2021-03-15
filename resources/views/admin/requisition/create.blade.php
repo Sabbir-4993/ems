@@ -63,16 +63,16 @@
                                 <select name="work_order" id="work-order" class="form-control" required>
                                 </select>
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                <label for="exampleInputRequisition">Requisition No.</label>--}}
-{{--                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">--}}
-{{--                            </div>--}}
+                            {{--                            <div class="form-group">--}}
+                            {{--                                <label for="exampleInputRequisition">Requisition No.</label>--}}
+                            {{--                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">--}}
+                            {{--                            </div>--}}
                             <div class="form-group">
                                 <label for="exampleInputName">Select PCO</label>
                                 <select name="requisition_by" id="requisition_by" class="form-control" required>
                                     @php
                                         $designation =  \App\Designation::where('name','Project Coordinator')->first();
-                                        @endphp
+                                    @endphp
                                     <option selected disabled >Select PCO</option>
                                     @foreach(\App\User::where('designation',$designation->id)->get() as $user)
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -147,12 +147,9 @@
     <script>
         // for project
         $(document).ready(function () {
-
             $('#project').on('change',function(e) {
-
                 var project_id = e.target.value;
                 $.ajax({
-
                     url:"{{ route('requisition.getWorkNo')}}",
                     type:"POST",
                     data: {
@@ -170,9 +167,7 @@
         });
         // for product
         $(document).ready(function () {
-
             $('#category').on('change',function(e) {
-
                 var cat_id = e.target.value;
                 $.ajax({
                     url:"{{ route('requisition.getMaterial')}}",
@@ -190,7 +185,6 @@
                 })
             });
         });
-
         $('#addRow').on('click', function (){
             addRow();
         });
@@ -208,12 +202,12 @@
         };
         $(document).on('click', '#remove', function() {
             var last=$('tbody tr').length;
-                if(last==1){
-                    alert("Can't Delete the last Particulars form");
-                }else {
-                    $(this).parent().parent().remove();
-                    last--;
-                }
+            if(last==1){
+                alert("Can't Delete the last Particulars form");
+            }else {
+                $(this).parent().parent().remove();
+                last--;
+            }
         });
     </script>
 

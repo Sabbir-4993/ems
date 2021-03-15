@@ -108,8 +108,10 @@ class VendorController extends Controller
      * @param  \App\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vendor $vendor)
+    public function destroy($id)
     {
-        //
+        $vendor = Vendor::find($id);
+        $vendor->delete();
+        return redirect()->route('vendor.index')->with('message', 'Vendor Deleted Successfully');
     }
 }

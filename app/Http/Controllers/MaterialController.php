@@ -98,9 +98,12 @@ class MaterialController extends Controller
      * @param \App\Material $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, $id)
     {
-        //
+        $material = Material::find($id);
+        $data = $request->all();
+        $material->update($data);
+        return redirect()->route('material.index')->with('message', 'Material Updated Successfully');
     }
 
     /**

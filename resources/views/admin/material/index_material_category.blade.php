@@ -35,6 +35,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Category List</h3>
+                            <a class="btn btn-info btn-sm float-right"  href="#" data-toggle="modal"  data-target="#modal-sm" >
+                                <i class="fas fa-plus"></i>
+                                Add Category
+                            </a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -54,19 +58,51 @@
                                         <td style="width: 25%">{{$row->name}}</td>
                                         <td style="width: 50%">{{$row->details}}</td>
                                         <td style="width: 20%">
-                                            <a class="btn btn-block bg-gradient-secondary btn-xs" href="{{route('material_category.edit',[$row->id])}}"><i class="fas fa-edit"></i> Edit</a>
+                                            <a class="btn btn-primary btn-xs" href="#" data-toggle="modal"
+                                               data-target="#modal-sm{{$row->id}}">
+                                                <i class="fas fa-edit"></i>
+                                                Edit
+                                            </a>
+                                            <div class="modal fade" id="modal-sm{{$row->id}}">
+                                                <div class="modal-dialog modal-m">
+                                                    <form action="{{route('material_category.update', [$row->id])}}" method="post">
+                                                        @csrf
+                                                        {{method_field('PATCH')}}
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 class="card-title">Add Material Category</h3>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <label for="exampleInputDepartmentName">Category Name</label>
+                                                                <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" placeholder="" value="{{$row->name}}">
+                                                                @error('name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                                @enderror
+                                                                <br>
+                                                                <label for="exampleDepartmentDetails">Category Details</label>
+                                                                <textarea name="details" class="form-control" cols="30" rows="5" id="">{{$row->details}}</textarea>
+
+                                                            </div>
+                                                            <div class="modal-footer justify-content-between">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-info">Update Category</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Category Name</th>
-                                    <th>Details</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -79,6 +115,43 @@
         </div>
         <!-- /.container-fluid -->
     </section>
+    <div class="modal fade" id="modal-sm">
+        <div class="modal-dialog modal-m">
+            <form action="{{route('material_category.store')}}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="card-title">Add Material Category</h3>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="exampleInputDepartmentName">Category Name</label>
+                        <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" placeholder="">
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                        @enderror
+                        <br>
+
+                        <label for="exampleDepartmentDetails">Category Details</label>
+                        <textarea name="details" class="form-control" cols="30" rows="5" id=""></textarea>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Add Category</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
