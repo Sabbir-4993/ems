@@ -76,6 +76,8 @@ Route::group(['prefix'=>'workOrder','as'=>'workOrder.'], function (){
     Route::get('project/work/order', 'WorkOrderController@addWorkOrder')->name('addWorkOrder');
     Route::post('work-order-store', 'WorkOrderController@workOrderStore')->name('orderStore');
     Route::get('project/work/order/list', 'WorkOrderController@workOrderList')->name('list');
+    Route::post('work-order/update/{id}', 'WorkOrderController@updateWorkOrder')->name('update');
+
 });
 
 Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
@@ -101,7 +103,7 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
 Route::resource('project', 'ProjectController');
 
 Route::group(['prefix'=>'assignProject','as'=>'assignProject.'], function(){
-    Route::get('assign-project', 'AssignProworkOrderStorejectController@index')->name('index');
+    Route::get('assign-project', 'AssignProjectController@index')->name('index');
     Route::post('store-assign-project', 'AssignProjectController@storeProject')->name('store');
     Route::get('view-assign-project', 'AssignProjectController@viewProject')->name('view');
     Route::get('view-assign-project-details/{id}', 'AssignProjectController@viewProjectDetails')->name('details');

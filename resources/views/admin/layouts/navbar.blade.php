@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TRIMATRIC | Dashboard</title>
-    <link rel="icon" href="{{ asset('backend/dist/img/AdminLTELogo.png') }}">
+    <link rel="icon" href="{{ asset('backend/dist/img/favicon.ico') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -87,7 +87,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
-                    <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-32 mr-3 img-circle">
+                    <img src="{{ asset('backend/dist/img/favicon.ico') }}" alt="User Avatar" class="img-size-32 mr-3 img-circle">{{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
                     <a href="#" class="dropdown-item text-left text-center">

@@ -29,6 +29,12 @@
                 <h5><i class="icon fas fa-check"></i> {{Session::get('message')}}</h5>
             </div>
         @endif
+        @if(Session::has('message1'))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> {{Session::get('message1')}}</h5>
+                </div>
+        @endif
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -77,10 +83,75 @@
                                             <td>{{$row->details}}</td>
                                             <td>{{$row->created_date}}</td>
                                             <td>
-                                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="">
+                                                <a class="btn btn-primary btn-xs" href="#" data-toggle="modal"
+                                                   data-target="#modal-m{{$row->id}}">
                                                     <i class="fas fa-edit"></i>
                                                     Edit
                                                 </a>
+                                                <div class="modal fade" id="modal-m{{$row->id}}">
+                                                    <div class="modal-dialog modal-m">
+                                                        <form action="{{route('workOrder.update',[$row->id])}}" method="post">
+                                                            @csrf
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">Edit Work Order!!</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <input class="form-control" name="project_name"   value="{{$row->project_id}}" type="hidden" required="" >
+                                                                    <input class="form-control" name=""   value="{{$project->project_name}}" type="text" required="" disabled>
+                                                                    <div class="form-group">
+                                                                        <label for="example">Work Order Number</label>
+                                                                        <input class="form-control" name="work_order" type="text" value="{{$row->work_order}}" required="">
+
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputStatus">Status</label>
+                                                                        <select id="inputStatus" class="form-control custom-select" name="status"
+                                                                                required="">
+                                                                            @if($row->status=='0')
+                                                                                <option  disabled>Select one</option>
+                                                                                <option value="0" selected>On Running</option>
+                                                                                <option value="1">On Hold</option>
+                                                                                <option value="2">Canceled</option>
+                                                                                <option value="3">Complete</option>
+                                                                            @elseif($row->status=='1')
+                                                                                <option  disabled>Select one</option>
+                                                                                <option value="0">On Running</option>
+                                                                                <option value="1" selected>On Hold</option>
+                                                                                <option value="2">Canceled</option>
+                                                                                <option value="3">Complete</option>
+                                                                            @elseif($row->status=='2')
+                                                                                <option  disabled>Select one</option>
+                                                                                <option value="0">On Running</option>
+                                                                                <option value="1">On Hold</option>
+                                                                                <option value="2" selected>Canceled</option>
+                                                                                <option value="3">Complete</option>
+                                                                            @elseif($row->status=='3')
+                                                                                <option disabled>Select one</option>
+                                                                                <option value="0">On Running</option>
+                                                                                <option value="1">On Hold</option>
+                                                                                <option value="2">Canceled</option>
+                                                                                <option value="3" selected>Complete</option>
+                                                                            @endif
+
+                                                                        </select>
+                                                                    </div>
+                                                                    <input class="form-control"  name="updated_by" type="hidden" value="{{Auth()->user()->id}}">
+                                                                    <div class="modal-footer justify-content-between">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-danger">Update Work Order</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+{{--                                                    <!-- /.modal-dialog -->--}}
+                                                </div>
                                             </td>
                                     </tr>
                                     @endforeach

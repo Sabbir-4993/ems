@@ -69,15 +69,19 @@
                 <div class="clearfix hidden-md-up"></div>
 
                 <div class="col-12 col-sm-6 col-md-3">
+                    <a href="{{route('employee.index')}}" class="small-box-footer">
                     <div class="info-box mb-3 shadow">
+                        @php
+                            $employee = count(\App\User::all());
+                        @endphp
                         <span class="info-box-icon bg-success elevation-1"><i class="ion ion-person-add"></i></span>
-
                         <div class="info-box-content">
                             <span class="info-box-text">Employee</span>
-                            <span class="info-box-number">76</span>
+                            <span class="info-box-number">{{$employee}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
+                    </a>
                     <!-- /.info-box -->
                 </div>
                 <div class="col-12 col-sm-6 col-md-3">

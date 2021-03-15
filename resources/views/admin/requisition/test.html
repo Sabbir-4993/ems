@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div>-->
+<!--    quantity :<br />-->
+<!--    <input type="text" id="qty0" name="qty" value="25" />-->
+<!--    <br />-->
+<!--    Price:<br />-->
+<!--    <input type="number" id="price0"  name="price" onkeyup="AutoCalc()" />-->
+<!--    <br />-->
+<!--    <br />-->
+<!--    <label>-->
+<!--        Total</label>-->
+<!--    <input type="text" id="total0" name="total" disabled="disabled" />-->
+<!--    <br />-->
+<!--    <br />-->
+<!--    quantity :<br />-->
+<!--    <input type="text" id="qty1" name="qty" value="255" />-->
+<!--    <br />-->
+<!--    Price:<br />-->
+<!--    <input type="number" id="price1"  name="price" onkeyup="AutoCalc()" />-->
+<!--    <br />-->
+<!--    <br />-->
+<!--    <label>-->
+<!--        Total</label>-->
+<!--    <input type="text" id="total1" name="total" disabled="disabled" /><br><br>-->
+<!--    <label>-->
+<!--        Sub total</label>-->
+<!--    <input type="text" id="subtotal" name="subtotal" disabled="disabled" value=""  />-->
+<!--</div>-->
+<!--<script>-->
+<!--    function AutoCalc() {-->
+<!--        var textBox = new Array();-->
+<!--        textBox = document.getElementsByTagName('input');-->
+<!--        var subtotal = 0;-->
+
+<!--        for (i = 0; i < textBox.length; i++) {-->
+<!--                var total = document.getElementById('qty'+[i]).value * document.getElementById('price'+[i]).value;-->
+<!--                document.getElementById('total'+[i]).value =  total;-->
+<!--                subtotal = subtotal +  parseFloat(document.getElementById('total'+[i]).value);-->
+<!--                document.getElementById('subtotal').value = parseFloat(subtotal) ;-->
+
+<!--        }-->
+<!--    }-->
+
+<!--</script>-->
+<table class="friends-list table table-bordered width100" id="table1">
+
+    <thead>
+    <tr class="filters">
+        <th>Friend Name</th>
+        <th>Friend mobile</th>
+        <th>Hobbies </th>
+        <th>about</th>
+    </tr>
+    </thead>
+
+
+
+    <tbody>
+    <tr role="row">
+        <td><input class="form-control" id="name" name="name"></td>
+        <td><input class="form-control" id="mobile" name="mobile"></td>
+
+        <td>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <input type="checkbox"/> Singing
+                        </label>
+                    </div>
+                </div>
+                <div id="collapseOne" aria-expanded="false" class="collapse">
+                    <div class="form-group">
+                        <input type="text" name="about_singing" placeholder="About singing" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            <input type="checkbox"/>Dancing
+                        </label>
+                    </div>
+                </div>
+                <div id="collapseTwo" aria-expanded="true" class="collapse">
+                    <div class="form-group ">
+                        <input type="text" name="about_dancing" placeholder="About Dancing" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            <input type="checkbox"/>Other
+                        </label>
+                    </div>
+                </div>
+                <div id="collapseThree" aria-expanded="true" class="collapse">
+                    <div class="form-group ">
+                        <input type="text" name="other_hobby" placeholder="Friends Other Hobby" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+        </td>
+        <td><input class="form-control" id="about_friend" name="about_friend"></td>
+
+    </tr>
+    </tbody>
+
+
+</table>
+<a href="#" title="" class="add-friend">Add Friend</a>
+
+<script>
+    var counter = 1;
+    jQuery('a.add-friend').click(function(event){
+        event.preventDefault();
+        counter++;
+        var newRow = jQuery('<tr><td><input type="text" name="name' +
+            counter + '"/></td><td><input type="text" name="mobile' +
+            counter + '"/></td><td><div class="form-group"><div class="checkbox"><input type="checkbox" name="about_singing' +
+            counter + '"/>Singing</div><input type="text" name="about_singing'+
+            counter + '"/></div><div class="form-group"><div class="checkbox"><input type="checkbox" name="about_dancing' +
+            counter + '"/>Dancing</div><input type="text" name="about_dancing'+
+            counter + '"/></div><div class="form-group"><div class="checkbox"><input type="checkbox" name="other_hobby' +
+            counter + '"/>Other</div><input type="text" name="other_hobby'+
+            counter + '"/></div></td><td><input type="text" name="about_friend' +
+            counter + '"/></td></tr>');
+        jQuery('table.friends-list').append(newRow);
+    });
+</script>
+</body>
+</html>

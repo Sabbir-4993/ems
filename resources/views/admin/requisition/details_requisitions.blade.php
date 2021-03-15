@@ -58,10 +58,11 @@
                                                     <th>Product Name</th>
                                                     <th>Product quantity</th>
                                                     <th> Unit</th>
-                                                    <th>Price/Unit</th>
                                                     <th> Remarks </th>
-                                                    <th>Remarks from </th>
-                                                    <th>Action </th>
+                                                    <th>Price/Unit</th>
+                                                    <th>Total</th>
+                                                    <th>Notes </th>
+{{--                                                    <th>Action </th>--}}
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -72,32 +73,44 @@
                                                            <input type="text"  name="particular[]" value="{{$row->particular}}" class="form-control" readonly >
                                                         </td>
                                                          <td>
-                                                            <input type="text" id="" name="quantity[]" value="{{$row->quantity}}"  class="form-control" readonly >
+                                                            <input class="form-control " type="text" id="qty{{$key}}" name="quantity[]" value="{{$row->quantity}}" readonly >
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="" name="unit[]" value="{{$row->unit}}"  class="form-control" readonly >
+                                                            <input type="text" id="unit" name="unit[]" value="{{$row->unit}}"  class="form-control" readonly >
                                                         </td>
                                                         <td>
-                                                        <input class="form-control" type="text" id="price" name="price[]" >
+                                                            <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
                                                         </td>
                                                         <td>
-                                                                <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
-                                                            </td>
+                                                        <input class="form-control " type="text" id="price{{$key}}"   name="price[]"  onchange="AutoCalc()" >
+                                                        </td>
+                                                        <td>
+                                                        <input class="form-control " type="text" id="total{{$key}}"   name="total[]" >
+                                                        </td>
                                                         <td>
                                                             <input class="form-control" type="text" name="pro_remarks[]">
                                                         </td>
-                                                        <td>
-
-                                                        </td>
+{{--                                                        <td>--}}
+{{--                                                        </td>--}}
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
+                                                <tfoot>
+                                                <th colspan="5"></th>
+                                                <th>Total =</th>
+                                                <th>
+                                                    <output id="subtotal"></output>
+                                                </th>
+                                                <th> </th>
+{{--                                                <th> </th>--}}
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                             <h3 class="text-success"><i class="fas fa-project-diagram"></i>
                                 @php
@@ -137,6 +150,23 @@
                             </div>
                             <div class="text-muted">
                                 <p class="text-sm">Requisition From :
+                                    <b class="d-block text-gray" style="font-size: 16px;">
+                                        <i class="fas fa-user"></i>
+                                        @php
+                                            $users = \App\User::where('id',$row->requisition_by)->first();
+                                        @endphp
+                                        {{$users->name}}
+                                    </b>
+                                </p>
+                                <p class="text-sm"> Number
+                                    <a href="tel: {{$users->mobile_number}}" style="font-size: 16px;" class="d-block text-info">
+                                        <i class="fas fa-phone"></i>
+                                        {{$users->mobile_number}}
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="text-muted">
+                                <p class="text-sm">Requisition Create BY :
                                     <b class="d-block text-gray" style="font-size: 16px;">
                                         <i class="fas fa-user"></i>
                                         @php
@@ -182,7 +212,19 @@
 
 @endsection
 @section('script')
-
+    <script>
+        function AutoCalc() {
+            var textBox = new Array();
+            textBox = document.getElementsByTagName('input');
+            var subtotal = 0;
+            for (i = 0; i < textBox.length; i++) {
+                var total = document.getElementById('qty'+[i]).value * document.getElementById('price'+[i]).value;
+                document.getElementById('total'+[i]).value = total;
+                subtotal = subtotal +  parseFloat(document.getElementById('total'+[i]).value);
+                document.getElementById('subtotal').value = parseFloat(subtotal);
+            }
+        }
+    </script>
 @endsection
 
 

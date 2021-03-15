@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('requisition.show')}}">Requisition</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('requisition.pending')}}">Requisition</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -63,9 +63,21 @@
                                 <select name="work_order" id="work-order" class="form-control" required>
                                 </select>
                             </div>
+                            {{--                            <div class="form-group">--}}
+                            {{--                                <label for="exampleInputRequisition">Requisition No.</label>--}}
+                            {{--                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">--}}
+                            {{--                            </div>--}}
                             <div class="form-group">
-                                <label for="exampleInputRequisition">Requisition No.</label>
-                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">
+                                <label for="exampleInputName">Select PCO</label>
+                                <select name="requisition_by" id="requisition_by" class="form-control" required>
+                                    @php
+                                        $designation =  \App\Designation::where('name','Project Coordinator')->first();
+                                    @endphp
+                                    <option selected disabled >Select PCO</option>
+                                    @foreach(\App\User::where('designation',$designation->id)->get() as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                         </div>
@@ -86,6 +98,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
+                                        <th scope="col">SN</th>
                                         <th scope="col">Particulars</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Unit</th>
@@ -95,10 +108,11 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><input name="particular[]" id="particular" class="form-control" required></td>
-                                        <td><input name="quantity[]" class="form-control" type="text" ></td>
-                                        <td><input name="unit[]" class="form-control" type="text" ></td>
-                                        <td><input name="remarks[]" class="form-control" type="text" ></td>
+                                        <td style="width:1%">1</td>
+                                        <td style="width:50%"><input name="particular[]" id="particular" class="form-control row-cols-xl-4" required></td>
+                                        <td style="width:10%"><input name="quantity[]" class="form-control" type="text" ></td>
+                                        <td style="width:10%"><input name="unit[]" class="form-control" type="text" ></td>
+                                        <td style="width:30%"><input name="remarks[]" class="form-control" type="text" ></td>
                                         <td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>
                                     </tr>
                                     </tbody>
@@ -133,12 +147,9 @@
     <script>
         // for project
         $(document).ready(function () {
-
             $('#project').on('change',function(e) {
-
                 var project_id = e.target.value;
                 $.ajax({
-
                     url:"{{ route('requisition.getWorkNo')}}",
                     type:"POST",
                     data: {
@@ -156,9 +167,7 @@
         });
         // for product
         $(document).ready(function () {
-
             $('#category').on('change',function(e) {
-
                 var cat_id = e.target.value;
                 $.ajax({
                     url:"{{ route('requisition.getMaterial')}}",
@@ -176,27 +185,29 @@
                 })
             });
         });
-
         $('#addRow').on('click', function (){
             addRow();
         });
         function addRow(){
+            var rowCount = $('tbody tr').length + 1;
             var th='<tr>'+
-                '<td><input name="particular[]" id="particular" class="form-control" required></td>'+
-                '<td><input name="quantity[]" class="form-control" type="text"></td>'+
-                '<td><input name="unit[]" class="form-control" type="text"></td>'+
-                '<td><input name="remarks[]" class="form-control" type="text"></td>'+
+                ' <td style="width:1%">'+rowCount+'</td>'+
+                '<td style="width:50%"><input name="particular[]" id="particular" class="form-control" required></td>'+
+                '<td style="width:10%"><input name="quantity[]" class="form-control" type="text"></td>'+
+                '<td style="width:10%"><input name="unit[]" class="form-control" type="text"></td>'+
+                '<td style="width:30%"><input name="remarks[]" class="form-control" type="text"></td>'+
                 '<td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>'+
                 '</tr>';
             $('tbody').append(th);
         };
         $(document).on('click', '#remove', function() {
-                var last=$('tbody tr').length;
-                if(last==1){
-                    alert("Can't Delete the last Particulars form");
-                }else {
-                    $(this).parent().parent().remove();
-                }
+            var last=$('tbody tr').length;
+            if(last==1){
+                alert("Can't Delete the last Particulars form");
+            }else {
+                $(this).parent().parent().remove();
+                last--;
+            }
         });
     </script>
 

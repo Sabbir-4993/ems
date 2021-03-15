@@ -90,6 +90,10 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Material List</h3>
+                <a class="btn btn-info btn-m float-right"  href="#" data-toggle="modal"  data-target="#modal-sm" >
+                    <i class="fas fa-plus"></i>
+                    Add Material
+                </a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -108,44 +112,179 @@
                     <tbody>
                     @foreach($material as $key => $row)
                         @php
-                            $materialcategorys = \App\MaterialCategory::where('id', $row->category)->get();
+                            $category = \App\MaterialCategory::where('id', $row->category)->first();
                         @endphp
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$row->material_name}}</td>
                             <td>
-                                @foreach($materialcategorys as $materialcategory)
-                                    {{$materialcategory->name}}
-                                @endforeach
+                             {{$category->name}}
                             </td>
                             <td>{{$row->unit}}</td>
                             <td>{{$row->price}}</td>
                             <td>{{$row->details}}</td>
                             <td>
-                                <a class="btn btn-block bg-gradient-secondary btn-xs" href="#">
+                                <a class="btn btn-primary btn-xs" href="#" data-toggle="modal"
+                                   data-target="#modal-sm{{$row->id}}">
                                     <i class="fas fa-edit"></i>
+                                    Edit
                                 </a>
+                                <div class="modal fade" id="modal-sm{{$row->id}}">
+                                    <div class="modal-dialog modal-m">
+                                        <form action="{{route('material.update', [$row->id])}}" method="post">
+                                            @csrf
+                                            {{method_field('PATCH')}}
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="card-title">Add Material Category</h3>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <label for="exampleInputDepartmentName">Material Name</label>
+                                                    <input class="form-control @error('material_name') is-invalid @enderror" name="material_name"
+                                                           type="text" placeholder="Material Name" value="{{$row->material_name}}">
+                                                    @error('material_name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                    <br>
+
+                                                    <label for="exampleInputDepartmentName">Select Category</label>
+                                                    <select id="inputStatus" class="form-control custom-select" name="category">
+                                                        @foreach(\App\MaterialCategory::all() as $materialcategory)
+                                                            <option value="{{$materialcategory->id}}" {{(($materialcategory->id==$row->category)? 'selected' : '')}}>{{$materialcategory->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <br>
+
+                                                    <label for="exampleDepartmentDetails">Material Unit</label>
+                                                    <input class="form-control @error('unit') is-invalid @enderror" name="unit" type="text"
+                                                           placeholder="Material unit" value="{{$row->unit}}">
+                                                    @error('unit')
+                                                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                                                    @enderror
+                                                    <br>
+
+                                                    <label for="exampleDepartmentDetails">Material Price</label>
+                                                    <input class="form-control @error('price') is-invalid @enderror" name="price" type="number"
+                                                           placeholder="Material Price" value="{{$row->price}}">
+                                                    @error('price')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                    <br>
+
+                                                    <label for="exampleDepartmentDetails">Material Details</label>
+                                                    <textarea name="details" class="form-control @error('details') is-invalid @enderror" cols="30"
+                                                              rows="5" id="">{{$row->details}}</textarea>
+                                                    @error('details')
+                                                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                                                    @enderror
+
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-info">Update Material</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <td>SN</td>
-                        <td>Name</td>
-                        <td>Category</td>
-                        <td>Unit</td>
-                        <td>Price</td>
-                        <td>Details</td>
-                        <td>Action</td>
-                    </tr>
-                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </div>
+    <div class="modal fade" id="modal-sm">
+        <div class="modal-dialog modal-m">
+            <form action="{{route('material.store')}}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="card-title">Add Material Category</h3>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="exampleInputDepartmentName">Material Name</label>
+                        <input class="form-control @error('material_name') is-invalid @enderror" name="material_name"
+                               type="text" placeholder="Material Name">
+                        @error('material_name')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                        @enderror
+                        <br>
+
+                        <label for="exampleInputDepartmentName">Select Category</label>
+                        <select id="inputStatus" class="form-control custom-select" name="category">
+                            <option value="" selected disabled>Select Material Category</option>
+                            @foreach(\App\MaterialCategory::all() as $materialcategory)
+                                <option value="{{$materialcategory->id}}">{{$materialcategory->name}}</option>
+                            @endforeach
+                        </select>
+                        <br>
+
+                        <label for="exampleDepartmentDetails">Material Unit</label>
+                        <input class="form-control @error('unit') is-invalid @enderror" name="unit" type="text"
+                               placeholder="Material unit">
+                        @error('unit')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <br>
+
+                        <label for="exampleDepartmentDetails">Material Price</label>
+                        <input class="form-control @error('price') is-invalid @enderror" name="price" type="number"
+                               placeholder="Material Price">
+                        @error('price')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <br>
+
+                        <label for="exampleDepartmentDetails">Material Details</label>
+                        <textarea name="details" class="form-control @error('details') is-invalid @enderror" cols="30"
+                                  rows="5" id=""></textarea>
+                        @error('details')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Add Category</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
 @endsection
 
 @section('css')
@@ -189,63 +328,6 @@
             });
         });
     </script>
-    <!-- dropzonejs -->
-{{--    <script src="{{ asset('backend/plugins/dropzone/min/dropzone.min.js') }}"></script>--}}
-{{--    <script>--}}
-{{--        // DropzoneJS Demo Code Start--}}
-{{--        Dropzone.autoDiscover = false;--}}
-
-{{--        // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument--}}
-{{--        var previewNode = document.querySelector("#template");--}}
-{{--        previewNode.id = "";--}}
-{{--        var previewTemplate = previewNode.parentNode.innerHTML;--}}
-{{--        previewNode.parentNode.removeChild(previewNode);--}}
-
-{{--        var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone--}}
-{{--            url: "/target-url", // Set the url--}}
-{{--            thumbnailWidth: 80,--}}
-{{--            thumbnailHeight: 80,--}}
-{{--            parallelUploads: 20,--}}
-{{--            previewTemplate: previewTemplate,--}}
-{{--            autoQueue: false, // Make sure the files aren't queued until manually added--}}
-{{--            previewsContainer: "#previews", // Define the container to display the previews--}}
-{{--            clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.--}}
-{{--        });--}}
-
-{{--        myDropzone.on("addedfile", function(file) {--}}
-{{--            // Hookup the start button--}}
-{{--            file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };--}}
-{{--        });--}}
-
-{{--        // Update the total progress bar--}}
-{{--        myDropzone.on("totaluploadprogress", function(progress) {--}}
-{{--            document.querySelector("#total-progress .progress-bar").style.width = progress + "%";--}}
-{{--        });--}}
-
-{{--        myDropzone.on("sending", function(file) {--}}
-{{--            // Show the total progress bar when upload starts--}}
-{{--            document.querySelector("#total-progress").style.opacity = "1";--}}
-{{--            // And disable the start button--}}
-{{--            file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");--}}
-{{--        });--}}
-
-{{--        // Hide the total progress bar when nothing's uploading anymore--}}
-{{--        myDropzone.on("queuecomplete", function(progress) {--}}
-{{--            document.querySelector("#total-progress").style.opacity = "0";--}}
-{{--        });--}}
-
-{{--        // Setup the buttons for all transfers--}}
-{{--        // The "add files" button doesn't need to be setup because the config--}}
-{{--        // `clickable` has already been specified.--}}
-{{--        document.querySelector("#actions .start").onclick = function() {--}}
-{{--            myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));--}}
-{{--        };--}}
-{{--        document.querySelector("#actions .cancel").onclick = function() {--}}
-{{--            myDropzone.removeAllFiles(true);--}}
-{{--        };--}}
-{{--        // DropzoneJS Demo Code End--}}
-{{--    </script>--}}
-
     <!-- bs-custom-file-input -->
     <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>

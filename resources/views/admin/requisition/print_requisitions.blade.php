@@ -185,11 +185,15 @@
                             <!-- /.col -->
                                 <div class="col-sm-4 invoice-col">
                                     Requisition NO: <b>{{$row->req_no}}</b><br>
+                                    @php
+                                        $workorder =\Illuminate\Support\Facades\DB::table('work_orders')->where('id',$row->work_order)->first();
+                                    @endphp
+                                    Work Order NO: <b>{{$workorder->work_order}}</b><br>
                                     <br>
                                     <b>Requisition by:</b><br>
                                     <b>Name :</b>
                                     @php
-                                    $user = \App\User::where('id',$row->created_by)->first();
+                                    $user = \App\User::where('id',$row->requisition_by)->first();
                                         @endphp
                                     {{$user->name}}
                                     <br>
@@ -236,16 +240,7 @@
                             <div class="row">
                                 <!-- accepted payments column -->
                                 <div class="col-6">
-{{--                                    <p class="lead">Payment Methods:</p>--}}
-{{--                                    <img src="{{ asset('backend/dist/img/credit/visa.png') }}" alt="Visa">--}}
-{{--                                    <img src="{{ asset('backend/dist/img/credit/mastercard.png') }}" alt="Mastercard">--}}
-{{--                                    <img src="{{ asset('backend/dist/img/credit/american-express.png') }}" alt="American Express">--}}
-{{--                                    <img src="{{ asset('backend/dist/img/credit/paypal2.png') }}" alt="Paypal">--}}
 
-{{--                                    <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">--}}
-{{--                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem--}}
-{{--                                        plugg--}}
-{{--                                    </p>--}}
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-6">

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/addRow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/addTable.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/permissionTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/permissionTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/material/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/material/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/material/index_material_category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/material/index_material_category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProject.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +165,21 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/harvesthq/chosen" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lNjgHBCUfci1nX8IBGT21GqbQu" />
@@ -189,12 +210,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Web Development\htdocs\ems\public\uploads\company_logo" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin\vendor\bill" />
       <recent name="E:\Web Development\htdocs\ems\app\Http\Controllers\vendor" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin\project" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Web Development\htdocs\ems\public\uploads\company_logo" />
       <recent name="E:\Web Development\htdocs\ems\app\Http\Controllers" />
     </key>
   </component>
@@ -272,7 +295,57 @@
       <workItem from="1611633117686" duration="4164000" />
       <workItem from="1611638743150" duration="3211000" />
       <workItem from="1611651890111" duration="1707000" />
-      <workItem from="1611729199886" duration="2902000" />
+      <workItem from="1611729199886" duration="6302000" />
+      <workItem from="1611806884985" duration="89000" />
+      <workItem from="1612173967173" duration="2027000" />
+      <workItem from="1612178226630" duration="868000" />
+      <workItem from="1612237825830" duration="597000" />
+      <workItem from="1612241774261" duration="1211000" />
+      <workItem from="1612257109127" duration="6762000" />
+      <workItem from="1612671345647" duration="10203000" />
+      <workItem from="1612683178956" duration="8584000" />
+      <workItem from="1612759614939" duration="812000" />
+      <workItem from="1612774754877" duration="358000" />
+      <workItem from="1612850617590" duration="6226000" />
+      <workItem from="1613198698420" duration="2465000" />
+      <workItem from="1613274365324" duration="635000" />
+      <workItem from="1613278372216" duration="1133000" />
+      <workItem from="1613449493611" duration="3186000" />
+      <workItem from="1613466877342" duration="6412000" />
+      <workItem from="1613533407695" duration="3980000" />
+      <workItem from="1613539415593" duration="12000" />
+      <workItem from="1613619488506" duration="56000" />
+      <workItem from="1613635318080" duration="6794000" />
+      <workItem from="1613968136034" duration="8755000" />
+      <workItem from="1614051219183" duration="17869000" />
+      <workItem from="1614138854362" duration="2241000" />
+      <workItem from="1614398448491" duration="11236000" />
+      <workItem from="1614425044063" duration="3000" />
+      <workItem from="1614496119030" duration="117000" />
+      <workItem from="1614505989231" duration="2226000" />
+      <workItem from="1614510111406" duration="6000" />
+      <workItem from="1614574448989" duration="3080000" />
+      <workItem from="1614656848238" duration="1915000" />
+      <workItem from="1614747330112" duration="11873000" />
+      <workItem from="1614829225109" duration="13666000" />
+      <workItem from="1615003787803" duration="12338000" />
+      <workItem from="1615091829824" duration="599000" />
+      <workItem from="1615106805305" duration="843000" />
+      <workItem from="1615174637182" duration="663000" />
+      <workItem from="1615181141182" duration="6548000" />
+      <workItem from="1615195435224" duration="5485000" />
+      <workItem from="1615263228880" duration="5992000" />
+      <workItem from="1615285859955" duration="2316000" />
+      <workItem from="1615348724364" duration="5123000" />
+      <workItem from="1615359959913" duration="15000" />
+      <workItem from="1615375188179" duration="1195000" />
+      <workItem from="1615433162654" duration="3628000" />
+      <workItem from="1615450855212" duration="21000" />
+      <workItem from="1615609957853" duration="727000" />
+      <workItem from="1615613034120" duration="1236000" />
+      <workItem from="1615694217200" duration="12326000" />
+      <workItem from="1615713081163" duration="3629000" />
+      <workItem from="1615784310330" duration="1990000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -421,7 +494,49 @@
       <option name="project" value="LOCAL" />
       <updated>1611462133999</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="requisition and details vendor and contractor">
+      <created>1611735998090</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1611735998090</updated>
+    </task>
+    <task id="LOCAL-00023" summary="price calculate">
+      <created>1613644004192</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1613644004192</updated>
+    </task>
+    <task id="LOCAL-00024" summary="total and subtotal calculation done">
+      <created>1614408984044</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1614408984044</updated>
+    </task>
+    <task id="LOCAL-00025" summary="approved details with total price calculate">
+      <created>1614508384577</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1614508384577</updated>
+    </task>
+    <task id="LOCAL-00026" summary="modification requisition and print option">
+      <created>1614772815291</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1614772815291</updated>
+    </task>
+    <task id="LOCAL-00027" summary="update requisition no and table">
+      <created>1614859889860</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1614859889860</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,11 +545,6 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
-        <entry key="1">
-          <value>
-            <State />
-          </value>
-        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -458,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="contractor model done" />
     <MESSAGE value="assign project and category create done" />
     <MESSAGE value="payment and bill contractor" />
     <MESSAGE value="pay bill done" />
@@ -478,7 +587,13 @@
     <MESSAGE value="Requisition Modification" />
     <MESSAGE value="Requisition Modification with category work order" />
     <MESSAGE value="report done vendor and contractor" />
-    <option name="LAST_COMMIT_MESSAGE" value="report done vendor and contractor" />
+    <MESSAGE value="requisition and details vendor and contractor" />
+    <MESSAGE value="price calculate" />
+    <MESSAGE value="total and subtotal calculation done" />
+    <MESSAGE value="approved details with total price calculate" />
+    <MESSAGE value="modification requisition and print option" />
+    <MESSAGE value="update requisition no and table" />
+    <option name="LAST_COMMIT_MESSAGE" value="update requisition no and table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -495,17 +610,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>
-          <line>150</line>
+          <line>197</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>
-          <line>359</line>
+          <line>403</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php</url>
-          <line>367</line>
+          <line>413</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

@@ -1,25 +1,12 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <img src="{{ asset('uploads/company_logo/logo.png') }}" alt="Trimatric Logo"
-             class="brand-image img elevation-3" style="opacity: 1">
-        <span class="brand-text font-weight-light">TRIMATRIC</span>
+    <a href="{{url('/')}}" class="brand-link">
+        <img src="{{ asset('backend/dist/img/logo.png') }}" alt="Trimatric Logo" >
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('backend/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">{{Auth()->user()->name}}</a>
-
-            </div>
-        </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -220,7 +207,6 @@
 
                 {{--Requisition--}}
                 <li class="nav-header">Procurement</li>
-                @if(isset(auth()->user()->permission['name']['requisition']['can-list']))
                 <li class="nav-item">
                     <a href="{{route('requisition.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -230,139 +216,102 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if(isset(auth()->user()->permission['name']['requisition']['can-add']))
                         <li class="nav-item">
                             <a href="{{route('requisition.index')}}" class="nav-link">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Add Requisition</p>
                             </a>
                         </li>
-                        @endif
 {{--                        <li class="nav-item">--}}
 {{--                            <a href="{{route('requisition.show')}}" class="nav-link">--}}
 {{--                                <i class="fas fa-clipboard-list nav-icon"></i>--}}
 {{--                                <p>View Requisition</p>--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
-                        @if(isset(auth()->user()->permission['name']['requisition']['can-pending']))
                         <li class="nav-item">
                             <a href="{{route('requisition.pending')}}" class="nav-link">
                                 <i class="fas fa-exclamation-triangle"></i>
                                 <p>Pending Requisition </p>
                             </a>
                         </li>
-                        @endif
-                        @if(isset(auth()->user()->permission['name']['requisition']['can-approve']))
                         <li class="nav-item">
                             <a href="{{route('requisition.complete')}}" class="nav-link">
                                 <i class="fas fa-check-square"></i>
                                 <p>Approved Requisition </p>
                             </a>
                         </li>
-                        @endif
                     </ul>
                 </li>
-                @endif
-
                 {{--Contractor--}}
+
                 <li class="nav-item">
                     <a href="{{route('contractors.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-briefcase"></i>
+                        <i class="nav-icon far fa-plus-square"></i>
                         <p>
-                            Contractor List
-                            <i class="right fas fa-angle-left"></i>
+                            Contractor
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        {{--Contractor--}}
-                        @if(isset(auth()->user()->permission['name']['contractors']['can-list']))
-                        <li class="nav-item">
-                            <a href="{{route('contractors.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Contractor
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                @if(isset(auth()->user()->permission['name']['contractors']['can-add']))
-                                <li class="nav-item">
-                                    <a href="{{route('contractors.create')}}" class="nav-link">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Add Contractor</p>
-                                    </a>
-                                </li>
-                                @endif
-                                @if(isset(auth()->user()->permission['name']['contractors']['can-view']))
-                                <li class="nav-item">
-                                    <a href="{{route('contractors.index')}}" class="nav-link">
-                                        <i class="fas fa-clipboard-list nav-icon"></i>
-                                        <p>View Contractor</p>
-                                    </a>
-                                </li>
-                                @endif
-                                {{--Contractor Category Add--}}
-                                @if(isset(auth()->user()->permission['name']['contractors']['can-add']))
-                                <li class="nav-item">
-                                    <a href="{{route('category.create')}}" class="nav-link">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Add Contractor Category</p>
-                                    </a>
-                                </li>
-                                @endif
-                                @if(isset(auth()->user()->permission['name']['contractors']['can-view']))
-                                <li class="nav-item">
-                                    <a href="{{route('category.index')}}" class="nav-link">
-                                        <i class="fas fa-clipboard-list nav-icon"></i>
-                                        <p>View Contractor Category </p>
-                                    </a>
-                                </li>
-                                @endif
-                            </ul>
-                        </li>
+{{--                        @if(isset(auth()->user()->permission['name']['vendor']['can-add']))--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="{{route('vendor.create')}}" class="nav-link">--}}
+{{--                                    <i class="fas fa-plus nav-icon"></i>--}}
+{{--                                    <p>Add Vendor</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        @endif--}}
+                        @if(isset(auth()->user()->permission['name']['contractors']['can-view']))
+                            <li class="nav-item">
+                                <a href="{{route('contractors.index')}}" class="nav-link">
+                                    <i class="fas fa-clipboard-list nav-icon"></i>
+                                    <p> Contractor List</p>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                     @if(isset(auth()->user()->permission['name']['contractor_bill']['can-list']))
-                    <ul class="nav nav-treeview">
-                        {{--Bill Payment--}}
-                        <li class="nav-item">
-                            <a href="{{route('assignProject.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-money-check"></i>
-                                <p>
-                                    Bill Payment
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                @if(isset(auth()->user()->permission['name']['contractor_bill']['can-add']))
-                                <li class="nav-item">
-                                    <a href="{{route('assignProject.index')}}" class="nav-link">
-                                        <i class="fas fa-bezier-curve nav-icon"></i>
-                                        <p>Assign Project </p>
-                                    </a>
-                                </li>
-                                @endif
-                                @if(isset(auth()->user()->permission['name']['contractor_bill']['can-view']))
-                                <li class="nav-item">
-                                    <a href="{{route('assignProject.view')}}" class="nav-link">
-                                        <i class="fas fa-money-bill nav-icon"></i>
-                                        <p>Bill Payment </p>
-                                    </a>
-                                </li>
-                                @endif
-                                @if(isset(auth()->user()->permission['name']['contractor_bill']['can-report']))
-                                <li class="nav-item">
-                                    <a href="{{route('contractor.today.bill')}}" class="nav-link">
-                                        <i class="fas fa-money-bill nav-icon"></i>
-                                        <p>Report</p>
-                                    </a>
-                                </li>
-                                @endif
-                            </ul>
-                        </li>
-                    </ul>
-                    @endif
-                </li>
+                        <ul class="nav nav-treeview">
+                            {{--Bill Payment--}}
+                            <li class="nav-item">
+                                <a href="{{route('assignProject.index')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-money-check"></i>
+                                    <p>
+                                        Bill Payment
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @if(isset(auth()->user()->permission['name']['contractor_bill']['can-add']))
+                                        <li class="nav-item">
+                                            <a href="{{route('assignProject.index')}}" class="nav-link">
+                                                <i class="fas fa-bezier-curve nav-icon"></i>
+                                                <p>Assign Project </p>
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if(isset(auth()->user()->permission['name']['contractor_bill']['can-view']))
+                                        <li class="nav-item">
+                                            <a href="{{route('assignProject.view')}}" class="nav-link">
+                                                <i class="fas fa-money-bill nav-icon"></i>
+                                                <p>Bill Payment </p>
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if(isset(auth()->user()->permission['name']['contractor_bill']['can-report']))
+                                        <li class="nav-item">
+                                            <a href="{{route('contractor.today.bill')}}" class="nav-link">
+                                                <i class="fas fa-money-bill nav-icon"></i>
+                                                <p>Report</p>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </li>
+                        </ul>
+                    @endif                </li>
+                {{--Contractor--}}
+
 
                 {{--Material--}}
                 @if(isset(auth()->user()->permission['name']['material']['can-list']))
@@ -375,14 +324,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if(isset(auth()->user()->permission['name']['material']['can-add']))
-                        <li class="nav-item">
-                            <a href="{{route('material_category.create')}}" class="nav-link">
-                                <i class="fas fa-plus nav-icon"></i>
-                                <p>Add Material Category</p>
-                            </a>
-                        </li>
-                        @endif
+{{--                        @if(isset(auth()->user()->permission['name']['material']['can-add']))--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{route('material_category.create')}}" class="nav-link">--}}
+{{--                                <i class="fas fa-plus nav-icon"></i>--}}
+{{--                                <p>Add Material Category</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        @endif--}}
                         @if(isset(auth()->user()->permission['name']['material']['can-view']))
                         <li class="nav-item">
                             <a href="{{route('material_category.index')}}" class="nav-link">
@@ -391,14 +340,14 @@
                             </a>
                         </li>
                         @endif
-                        @if(isset(auth()->user()->permission['name']['material']['can-add']))
-                        <li class="nav-item">
-                            <a href="{{route('material.create')}}" class="nav-link">
-                                <i class="fas fa-plus nav-icon"></i>
-                                <p>Add Material</p>
-                            </a>
-                        </li>
-                        @endif
+{{--                        @if(isset(auth()->user()->permission['name']['material']['can-add']))--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{route('material.create')}}" class="nav-link">--}}
+{{--                                <i class="fas fa-plus nav-icon"></i>--}}
+{{--                                <p>Add Material</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        @endif--}}
                         @if(isset(auth()->user()->permission['name']['material']['can-view']))
                         <li class="nav-item">
                             <a href="{{route('material.index')}}" class="nav-link">
@@ -422,19 +371,19 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if(isset(auth()->user()->permission['name']['vendor']['can-add']))
-                        <li class="nav-item">
-                            <a href="{{route('vendor.create')}}" class="nav-link">
-                                <i class="fas fa-plus nav-icon"></i>
-                                <p>Add Vendor</p>
-                            </a>
-                        </li>
-                        @endif
+{{--                        @if(isset(auth()->user()->permission['name']['vendor']['can-add']))--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{route('vendor.create')}}" class="nav-link">--}}
+{{--                                <i class="fas fa-plus nav-icon"></i>--}}
+{{--                                <p>Add Vendor</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        @endif--}}
                         @if(isset(auth()->user()->permission['name']['vendor']['can-view']))
                         <li class="nav-item">
                             <a href="{{route('vendor.index')}}" class="nav-link">
                                 <i class="fas fa-clipboard-list nav-icon"></i>
-                                <p>View Vendor</p>
+                                <p> Vendor List</p>
                             </a>
                         </li>
                         @endif
