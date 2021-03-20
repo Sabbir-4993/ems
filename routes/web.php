@@ -95,6 +95,8 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
     Route::get('approved-Details-requisition/{id}', 'RequisitionController@approvedDetailsRequisition')->name('approvedDetails');
     //print
     Route::get('print-Requisition/{id}', 'RequisitionController@printRequisition')->name('print');
+//particular add
+    Route::POST('store-particular','ParticularController@store')->name('storeParticular');
 
 
 });

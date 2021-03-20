@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/addRow.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/requisition/addTable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ParticularController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Model/Particular.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_16_113521_create_particulars_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProject.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/material/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/material/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/material/index_material_category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/material/index_material_category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/addRow.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/addTable.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/details_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -345,7 +341,12 @@
       <workItem from="1615613034120" duration="1236000" />
       <workItem from="1615694217200" duration="12326000" />
       <workItem from="1615713081163" duration="3629000" />
-      <workItem from="1615784310330" duration="1990000" />
+      <workItem from="1615784310330" duration="9054000" />
+      <workItem from="1615866269517" duration="1234000" />
+      <workItem from="1615869918176" duration="12578000" />
+      <workItem from="1616038927749" duration="43000" />
+      <workItem from="1616039098954" duration="8241000" />
+      <workItem from="1616211978827" duration="1990000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -536,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614859889860</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="all menu and function modification">
+      <created>1615787223773</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1615787223773</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="assign project and category create done" />
     <MESSAGE value="payment and bill contractor" />
     <MESSAGE value="pay bill done" />
     <MESSAGE value="bill paid check" />
@@ -593,7 +600,8 @@
     <MESSAGE value="approved details with total price calculate" />
     <MESSAGE value="modification requisition and print option" />
     <MESSAGE value="update requisition no and table" />
-    <option name="LAST_COMMIT_MESSAGE" value="update requisition no and table" />
+    <MESSAGE value="all menu and function modification" />
+    <option name="LAST_COMMIT_MESSAGE" value="all menu and function modification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

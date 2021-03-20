@@ -45,7 +45,7 @@
 
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                        <div class="col-12 col-md-12 col-lg-10 order-2 order-md-1">
                             <div class="row">
                                 <div class="col-12">
                                     <h4>Requisition Details </h4>
@@ -69,26 +69,26 @@
                                                 @foreach($detailsRequisitions as $key=>$row)
                                                     <tr>
                                                     <td>{{$key+1}}</td>
-                                                        <td>
-                                                           <input type="text"  name="particular[]" value="{{$row->particular}}" class="form-control" readonly >
+                                                        <td style="width: 30%">
+                                                           <input  type="text"  name="particular[]" value="{{$row->particular}}" class="form-control" readonly >
                                                         </td>
-                                                         <td>
+                                                         <td style="width: 5%">
                                                             <input class="form-control " type="text" id="qty{{$key}}" name="quantity[]" value="{{$row->quantity}}" readonly >
                                                         </td>
-                                                        <td>
+                                                        <td style="width: 8%">
                                                             <input type="text" id="unit" name="unit[]" value="{{$row->unit}}"  class="form-control" readonly >
                                                         </td>
-                                                        <td>
+                                                        <td style="width: 30%">
                                                             <input type="text" id="" name="remarks[]" value="{{$row->remarks}}" class="form-control " readonly>
                                                         </td>
-                                                        <td>
+                                                        <td style="width: 05%">
                                                         <input class="form-control " type="text" id="price{{$key}}"   name="price[]"  onchange="AutoCalc()" >
                                                         </td>
-                                                        <td>
+                                                        <td style="width: 10%">
                                                         <input class="form-control " type="text" id="total{{$key}}"   name="total[]" >
                                                         </td>
-                                                        <td>
-                                                            <input class="form-control" type="text" name="pro_remarks[]">
+                                                        <td style="width: 20%">
+                                                            <textarea class="form-control" type="text" name="pro_remarks[]"></textarea>
                                                         </td>
 {{--                                                        <td>--}}
 {{--                                                        </td>--}}
@@ -111,7 +111,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+                        <div class="col-12 col-md-12 col-lg-2 order-1 order-md-2">
                             <h3 class="text-success"><i class="fas fa-project-diagram"></i>
                                 @php
                                 $projectDetails =\App\Project::where('id',$row->project_id)->first();

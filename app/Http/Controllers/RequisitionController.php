@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Model\Particular;
 use App\Project;
 use App\Requisition;
 use App\Model\SubWork;
@@ -43,7 +44,7 @@ class RequisitionController extends Controller
             }else{
                 $workorder = Requisition::where('work_order',$request->work_order)->get();
                 $req_no  =count($workorder);
-                $requisition['req_no'] = $requisition_no.'-'.$req_no+1;
+                $requisition['req_no'] = $requisition_no.'-'.($req_no+1);
             }
 
             $requisition['requisition_date'] = date('d/m/y');
@@ -58,6 +59,7 @@ class RequisitionController extends Controller
                 $task['remarks'] = $request->remarks[$i];
                 DB::table('requisition_details')->insert($task);
             }
+            DB::table('particulars')->delete();
             return redirect()->back()->with('message', 'Requisition Submitted Successfully');
         }
 
@@ -103,7 +105,7 @@ class RequisitionController extends Controller
                 $approvedTask['unit'] = $request->unit[$i];
                 $approvedTask['unit_price'] = $request->price[$i];
                 $approvedTask['total_price'] = $request->quantity[$i]*$request->price[$i];
-                $approvedTask['pro_remarks'] = $request->remarks[$i];
+                $approvedTask['pro_remarks'] = $request->pro_remarks[$i];
                 DB::table('approved_requisition_details')->insert($approvedTask);
             }
             return redirect()->route('requisition.complete')->with('message', 'Requisition Approved Successfully');

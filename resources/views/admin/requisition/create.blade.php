@@ -63,16 +63,16 @@
                                 <select name="work_order" id="work-order" class="form-control" required>
                                 </select>
                             </div>
-                            {{--                            <div class="form-group">--}}
-                            {{--                                <label for="exampleInputRequisition">Requisition No.</label>--}}
-                            {{--                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">--}}
-                            {{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputRequisition">Requisition No.</label>--}}
+{{--                                <input type="text" name="req_no" class="form-control" id="exampleInputRequisition" required="" placeholder="Enter Requisition No.">--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label for="exampleInputName">Select PCO</label>
                                 <select name="requisition_by" id="requisition_by" class="form-control" required>
                                     @php
                                         $designation =  \App\Designation::where('name','Project Coordinator')->first();
-                                    @endphp
+                                        @endphp
                                     <option selected disabled >Select PCO</option>
                                     @foreach(\App\User::where('designation',$designation->id)->get() as $user)
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -95,26 +95,31 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="tbl">
                                     <thead>
                                     <tr>
-                                        <th scope="col">SN</th>
                                         <th scope="col">Particulars</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Unit</th>
                                         <th scope="col">Remarks</th>
-                                        <th><a href="#" class="btn btn-primary addRow" id="addRow"><i class="fa fa-plus-square"></i></a></th>
                                     </tr>
+                                        <a class="btn btn-info btn-m float-right"  href="#" data-toggle="modal"  data-target="#modal-sm" >
+                                            <i class="fas fa-plus"></i>
+                                            Add Item
+                                        </a>
                                     </thead>
                                     <tbody>
+                                    @foreach(\App\Model\Particular::all() as $key=>$row)
+                                        @php
+                                            $material = \App\Material::where('id',$row->particular)->first();
+                                            @endphp
                                     <tr>
-                                        <td style="width:1%">1</td>
-                                        <td style="width:50%"><input name="particular[]" id="particular" class="form-control row-cols-xl-4" required></td>
-                                        <td style="width:10%"><input name="quantity[]" class="form-control" type="text" ></td>
-                                        <td style="width:10%"><input name="unit[]" class="form-control" type="text" ></td>
-                                        <td style="width:30%"><input name="remarks[]" class="form-control" type="text" ></td>
-                                        <td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>
+                                        <td> <input class="form-control" readonly name="particular[]" type="text" value="{{$material->material_name}}"></td>
+                                        <td> <input class="form-control" name="quantity[]" type="text" value="{{$row->quantity}}"></td>
+                                        <td> <input class="form-control" readonly name="unit[]" type="text" value="{{$material->unit}}"></td>
+                                        <td> <input class="form-control" name="remarks[]" type="text" value="{{$row->remarks}}"></td>
                                     </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
 
@@ -134,11 +139,59 @@
             </div>
         </form>
     </section>
+    <div class="modal fade" id="modal-sm">
+        <div class="modal-dialog modal-m">
+            <form class="btn-submit" id="addParticular">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="card-title">Add Requisition </h3>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="exampleInputDepartmentName">Category</label>
+                        <select name="category" id="category" class="form-control select2bs5 select2-hidden-accessible" style="width: 100%;" data-select2-id="18" tabindex="-1" aria-hidden="true">
+                            <option value="">Select Category</option>
+                            @foreach(\App\MaterialCategory::orderby('name','asc')->get() as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                        <br>
+                        <label for="exampleInputDepartmentName"> Particular</label>
+                        <select  name="particular" id="particular" class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" data-select2-id="17" tabindex="-1" aria-hidden="true">
+                        </select>
+                        <br>
+                        <label for="exampleInputDepartmentName"> Quantity</label>
+                        <input name="quantity" class="form-control" type="text" >
+                        <br>
+{{--                        <label for="exampleInputDepartmentName"> Unit</label>--}}
+{{--                        <input name="unit" id="unit" class="form-control" type="text" >--}}
+{{--                        <br>--}}
+                        <label for="exampleInputDepartmentName"> Details / Remarks</label>
+                        <textarea name="remarks" class="form-control @error('remarks') is-invalid @enderror" cols="30" rows="5" id=""></textarea>
+                        <br>
 
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Submit </button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
     <!-- /.content -->
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="{{ asset('backend/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
 @endsection
 
@@ -147,9 +200,12 @@
     <script>
         // for project
         $(document).ready(function () {
+
             $('#project').on('change',function(e) {
+
                 var project_id = e.target.value;
                 $.ajax({
+
                     url:"{{ route('requisition.getWorkNo')}}",
                     type:"POST",
                     data: {
@@ -167,7 +223,9 @@
         });
         // for product
         $(document).ready(function () {
+
             $('#category').on('change',function(e) {
+
                 var cat_id = e.target.value;
                 $.ajax({
                     url:"{{ route('requisition.getMaterial')}}",
@@ -185,30 +243,40 @@
                 })
             });
         });
-        $('#addRow').on('click', function (){
-            addRow();
+
+    </script>
+    <script type="text/javascript">
+        $(".btn-submit").on('submit',function (e){
+            // e.preventDefault();
+            var data = $(this).serialize();
+            var url = '{{ route('requisition.storeParticular') }}';
+
+            $.ajax({
+                url:url,
+                method:'POST',
+                data:data,
+                success:function(response){
+                    $('#modal-sm').modal('hide')
+                    document.getElementById("addParticular").reset();
+                },
+
+            });
         });
-        function addRow(){
-            var rowCount = $('tbody tr').length + 1;
-            var th='<tr>'+
-                ' <td style="width:1%">'+rowCount+'</td>'+
-                '<td style="width:50%"><input name="particular[]" id="particular" class="form-control" required></td>'+
-                '<td style="width:10%"><input name="quantity[]" class="form-control" type="text"></td>'+
-                '<td style="width:10%"><input name="unit[]" class="form-control" type="text"></td>'+
-                '<td style="width:30%"><input name="remarks[]" class="form-control" type="text"></td>'+
-                '<td><a href="#" class="btn btn-danger remove" id="remove"><i class="fa fa-trash"></i></a></td>'+
-                '</tr>';
-            $('tbody').append(th);
-        };
-        $(document).on('click', '#remove', function() {
-            var last=$('tbody tr').length;
-            if(last==1){
-                alert("Can't Delete the last Particulars form");
-            }else {
-                $(this).parent().parent().remove();
-                last--;
-            }
-        });
+    </script>
+    <script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+            $('.select2bs5').select2({
+                theme: 'bootstrap4'
+            });
+        })
     </script>
 
 @endsection
