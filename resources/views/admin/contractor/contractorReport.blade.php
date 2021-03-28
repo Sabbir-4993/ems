@@ -32,7 +32,7 @@
         <div class="container-fluid">
             <form id="sendFormData">
                 @csrf
-            <div class="row">
+                <div class="row">
                     <div class="col-12">
                         <div class="card card-purple">
                             <div class="card-header">
@@ -107,8 +107,8 @@
                             </div>
                         </div> <!-- /.card -->
                     </div>
-                <!-- /.col -->
-            </div>
+                    <!-- /.col -->
+                </div>
             </form>
             <div class="col-12">
                 <div class="card">
@@ -211,9 +211,9 @@
                     processData:false,
                     success: function(data){
                         $("#sendFormData").trigger("reset"); //reset form
+
                         var table;
                         table = $('#example1').DataTable();
-                        table.clear();
                         if(data!='') {
                             $.each(data, function(i, item) {
                                 table.row.add([
@@ -229,6 +229,7 @@
                             });
                         }
                         else {
+                            $('#example1').html('<h3>No Data are available</h3>');
                         }
                         table.draw();
 

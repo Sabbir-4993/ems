@@ -23,4 +23,11 @@ class ParticularController extends Controller
         $particular = Particular::all();
         return response()->json($particular);
     }
+    public function destroy($id){
+        $particular = Particular::find($id);
+        $particular->delete();
+        return redirect()->back();
+
+
+    }
 }

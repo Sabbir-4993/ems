@@ -102,6 +102,7 @@
                                         <th scope="col">Qty</th>
                                         <th scope="col">Unit</th>
                                         <th scope="col">Remarks</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                         <a class="btn btn-info btn-m float-right"  href="#" data-toggle="modal"  data-target="#modal-sm" >
                                             <i class="fas fa-plus"></i>
@@ -118,7 +119,11 @@
                                         <td> <input class="form-control" name="quantity[]" type="text" value="{{$row->quantity}}"></td>
                                         <td> <input class="form-control" readonly name="unit[]" type="text" value="{{$material->unit}}"></td>
                                         <td> <input class="form-control" name="remarks[]" type="text" value="{{$row->remarks}}"></td>
-                                    </tr>
+                                        <td>
+                                            <a href="{{route('requisition.delete',$row->id)}}" style="color: red">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -196,7 +201,6 @@
 @endsection
 
 @section('script')
-
     <script>
         // for project
         $(document).ready(function () {

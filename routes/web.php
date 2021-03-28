@@ -97,7 +97,7 @@ Route::group(['prefix'=>'requisition','as'=>'requisition.'], function (){
     Route::get('print-Requisition/{id}', 'RequisitionController@printRequisition')->name('print');
 //particular add
     Route::POST('store-particular','ParticularController@store')->name('storeParticular');
-
+    Route::get('delete-particular/{id}', 'ParticularController@destroy')->name('delete');
 
 });
 

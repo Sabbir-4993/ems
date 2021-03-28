@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -44,10 +45,11 @@ class VendorAssignProjectController extends Controller
     public function projectBillPay(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'billing_no' => 'required|unique:vendor_billing_histories',
+//            'billing_no' => 'required|unique:vendor_billing_histories',
             'pay_amount' => 'required',
         ]);
-
+        $Bill_has = DB::table('vendor_billing_histories')->where('project_id',$request->project_id)->get();
+        $projectName = Project::where('id',$request->project_id)->first();
         if($validator->fails()) {
             return redirect()->back()->with('message1', ' Bill Number Matched ! Check Bill No.');
         }else{
@@ -56,11 +58,16 @@ class VendorAssignProjectController extends Controller
             $data['vendor_id'] = $request->vendor_id;
             $data['project_work_no'] = $request->project_work_no;
             $data['pi_number'] = $request->pi_number;
-            $data['billing_no'] = $request->billing_no;
+            if ($Bill_has ==null){
+                $data['billing_no'] = $projectName->project_name.'-'.'1';
+            }else{
+                $bill_no  =count($Bill_has);
+                $data['billing_no'] = $projectName->project_name.'-'.($bill_no+1);
+            }
             $data['billing_amount'] = $request->pay_amount;
             $data['billing_method'] = $request->billing_method;
             $data['billing_details'] = $request->billing_details;
-            $data['billing_date'] = date('Y-m-d');
+            $data['billing_date'] = $request->billing_date;;
             $billData = DB::table('vendor_assign_projects')->where('pi_number',$request->pi_number)->orderBy('id', 'DESC')->get();
             foreach ($billData as $bill){
                 if ($bill->total_pay == null){

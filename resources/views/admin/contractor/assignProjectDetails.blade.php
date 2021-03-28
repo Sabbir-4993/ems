@@ -161,6 +161,9 @@
                                     <p class="text-sm">Client Company
                                         <b class="d-block">{{$projectDetails->company_name}}</b>
                                     </p>
+                                    <p class="text-sm">Billing Date
+                                        <b class="d-block">{{$project->assign_date}}</b>
+                                    </p>
                                     <p class="text-sm">Project Leader
                                         <b class="d-block">{{$projectDetails->project_leader}}</b>
                                     </p>
@@ -222,9 +225,9 @@
                         <input type="hidden" name="contractor_id" value="{{ $contractorDetails->id }}">
                         <input type="hidden" name="project_work_no" value="{{ $project->project_work_order }}">
                         <div class="modal-body">
-                            <label for="exampleInput">Bill No</label>
-                            <input class="form-control @error('billing_no') is-invalid @enderror" name="billing_no" type="text" placeholder="Enter Bill NO" required="">
-                            @error('billing_no')
+                            <label for="exampleInput">Billing Date </label>
+                            <input class="form-control @error('billing_date') is-invalid @enderror" name="billing_date" type="date" required="">
+                            @error('billing_date')
                             <span class="invalid-feedback" role="alert">
                                                    <strong>{{ $message }}</strong>
                                                 </span>

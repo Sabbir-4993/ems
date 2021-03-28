@@ -38,11 +38,13 @@
                                 <thead>
                                 <tr>
                                     <th>SN</th>
+                                    <th>Date</th>
                                     <th>Contractor Name</th>
                                     <th>Project Name</th>
                                     <th>Contractor Category</th>
                                     <th>Work Order</th>
                                     <th>Total Payable</th>
+                                    <th>Total Paid</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -55,6 +57,7 @@
                                     @endphp
                                     <tr>
                                         <td>{{$key+1}}</td>
+                                        <td>{{$row->assign_date}}</td>
                                         <td>
                                             @foreach($vendors as $vendor)
                                                 {{ $vendor ->vendor_name }}
@@ -72,11 +75,12 @@
                                         </td>
                                         <td>{{$row ->pi_number  }}</td>
                                         <td>{{ $row ->total_payable }}</td>
+                                        <td>{{ $row ->total_pay }}</td>
                                         <td class="project-actions text-center">
                                             <a class="btn btn-primary btn-sm"
                                                href="{{route('vendorAssignProject.details',[$row->id])}}">
                                                 <i class="fas fa-folder"></i>
-                                                View
+                                                Pay Bill
                                             </a>
                                             @if($row ->total_due == 0 && $row ->total_payable == $row ->total_pay)
                                             <a class="btn btn-danger btn-sm disabled">
