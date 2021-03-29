@@ -17,7 +17,7 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->integer('employee_id');
             $table->string('work_title');
-            $table->string('work_description');
+            $table->longText('work_description');
             $table->string('added_date');
             $table->integer('status');
             $table->timestamps();

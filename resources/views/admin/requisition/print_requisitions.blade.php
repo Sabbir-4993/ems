@@ -269,9 +269,9 @@
                             <div class="row no-print">
                                 <div class="col-12">
                                     <button id="printInvoice" onclick="PrintDiv()" class="btn btn-info"><i class="fa fa-print"></i>Print</button>
-                                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                        <i class="fas fa-download"></i> Generate PDF
-                                    </button>
+{{--                                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">--}}
+{{--                                        <i class="fas fa-download"></i> Generate PDF--}}
+{{--                                    </button>--}}
                                 </div>
                             </div>
                         </div>

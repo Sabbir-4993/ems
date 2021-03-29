@@ -47,6 +47,9 @@ Route::group(['prefix'=>'contractor','as'=>'contractor.'], function (){
     Route::post('contractor/report/search', 'ReportController@BillSearch')->name('today.search');
     Route::get('contractor/today/report', 'ReportController@todayReport')->name('today');
     Route::get('contractor/weekly/report', 'ReportController@weeklyReport')->name('week');
+    Route::get('contractor/bill/print/{id}', 'ReportController@billPrint')->name('printBill');
+    Route::get('contractor/totalBill/print/{id}', 'ReportController@totalBillPrint')->name('totalPrintBill');
+
 });
 
 
@@ -69,6 +72,10 @@ Route::group(['prefix'=>'vendor','as'=>'vendor.'], function (){
     Route::post('vendor/report/search', 'VendorReportController@billSearch')->name('today.search');
     Route::get('vendor/today/report', 'VendorReportController@todayReport')->name('today');
     Route::get('vendor/weekly/report', 'VendorReportController@weeklyReport')->name('week');
+    Route::get('vendor/bill/print/{id}', 'VendorReportController@billPrint')->name('printBill');
+    Route::get('vendor/totalBill/print/{id}', 'VendorReportController@totalBillPrint')->name('totalPrintBill');
+
+
 });
 
 //Requisition

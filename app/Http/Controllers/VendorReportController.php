@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\BillingHistory;
+use App\Project;
+use App\Vendor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +54,25 @@ class VendorReportController extends Controller
             ->whereBetween('vendor_billing_histories.billing_date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
             ->get();
         return response()->json($billReport);
+    }
+
+    public function billPrint($id){
+        $printDetails = DB::table('vendor_billing_histories')->where('id',$id)->first();
+        $project = Project::where('id',$printDetails->project_id)->first();
+        $vendor = Vendor::where('id',$printDetails->vendor_id)->first();
+        $workOrder =DB::table('work_orders')->where('id',$printDetails->project_work_no)->first();
+
+        return view('admin.vendor.bill.printBill',compact('printDetails','project','vendor','workOrder'));
+    }
+    public function totalBillPrint($id){
+        $project = Project::where('id',$id)->first();
+        $printDetails = DB::table('vendor_billing_histories')->where('project_id',$project->id)->first();
+        $billingDetails = DB::table('vendor_billing_histories')->where('project_id',$project->id)->get();
+        $billCalculation =  DB::table('vendor_assign_projects')->where('project_id',$project->id)->first();
+        $contractor = Vendor::where('id',$printDetails->vendor_id)->first();
+        $workOrder =DB::table('work_orders')->where('id',$printDetails->project_work_no)->first();
+
+        return view('admin.vendor.bill.totalPrintBill',compact('billCalculation','billingDetails','project','contractor','workOrder','printDetails'));
     }
 
 }

@@ -108,6 +108,7 @@
                                                     <th>Billing Method</th>
                                                     <th>Billing Details</th>
                                                     <th>Billing Date</th>
+                                                    <th>Print Bill</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -120,6 +121,11 @@
                                                     <td>{{$row->billing_method}}</td>
                                                     <td>{{$row->billing_details}}</td>
                                                     <td>{{$row->billing_date}}</td>
+                                                    <td>
+                                                        <a href="{{route('vendor.printBill',$row->id)}}" style="color: red">
+                                                            <i class="fas fa-print"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                                 </tbody>
@@ -172,13 +178,13 @@
                                 </p>
                             </div>
                             <div class="text-muted">
-                            <p class="text-sm">Contractor Name
+                            <p class="text-sm">Vendor Name
                                 <b class="d-block text-gray" style="font-size: 16px;">
                                     <i class="fas fa-user"></i>
                                     {{$vendorDetails->vendor_name}}
                                 </b>
                             </p>
-                            <p class="text-sm">Contractor Number
+                            <p class="text-sm">Vendor Number
                                 <a href="tel: {{$vendorDetails->vendor_phone}}" style="font-size: 16px;" class="d-block text-info">
                                     <i class="fas fa-phone"></i>
                                     {{$vendorDetails->vendor_phone}}
@@ -186,6 +192,9 @@
                             </p>
                             </div>
                             <div class="text-center mt-5 mb-3">
+                                <a class="btn btn-primary btn-lg " href="{{route('vendor.totalPrintBill',$projectDetails->id)}}">
+                                    <i class="fas fa-print"></i>Print
+                                </a>
                                 @if($project ->total_due == 0 && $project ->total_payable == $project ->total_pay)
                                     <a class="btn btn-danger btn-lg disabled"  href="#" data-toggle="modal"
                                        data-target="#modal-sm{{$project->id}}">
@@ -252,7 +261,7 @@
                             <br>
 
                             <label for="exampleInput">Details</label>
-                            <input class="form-control" name="billing_details" placeholder="Enter mobile banking/check number" type="text" required="">
+                            <textarea class="form-control" name="billing_details" placeholder="Enter mobile banking/check number" type="text" required=""></textarea>
 
                         </div>
                         <div class="modal-footer justify-content-between">

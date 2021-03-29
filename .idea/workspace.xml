@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/profile/2021-03-20-1616233714-Sumon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/contractor/bill/printBill.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/contractor/bill/totalPrintBill.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/printBill.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/totalPrintBill.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssignProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ParticularController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ParticularController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorAssignProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorAssignProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_03_052138_create_todos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_03_052138_create_todos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/contractorReport.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/contractorreport.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectDetails.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectList.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +197,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/vendor/bill" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -209,8 +210,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Web Development\htdocs\ems\public\uploads\company_logo" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin\vendor\bill" />
+      <recent name="E:\Web Development\htdocs\ems\public\uploads\company_logo" />
       <recent name="E:\Web Development\htdocs\ems\app\Http\Controllers\vendor" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin\project" />
       <recent name="E:\Web Development\htdocs\ems\resources\views\admin" />
@@ -360,7 +361,9 @@
       <workItem from="1616492233169" duration="21000" />
       <workItem from="1616816584247" duration="4989000" />
       <workItem from="1616903540506" duration="680000" />
-      <workItem from="1616907448508" duration="390000" />
+      <workItem from="1616907448508" duration="4973000" />
+      <workItem from="1616990132034" duration="9772000" />
+      <workItem from="1617008302236" duration="7601000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -565,7 +568,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616217753686</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="all updated march">
+      <created>1616907862153</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1616907862153</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +607,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="pay bill done" />
     <MESSAGE value="bill paid check" />
     <MESSAGE value="all check to merge" />
     <MESSAGE value="Bill paid added to details page" />
@@ -622,7 +631,8 @@
     <MESSAGE value="update requisition no and table" />
     <MESSAGE value="all menu and function modification" />
     <MESSAGE value="Requisition modified and all done for work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Requisition modified and all done for work" />
+    <MESSAGE value="all updated march" />
+    <option name="LAST_COMMIT_MESSAGE" value="all updated march" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

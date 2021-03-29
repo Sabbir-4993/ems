@@ -249,7 +249,7 @@
                         <input class="form-control" id="todo_title" name="todo_title" type="text" placeholder="Enter Todo Title " required="">
                         <br>
                         <label for="exampleInput">Details</label>
-                        <input class="form-control" id="todo_details" name="todo_details" placeholder="Enter Todo details " type="text" required="">
+                        <textarea class="form-control" id="todo_details" name="todo_details" type="text" required=""></textarea>
 
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -273,14 +273,13 @@
         $(document).ready(function(){
             // Add record
             $('#addTodo').on('submit',function (e){
-                e.preventDefault();
+                // e.preventDefault();
                 $.ajax({
                     type:"post",
                     url:"{{route('todo.store')}}",
                     data:$('#addTodo').serialize(),
                     success:function (response) {
                         $('#modal-m').modal('hide')
-                        alert("TODO Save Successfully");
                         document.getElementById("addTodo").reset();
                     },
                     error:function (error){

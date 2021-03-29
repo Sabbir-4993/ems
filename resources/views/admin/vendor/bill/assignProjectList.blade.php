@@ -39,9 +39,9 @@
                                 <tr>
                                     <th>SN</th>
                                     <th>Date</th>
-                                    <th>Contractor Name</th>
+                                    <th>Vendor Name</th>
                                     <th>Project Name</th>
-                                    <th>Contractor Category</th>
+                                    <th>Vendor Category</th>
                                     <th>Work Order</th>
                                     <th>Total Payable</th>
                                     <th>Total Paid</th>

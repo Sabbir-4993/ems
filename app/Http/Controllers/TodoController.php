@@ -16,12 +16,8 @@ class TodoController extends Controller
         $todo['added_date'] = date('d/m/y');
         $todo['status'] = '0';
         $todo ->save();
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'Data inserted successfully'
-            ]
-        );
+        return redirect()->back();
+
     }
     public function deleteTodo( $id){
         $todo = Todo::find($id);
