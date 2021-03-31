@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
                        ProjectTableSeeder::class,
                        DesignationTableSeeder::class,
                        DepartmentTableSeeder::class,
-
+                       PermissionTableSeeder::class,
                       ]);
     }
 }

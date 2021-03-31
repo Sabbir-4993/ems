@@ -49,9 +49,11 @@ class AssignProjectController extends Controller
     public function projectBillPay(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'billing_no' => 'required|unique:billing_histories',
+//            'billing_no' => 'required|unique:billing_histories',
             'pay_amount' => 'required',
         ]);
+        $Bill_has = DB::table('billing_histories')->where('project_id',$request->project_id)->get();
+        $projectName = Project::where('id',$request->project_id)->first();
 
         if($validator->fails()) {
             return redirect()->back()->with('message1', ' Bill Number Matched ! Check Bill No.');
@@ -61,11 +63,16 @@ class AssignProjectController extends Controller
             $data['contractor_id'] = $request->contractor_id;
             $data['project_work_no'] = $request->project_work_no;
             $data['work_order'] = $request->work_id;
-            $data['billing_no'] = $request->billing_no;
+            if ($Bill_has ==null){
+                $data['billing_no'] = $projectName->project_name.'-'.'1';
+            }else{
+                $bill_no  =count($Bill_has);
+                $data['billing_no'] = $projectName->project_name.'-'.($bill_no+1);
+            }
             $data['billing_amount'] = $request->pay_amount;
             $data['billing_method'] = $request->billing_method;
             $data['billing_details'] = $request->billing_details;
-            $data['billing_date'] = date('Y-m-d');
+            $data['billing_date'] = $request->billing_date;
             $billData = DB::table('assingproject')->where('work_order',$request->work_id)->orderBy('id', 'DESC')->get();
             foreach ($billData as $bill){
                 if ($bill->total_pay == null){
