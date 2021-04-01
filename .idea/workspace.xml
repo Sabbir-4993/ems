@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/contractor/bill/printBill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/contractor/bill/totalPrintBill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/printBill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/totalPrintBill.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ems.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TodoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VendorReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_03_052138_create_todos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_03_052138_create_todos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/assignProjectDetails.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/requisition/print_requisitions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contractor/bill/totalPrintBill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contractor/bill/totalPrintBill.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectDetails.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/assignProjectList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vendor/bill/totalPrintBill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vendor/bill/totalPrintBill.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +355,10 @@
       <workItem from="1616903540506" duration="680000" />
       <workItem from="1616907448508" duration="4973000" />
       <workItem from="1616990132034" duration="9772000" />
-      <workItem from="1617008302236" duration="7601000" />
+      <workItem from="1617008302236" duration="8265000" />
+      <workItem from="1617163733011" duration="8219000" />
+      <workItem from="1617248566407" duration="369000" />
+      <workItem from="1617250379386" duration="1029000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -575,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616907862153</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="All invoice of payment vendor and contractor are done">
+      <created>1617018277642</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1617018277642</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +609,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bill paid check" />
     <MESSAGE value="all check to merge" />
     <MESSAGE value="Bill paid added to details page" />
     <MESSAGE value="api for check" />
@@ -632,7 +633,8 @@
     <MESSAGE value="all menu and function modification" />
     <MESSAGE value="Requisition modified and all done for work" />
     <MESSAGE value="all updated march" />
-    <option name="LAST_COMMIT_MESSAGE" value="all updated march" />
+    <MESSAGE value="All invoice of payment vendor and contractor are done" />
+    <option name="LAST_COMMIT_MESSAGE" value="All invoice of payment vendor and contractor are done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

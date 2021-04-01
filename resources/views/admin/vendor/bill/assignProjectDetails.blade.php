@@ -192,7 +192,7 @@
                             </p>
                             </div>
                             <div class="text-center mt-5 mb-3">
-                                <a class="btn btn-primary btn-lg " href="{{route('vendor.totalPrintBill',$projectDetails->id)}}">
+                                <a class="btn btn-primary btn-lg " href="{{route('vendor.totalPrintBill',$project->pi_number)}}">
                                     <i class="fas fa-print"></i>Print
                                 </a>
                                 @if($project ->total_due == 0 && $project ->total_payable == $project ->total_pay)

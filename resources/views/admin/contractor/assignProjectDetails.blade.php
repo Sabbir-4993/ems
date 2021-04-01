@@ -192,7 +192,7 @@
                                     </p>
                                 </div>
                                 <div class="text-center mt-5 mb-3">
-                                    <a class="btn btn-primary btn-lg " href="{{route('contractor.totalPrintBill',$projectDetails->id)}}">
+                                    <a class="btn btn-primary btn-lg " href="{{route('contractor.totalPrintBill',$project->work_order)}}">
                                         <i class="fas fa-print"></i>Print
                                     </a>
 

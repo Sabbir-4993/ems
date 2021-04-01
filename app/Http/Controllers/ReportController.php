@@ -69,13 +69,12 @@ class ReportController extends Controller
     }
 
     public function totalBillPrint($id){
-        $project = Project::where('id',$id)->first();
-        $printDetails = BillingHistory::where('project_id',$project->id)->first();
-        $billingDetails = BillingHistory::where('project_id',$project->id)->get();
-        $billCalculation =  DB::table('assingproject')->where('project_id',$project->id)->first();
-        $contractor = Contractor::where('id',$printDetails->contractor_id)->first();
-        $workOrder =DB::table('work_orders')->where('id',$printDetails->project_work_no)->first();
 
-        return view('admin.contractor.bill.totalPrintBill',compact('billCalculation','billingDetails','project','contractor','workOrder','printDetails'));
+        $printDetails =  DB::table('assingproject')->where('work_order',$id)->first();
+        $project = Project::where('id',$printDetails->project_id)->first();
+        $billingDetails = BillingHistory::where('work_order',$id)->get();
+        $contractor = Contractor::where('id',$printDetails->contractor_id)->first();
+        $workOrder =DB::table('work_orders')->where('id',$printDetails->project_work_order)->first();
+        return view('admin.contractor.bill.totalPrintBill',compact('billingDetails','project','contractor','workOrder','printDetails'));
     }
 }

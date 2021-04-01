@@ -65,14 +65,13 @@ class VendorReportController extends Controller
         return view('admin.vendor.bill.printBill',compact('printDetails','project','vendor','workOrder'));
     }
     public function totalBillPrint($id){
-        $project = Project::where('id',$id)->first();
-        $printDetails = DB::table('vendor_billing_histories')->where('project_id',$project->id)->first();
-        $billingDetails = DB::table('vendor_billing_histories')->where('project_id',$project->id)->get();
-        $billCalculation =  DB::table('vendor_assign_projects')->where('project_id',$project->id)->first();
+        $printDetails =  DB::table('vendor_assign_projects')->where('pi_number',$id)->first();
+        $project = Project::where('id',$printDetails->project_id)->first();
+        $billingDetails = DB::table('vendor_billing_histories')->where('pi_number',$id)->get();
         $contractor = Vendor::where('id',$printDetails->vendor_id)->first();
-        $workOrder =DB::table('work_orders')->where('id',$printDetails->project_work_no)->first();
+        $workOrder =DB::table('work_orders')->where('id',$printDetails->project_work_order)->first();
+        return view('admin.vendor.bill.totalPrintBill',compact('billingDetails','project','contractor','workOrder','printDetails'));
 
-        return view('admin.vendor.bill.totalPrintBill',compact('billCalculation','billingDetails','project','contractor','workOrder','printDetails'));
     }
 
 }

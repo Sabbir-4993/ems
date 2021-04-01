@@ -106,15 +106,15 @@
                                     <table class="table">
                                         <tr>
                                             <th style="text-align:right">Total Pay</th>
-                                            <td style="width:35%;text-align:center">= {{ $billCalculation->total_pay}} <b>৳</b></td>
+                                            <td style="width:35%;text-align:center">= {{ $printDetails->total_pay}} <b>৳</b></td>
                                         </tr>
                                         <tr>
                                             <th style="text-align:right">Total Bill</th>
-                                            <td style="text-align:center">= {{ $billCalculation->total_payable}} <b>৳</b></td>
+                                            <td style="text-align:center">= {{ $printDetails->total_payable}} <b>৳</b></td>
                                         </tr>
                                         <tr>
                                             <th style="text-align:right">Total Due(-)</th>
-                                            <td style="text-align:center">= {{ $billCalculation->total_due }} <b>৳</b></td>
+                                            <td style="text-align:center">= {{ $printDetails->total_due }} <b>৳</b></td>
                                         </tr>
                                     </table>
                                 </div>
