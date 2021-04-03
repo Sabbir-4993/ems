@@ -90,7 +90,7 @@
                     <img src="{{ asset('backend/dist/img/favicon.ico') }}" alt="User Avatar" class="img-size-32 mr-3 img-circle">{{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-                    <a href="#" class="dropdown-item text-left text-center">
+                    <a href="{{route('profile.index')}}" class="dropdown-item text-left text-center">
                         <i class="fas fa-user-alt"></i>
                         {{ Auth::user()->name }}
                     </a>
@@ -98,7 +98,7 @@
                         <nova-dark-theme-toggle label="{{ __('Dark Theme') }}"></nova-dark-theme-toggle>
                     </a>
                     <p class="dropdown-divider"></p>
-                    <a href="#" class="dropdown-item text-left text-center">
+                    <a href="{{route('profile.index')}}" class="dropdown-item text-left text-center">
                         <i class="fas fa-sliders-h"></i>
                         Settings
                     </a>

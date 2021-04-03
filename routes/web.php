@@ -41,6 +41,12 @@ Route::resource('material_category', 'MaterialCategoryController');
 Route::resource('contractors', 'ContractorController');
 Route::resource('category', 'CategoryController');
 
+//user Profile Controller
+    Route::group(['prefix'=>'profile','as'=>'profile.'], function (){
+        Route::get('profile/details', 'ProfileController@index')->name('index');
+        Route::post('profile/resetPassword', 'ProfileController@reset')->name('resetPassword');
+    });
+
 // Contractor Report
 Route::group(['prefix'=>'contractor','as'=>'contractor.'], function (){
     Route::get('contractor/report/bill', 'ReportController@ContractorBill')->name('today.bill');

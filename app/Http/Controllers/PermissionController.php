@@ -45,7 +45,7 @@ class PermissionController extends Controller
 //        dd($request);
 //        Permission::create($data);
         Permission::create($request->all());
-        return redirect()->back()->with('message', 'Permission Created Successfully');
+        return redirect()->route('permission.index')->with('message', 'Permission Created Successfully');
     }
 
     public function getUser(Request $request){
