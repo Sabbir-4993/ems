@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8298d33a-ec25-4812-9948-8120251eb317" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/profile/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permission/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,7 +354,11 @@
       <workItem from="1617248566407" duration="369000" />
       <workItem from="1617250379386" duration="5641000" />
       <workItem from="1617427882114" duration="8308000" />
-      <workItem from="1617445879371" duration="859000" />
+      <workItem from="1617445879371" duration="1101000" />
+      <workItem from="1617508292730" duration="2703000" />
+      <workItem from="1617525931469" duration="1200000" />
+      <workItem from="1617534766295" duration="9000" />
+      <workItem from="1617593810918" duration="6064000" />
     </task>
     <task id="LOCAL-00001" summary="contractor model done">
       <created>1608456548354</created>
@@ -585,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617251765056</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="user password reset done">
+      <created>1617450566195</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1617450566196</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +623,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="all check to merge" />
     <MESSAGE value="Bill paid added to details page" />
     <MESSAGE value="api for check" />
     <MESSAGE value="Requisitions insert to db successfully add" />
@@ -642,7 +647,8 @@
     <MESSAGE value="Requisition modified and all done for work" />
     <MESSAGE value="all updated march" />
     <MESSAGE value="All invoice of payment vendor and contractor are done" />
-    <option name="LAST_COMMIT_MESSAGE" value="All invoice of payment vendor and contractor are done" />
+    <MESSAGE value="user password reset done" />
+    <option name="LAST_COMMIT_MESSAGE" value="user password reset done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

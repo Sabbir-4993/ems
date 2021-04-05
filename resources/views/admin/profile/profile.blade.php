@@ -111,23 +111,41 @@
                                                     <input type="email" name="email"class="form-control" id="inputEmail" value="{{$user->email}}" readonly>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
-                                                <label for="inputExperience" class="col-sm-2 col-form-label">Old Password</label>
-                                                <div class="col-sm-10">
-                                                    <input class="form-control" name="OldPassword" id="inputExperience" placeholder="Old Password">
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <label for="inputSkills" class="col-sm-2 col-form-label">Current Password</label>
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <span toggle="#OldPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                                        </div>
+                                                    </div>
+{{--                                                    <input id="password-field" value="" type="password" class="form-control" />--}}
+                                                    <input class="form-control" name="OldPassword" id="OldPassword" type="password" placeholder="Old Password">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="inputSkills" class="col-sm-2 col-form-label">New Password</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="password" class="form-control" id="inputSkills" placeholder="New Password">
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <label for="inputSkills" class="col-sm-2 col-form-label"> Password</label>
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                                        </div>
+                                                    </div>
+                                                    <input type="password" name="password" class="form-control" id="password" placeholder="New Password">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="inputSkills" class="col-sm-2 col-form-label">Confirm Password</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="confirm_password" class="form-control" id="inputSkills" placeholder="Confirm Password">
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <label for="inputSkills" class="col-sm-2 col-form-label">Confirm Password</label>
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <span toggle="#confirm_password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                                        </div>
+                                                    </div>
+                                                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password">
                                                 </div>
+                                                <span id='message'></span>
                                             </div>
 
                                             <div class="form-group row">
@@ -150,4 +168,26 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+@endsection
+@section('script')
+    <script>
+        $('#password, #confirm_password').on('keyup', function () {
+            if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Password Match').css('color', 'green');
+            } else
+                $('#message').html('Password Not Match').css('color', 'red');
+        });
+    </script>
+    <script>
+        $(".toggle-password").click(function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password"){
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
 @endsection
